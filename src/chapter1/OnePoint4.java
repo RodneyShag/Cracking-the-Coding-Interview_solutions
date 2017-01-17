@@ -1,13 +1,13 @@
 package chapter1;
 
 public class OnePoint4 {
+	/* Important: To simplify finding "true length", we only use Strings with 2 spaces to replace,
+	 *            and 4 blank spaces at end */
 	public static void main (String [] args){
-		char [] sentence = {'D', 'a', 'd', ' ', 'i', 's', ' ', 's', 'm', 'a', 'r', 't', '\0', '\0', '\0', '\0'};
-		System.out.println(sentence);
-		replaceWhitespace(sentence, sentence.length - 4);
-		System.out.println(sentence);
+		test("Dad is smart    ");
 	}
 	
+	/* Replaces whitespace in char[] with %20 */
 	public static void replaceWhitespace(char [] sentence, int trueLength){
 		/* Strings are immutable in JAVA. That's why the book had us use a character array */
 		int numberOfSpaces = 0;
@@ -29,5 +29,14 @@ public class OnePoint4 {
 				}
 			}
 		}
+	}
+	
+	/* Tests code */
+	private static void test(String s){
+		char [] sentence = s.toCharArray();
+		System.out.println(sentence);
+		replaceWhitespace(sentence, sentence.length - 4); // -4 is hard-coded.
+		System.out.println(sentence);
+		System.out.println();
 	}
 }

@@ -1,25 +1,29 @@
 package chapter3;
+
 import java.util.Stack;
 
 /* Used in 3.4 */
-/* It is just a stack, including 1) Error Checking 2) Index to say which tower it is */
+/* It's just a stack, including 1) Error Checking 2) tower number */
 public class Tower {
-	Stack<Integer> disks;
-	int index;
+	private Stack<Integer> disks;
+	public int towerNum;
 	
-	public Tower(int i){
+	/* Constructor */
+	public Tower(int towerNum){
 		disks = new Stack<Integer>();
-		index = i;
+		this.towerNum = towerNum;
 	}
 	
-	public void add(int d){
+	/* Can only push a disk onto a stack if there isn't already a smaller disk on it */
+	public void push(int d){
 		if (!disks.isEmpty() && disks.peek() <= d)
 			System.out.println("Error Placing Disk " + d);
 		else
 			disks.push(d);
 	}
 	
-	public Integer remove(){
+	/* Can only pop from a non-empty stack */
+	public Integer pop(){
 		if (disks.isEmpty())
 			return null;
 		else

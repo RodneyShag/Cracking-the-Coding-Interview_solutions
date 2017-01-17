@@ -1,8 +1,8 @@
 package chapter2;
 
 public class ListFunctions {
-
-	static void printList(Node head){
+	/* Prints linked list */
+	public static void printList(Node head){
 		if (head == null)
 			return;
 		Node n = head;
@@ -16,7 +16,7 @@ public class ListFunctions {
 	/* deleteNode mentioned in "Introduction" 
 	 * We walk the list linearly with ONE pointer. 
 	 * Can alternatively solve it with 2 pointers (prev and curr) */
-	static Node deleteNode(Node head, int d){		// "d" is the node we want to delete
+	public static Node deleteNode(Node head, int d){		// "d" is the node we want to delete
 		if (head == null)
 			return null;
 		
@@ -25,7 +25,7 @@ public class ListFunctions {
 		/* If data is at beginning of list */
 		if (n.data == d)
 			return n.next;
-		
+
 		/* If data is in middle or end of list */
 		while(n.next != null){
 			if (n.next.data == d){
@@ -34,11 +34,12 @@ public class ListFunctions {
 			}
 			n = n.next;
 		}
-		
+
 		return head;
 	}
 	
-	static int calculateSize(Node head){
+	/* Returns size of linked list */
+	public static int calculateSize(Node head){
 		if (head == null)
 			return 0;
 			
@@ -52,7 +53,7 @@ public class ListFunctions {
 	}
 
 	/* Used for TwoPoint5 */
-	static Node insertInFront(Node head, int value){
+	public static Node insertInFront(Node head, int value){
 		Node front = new Node(value);
 		front.next = head;
 		return front;
@@ -60,7 +61,7 @@ public class ListFunctions {
 
 	/* Used for TwoPoint7 */ /* MEMORIZE & CODE THIS ALGORITHM */
 	/* O(n) time, O(1) space */
-	static Node reverseListIterative(Node head){
+	public static Node reverseListIterative(Node head){
 		if (head == null || head.next == null)
 			return head;
 		/* We use THREE pointers to solve this. Found and understood solution using Google */
@@ -79,7 +80,7 @@ public class ListFunctions {
 	/* Used for TwoPoint7 */ /* MEMORIZE & CODE THIS ALGORITHM */
 	/* Reverses a list in place in O(n) time. 
 	 * Although we don't use other data structures, it's still O(n) space cuz n recursive calls */
-	static Node reverseListRecursive(Node head){ // destroys the original list.
+	public static Node reverseListRecursive(Node head){ // destroys the original list.
 		/* Base Cases */
 		if (head == null || head.next == null) // handles lists of size 0 or 1
 			return head;
@@ -93,9 +94,8 @@ public class ListFunctions {
 		}
 	}
 	
-	
 	/* Used for TwoPoint7 Solution 1 */
-	static Node deepCopy(Node n){
+	public static Node deepCopy(Node n){
 		Node head = null;
 		Node curr = null;;
 		while (n != null){
@@ -113,5 +113,4 @@ public class ListFunctions {
 		return head;
 	}
 }
-
 

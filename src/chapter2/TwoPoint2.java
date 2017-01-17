@@ -1,6 +1,11 @@
 package chapter2;
 /* This question is tougher than it seems, cuz of RECURSION, and WRAPPER class. Textbook also had 2 other solutions it briefly mentioned */
 
+/*
+ * Solution 1: Best
+ * Solution 2A, 2C: harder way
+ * Solution 3: Harder way
+ */
 public class TwoPoint2 {
 	/**************************************************************************************************/
 	/* Solution 1 - If list length is known: find and return "length - k" element by walking linearly */
@@ -22,11 +27,13 @@ public class TwoPoint2 {
 
 		return n;
 	}
-	/**** For solutions 2A, 2C, we do it recursively, but need to pass back TWO things (index and Node), so it's tough ****/
+	
+	// For solutions 2A, 2C, we do it recursively, but need to pass back TWO things (index and Node), so it's tough
+	
 	/***************/
-	/* Solution 2A - If list size unknown, and cheating with CRAPPY solution by 
-	 * 1) returning an int instead of a Node, 2) Just printing result in function */
-	/***************/
+	/* Solution 2A - If list size unknown, can 
+	 * 1) returning an int instead of a Node, and 2) Just print result in function
+	 ***************/
 	
 	public static int kthToLast_2A(Node n, int k){ // we could error-check for "k" in a wrapper function
 		
@@ -67,7 +74,7 @@ public class TwoPoint2 {
 	//Solution 2D: instead of using Intwrapper, can create and return a data structure that includes a Node and an int.
 
 	/********************************************************************/
-	/* Solution 3 - If list length unknown: #CleverTrick - Using Runner */ //Ignore this stupid solution since solution 1 is better.
+	/* Solution 3 - If list length unknown: #CleverTrick - Using Runner */
 	/********************************************************************/
 	public static Node kthToLast_3(Node n, int k){
 		if (n == null || k <= 0)	//will assume k is not larger than the size of the list

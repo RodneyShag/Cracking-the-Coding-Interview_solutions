@@ -1,7 +1,9 @@
 package chapter3;
+
 import java.util.Stack;
 
-/* Notice it's parameterized */
+/* This is problem 3.5 */
+/* Notice it's parameterized! */
 public class MyQueue<T> {
 	Stack<T> stack1 = new Stack<T>();
 	Stack<T> stack2 = new Stack<T>();

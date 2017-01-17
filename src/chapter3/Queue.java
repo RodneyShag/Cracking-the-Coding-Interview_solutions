@@ -1,36 +1,39 @@
 package chapter3;
+
+import chapter2.Node;
+
 /* I made a Queue of NODES. Book does a Queue of OBJECTS */
-/* Easy to code */
 public class Queue {
-	Node first = null;
-	Node last = null;
+	private Node head = null;
+	private Node tail = null;
 	
-	public void enqueue(Node n){	//Book does a deep copy here
-		if (first == null){
-			first = n;
-			last = n;
+	public void enqueue(int data){
+		Node n = new Node(data);
+		if (head == null){
+			head = n;
+			tail = n;
 		}
 		else{
-			last.next = n;
-			last = n;
+			tail.next = n;
+			tail = n;
 		}
 	}
-	
+
 	public Node dequeue(){
-		if (first == null)
+		if (head == null)
 			return null;
 		else{
-			Node front = first;
-			first = first.next;
-			if (first == null)		//the book forgot this
-				last = null;		//error check
-			front.next = null;	//probably necessary
+			Node front = head;
+			head = head.next;
+			if (head == null)   // the book forgot this error check (to prevent but in 1-item lists)
+				tail = null;	
+			front.next = null;	// rips the Node from the Queue
 			return front;
 		}
 	}
 	
-	/* I Wrote this. Thought it'd be useful. */
+	/* I added this. Thought it'd be useful. */
 	public Node peek(){
-		return first;
+		return head;
 	}
 }

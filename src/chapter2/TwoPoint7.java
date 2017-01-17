@@ -1,12 +1,18 @@
 package chapter2;
+
 import java.util.Stack;
+
 public class TwoPoint7 {
-	/* Solution 0 - Rodney's Solution: Since it's easy to solve this problem for an array (using a head and a tail pointer that move inwards),
-	 * we COULD create an array from the linked list and solve it that way.
+	/* Solution 0 - Rodney's Solution: Since it's easy to solve this problem for an array 
+	 * (using a head and a tail pointer that move inwards), we COULD 
+	 * create an array from the linked list and solve it that way.
 	 */
 	
-	/* Solution 1 - 
-	 * - Create Deep Copy of List
+	/****************************************/
+	/* Solution 1 - Not implemented in book */
+	/****************************************/
+	
+	 /* - Create Deep Copy of List
 	 * - Reverse that list
 	 * - Compare the 2 lists.
 	 * (Not implemented in book)
@@ -24,7 +30,10 @@ public class TwoPoint7 {
 		return true;
 	}
 	
+	/********************************************************/
 	/* Solution 2 - Use a STACK to reverse half of the list */
+	/********************************************************/
+	
 	/* Since we don't know size of list, we use SLOW and FAST runners */
 	public static boolean palindrome_2(Node head){
 		Node slow = head;
@@ -47,7 +56,10 @@ public class TwoPoint7 {
 		return true;
 	}
 	
-	/* Solution 3 - IGNORE THIS. Very Difficult recursive solution from book */
+	/********************************************************************************/
+	/* Solution 3 - SKIP THIS SOLUTION. Very Difficult recursive solution from book */
+	/********************************************************************************/
+	
 	public static boolean palindrome_3(Node head){
 		Result p = palindromeRecurse(head, ListFunctions.calculateSize(head));
 		return p.result;

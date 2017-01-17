@@ -2,6 +2,7 @@ package chapter1;
 
 import java.util.ArrayList;
 
+/* ArrayList practice */
 public class IntroArrayList {
 	public static void main(String [] args){
 		ArrayList<String> strings = new ArrayList<String>();
@@ -15,7 +16,7 @@ public class IntroArrayList {
 		}
 	}
 	
-	/* Merge 2 arrays into an ArrayList */
+	/* Merges 2 arrays into an ArrayList */
 	public static ArrayList<String> merge(String [] words, String [] moreWords){
 		ArrayList<String> result = new ArrayList<String>();
 		for (String word : words){

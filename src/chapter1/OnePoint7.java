@@ -9,15 +9,11 @@ public class OnePoint7 {
 				            {4, 5, 6, 0},
 				            {0, 5, 3, 0}};
 		
-		printMatrix(matrix);
-		zero(matrix);
-		printMatrix(matrix);
-		
-		printMatrix(matrix2);
-		zero(matrix2);
-		printMatrix(matrix2);
+		testImage(matrix);
+		testImage(matrix2);
 	}
 	
+	/* Zeros out necessary rows/columns */
 	public static void zero(int [][] array){
 		/* To store which rows or columns should become 0 */
 		int m = array.length;
@@ -45,6 +41,7 @@ public class OnePoint7 {
 		}
 	}
 	
+	/* Prints matrix */
 	public static void printMatrix(int [] [] matrix){
 		for (int i = 0; i < matrix.length; i++){
 			for (int j = 0; j < matrix[0]. length; j++){
@@ -52,6 +49,16 @@ public class OnePoint7 {
 			}
 			System.out.println();
 		}
+		System.out.println();
+	}
+	
+	/* Tests our code on a given image */
+	private static void testImage(int [][] matrix){
+		System.out.println("***********************************\n");
+		printMatrix(matrix);
+		System.out.println("Zero out necessary rows/columns\n");
+		zero(matrix);
+		printMatrix(matrix);
 		System.out.println();
 	}
 }

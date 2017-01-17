@@ -1,4 +1,5 @@
 package chapter1;
+
 import java.util.HashSet;
 import java.util.Arrays;
 
@@ -9,27 +10,13 @@ import java.util.Arrays;
  * 4) Using Sorting               O(n log n) runtime
  * 5) Naive Brute Force           O(n^2) runtime
  */
+
+/* Determines if a String has all unique characters */
 public class OnePoint1 {
 	public static void main (String [] args){
-		System.out.println("Bob  " + uniqueCharacters_1("Bobby"));
-		System.out.println("Ben  " + uniqueCharacters_1("Ben"));
-		System.out.println("Alex " + uniqueCharacters_1("Alex"));
-		System.out.println();	
-		System.out.println("Bob  " + uniqueCharacters_2("Bobby"));
-		System.out.println("Ben  " + uniqueCharacters_2("Ben"));
-		System.out.println("Alex " + uniqueCharacters_2("Alex"));
-		System.out.println();	
-		System.out.println("Bob  " + uniqueCharacters_3("Bobby"));
-		System.out.println("Ben  " + uniqueCharacters_3("Ben"));
-		System.out.println("Alex " + uniqueCharacters_3("Alex"));
-		System.out.println();
-		System.out.println("Bob  " + uniqueCharacters_4("Bobby"));
-		System.out.println("Ben  " + uniqueCharacters_4("Ben"));
-		System.out.println("Alex " + uniqueCharacters_4("Alex"));
-		System.out.println();
-		System.out.println("Bob  " + uniqueCharacters_5("Bobby"));
-		System.out.println("Ben  " + uniqueCharacters_5("Ben"));
-		System.out.println("Alex " + uniqueCharacters_5("Alex"));
+		test("Benny");
+		test("Ben");
+		test("Alex");
 	}
 	
 	/* O(n) runtime, O(n) space: using HashMap (my favorite solution) */
@@ -96,6 +83,17 @@ public class OnePoint1 {
 			}
 		}
 		return true;
+	}
+	
+	/* Tests code */
+	private static void test(String s){
+		System.out.println("*** " + s);
+		System.out.println("Solution 1: " + uniqueCharacters_1(s));
+		System.out.println("Solution 2: " + uniqueCharacters_2(s));
+		System.out.println("Solution 3: " + uniqueCharacters_3(s));
+		System.out.println("Solution 4: " + uniqueCharacters_4(s));
+		System.out.println("Solution 5: " + uniqueCharacters_5(s));
+		System.out.println();
 	}
 }
 

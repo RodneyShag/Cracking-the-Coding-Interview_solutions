@@ -1,6 +1,8 @@
 package chapter1;
+
 import java.util.HashMap;
 
+/* HashMap practice */
 public class IntroHashMap {
 	public static void main (String [] args){
 		String [] strings = {"Bob", "Jane", "Alex"};
@@ -10,7 +12,7 @@ public class IntroHashMap {
 		}
 	}
 	
-	/* Build HashMap from Array */
+	/* Builds HashMap from Array */
 	public static HashMap<Integer, String> buildMap(String [] strings){
 		int i = 0;
 		HashMap<Integer, String> map = new HashMap<Integer, String>();

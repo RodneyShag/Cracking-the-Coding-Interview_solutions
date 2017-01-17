@@ -1,201 +1,163 @@
 package chapter2;
 
 public class Chapter2 {
-	public static void main(String [] args){
-		
-		/* Test the Linked List itself, and delete Nodes */
-		Node n = new Node(7);
-		n.next = new Node(8);
-		n.next.next = new Node(9);
-
-		ListFunctions.printList(n);
-				
-		n = ListFunctions.deleteNode(n, 9);
-		ListFunctions.printList(n);
+	public static void main (String [] args){
+		test_Introduction();
+		test_TwoPoint1();
+		test_TwoPoint2();
+		test_TwoPoint3();
+		test_TwoPoint4();
+		test_TwoPoint5();
+		test_TwoPoint6();
+		test_TwoPoint7();
+	}
 	
-		n = ListFunctions.deleteNode(n, 7);
-		ListFunctions.printList(n);
+	public static void test_Introduction(){
+		System.out.println("\n**********************************************");
+		System.out.println("Introduction: Test linked list and deleteNode()\n");
+		Node head = new Node(new int[]{9,7,8});
+
+		ListFunctions.printList(head);
+				
+		head = ListFunctions.deleteNode(head, 9);
+		ListFunctions.printList(head);
+	
+		head = ListFunctions.deleteNode(head, 7);
+		ListFunctions.printList(head);
 		
-		n = ListFunctions.deleteNode(n, 8);
-		ListFunctions.printList(n);
+		head = ListFunctions.deleteNode(head, 8);
+		ListFunctions.printList(head);
+	}
+	
+	public static void test_TwoPoint1(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.1: Remove Duplicates");
 		
-		/****************/
-		/* Question 2.1 */
-		/****************/
-		System.out.println("\n*** Question 2.1: Test Remove Duplicates");
 		System.out.println("\nSolution Version 1");
-		n = new Node(9);
-		n.appendToTail(9);
-		n.appendToTail(9);
-		n.appendToTail(9);
-		ListFunctions.printList(n);
-		TwoPoint1.removeDuplicates(n);
-		ListFunctions.printList(n);
-		
-		/////////////////
+		Node head = new Node(new int[]{9,9,9,9});
+		ListFunctions.printList(head);
+		TwoPoint1.removeDuplicates(head);
+		ListFunctions.printList(head);
+
 		System.out.println("\nSolution Version 2");
-		n = new Node(9);
-		n.appendToTail(9);
-		n.appendToTail(9);
-		n.appendToTail(9);
+		head = new Node(new int[]{9,9,9,9});
+		ListFunctions.printList(head);
+		TwoPoint1.removeDuplicates2(head);
+		ListFunctions.printList(head);
+	}
+	
+	public static void test_TwoPoint2(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.2: Kth Last");
+		Node head = new Node(new int[]{1,2,3,4});
+		ListFunctions.printList(head);
 		
-		ListFunctions.printList(n);
-		TwoPoint1.removeDuplicates2(n);
-		ListFunctions.printList(n);		
-		
-		/****************/
-		/* Question 2.2 */
-		/****************/
-		System.out.println("\n*** Question 2.2: Kth Last");
-		n = new Node(1);
-		n.appendToTail(2);
-		n.appendToTail(3);
-		n.appendToTail(4);
-
-		System.out.println("\nSolution Version 1");
+		System.out.println("\nSolution 1");
 		int k = 2;
-		Node m = TwoPoint2.kthToLast_1(n, k);
-		if (m != null){
-			ListFunctions.printList(n);
-			System.out.println("Element " + k + " from end = " + m.data);
-		}
-
-		System.out.println("\nSolution Version 2A");
-		k = 2;
-		TwoPoint2.kthToLast_2A(n, k);
+		Node m = TwoPoint2.kthToLast_1(head, k);
 		if (m != null)
-			ListFunctions.printList(n);
+			System.out.println("Element " + k + " from end = " + m.data);
+
+		System.out.println("\nSolution 2A");
+		k = 2;
+		TwoPoint2.kthToLast_2A(head, k); // this prints solution to screen
 		
-		System.out.println("\nSolution Version 2C");
+		System.out.println("\nSolution 2C");
 		k = 2;
 		IntWrapper intWrapped = new IntWrapper();
-		m = TwoPoint2.kthToLast_2C(n, k, intWrapped);
-		if (m != null){
-			ListFunctions.printList(n);
+		m = TwoPoint2.kthToLast_2C(head, k, intWrapped);
+		if (m != null)
 			System.out.println("Element " + k + " from end = " + m.data);
-		}
 		
-		System.out.println("\nSolution Version 3");
+		System.out.println("\nSolution 3");
 		k = 2;
-		m = TwoPoint2.kthToLast_3(n, k);
-		if (m != null){
-			ListFunctions.printList(n);
-			System.out.println("Element " + k + " from end = " + m.data);
-		}
-		
-		/****************/
-		/* Question 2.3 */
-		/****************/
-		System.out.println("\n*** Question 2.3: Test Delete Mid");
-		n = new Node(6);
-		n.appendToTail(7);
-		n.appendToTail(8);
-		n.appendToTail(9);
-		ListFunctions.printList(n);
-		TwoPoint3.deleteMid(n.next.next);
-		ListFunctions.printList(n);
+		m = TwoPoint2.kthToLast_3(head, k);
+		if (m != null)
+			System.out.println("Element " + k + " from end = " + m.data);	
+	}
+
+	public static void test_TwoPoint3(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.3: Test Delete Mid\n");
+		Node head = new Node(new int[]{6,7,8,9});
+		ListFunctions.printList(head);
+		TwoPoint3.deleteMid(head.next.next);
+		ListFunctions.printList(head);
 		
 		System.out.println("\n Another trial");
-		n = new Node(6);
-		n.appendToTail(7);
-		n.appendToTail(8);
-		n.appendToTail(9);
-		n.appendToTail(10);
-		ListFunctions.printList(n);
-		TwoPoint3.deleteMid(n.next.next);
-		ListFunctions.printList(n);
+		head = new Node(new int[]{6,7,8,9,10});
+		ListFunctions.printList(head);
+		TwoPoint3.deleteMid(head.next.next);
+		ListFunctions.printList(head);
+	}
+	
+	public static void test_TwoPoint4(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.4: Test Partition");
+
+		/* Solution 1 */
+		Node head = new Node(new int[]{6,3,4,8,2});
 		
-		/****************/
-		/* Question 2.4 */
-		/****************/
-		System.out.println("\n*** Question 2.4: Test Partition");
+		System.out.print("\nOriginal list: ");
+		ListFunctions.printList(head);
+
 		System.out.println("\nSolution Version 1... Partition on 5");
-		n = new Node(6);
-		n.appendToTail(3);
-		n.appendToTail(4);
-		n.appendToTail(8);
-		n.appendToTail(2);
-		
-		ListFunctions.printList(n);
-		n = TwoPoint4.partition(n, 5);
-		ListFunctions.printList(n);
+		head = TwoPoint4.partition(head, 5);
+		ListFunctions.printList(head);
 
+		/* Solution 2 */
+		head = new Node(new int[]{6,3,4,8,2});
 		System.out.println("\nSolution Version 2... Partition on 5");
-		n = new Node(6);
-		n.appendToTail(3);
-		n.appendToTail(4);
-		n.appendToTail(8);
-		n.appendToTail(2);
+		head = TwoPoint4.partition2(head, 5);
+		ListFunctions.printList(head);
+	}
+	
+	public static void test_TwoPoint5(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.5: Add Lists");
 		
-		ListFunctions.printList(n);
-		n = TwoPoint4.partition2(n, 5);
-		ListFunctions.printList(n);
-
-		/****************/
-		/* Question 2.5 */
-		/****************/
-		System.out.println("\n*** Question 2.5: Add Lists");
+		/* Part 1 */
 		System.out.println("\nSolution Part 1 (Reverse Ordered Lists: Addition)");
-		n = new Node(6);
-		n.appendToTail(3);
-		n.appendToTail(4);
-		n.appendToTail(8);
-		n.appendToTail(2);
+		Node num1 = new Node(new int[]{6,3,4,8,2});
+		Node num2 = new Node(new int[]{7,1,3});
 		
-		m = new Node(7);
-		m.appendToTail(1);
-		m.appendToTail(3);
-		
-		ListFunctions.printList(n);
-		ListFunctions.printList(m);
-		Node twoPoint5_Reverse = TwoPoint5.addReverseOrder(n, m);
+		ListFunctions.printList(num1);
+		ListFunctions.printList(num2);
+		Node twoPoint5_Reverse = TwoPoint5.addReverseOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Reverse);
-		
 		System.out.println();
 		
-		n = new Node(9);
-		n.appendToTail(4);
+		num1 = new Node(new int[]{9,4});
+		num2 = new Node(new int[]{7,7});
 		
-		m = new Node(7);
-		m.appendToTail(7);
-		
-		ListFunctions.printList(n);
-		ListFunctions.printList(m);
-		twoPoint5_Reverse = TwoPoint5.addReverseOrder(n, m);
+		ListFunctions.printList(num1);
+		ListFunctions.printList(num2);
+		twoPoint5_Reverse = TwoPoint5.addReverseOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Reverse);
 		
+		/* Part 2 */
 		System.out.println("\nSolution Part 2 (Forward Ordered Lists: Addition)");
-		n = new Node(3);
-		n.appendToTail(3);
-		n.appendToTail(4);
+		num1 = new Node(new int[]{3,3,4});
+		num2 = new Node(new int[]{7,6,8,7});
 		
-		m = new Node(7);
-		m.appendToTail(6);
-		m.appendToTail(8);
-		m.appendToTail(7);
-		
-		ListFunctions.printList(n);
-		ListFunctions.printList(m);
-		Node twoPoint5_Forward = TwoPoint5.addForwardOrder(n, m);
+		ListFunctions.printList(num1);
+		ListFunctions.printList(num2);
+		Node twoPoint5_Forward = TwoPoint5.addForwardOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Forward);
-		
 		System.out.println();
 		
-		n = new Node(3);
-		n.appendToTail(9);
+		num1 = new Node(new int[]{3,9});
+		num2 = new Node(new int[]{7,5});
 		
-		m = new Node(7);
-		m.appendToTail(5);
-		
-		ListFunctions.printList(n);
-		ListFunctions.printList(m);
-		twoPoint5_Forward = TwoPoint5.addForwardOrder(n, m);
+		ListFunctions.printList(num1);
+		ListFunctions.printList(num2);
+		twoPoint5_Forward = TwoPoint5.addForwardOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Forward);
-		
-		/****************/		
-		/* Question 2.6 */
-		/****************/
-		System.out.println("\n*** Question 2.6: Circular Linked List");
+	}
+	
+	public static void test_TwoPoint6(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.6: Circular Linked List\n");
 		Node a1 = new Node(1);
 		Node a2 = new Node(2); // will be beginning of loop.
 		Node a3 = new Node(3);
@@ -203,116 +165,54 @@ public class Chapter2 {
 		a1.next = a2;
 		a2.next = a3;
 		a3.next = a4;
-		a4.next = a2; // points to beginning of loop.
+		a4.next = a2; // a4 points to beginning of loop (a2).
 		
 		Node loopBeginning = TwoPoint6.findBeginning(a1);
-		System.out.println("Loop Beginning = " + loopBeginning.data);
+		System.out.println("Loop Beginning (Value) = " + loopBeginning.data);
+	}
+	
+	public static void test_TwoPoint7(){
+		System.out.println("\n**********************************************");
+		System.out.println("Question 2.7: Palindrome\n");
 		
-		/****************/
-		/* Question 2.7 */
-		/****************/
-		System.out.println("\n*** Question 2.7: Palindrome");
+		/* Test Reverse List */
 		System.out.println("Test Reverse List");
-		n = new Node(1);
-		n.appendToTail(2);
-		n.appendToTail(3);
-		n.appendToTail(4);
-		ListFunctions.printList(n);
-		n = ListFunctions.reverseListRecursive(n);
-		ListFunctions.printList(n);
-		n = ListFunctions.reverseListIterative(n);
-		ListFunctions.printList(n);
-		
+		Node head = new Node(new int[]{1,2,3,4});
+		System.out.print("Original List: ");
+		ListFunctions.printList(head);
+		System.out.print("Reverse List:  ");
+		head = ListFunctions.reverseListRecursive(head);
+		ListFunctions.printList(head);
+		System.out.print("Reverse Again: ");
+		head = ListFunctions.reverseListIterative(head);
+		ListFunctions.printList(head);
 		System.out.println();
 
-		// solution 1
-		ListFunctions.printList(n);		
-		boolean palindrome = TwoPoint7.palindrome_1(n);
-		if (palindrome)
-			System.out.println("Solution 1: Palindrome");
-		else
-			System.out.println("Solution 1: Not a Palindrome");		
-		// solution 2
-		palindrome = TwoPoint7.palindrome_2(n);
-		if (palindrome)
-			System.out.println("Solution 2: Palindrome");
-		else
-			System.out.println("Solution 2: Not a Palindrome");
-		// solution 3
-		palindrome = TwoPoint7.palindrome_3(n);
-		if (palindrome)
-			System.out.println("Solution 3: Palindrome");
-		else
-			System.out.println("Solution 3: Not a Palindrome");
-	
-		n.appendToTail(3);
-		n.appendToTail(2);
-		n.appendToTail(1);
-		ListFunctions.printList(n);
-		// solution 1
-		palindrome = TwoPoint7.palindrome_1(n);
-		if (palindrome)
-			System.out.println("Solution 1: Palindrome");
-		else
-			System.out.println("Solution 1: Not a Palindrome");
-		// solution 2
-		palindrome = TwoPoint7.palindrome_2(n);
-		if (palindrome)
-			System.out.println("Solution 2: Palindrome");
-		else
-			System.out.println("Solution 2: Not a Palindrome");
-		// solution 3
-		palindrome = TwoPoint7.palindrome_3(n);
-		if (palindrome)
-			System.out.println("Solution 3: Palindrome");
-		else
-			System.out.println("Solution 3: Not a Palindrome");
+		/* Test 1 */
+		ListFunctions.printList(head);
+		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
+		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
 
-		n = new Node(1);
-		n.appendToTail(2);
-		n.appendToTail(2);
-		n.appendToTail(1);
-		ListFunctions.printList(n);
-		// solution 1
-		palindrome = TwoPoint7.palindrome_1(n);
-		if (palindrome)
-			System.out.println("Solution 1: Palindrome");
-		else
-			System.out.println("Solution 1: Not a Palindrome");
-		// solution 2
-		palindrome = TwoPoint7.palindrome_2(n);
-		if (palindrome)
-			System.out.println("Solution 2: Palindrome");
-		else
-			System.out.println("Solution 2: Not a Palindrome");
-		// solution 3
-		palindrome = TwoPoint7.palindrome_3(n);
-		if (palindrome)
-			System.out.println("Solution 3: Palindrome");
-		else
-			System.out.println("Solution 3: Not a Palindrome");
+		/* Test 2 */
+		head = new Node(new int[]{1,2,3,4,3,2,1});
+		ListFunctions.printList(head);
+		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
+		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
 		
-		n.appendToTail(8);
-		n.appendToTail(2);
-		n.appendToTail(1);
-		ListFunctions.printList(n);
-		// solution 1
-		palindrome = TwoPoint7.palindrome_1(n);
-		if (palindrome)
-			System.out.println("Solution 1: Palindrome");
-		else
-			System.out.println("Solution 1: Not a Palindrome");
-		// solution 2
-		palindrome = TwoPoint7.palindrome_2(n);
-		if (palindrome)
-			System.out.println("Solution 2: Palindrome");
-		else
-			System.out.println("Solution 2: Not a Palindrome");
-		// solution 3
-		palindrome = TwoPoint7.palindrome_3(n);
-		if (palindrome)
-			System.out.println("Solution 3: Palindrome");
-		else
-			System.out.println("Solution 3: Not a Palindrome");
+		/* Test 3 */
+		head = new Node(new int[]{1,2,2,1});
+		ListFunctions.printList(head);
+		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
+		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head)+ "\n");
+		
+		/* Test 4 */
+		head = new Node(new int[]{1,2,2,1,8,2,1});
+		ListFunctions.printList(head);
+		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
+		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
 	}
 }

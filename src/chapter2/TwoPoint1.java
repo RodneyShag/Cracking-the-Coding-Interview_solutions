@@ -1,4 +1,5 @@
 package chapter2;
+
 import java.util.HashSet;
 
 public class TwoPoint1 {
@@ -19,7 +20,6 @@ public class TwoPoint1 {
 			}
 			curr = curr.next;
 		}
-		
 		return;
 	}
 	

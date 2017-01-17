@@ -2,23 +2,8 @@ package chapter1;
 
 public class OnePoint5 {
 	public static void main (String [] args){
-		/* Test #1 */
-		String original = "aabcccccaaa";
-		System.out.println("Original string = " + original);
-		String compressed = basicCompression_1(original);
-		System.out.println(compressed);	
-		String compressed_2 = basicCompression_2(original);
-		System.out.println(compressed_2);	
-		
-		System.out.println();
-		
-		/* Test #2 */
-		original = "abababa";
-		System.out.println("Original string = " + original);
-		compressed = basicCompression_1(original);
-		System.out.println(compressed);
-		compressed_2 = basicCompression_2(original);
-		System.out.println(compressed_2);
+		test("aabcccccaaa");
+		test("abababa");
 	}
 	
 	/******************************************************************************/
@@ -127,5 +112,15 @@ public class OnePoint5 {
 			array[index++] = numAsString.charAt(i);
 		}
 		return index;
+	}
+	
+	/* Tests code */
+	private static void test(String original){
+		System.out.println("Original string = " + original);
+		String compressed = basicCompression_1(original);
+		System.out.println("Solution 1: " + compressed);	
+		String compressed_2 = basicCompression_2(original);
+		System.out.println("Solution 2: " + compressed_2);	
+		System.out.println();
 	}
 }

@@ -19,32 +19,14 @@ public class OnePoint6 {
 						  {11, 12, 13, 14, 15},
 						  {16, 17, 18, 19, 20},
 						  {21, 22, 23, 24, 25}};
-		
-		printImage(image);
-		rotate90clockwise(image);
-		printImage(image);
-		rotate180(image);  //notice this rotates the already 90-degree rotated image.
-		printImage(image);
-		
-		printImage(image2);
-		rotate90clockwise(image2);
-		printImage(image2);
-		rotate180(image2); //notice this rotates the already 90-degree rotated image.
-		printImage(image2);
-		
-		printImage(image3);
-		rotate90clockwise(image3);
-		printImage(image3);
-		rotate180(image3); //notice this rotates the already 90-degree rotated image.
-		printImage(image3);
-		
-		printImage(image4);
-		rotate90clockwise(image4);
-		printImage(image4);
-		rotate180(image4); //notice this rotates the already 90-degree rotated image.
-		printImage(image4);
-	}
 
+		testImage(image);
+		testImage(image2);
+		testImage(image3);
+		testImage(image4);
+	}
+	
+	/* Rotates image[][] 90 degrees clockwise */
 	public static void rotate90clockwise(int [][] image){
 		int n = image.length;
 		
@@ -61,17 +43,6 @@ public class OnePoint6 {
 				image[first + offset][last] = temp;
 			}
 		}
-		System.out.println("Rotated 90 degrees clockwise");
-	}
-
-	public static void printImage(int [] [] image){
-		for (int i = 0; i < image.length; i++){
-			for (int j = 0; j < image[0].length; j++){
-				System.out.printf("%2d ", image[i][j]);
-			}
-			System.out.println();
-		}
-		System.out.println();
 	}
 	
 	/* For fun: I tried rotating 180 degrees */
@@ -89,13 +60,37 @@ public class OnePoint6 {
 				swap(image, i, n/2, n-1-i, n/2);
 			}
 		}
-		System.out.println("Rotated 180 degrees");
 		return image;
 	}
 	
+	/* Swaps 2 elements in a 2-D array */
 	private static void swap(int [][] array, int x1, int y1, int x2, int y2){
 		int temp = array[y1][x1];
 		array[y1][x1] = array[y2][x2];
 		array[y2][x2] = temp;
+	}
+	
+	/* Prints image */
+	public static void printImage(int [] [] image){
+		for (int i = 0; i < image.length; i++){
+			for (int j = 0; j < image[0].length; j++){
+				System.out.printf("%2d ", image[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
+	/** Tests our rotations on given image */
+	private static void testImage(int [][] image){
+		System.out.println("****************************************");
+		printImage(image);
+		System.out.println("Rotated 90 degrees clockwise");
+		rotate90clockwise(image);
+		printImage(image);
+		System.out.println("Rotated anoter 180 degrees clockwise");
+		rotate180(image);  //notice this rotates the already 90-degree rotated image.
+		printImage(image);
+		System.out.println();
 	}
 }

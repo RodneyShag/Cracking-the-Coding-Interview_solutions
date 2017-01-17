@@ -1,8 +1,10 @@
 package chapter3;
 
+import chapter2.Node;
+
 /* I made a Stack of NODES. Book does a Stack of OBJECTS */
 public class Stack {
-	public Node top = null;
+	private Node top = null;
 	
 	public void push(int data){
 		Node n = new Node(data);
@@ -15,7 +17,7 @@ public class Stack {
 			return null;
 		Node n = top;
 		top = top.next;
-		n.next = null;	//probably necessary
+		n.next = null;	// rips off the node from the Stack
 		return n;
 	}
 	

@@ -1,29 +1,12 @@
 package chapter1;
+
 import java.util.Arrays;
 
+/* Determines if 2 Strings are permutations of each other */
 public class OnePoint3 {
 	public static void main (String [] args){
-		if (isPermutation_1("hello", "olhel"))
-			System.out.println("yes");
-		else
-			System.out.println("no");
-
-		if (isPermutation_1("james", "beans"))
-			System.out.println("yes");
-		else
-			System.out.println("no");	
-		System.out.println();	
-		
-		/* Solution 2 */
-		if (isPermutation_2("hello", "olhel"))
-			System.out.println("yes");
-		else
-			System.out.println("no");
-
-		if (isPermutation_2("james", "beans"))
-			System.out.println("yes");
-		else
-			System.out.println("no");
+		test("hello", "olhel");
+		test("james", "bean");
 	}
 	
 	/* Solution 1 - Sort the 2 Strings (by converting to char[]), then compare them: O(n log n) */
@@ -40,6 +23,7 @@ public class OnePoint3 {
 		return s1.equals(s2);
 	}
 	
+	/* Sorts the characters in a String, returning a new String */
 	private static String sort(String s){
 		char [] charArray = s.toCharArray();
 		Arrays.sort(charArray);
@@ -70,5 +54,13 @@ public class OnePoint3 {
 		}
 		
 		return true;
+	}
+	
+	/* Tests code */
+	private static void test(String s1, String s2){
+		System.out.println(s1 + " " + s2);
+		System.out.println("Solution 1: " + isPermutation_1(s1, s2));
+		System.out.println("Solution 2: " + isPermutation_2(s1, s2));
+		System.out.println();
 	}
 }

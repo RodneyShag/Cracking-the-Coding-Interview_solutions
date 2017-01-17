@@ -1,43 +1,48 @@
 package chapter3;
-import java.util.ArrayList;
 
-/* Stupid implementation. I should have used an ArrayList<Stack<Integer>> */
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class ThreePoint3 {
-	ArrayList<StackSpecial> stacks = new ArrayList<StackSpecial>();
-	int capacity = 100;
+	private ArrayList<Stack<Integer>> stacks = new ArrayList<Stack<Integer>>();
+	private int capacity = 3;
 	
-	public void push(int n){
-		StackSpecial last = getLastStack();
-		if (last != null && last.size() != capacity)
-			last.push(n);
+	/* Implemented to work like a standard push */
+	public void push (int data){
+		Stack<Integer> lastStack = getLastStack();
+		if (lastStack != null && lastStack.size() < capacity)
+			lastStack.push(data);
 		else{
-			StackSpecial newestStack = new StackSpecial(capacity);
-			newestStack.push(n);
-			stacks.add(newestStack);
+			Stack<Integer> anotherStack = new Stack<>();
+			anotherStack.push(data);
+			stacks.add(anotherStack);
 		}
 	}
 	
-	public int pop(){
-		StackSpecial last = getLastStack();
-		if (last == null)
-			return -1;	//we will have this be our error for now.
-		int result = last.pop();
-		if (last.size() == 0)
-			stacks.remove(stacks.size() - 1);
-		return result;
+	/* Implemented to work like a standard pop */
+	public Integer pop(){
+		Stack<Integer> lastStack = getLastStack();
+		if (lastStack == null)
+			return null;
+		else{
+			Integer result = lastStack.pop();
+			if (lastStack.isEmpty())
+				stacks.remove(stacks.size()-1);
+			return result;
+		}
 	}
 	
-	public StackSpecial getLastStack(){
-		if (stacks.size() == 0)
+	/* Helper function */
+	public Stack<Integer> getLastStack(){
+		if (stacks.isEmpty())
 			return null;
 		else
-			return stacks.get(stacks.size() - 1);
+			return stacks.get(stacks.size()-1);
 	}
 }
 
-/* Tricks utilized for "Follow-up", which is too long to code
- * 1) In an interview, I would take the route (that the book mentions) of NOT shifting when they pop from one of the middle stacks
- * 2) In the shifting solution, the book has represents each STACK as a DOUBLY-LINKED LIST. Also, the top of one stack points
- *    to the bottom of the next stack.
+/*  "Follow-up" Question. Skipped cuz too long to code 4 interview (according to book) and requires new implementations of push/pop.
+ *   2 possible solutions:
+ *      1) Don't shift when they pop from one of middle stacks (I would do this solution)
+ *      2) Do shift. Harder to do but wouldn't be impossible.
  */
-
