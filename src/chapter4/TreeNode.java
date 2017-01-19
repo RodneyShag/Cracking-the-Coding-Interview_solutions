@@ -1,14 +1,31 @@
 package chapter4;
 
 public class TreeNode {
+	TreeNode left   = null;
+	TreeNode right  = null;
+	TreeNode parent = null;	// Needed for problem 4.6
 	int data;
-	TreeNode left;
-	TreeNode right;
-	TreeNode parent = null;	//this is here so that 4.6 will work.
 	
 	public TreeNode(int data){
 		this.data = data;
-		left = null;
-		right = null;
+	}
+	
+	/* Useful for Problem 4.6 */
+	public void addLeftChild(int data){
+		TreeNode node = new TreeNode(data);
+		left = node;
+		node.parent = this;
+	}
+
+	/* Useful for Problem 4.6 */
+	public void addRightChild(int data){
+		TreeNode node = new TreeNode(data);
+		right = node;
+		node.parent = this;
+	}
+
+	@Override
+	public String toString(){
+		return String.valueOf(data) + " ";
 	}
 }

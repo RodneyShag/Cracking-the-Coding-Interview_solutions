@@ -1,18 +1,22 @@
 package chapter4;
 
 public class FourPoint7 {
-	/* Book Solution 1: If we have links to parents, we can use those and mark nodes as "isVisited" */
+	/* Book Solution 0: If Binary Search Tree, can trace paths (by saving them) of both nodes and see where they diverge */
+	
+	/* Book Solution 1: If we have links to parents, we can first save all of node1's parents (ancestors) in a HashMap
+	 *                  and then see if node2's parents (ancestors) are any of those */
 
 	/**************/
-	/* Solution 2 */ //O(n) runtime, but tricky to figure it out. From book explanation, and cuz 1 + 1/2 + 1/4 +... = constant.
+	/* Solution 2 */ 
 	/**************/
+	//O(n) runtime, but tricky to figure it out. Based off book: O(n)*(1 + 1/2 + 1/4 +...) = O(n)*(2) = O(n)
 	public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q){
 		if (!covers(root, p) || !covers(root, q))
 			return null;
 		return commonAncestorHelper(root, p, q);
 	}
 	
-	private static TreeNode commonAncestorHelper(TreeNode root, TreeNode p, TreeNode q){
+	private static TreeNode commonAncestorHelper(TreeNode root, TreeNode p, TreeNode q){ // root will never be null here
 		if (root == p || root == q)
 			return root;
 		
@@ -27,14 +31,12 @@ public class FourPoint7 {
 			return root;	//since p and q are on different sides of root!
 	}
 	
-	/***************************************************************/
-	/* This function is crucial. Used in solution 2 and solution 3 */
-	/***************************************************************/
-	private static boolean covers(TreeNode root, TreeNode node){
+	/* Helper function for solutions 2, 3: returns true if 'node' is in subtree of 'root', false otherwise */
+	private static boolean covers(TreeNode root, TreeNode node){ // runs in O(n) since we gotta search all nodes.
 		/* Base Cases */
 		if (root == null || node == null)
 			return false;
-		if (root == node)	//should not use "==". Should write a .isEquivalent or .equals in TreeNode class
+		if (root == node)
 			return true;
 		
 		/* Recursive Case */
@@ -42,9 +44,8 @@ public class FourPoint7 {
 	}
 	
 	
-	/* Solution 3: SKIP IT. Their website code has Solution 2 instead. Solution 3 is more optimal, but harder algorithm and harder to code */
-	/* Untested. Very likely I have minor bugs
-	 * My version is different in that I first test to see if the tree "covers" the nodes
+	/* Solution 3: SKIP IT. Way too difficult (for only a constant multiple speedup). Their website code has Solution 2 instead. 
+	 * Untested. Very likely I have minor bug.  My version is different in that I first test to see if the tree "covers" the nodes.
 	 */
 
 	public static TreeNode commonAncestor3(TreeNode root, TreeNode p, TreeNode q){

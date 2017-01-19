@@ -13,7 +13,7 @@ public class ThreePoint3 {
 		if (lastStack != null && lastStack.size() < capacity)
 			lastStack.push(data);
 		else{
-			Stack<Integer> anotherStack = new Stack<>();
+			Stack<Integer> anotherStack = new Stack<>(); // crucial step. Stacks aren't magically created 4 u.
 			anotherStack.push(data);
 			stacks.add(anotherStack);
 		}

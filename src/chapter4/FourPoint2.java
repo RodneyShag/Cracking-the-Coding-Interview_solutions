@@ -1,30 +1,30 @@
 package chapter4;
-//import java.util.LinkedList;
-/***********************************************************************************************/
-/******** THIS IS PSEUDOCODE (which I commented out so no compiler errors***********************/
-/***********************************************************************************************/
-//Notice we use LinkedList instead of ArrayList cuz we're often removing 1st element
 
+import java.util.Queue;
+import java.util.LinkedList;
+
+/* Finding if a route exists is simply BFS or DFS to see if we reach the desired node */
 public class FourPoint2 {
-	/* Will employ standard BFS */
-	/* For "Graph", we have "getNodes()".  For "Node", we have "getAdjacent()" and "visit() */
+	/* We do BFS from start node to see if we arrive at end node */
+	public static boolean routeExists(GraphNode start, GraphNode end){
+		if (start == end)
+			return true;
 
-/*
-	public static boolean routeExists(Graph g, Node start, Node end){
-		LinkedList<Node> queue = new LinkedList<Node>();	//couldn't create a "Queue" since Queue is an INTERFACE in Java. "LinkedList" implements this interface
+		Queue<GraphNode> queue = new LinkedList<>();
 		start.visit();
-		while (!queue.isEmpty()){
-			Node offQueue = queue.removeFirst();
-			for (Node n : offQueue.getAdjacent()){
-				if (!n.visited){
-					if (n == end)
-						return true;
-					n.visit();
-					queue.add(n);
+		queue.add(start);
+		
+		while ( ! queue.isEmpty()){
+			GraphNode curr = queue.remove();
+			if (curr == end)
+				return true;
+			for (GraphNode neighbor : curr.getNeighbors()){
+				if ( ! neighbor.visited){
+					neighbor.visit();
+					queue.add(neighbor);
 				}
 			}
 		}
 		return false;
 	}
-*/
 }

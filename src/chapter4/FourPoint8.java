@@ -1,17 +1,20 @@
 package chapter4;
 
 public class FourPoint8 {
-	/* Solution 1 - Book's inorder/preorder traversal trick.
-	 * T2's preorder traversal should be a substring of T1's preorder traversal. Same for inorder traversals (Need to insert dummy ")" for nulls
-	 * Bad side: We make copies of both trees to create the 2 strings
+	/* Solution 1
+	 * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same is true for inorder traversals,
+	 *   then they T2 is substring of T1
+	 * - Book further says to insert dummy "0" for nulls. This is necessary to distinguish the 2 trees in book with duplicate values.
+	 * - However, I believe that if we do this "dummy 0" trick, then just checking preorder traversals should suffice
+	 *   instead of having to also check inorder traversals.
+	 * - Bad space complexity: We make copies of both trees to create the 2 strings
 	 */
 
 	/**************/
-	/* Solution 2 */	//I like coding this problem.
+	/* Solution 2 */
 	/**************/
-	/* Useful optimization: This function is here to do the initial (t2 == null) error check, so we dont need to do it every time recursively */
 	public static boolean containsTree(TreeNode t1, TreeNode t2){
-		if (t2 == null)
+		if (t2 == null)  // the empty tree is always a subtree. We do this check here to avoid doing it every time in subTree
 			return true;
 		return subTree(t1, t2);
 	}
@@ -20,11 +23,11 @@ public class FourPoint8 {
 		if (t1 == null)
 			return false;
 		
-		if (t1.data == t2.data){								//t2 will never be null since we checked it in "containsTree"
+		if (t1.data == t2.data){
 			if (matchTree(t1, t2))
 				return true;
 		}
-		return subTree(t1.left, t2) || subTree(t1.right, t2);	//notice it's "t2", and not "t2.left" or "t2.right" which I messed up on once.
+		return subTree(t1.left, t2) || subTree(t1.right, t2);
 	}
 
 	public static boolean matchTree(TreeNode p, TreeNode q){
@@ -38,15 +41,16 @@ public class FourPoint8 {
 		return matchTree(p.left, q.left) && matchTree(p.right, q.right);
 	}
 }
-/* ----------Solution 1
+/* Runtimes: 
+ * Let t1 have n nodes and t2 have m nodes
+ * 
+ * ----------Solution 1
  * Runtime: O(n + m)
  * Space  : O(n + m) since we copy the trees
  * 
  * ----------Solution 2
- * Runtime: O(nm) at worst case, but usually much better since the subtree won't match the tree in "matchTree", so it's O(n + km) where
- *          k is number of occurrences of T2's root in T1
+ * Runtime: O(nm) at worst case, but average case is much better since matchTree() usually wont be called often, 
+ * so it's O(n + km) where k is number of occurrences of T2's root in T1
+ * - Also, even when we do call matchTree, it is likely to not match very soon in its search
  * Space Required: O(log(n) + log(m)). Which is great.
  */
-
-/* Rodney's Solution 2 possible improvement: If we know height of smaller tree, we can only start searching nodes at the same height in bigger tree */
-
