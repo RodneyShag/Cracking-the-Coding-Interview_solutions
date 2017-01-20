@@ -1,5 +1,12 @@
 package chapter4;
 
+/* Tests if one tree is subtree of another
+ * 
+ * Solutions               Runtime                   Preference
+ * ------------------------------------------------------------------
+ * 1) Preorder Traversal   See analysis at bottom    Worth mentioning
+ * 2) Recursive search     See analysis at bottom    Favorite
+ */
 public class FourPoint8 {
 	/* Solution 1
 	 * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same is true for inorder traversals,

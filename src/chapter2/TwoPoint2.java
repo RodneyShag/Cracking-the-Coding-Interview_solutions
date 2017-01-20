@@ -1,10 +1,20 @@
 package chapter2;
-/* This question is tougher than it seems, cuz of RECURSION, and WRAPPER class. Textbook also had 2 other solutions it briefly mentioned */
 
-/*
- * Solution 1: Best
- * Solution 2A, 2C: harder way
- * Solution 3: Harder way
+/* Find kth to last element of SLL
+ * 
+ * Solutions                                                    Runtime    Preference
+ * ------------------------------------------------------------------------------------
+ * 1)  Use the list's size                                      O(n)       Favorite
+ * 
+ * In Solutions 2A-2D, we use recursion, but need to 
+ * somehow pass back TWO things (index and Node)
+ * 
+ * 2A) return int. print Node's data in function                O(n)       Tricky
+ * 2C) IntWrapper as parameter. Pass back Node                  O(n)       Tricky
+ * 2D) Create data structure containing int, Node to return     O(n)       Tricky
+ * 
+ * 3) Use list's size, and 2 runners                            O(n)       Clever trick
+ * 
  */
 public class TwoPoint2 {
 	/**************************************************************************************************/
@@ -28,8 +38,6 @@ public class TwoPoint2 {
 		return n;
 	}
 	
-	// For solutions 2A, 2C, we do it recursively, but need to pass back TWO things (index and Node), so it's tough
-	
 	/***************/
 	/* Solution 2A - If list size unknown, can 
 	 * 1) returning an int instead of a Node, and 2) Just print result in function
@@ -49,8 +57,6 @@ public class TwoPoint2 {
 			return value;
 		}
 	}
-
-	/* Solution 2B - Skip: It's C++ */
 
 	/***************/
 	/* Solution 2C */ // Employs advanced "IntWrapper" technique (so we can return the actual "Node" and IntWrapper). Uses Recursion.

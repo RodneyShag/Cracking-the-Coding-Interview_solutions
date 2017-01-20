@@ -128,7 +128,5 @@ public class Chapter4 {
 		System.out.print("\n*** Test 4.9: Tree paths summing to value");
 		TreeNode tree = TreeFunctions.createBST();		
 		FourPoint9.findSum(tree, 6);
-		System.out.print("\n\nSolution version 2");
-		FourPoint9.findSum2(tree, 6);
 	}
 }

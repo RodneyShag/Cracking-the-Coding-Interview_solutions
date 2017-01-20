@@ -191,28 +191,24 @@ public class Chapter2 {
 		/* Test 1 */
 		ListFunctions.printList(head);
 		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
-		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
-		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head) + "\n");
 
 		/* Test 2 */
 		head = new Node(new int[]{1,2,3,4,3,2,1});
 		ListFunctions.printList(head);
 		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
-		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
-		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head) + "\n");
 		
 		/* Test 3 */
 		head = new Node(new int[]{1,2,2,1});
 		ListFunctions.printList(head);
 		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
-		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
-		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head)+ "\n");
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head)+ "\n");
 		
 		/* Test 4 */
 		head = new Node(new int[]{1,2,2,1,8,2,1});
 		ListFunctions.printList(head);
 		System.out.println("Solution 1: Palindrome? " + TwoPoint7.palindrome_1(head));
-		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head));
-		System.out.println("Solution 3: Palindrome? " + TwoPoint7.palindrome_3(head) + "\n");
+		System.out.println("Solution 2: Palindrome? " + TwoPoint7.palindrome_2(head) + "\n");
 	}
 }

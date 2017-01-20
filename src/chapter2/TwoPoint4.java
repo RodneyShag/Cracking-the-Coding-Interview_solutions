@@ -1,10 +1,14 @@
 package chapter2;
-/* I had the same exact idea as the book, which is implemented below */
-/* I also had the idea of walking linearly and swapping elements, which the book also mentioned */
+
+/* Partitioning an array
+ * 
+ * Solutions                                 Runtime     Preference
+ * ---------------------------------------------------------------------------
+ * 1) Create 2 SLLs from SLL. Connect them   O(n)        Favorite
+ * 2) Do it like in QuickSort algo           O(n)        Another good solution
+ */
 public class TwoPoint4 {
-	/* Solution 1 - Rip apart the original SLL and form 2 other SLL. Then connect them.
-	 * I came up with with solution on my own 2x, and it was exactly how the book did it. 
-	 * */
+	/* Solution 1 - Rip apart the original SLL and form 2 other SLLs. Then connect them. */
 	public static Node partition(Node n, int x){
 		if (n == null)
 			return null;
@@ -45,13 +49,12 @@ public class TwoPoint4 {
 			list1_tail.next = list2_head;
 			return list1_head;
 		}
-	}
+	} // (From book): Alternate implementation: Can use 2 pointers instead of 4 by inserting at beginning of our 2 new lists instead of at end
 	
-	/* Solution 2 (From book): Can use 2 pointers instead of 4 by inserting at beginning of our 2 new lists instead of at end */
 	
-	/* Solution 3 - Swapping "data" elements (if allowed) */
-	/* Rodney's Clever Algorithm! - Basically similar to Partition for QuickSort Algo. We swap data, treating the SLL as an array.
-	 * Very simple to code. Just remember it uses 2 pointers.
+	/* Solution 2 
+	/* Rodney's Clever Algorithm! - Basically similar to Partition for QuickSort algo. 
+	 * We swap data, treating the SLL as an array. Simple to code. Just remember it uses 2 pointers.
 	 */
 	public static Node partition2(Node head, int x){
 		if (head == null)

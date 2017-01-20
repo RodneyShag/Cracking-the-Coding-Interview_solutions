@@ -1,4 +1,5 @@
 package chapter5;
+
 // Code copied from: https://code.google.com/p/basic-algorithm-operations/source/browse/trunk/java/CareerCup/Book+Solutions/Chapter+5/Question5_7/?r=274
 // BTW, INTEGER_SIZE was not initialized in original code, so I set it to 3 here.
 public class BitInteger {

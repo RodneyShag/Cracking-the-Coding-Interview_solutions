@@ -2,20 +2,27 @@ package chapter2;
 
 import java.util.Stack;
 
+/* Removes duplicates from unsorted list
+ * 
+ * Solutions                                            Runtime       Preference
+ * -----------------------------------------------------------------------------
+ * 1) Turn LL into array.                               O(n)          Clever
+ * 2) Deep copy list. Reverse it. Compare to original   O(n)          Clever
+ * 3) Use Stack to reverse list                         O(n)          Favorite
+ */
 public class TwoPoint7 {
-	/* Solution 0 - Rodney's Solution: Since it's easy to solve this problem for an array 
+	/* Solution 1 - Rodney's Solution: Since it's easy to solve this problem for an array 
 	 * (using a head and a tail pointer that move inwards), we COULD 
 	 * create an array from the linked list and solve it that way.
 	 */
 	
 	/****************************************/
-	/* Solution 1 - Not implemented in book */
+	/* Solution 2 - Not implemented in book */
 	/****************************************/
 	
-	 /* - Create Deep Copy of List
+	/* - Create Deep Copy of List
 	 * - Reverse that list
 	 * - Compare the 2 lists.
-	 * (Not implemented in book)
 	 */
 	public static boolean palindrome_1(Node head){
 		int size = ListFunctions.calculateSize(head); // O(n) to calculate size
@@ -31,7 +38,7 @@ public class TwoPoint7 {
 	}
 	
 	/********************************************************/
-	/* Solution 2 - Use a STACK to reverse half of the list */
+	/* Solution 3 - Use a STACK to reverse half of the list */
 	/********************************************************/
 	
 	/* Since we don't know size of list, we use SLOW and FAST runners */
@@ -54,34 +61,5 @@ public class TwoPoint7 {
 			slow = slow.next;
 		}
 		return true;
-	}
-	
-	/********************************************************************************/
-	/* Solution 3 - SKIP THIS SOLUTION. Very Difficult recursive solution from book */
-	/********************************************************************************/
-	
-	public static boolean palindrome_3(Node head){
-		Result p = palindromeRecurse(head, ListFunctions.calculateSize(head));
-		return p.result;
-	}
-	
-	/* Uses our own "Result" class so that we can return TWO things */
-	private static Result palindromeRecurse(Node head, int length){
-		/* Base cases */
-		if (head == null || length == 0)
-			return new Result(null, true);
-		else if (length == 1)
-			return new Result(head.next, true);	//this is when list is odd number of elements
-		else if (length == 2)
-			return new Result(head.next.next, head.data == head.next.data);	//notice it's head.next.next since this is if list has even # of elements
-		
-		Result res = palindromeRecurse(head.next, length - 2);
-		if (!res.result) //book has another check here
-			return res;
-		else{
-			res.result = (head.data == res.node.data);
-			res.node = res.node.next;
-			return res;
-		}
 	}
 }

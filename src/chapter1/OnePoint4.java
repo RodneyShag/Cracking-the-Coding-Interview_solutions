@@ -1,11 +1,8 @@
 package chapter1;
 
 public class OnePoint4 {
-	/* Important: To simplify finding "true length", we only use Strings with 2 spaces to replace,
-	 *            and 4 blank spaces at end */
-	public static void main (String [] args){
-		test("Dad is smart    ");
-	}
+	/* Important: To simplify finding "true length", we assume specific Strings:
+	 *            Strings with 2 spaces to replace and 4 blank spaces at end.
 	
 	/* Replaces whitespace in char[] with %20 */
 	public static void replaceWhitespace(char [] sentence, int trueLength){
@@ -29,14 +26,5 @@ public class OnePoint4 {
 				}
 			}
 		}
-	}
-	
-	/* Tests code */
-	private static void test(String s){
-		char [] sentence = s.toCharArray();
-		System.out.println(sentence);
-		replaceWhitespace(sentence, sentence.length - 4); // -4 is hard-coded.
-		System.out.println(sentence);
-		System.out.println();
 	}
 }

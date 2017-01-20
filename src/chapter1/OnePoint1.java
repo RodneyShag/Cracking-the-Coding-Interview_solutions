@@ -3,21 +3,16 @@ package chapter1;
 import java.util.HashSet;
 import java.util.Arrays;
 
-/* 5 Solutions
- * 1) Use HashMap                 O(n) runtime          (Best Solution)
- * 2) Use Array of 256 characters O(n) runtime
- * 3) Use BitVector               O(n) runtime          (Not Necessary)
- * 4) Using Sorting               O(n log n) runtime
- * 5) Naive Brute Force           O(n^2) runtime
+/* Determines if a String has all unique characters.
+ * 
+ * Solutions                       Runtime       Preference
+ * -------------------------------------------------------------
+ * 1) Use HashMap                  O(n)          Favorite
+ * 2) Use Array of 256 characters  O(n) 		 Space-efficient
+ * 3) Using Sorting                O(n log n)    Naive
+ * 4) Naive Brute Force            O(n^2)        Naive
  */
-
-/* Determines if a String has all unique characters */
 public class OnePoint1 {
-	public static void main (String [] args){
-		test("Benny");
-		test("Ben");
-		test("Alex");
-	}
 	
 	/* O(n) runtime, O(n) space: using HashMap (my favorite solution) */
 	public static boolean uniqueCharacters_1(String string){
@@ -47,24 +42,9 @@ public class OnePoint1 {
 		}
 		return true;
 	}
-
-	/* O(n) time, O(1) space. Way too fancy bitvector trick. */
-	public static boolean uniqueCharacters_3(String string){
-		/* We assume our string is just 26 lower-case characters */
-		string = string.toLowerCase();
-		int bitVector = 0; // "int" is 32 bits. This is enough for 26 (lower-case) characters
-		for (Character s : string.toCharArray()){
-			int num = s - 'a';
-			if ((bitVector & (1 << num)) != 0)
-				return false;
-			else
-				bitVector |= (1 << num);
-		}
-		return true;
-	}
 	
 	/* O(n log n) runtime. Space complexity depends on sorting method */
-	public static boolean uniqueCharacters_4(String string){
+	public static boolean uniqueCharacters_3(String string){
 		char [] stringCharArray = string.toCharArray();
 		Arrays.sort(stringCharArray);
 		for (int i = 0; i < stringCharArray.length - 1; i++){
@@ -75,7 +55,7 @@ public class OnePoint1 {
 	}
 	
 	/* O(n^2) runtime, O(1) space: by comparing each character to every other character (Naive solution) */
-	public static boolean uniqueCharacters_5(String string){
+	public static boolean uniqueCharacters_4(String string){
 		for (int i = 0; i < string.length() - 1; i++){
 			for (int j = i + 1; j < string.length(); j++){
 				if (string.charAt(i) == string.charAt(j))
@@ -84,16 +64,4 @@ public class OnePoint1 {
 		}
 		return true;
 	}
-	
-	/* Tests code */
-	private static void test(String s){
-		System.out.println("*** " + s);
-		System.out.println("Solution 1: " + uniqueCharacters_1(s));
-		System.out.println("Solution 2: " + uniqueCharacters_2(s));
-		System.out.println("Solution 3: " + uniqueCharacters_3(s));
-		System.out.println("Solution 4: " + uniqueCharacters_4(s));
-		System.out.println("Solution 5: " + uniqueCharacters_5(s));
-		System.out.println();
-	}
 }
-

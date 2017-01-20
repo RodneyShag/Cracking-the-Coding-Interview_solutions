@@ -1,7 +1,14 @@
 package chapter4;
 
+/* Checks if binary tree is balanced.
+ * 
+ * Solutions                      Runtime       Preference
+ * -----------------------------------------------------
+ * 1) Keep checking heights.      O(n^2)        Naive
+ * 2) Recursively return height   O(n)          Favorite
+ */
 public class FourPoint1 {
-	/* Solution 1 (Naive, slow runtime solution)
+	/* Solution 1
 	 * It's O(n^2) because it's O(n) to check the height from a node, which we got to do for each of the n nodes, so n*n = n^2. 
 	 * We have been recalculating the same heights over and over again. See other solution (below) to avoid this.
 	 */

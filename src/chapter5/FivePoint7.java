@@ -1,15 +1,23 @@
 package chapter5;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/* Find missing number from 0 to n
+ * 
+ * Solutions                      Runtime       Preference
+ * -------------------------------------------------------
+ * 1) n(n+1)/2 trick              O(n log n)    Naive
+ * 2) Fancy bit trick solution    O(n)          Favorite
+ */
 public class FivePoint7 {
-	/* Book Mentioned Solution: n * (n+1)/2 solution is definitely worth mentioning in an interview, even though it's O(n log n) time. */
+	/* Solution 1 (from 1st 3 paragraphs in book)
+	 * Mention the n * (n+1)/2 solution in an interview, even though it's O(n log n) time.*/
 	
-	/* Solution 2: SKIP IT (algorithm is too detailed/complicated)
-	 * Rodney Solution: Iterative version of book's recursive solution.
-	 * I coded the book's algorithm iteratively, using "BitInteger" (from book) which I found online (and slightly altered)'
-	 * My solution was O(n log n) since the INTEGER_SIZE grows as log(n) as n gets bigger.
-	 * But then, I removed BitIntegers from array as the book said, so my solution is O(n)
+	/* Solution 2: Read book's explanation, but ignore its recursive code. See my code below instead.
+	 * - I coded the book's recursive explanation iteratively.
+	 * - Uses "BitInteger" class (from book) which I found online
+	 * - Runtime: n + n/2 + n/4 + n/8 ... = n * (1 + 1/2 + 1/4 + 1/8 ...) = 2n = O(n)
 	 */
 	public static int findMissing(ArrayList<BitInteger> array){
 		int zeroBits = 0;
@@ -24,10 +32,11 @@ public class FivePoint7 {
 					zeroBits++;
 			}
 			
-			Iterator<BitInteger> iterator = array.iterator();
+			Iterator<BitInteger> iterator = array.iterator(); // we use an Iterator since it's the safe way to remove elements from a Collection while looping through it.
 			if (zeroBits > oneBits){
 				missingNum.set(i, 1);
-				/* Remove Nonsimilar Numbers. (Book explain why this works). This is what makes my code go from O(n log n) to O(n) time */
+				
+				/* Remove Non-similar Numbers. (Book explains why this works). */
 				while (iterator.hasNext()) {
 				    if (iterator.next().fetch(i) == 0)	//Tricky: I think the .next() automatically makes the iterator point to the next thing
 				    	iterator.remove();
@@ -35,9 +44,8 @@ public class FivePoint7 {
 			}
 			else{
 				missingNum.set(i, 0);
-				/* Remove Nonsimilar Numbers. (Book explains why this works). This is what makes my code go from O(n log n) to O(n) time */
 				while (iterator.hasNext()) {
-				    if (iterator.next().fetch(i) == 1)	//Tricky: I think the .next() automatically makes the iterator point to the next thing
+				    if (iterator.next().fetch(i) == 1)	
 				    	iterator.remove();
 				}
 			}

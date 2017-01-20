@@ -35,5 +35,3 @@ public class FourPoint4 {
 		createLinkedListsHelper(lists, node.right, currLevel + 1);
 	}
 }
-
-/* Solution 2: Iterative solution based of BFS in book. Makes sense but I like the above solution better */

@@ -113,4 +113,3 @@ public class ListFunctions {
 		return head;
 	}
 }
-

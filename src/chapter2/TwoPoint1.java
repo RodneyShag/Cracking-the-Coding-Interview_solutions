@@ -2,6 +2,13 @@ package chapter2;
 
 import java.util.HashSet;
 
+/* Removes duplicates from unsorted list
+ * 
+ * Solutions         Runtime       Preference
+ * -----------------------------------------------------
+ * 1) Use HashMap    O(n)          Favorite
+ * 2) Brute-Force    O(n^2)        Naive (but O(1) space)
+ */
 public class TwoPoint1 {
 	/* Solution Version 1 - Ideal HashMap Solution.*/
 	/* Walk the list linearly with TWO pointers (even though I probably could have done it with 1). Use HashMap as storage*/

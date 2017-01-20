@@ -1,17 +1,17 @@
 package chapter4;
 
-/* I highly prefer Solution 2 */
+/* Checks if binary tree is binary search tree (BST)
+ * 
+ * Solutions               Runtime    Preference
+ * ---------------------------------------------------
+ * 1) Inorder Traversal    O(n)       Worth mentioning
+ * 2) min/max idea         O(n)       Favorite
+ */
 public class FourPoint5 {
-	/* Solution 1A - Inorder traversal should give numbers in increasing order
+	/* Solution 1 - Inorder traversal should give numbers in increasing order
 	 * - CAN'T HANDLE DUPLICATE ENTRIES CORRECTLY! They mention it in the book.
 	 * - Saves tree into an array
 	 * - Uses a global variable to keep track of where to insert into the array. 
-	 */
-	
-	/* Solution 1B - Similar to Solution 1A, except without the array. Tricky to code.
-	 * - CAN'T HANDLE DUPLICATE ENTRIES CORRECTLY!  They mention it in the book.
-	 * - Uses a global variable to keep track of last item we visited
-	 * - I think their solution has a bug. <= may have to be < on line 9 but I haven't thought it through
 	 */
 	
 	/* Solution 2 - Clever Trick! I needed the min/max idea hint from the book */

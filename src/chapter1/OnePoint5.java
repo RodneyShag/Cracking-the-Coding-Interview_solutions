@@ -1,10 +1,13 @@
 package chapter1;
 
+/* Determines if a String has all unique characters.
+ * 
+ * Solutions          Runtime     Preference
+ * ----------------------------------------------------------------------------------
+ * 1) StringBuffer    O(n)        Favorite
+ * 2) char[]          O(n) 		  Only if they require char[] instead of StringBuffer
+ */
 public class OnePoint5 {
-	public static void main (String [] args){
-		test("aabcccccaaa");
-		test("abababa");
-	}
 	
 	/******************************************************************************/
 	/* Solution 1 - Using StringBuffer (Since Strings are immutable and too slow) */
@@ -68,9 +71,9 @@ public class OnePoint5 {
 	}
 
 
-	/************************************************************************************************/
-	/* Solution 2 - Using char[] (If for some reason they didn't let us use String or StringBuffer) */
-	/************************************************************************************************/
+	/**************************************************************************************/
+	/* Solution 2 - Using char[] (If for some reason they didn't let us use StringBuffer) */
+	/**************************************************************************************/
 	public static String basicCompression_2(String string){
 		/* Error Check */
 		if (string == null || string.isEmpty())
@@ -112,15 +115,5 @@ public class OnePoint5 {
 			array[index++] = numAsString.charAt(i);
 		}
 		return index;
-	}
-	
-	/* Tests code */
-	private static void test(String original){
-		System.out.println("Original string = " + original);
-		String compressed = basicCompression_1(original);
-		System.out.println("Solution 1: " + compressed);	
-		String compressed_2 = basicCompression_2(original);
-		System.out.println("Solution 2: " + compressed_2);	
-		System.out.println();
 	}
 }

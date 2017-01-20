@@ -1,17 +1,7 @@
 package chapter1;
 
+/* If I can figure out the (simple) algorithm, coding it is simple */
 public class OnePoint7 {
-	public static void main (String [] args){
-		int [][] matrix =  {{1, 2, 3},
-             	            {0, 5, 6}};
-		
-		int [][] matrix2 = {{1, 2, 3, 1},
-				            {4, 5, 6, 0},
-				            {0, 5, 3, 0}};
-		
-		testImage(matrix);
-		testImage(matrix2);
-	}
 	
 	/* Zeros out necessary rows/columns */
 	public static void zero(int [][] array){
@@ -39,26 +29,5 @@ public class OnePoint7 {
 					array[row][col] = 0;
 			}
 		}
-	}
-	
-	/* Prints matrix */
-	public static void printMatrix(int [] [] matrix){
-		for (int i = 0; i < matrix.length; i++){
-			for (int j = 0; j < matrix[0]. length; j++){
-				System.out.print(matrix[i][j] + " ");
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
-	
-	/* Tests our code on a given image */
-	private static void testImage(int [][] matrix){
-		System.out.println("***********************************\n");
-		printMatrix(matrix);
-		System.out.println("Zero out necessary rows/columns\n");
-		zero(matrix);
-		printMatrix(matrix);
-		System.out.println();
 	}
 }

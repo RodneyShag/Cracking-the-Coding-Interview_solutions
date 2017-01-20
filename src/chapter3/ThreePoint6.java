@@ -1,4 +1,5 @@
 package chapter3;
+
 import java.util.Stack;
 
 /* Clever Algorithm. Memorize it. Straight from book. 

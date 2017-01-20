@@ -31,5 +31,5 @@ public class Node{
 		n.next = new Node(d);
 	}
 	
-	//More functions written in ListFunctions.java
+	// More functions written in ListFunctions.java
 }
