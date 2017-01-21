@@ -28,7 +28,7 @@ public class OnePoint1 {
 
 	/* O(n) runtime, O(1) space: using Array */
 	public static boolean uniqueCharacters_2(String string){
-		if (string.length() > 256)
+		if (string.length() > 256) // here we assume it's an ASCII string. Should ask interviewer if string is ASCII or Unicode
 			return false;
 		
 		boolean [] array = new boolean[256];

@@ -6,54 +6,56 @@ public class SevenPoint4 {
 		return a + negate(b);
 	}
 	
-	/* Careful on multiplying negative numbers. 
-	 * Another way to think about it is (which is not implemented here but implemented in "divide" function): 
-	 * Convert both #s to positive. Do multiplication. Then negate if necessary.
-	 */
 	public static int multiply(int a, int b){
 		if (b > a)
-			return multiply(b, a);	//since this will be faster
+			return multiply(b, a);	// since this will be faster
 
-		int result = 0;
-		for (int i = 0; i < Math.abs(b); i++){	//we do Math.abs so we can properly multiply negative numbers.
-			result += a;
-		}
-		if (b < 0)
-			result = negate(result);
-		return result;
-	}
-	
-	/* Algorithm is from book. But my code is coincidentally the same as book's */
-	public static int divide(int a, int b){
-		//would have to do error check for (b == 0) here. Would use "throw Exception"
 		boolean negativeResult = (a > 0 && b < 0) || (a < 0 && b > 0);
 		a = Math.abs(a);
 		b = Math.abs(b);
 		
-		/* This part is the main algorithm */
 		int result = 0;
-		while (b * result < a){
+		for (int i = 0; i < b; i++){
+			result += a; // the main algorithm. multiplication is just repeated addition
+		}
+		
+		if (negativeResult)
+			result = negate2(result);
+		return result;
+	} 
+	
+	public static int divide(int a, int b) throws Exception{
+		if (b == 0)
+			throw new Exception("Can't divide by 0");
+		boolean negativeResult = (a > 0 && b < 0) || (a < 0 && b > 0);
+		a = Math.abs(a);
+		b = Math.abs(b);
+		
+		int result = 0;
+		int originalB = b;
+		
+		/* The main algorithm */
+		while (b <= a){
+			b += originalB;
 			result++;
 		}
 		
-		if (b * result != a)	//this will "floor" it.
-			result--;
 		if (negativeResult)
 			result = negate2(result);
 		return result;
 	}
 	
 	private static int negate(int a){
-		//return (a ^ 0xFFFFFFFF) + 1;	//My 1st solution using XOR. (assumes 32-bit int)
-		return ~a + 1;					//My 2nd solution. Also works.
+		return ~a + 1;
+		//return (a ^ 0xFFFFFFFF) + 1;	// Alternate solution (assumes 32-bit int)
 	}
 	
-	/* Book's negate solution is also clever */
+	/* Book's complicated way to negate */
 	private static int negate2(int a){
 		int neg = 0;
 		int d = (a < 0) ? 1 : -1;		//I mistakenly had this as (a > 0) for the longest time
 		while (a != 0){
-			a += d;
+			  a += d;
 			neg += d;
 		}
 		return neg;

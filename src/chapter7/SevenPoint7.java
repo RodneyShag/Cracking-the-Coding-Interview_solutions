@@ -1,43 +1,34 @@
 package chapter7;
+
 import java.util.Queue;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 
+/* Finds kth magic number
+ * 
+ * Solutions                      Runtime     Preference
+ * -----------------------------------------------------
+ * 1) Brute Force                 O(n^2)      Naive
+ * 2) Use PriorityQueue           O(n^2)      Naive
+ * 3) Use PriorityQueue, HashMap  O(n log n)  Naive
+ * 4) Use 3 Queues                O(n)        Favorite
+ */
 public class SevenPoint7 {
-	/* Solution 0 - Horribly slow O(n^2) solution mentioned in book: For the (k-1) numbers we've generated so far, multiply
-	 * each by 3, 5, 7 to see which one is our next minimum "kth" number. Do this step each time.
+	/* Solution 1 
+	 * - Solution from book. Brute Force.
+	 * - Traverse our list each time to generate next k: For the (k-1) numbers we've generated so far, multiply
+	 * each by 3, 5, 7 to see which one is our next minimum "kth" number. Do this step each time to generate a new k
 	 */
 	
-	/* Rodney's Solution using PriorityQueue (instead of book's stupid way of using Queue/LinkedList. Makes job much easier. */
-	public static void addProducts(PriorityQueue<Integer> pq, int v){
-		if (!pq.contains(3*v))
-			pq.add(3 * v);
-		if (!pq.contains(5*v))
-			pq.add(5 * v);
-		if (!pq.contains(7*v))
-			pq.add(7 * v);
-	}
+	/* Solution 2 - Use 1 PriorityQueue. Getting minimum is now O(1). But O(n) for contains() and O(log n) for add(). */
 	
-	public static int getKthMagicNumber(int k) {
-		if (k < 0)
-			return 0;
-		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
-		addProducts(pq, 1);
-		int val = 1;
-		for (int i = 1; i <= k; i++){
-			val = pq.remove();
-			addProducts(pq, val);
-		}
-		return val;
-	}
-	
-	/* Solution 2 - If can't use PriorityQueue, do this book solution using 3 queues to avoid putting in duplicates 
-	 * (based on mathematical principle from book). 
-	 * My code is slightly different (but better) than book.
-	 * I think this solution is O(n) since removing the minimum takes constant time.
-	 * - This may be a more efficient solution than my PQ solution above.
-	 * */
-	public static int getKthMagicNumber2(int k){
+	/* Solution 3 - Use a HashMap alongside Solution 2's PriorityQueue (putting each entry in both data structures). This will turn contains() into O(1). */
+
+	/* Solution 4
+	 * - Uses 3 queues (and a math trick from the book) to solve the putting in duplicates problem 
+	 * - My code is slightly different (but better) than book's.
+	 * - O(n) since we now have O(1) removeMin and O(1) to enqueue :)
+	 */
+	public static int getKthMagicNumber(int k){
 		if (k < 0)
 			return 0;
 		Queue<Integer> q3 = new LinkedList<Integer>();
@@ -53,7 +44,7 @@ public class SevenPoint7 {
 			int v5 = q5.peek();
 			int v7 = q7.peek();
 			val = Math.min(v3, Math.min(v5, v7));	//minimum of 3 values
-			/* We only add certain multiples to the queues based on trick from book (to avoid duplicates) */
+			/* We only add certain multiples to the queues (based on trick from book) to avoid duplicates */
 			if (val == v3){
 				q3.remove();
 				q3.add(3 * val);
