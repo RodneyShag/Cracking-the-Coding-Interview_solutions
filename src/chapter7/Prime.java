@@ -37,7 +37,7 @@ public class Prime {
 		}
 	}
 	
-	private static int getNextPrime(boolean[] flags, int prime) {
+	public static int getNextPrime(boolean[] flags, int prime) {
 		for (int i = prime + 1; i < flags.length; i++){
 			if (flags[i] == true)
 				return i;

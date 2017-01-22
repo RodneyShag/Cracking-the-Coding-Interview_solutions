@@ -1,4 +1,4 @@
-package chapter8;
+package chapter8.EightPoint1;
 
 public class BlackjackCard extends Card{
 	public BlackjackCard(Rank rank, Suit suit, Color color){
@@ -6,6 +6,6 @@ public class BlackjackCard extends Card{
 	}
 	
 	public boolean isFaceCard(){
-		return rank == Rank.TEN || rank == Rank.JACK || rank == Rank.QUEEN || rank == Rank.KING || rank == Rank.ACE; //I think ACE is face card
+		return rank == Rank.TEN || rank == Rank.JACK || rank == Rank.QUEEN || rank == Rank.KING;
 	}
 }

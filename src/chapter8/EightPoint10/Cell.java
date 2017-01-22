@@ -1,5 +1,4 @@
-package EightPoint10;
-/* Creating this using Generics, with correct syntax, might be tricky to memorize */
+package chapter8.EightPoint10;
 
 public class Cell<K,V> {
 	private K key;
@@ -27,8 +26,12 @@ public class Cell<K,V> {
 		return value;
 	}
 	
-	/* Book had this function */
+	/* Functions to test equivalence */
+	public boolean equivalent(Cell<K,V> cell){
+		return equivalent(cell.getKey());
+	}
+	
 	public boolean equivalent(K k){
-		return key.equals(k);	//can't do == because (I think) it won't work properly for Objects
+		return key.equals(k);	//can't do == for Objects because that won't just check if they REFER to the same object.
 	}
 }

@@ -1,4 +1,5 @@
-package chapter8;
+package chapter8.EightPoint1;
+
 import java.util.ArrayList;
 
 public class Hand <T extends Card> {
