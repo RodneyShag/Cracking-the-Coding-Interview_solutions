@@ -1,71 +1,101 @@
 package chapter9;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Chapter9 {
-	public static void main (String [] args){
-		/******************/
-		/* Test Fibonacci */
-		/******************/
+	public static void main(String [] args) {
+		test_Fibonacci();
+		test_NinePoint1();
+		test_NinePoint2();
+		test_NinePoint3();
+		test_NinePoint4();
+		test_NinePoint5();
+		test_NinePoint6();
+		// 9.7: No testing. Written code is same as book's code.		
+		test_NinePoint8();
+		test_NinePoint9();
+		test_NinePoint10();
+		test_NinePoint11();
+	}
+	
+	/* Fibonacci */
+	public static void test_Fibonacci(){
 		System.out.println("*** Test Fibonacci");
-		for (int i = 0; i < 16; i++)
+		System.out.print("\nSolution 2 (Starting from 1):   ");
+		for (int i = 0; i < 16; i++){
 			System.out.print(Fibonacci.fib(i) + " ");
-		System.out.println();
-		for (int i = 0; i < 16; i++)
+		}
+		System.out.print("\nSolution 2 (Starting from 0): ");
+		for (int i = 0; i < 16; i++){
 			System.out.print(Fibonacci.fibIterative(i) + " ");
+		}
+	}
+	
+	/* 9.1 */
+	public static void test_NinePoint1(){
+		System.out.println("\n\n\n*** Test 9.1: Staircase Problem");
+		System.out.println("(Iterative Solution) 3 Step Staircase: " + NinePoint1.numPathsIterative(3));
+		System.out.println("(Recursive Solution) 3 Step Staircase: " + NinePoint1.numPathsRecursive(3));
+		System.out.println("(Iterative Solution) 5 Step Staircase: " + NinePoint1.numPathsIterative(5));
+		System.out.println("(Iterative Solution) 5 Step Staircase: " + NinePoint1.numPathsRecursive(5));
+	}
+
+	/* 9.2 */
+	public static void test_NinePoint2(){
+		System.out.println("\n\n*** Test 9.2: paths from (0,0) to (x,y)");		
+		System.out.println("Solution 1: Number of Paths in 1x1 maze = " + NinePoint2.numPaths(1, 1));
+		System.out.println("Solution 2: Number of Paths in 2x2 maze = " + NinePoint2.numPaths(2, 2));
+		System.out.println("Solution 2: Number of Paths in 3x3 maze = " + NinePoint2.numPaths(3, 3));
 		
-		/************/
-		/* Test 9.1 */
-		/************/
-		System.out.println("\n\n*** Test 9.1");
-		System.out.println("3 Steps: " + NinePoint1.steps_A(3));
-		System.out.println("3 Steps: " + NinePoint1.steps_B(3));
-		
-		System.out.println("5 Steps: " + NinePoint1.steps_A(5));
-		System.out.println("5 Steps: " + NinePoint1.steps_B(5));
-		
-		/************/
-		/* Test 9.2 */
-		/************/
-		System.out.println("\n\n*** Test 9.2");
+		/************ Follow-up: Find solution path ************/
+		/* Create maze */
 		boolean [][] maze = new boolean[3][3];
-		for (int i = 0; i < 3; i++){
-			for (int j = 0; j < 3; j++){
-				maze[i][j] = true;
+		for (int row = 0; row < 3; row++){
+			for (int col = 0; col < 3; col++){
+				maze[row][col] = true;
 			}
 		}
 		
-		boolean [][] maze2 = new boolean[7][7];
-		for (int i = 0; i < 7; i++){
-			for (int j = 0; j < 7; j++){
-				maze2[i][j] = true;
-			}
-		}
-		
-		System.out.println("Solution 1: Number of Paths in 2x2 maze = " + NinePoint2.numPaths(maze, 2, 2));
-		System.out.println("Solution 2: Number of Paths in 2x2 maze = " + NinePoint2.numPaths2(maze, 2, 2));
-		System.out.println("Solution 1: Number of Paths in 5x6 maze = " + NinePoint2.numPaths(maze2, 6, 6));
-		System.out.println("Solution 2: Number of Paths in 5x6 maze = " + NinePoint2.numPaths2(maze2, 6, 6) + "\n");
-		
+		/* Find and print solution */
 		ArrayList<Point> path = NinePoint2.findPath(maze, 2, 2);
-		for (Point p : path){
-			System.out.println("(" + p.x + "," + p.y + ")");
-		}
+		System.out.print("\nOld Path:" + path);
 		
-		/************/
-		/* Test 9.3 */
-		/************/
+		/* Add walls to block the original solution path, to see if it will find a different solution */
+		maze[1][1] = false;
+		maze[2][1] = false;
+		
+		/* Find and print solution */
+		path = NinePoint2.findPath(maze, 2, 2);
+		System.out.print("\nNew Path:" + path);
+
+		/************ Follow-up: Find all solution paths ************/
+		maze[1][1] = true;
+		maze[2][1] = true;
+		ArrayList<ArrayList<Point>> solutionPaths = NinePoint2.allPaths(maze, 2, 2);
+		printAllPaths(solutionPaths);
+	}
+	
+	private static void printAllPaths(ArrayList<ArrayList<Point>> solutionPaths){
+		if (solutionPaths != null){
+			System.out.print("\n\nAll solution paths:\n");
+			for (ArrayList<Point> path : solutionPaths){
+				System.out.println(path);
+			}
+		}
+	}
+	
+	/* 9.3 */
+	public static void test_NinePoint3(){
 		System.out.println("\n\n*** Test 9.3: Find array[i] == i");
 		int [] sortedArray = {-5, -3, -1, 3, 5};
 		System.out.println("(Result should be 3) = " + NinePoint3.magicFast(sortedArray));
 
 		int [] sortedArray2 = {-10, -5, 2, 2, 2, 3, 4, 7, 9, 12, 13};
 		System.out.println("(Result should be 2) = " + NinePoint3.magicFast2(sortedArray2));
-
-		
-		/************/
-		/* Test 9.4 */
-		/************/
+	}
+	
+	/* 9.4 */
+	public static void test_NinePoint4(){	
 		System.out.println("\n\n*** Test 9.4: Power set of set");
 		ArrayList<Integer> set = new ArrayList<Integer>();
 		set.add(3);
@@ -73,57 +103,70 @@ public class Chapter9 {
 		set.add(5);
 		
 		ArrayList<ArrayList<Integer>> subsets = NinePoint4.getSubsets(set);
-		System.out.print("Original set is {3, 4, 5}");
-		for (ArrayList<Integer> list : subsets){
-			for (Integer i : list){
-				System.out.print(i + " ");
-			}
-			System.out.println();
-		}
-		
-		ArrayList<ArrayList<Integer>> subsets2 = NinePoint4.getSubsetsRecursive(set, 0);
-		System.out.print("Original set is {3, 4, 5}");
-		for (ArrayList<Integer> list : subsets2){
-			for (Integer i : list){
-				System.out.print(i + " ");
-			}
-			System.out.println();
-		}
-		
-		
-		// 9.5: Code is exactly book's code. No need to test.
-		// 9.6: Code is exactly book's code. No need to test.
-		// 9.7: Code is exactly book's code. No need to test.
+		System.out.println("Original set is {3, 4, 5}");
+		System.out.println("Subsets: " + subsets);
+	}
 	
-		/************/
-		/* Test 9.8 */
-		/************/
+	/* 9.5 */
+	public static void test_NinePoint5(){
+		System.out.println("\n\n*** Test 9.5: Permutations of a string");
+		String str = "cat";
+		ArrayList<String> permutations = NinePoint5.getPermutations(str);
+		System.out.println("Original string: " + str);
+		System.out.println("Permutations:" + permutations);
+	}
+	
+	/* 9.6 */	
+	public static void test_NinePoint6(){
+		System.out.println("\n\n*** Test 9.6: Generate pairs of parentheses");
+		ArrayList<String> list = NinePoint6.generateParentheses(3);
+		for (String s : list) {
+			System.out.println(s);
+		}
+		System.out.println("Number of solutions: " + list.size());	
+	}
+
+	/* 9.8 */
+	public static void test_NinePoint8(){
 		System.out.println("\n\n*** Test 9.8: Make Change");
-		System.out.println("# of ways to make 100 (Using Quarters, Dimes, Nickels, Pennies) = " + NinePoint8.makeChange(100, 25));
-		System.out.println("# of ways to make 5 (Using Quarters, Dimes, Nickels, Pennies) = " + NinePoint8.makeChange(5, 25));
-		
-		
-		/************/
-		/* Test 9.9 */
-		/************/
+		System.out.println("# of ways to make 100 (Using Quarters, Dimes, Nickels, Pennies) = " + NinePoint8.makeChange(100));
+		System.out.println("# of ways to make 5 (Using Quarters, Dimes, Nickels, Pennies) = " + NinePoint8.makeChange(5));
+	}
+	
+	/* 9.9 */
+	public static void test_NinePoint9(){
 		System.out.println("\n\n*** Test 9.9: Eight Queens");
 		ArrayList<Integer[]> results = NinePoint9.placeQueens();
-		for (Integer[] answer : results){
-			for (int i = 0; i < answer.length; i++){
-				System.out.print("(" + i + "," + answer[i] + ") ");
-			}
-			System.out.println();
+		for (Integer[] board : results){
+			printBoard(board);
 		}
+	}
+	
+	private static void printBoard(Integer[] board){
+		for (int i = 0; i < board.length; i++){
+			System.out.print("(" + i + "," + board[i] + ") ");
+		}
+		System.out.println();
+	}
 		
+	/* 9.10 */
+	public static void test_NinePoint10(){
+		System.out.println("\n\n*** Test 9.10: Box stacking");
+		ArrayList<Box> boxes = new ArrayList<>();
+		boxes.add(new Box(3,4,1));
+		boxes.add(new Box(8,6,2));
+		boxes.add(new Box(4,8,3));
 		
-		// 9.10 Code is exactly book's code. No need to test.
-		
-		
-		/*************/
-		/* Test 9.11 */
-		/*************/
+		ArrayList<Box> stack = NinePoint10.buildTallestStack(boxes);	
+		for (int i = stack.size() - 1; i >= 0; i--) {
+			Box box = stack.get(i);
+			System.out.println(box);
+		}
+	}
+	
+	/* 9.11 */
+	public static void test_NinePoint11(){
 		System.out.println("\n\n*** Test 9.11: Parenthesize Expression");
 		System.out.println("# of ways to parenthesize 1^0|0|1 to be false = " + NinePoint11.f("1^0|0|1", false));
-		
 	}
 }

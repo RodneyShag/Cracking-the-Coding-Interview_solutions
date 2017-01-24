@@ -1,45 +1,47 @@
 package chapter9;
-import java.util.HashMap;
 
-/* Sweet Algorithm: Memorize it. Caching the result is simple */
+/* Number of ways to get up a staircase taking 1, 2, or 3 steps at a time.
+ * 
+ * Solutions                  Runtime   Space    Preference
+ * --------------------------------------------------------
+ * 1) Recursive               O(n)      O(n)     Favorite    
+ * 2) Iterative using array   O(n)      O(n)             
+ * 3) Iterative, no array     O(n)      O(1)     
+ */
 public class NinePoint1 {
-	
-    /* Array Solution */
-	public static int steps_A(int steps){
-		int [] cache = new int[100];
+	private final static int staircaseSize = 100;
+	private static int [] cache = new int[staircaseSize];
+
+	/* Recursive Solution */
+	public static int numPathsRecursive(int steps){
+		if (steps > staircaseSize)
+			return -1;
 		cache[0] = 1;					// setting the value to 1 and not to 0 is crucial
-		return steps_A(steps, cache);
+		return numPathsRecursive_helper(steps);
 	}
 	
-	public static int steps_A(int steps, int [] cache){
+	public static int numPathsRecursive_helper(int steps){
 		if (steps < 0)
 			return 0;
 		if (cache[steps] > 0)
 			return cache[steps];
-		cache[steps] = steps_A(steps - 1, cache) + steps_A(steps - 2, cache) + steps_A(steps - 3, cache);
+		cache[steps] = numPathsRecursive_helper(steps - 1) + numPathsRecursive_helper(steps - 2) + numPathsRecursive_helper(steps - 3);
 		return cache[steps];
 	}
 	
-	
-	/* HashMap Solution */
-	public static int steps_B(int n){
-		HashMap<Integer, Integer> cache = new HashMap<Integer, Integer>();
-		cache.put(0, 1);
-		return steps_B(n, cache);
+	/* Iterative Solution */
+	public static int numPathsIterative(int staircaseSize){
+		int [] cache = new int[staircaseSize + 1];
+		cache[0] = 1;
+		cache[1] = 1;
+		cache[2] = 2;
+		for (int i = 3; i <= staircaseSize; i++){
+			cache[i] = cache[i-3] + cache[i-2] + cache[i-1];
+		}
+		return cache[staircaseSize];
 	}
 	
-	public static int steps_B(int n, HashMap<Integer, Integer> cache){
-		if (cache.containsKey(n))							//here just for cache.
-			return cache.get(n);							//here just for cache.
-		
-		/* Base Cases */
-		if (n < 0)
-			return 0;
-		else if (n == 0)
-			return 1;
-		
-		int ways = steps_B(n-1, cache) + steps_B(n-2, cache) + steps_B(n-3, cache);
-		cache.put(n, ways);									//here just for cache.
-		return ways;
-	}
+	/* Solution 3 
+	 * 
+	 * Can be done in O(1) space by only saving the last 3 elements of the array, like we did in Fibonacci problem */
 }
