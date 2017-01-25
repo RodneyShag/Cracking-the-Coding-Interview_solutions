@@ -1,0 +1,67 @@
+Introduction
+ 
+	4 ways to divide data (Read book's explanation for great tips)
+		- by order of appearance (Benefit: won't ever need more machines than necessary)
+		- by hashing it mod number of machines (Benefit: Every machine knows exactly where data is)
+		- by using what the actual values represent. Can group similar things together, like all people in Mexico.
+		- arbitrarily (Benefit: better load balancing)
+	
+	"Find words in millions of documents"
+		- preprocess the data with a HashMap<String, ArrayList<Document>>
+		- Somehow divide the HashMap across machines. Can do it alphabetically by keywords. Book doesn't say precisely
+		  how/where we would save the documents in this case though (since multiple keys map to same documents.
+
+10.1 - Providing stock information for clients
+
+	 Storing data formats: text files, SQL Database, or XML (or nowadays JSON)
+
+
+10.2 - Designing a social network
+
+	 - Use BFS to find (shortest) path between 2 people.
+	 - To Handle the Millions of Users (which won't fit on one machine)
+	 		- Server Should have:
+	 			- HashMap<Integer, Machine> machines (which maps machine's ID to the actual machine)
+	 			- HashMap<lnteger, Integer> personToMachineMap (which maps person's ID to machine's ID)
+	 		- Machine should have:
+	 			- HashMap<Integer, Person> persons (which maps person's ID to Person)
+	 - Optimization: Reduce Machine Jumps - Look up 5 things at once instead of 1 by 1 (see book for details)
+
+
+10.3, 10.4 - See my implementation
+
+
+10.5 - Web Crawler: avoiding infinite loops
+
+	 - Simple Answer: Use HashMap to mark pages as visited.
+	 - To solve problem where some URLs are different but content is same/similar:
+	 		- Create a "signature" for each page so we can assess degree of similarity.
+	 		  Then, If a page has a high degree of similarity to other pages, deprioritize crawling its children.
+
+
+10.6 - We have 10 billion URLS. Detect Duplicates
+
+	- Simple Answer: Use HashMap to detect duplicates
+		- 10 billion URLS at 100 characters each at 4 bytes each = 4 terabytes of information. Can't save this all in 1 file.
+		- Create 4000 1GB files called <x>.txt where <x> is hash(url) % 4000. 
+			- (Although mostly uniformly distributed, some files may be bigger or smaller
+		       than 1GB since it's very unlikely we can create a perfect hash function)
+		- Now all URLs with same hash value are in same file
+		 	- (this ensures that 2 of the same key are not in different files, so our next step will successfully remove all duplicates)
+		- Do a 2nd pass (through each of the 4000 files) and create a HashMap<URL, Boolean> to detect duplicates
+			- This 2nd pass can be done in parallel on 4000 Machines (Pro: Faster, Con: if 1 machine crashes it affects our final result)
+
+
+10.7 - Design caching mechanism for Web Server
+
+	- Main idea: Use linked list to keep track of popular pages. Use a HashMap<String, Node> (in parallel w/ the LinkedList) 
+	             for fast access to LinkedList nodes (key = the url string, value = node in LinkedList) 
+	- "A linked list would allow easy purging of old data, by moving "fresh" items to the front. We could implement it to remove the 
+	   last element of the linked list when the list exceeds a certain size."
+	- Options for storing the cache
+		0) Each machine has it's own cache of just it's searches (lame)
+ 		1) Each machine has it's own cache of ALL machine's searches 
+ 				- Pro: Efficient Lookup
+ 				- Con: takes up a ton of memory. Updating cache means updating it on every machine)
+		2) Cache is shared across machines (by hashing keys, which are queries)
+ 		3) Rodney method: Each machine has most popular searches cached. Less popular searches are shared among machines
