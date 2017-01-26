@@ -1,50 +1,55 @@
 package chapter11;
-	/* Clever Algorithm. 
-	 * - Trick is knowing that the endpoints of the array tell us information
-	 * - This code is easier than it looks. We just apply binary search to either LEFT, RIGHT or both subarrays depending on our algorithm
-	 * - Annoying edge case when array[start] == array[mid]. 
-	 * Runtime: O(log n) average case, but O(n) worst case if there are many duplicates.
-	 */
 
+/* - Trick: Endpoints of array give us valuable information. We apply a modified binary search to this problem.
+ * 
+ * - Pitfall: We want to break up the cases by comparing midValue to leftValue and rightValue. NOT break it up by comparing midValue to the
+ *            value we are searching for like in binary search
+ *            
+ * - Array can only have 1 inflection point, therefore it is either to the left or right of midIndex. That means 1/2 of the array
+ *   is ordered normally (in increasing order) and the other half has the inflection point.
+ *   
+ * - Runtime: O(log n) average case, but O(n) worst case if there are many duplicates.
+ */
 public class ElevenPoint3 {
-	public static int search(int [] array, int x){
+	public static Integer search(int [] array, int x){
+		if (array == null)
+			return null;
 		return search(array, x, 0, array.length - 1);
 	}
 	
-
-	public static int search(int [] array, int x, int start, int end){
+	public static Integer search(int [] array, int x, int start, int end){
 		if (start > end)
-			return -1;
+			return null;
 		
-		int mid = (start + end) / 2;
-		if (array[mid] == x)
-			return mid;
-
-		if(array[start] < array[mid]){	//left is ordered correctly
-			if(x >= array[start] && x < array[mid])
-				return search(array, x, start, mid - 1);
+		int midIndex   = (start + end) / 2;
+		int midValue   = array[midIndex];
+		
+		int leftValue  = array[start];
+		int rightValue = array[end];
+		
+		if (midValue == x)
+			return midIndex;
+		else if (leftValue < midValue){ // in this case, left CANNOT have inflection point, thus is ordered correctly
+			if (leftValue <= x && x < midValue)
+				return search(array, x, start, midIndex - 1);
 			else
-				return search(array, x, mid + 1, end);
+				return search(array, x, midIndex + 1, end);
 		}
-		else if (array[start] > array[mid]){
-			if(x > array[mid] && x <= array[end])
-				return search(array, x, mid + 1, end);
+		else if (leftValue > midValue){ // in this case, left MUST have inflection point, and thus is not ordered correctly
+			if (midValue < x && x <= rightValue)
+				return search(array, x, midIndex + 1, end);
 			else
-				return search(array, x, start, mid - 1);
+				return search(array, x, start, midIndex - 1);
 		}
-		else {	// (array[start] == array[mid])
-			if (array[end] != array[mid]){
-				return search(array, x, mid + 1, end);
+		else{ // leftValue == midValue
+			if (midValue == rightValue){ // leftValue == midValue == rightValue, so we must search both halves of array since either half could have inflection point
+				Integer result = search(array, x, start, midIndex - 1);
+				if (result == null)
+					result = search(array, x, midIndex + 1, end);
+				return result;
 			}
-			else{
-				/* Search left half */
-				int leftResult = search(array, x, start, mid - 1);
-				if (leftResult != -1)
-					return leftResult;
-				
-				/* Search right half */
-				return search(array, x, mid + 1, end);
-			}
+			else // in this case, inflection point is on right side of array
+				return search(array, x, midIndex+1, end);
 		}
 	}
 }

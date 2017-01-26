@@ -1,59 +1,62 @@
 package chapter11;
-/* Code is from website. I altered it, which may have caused bugs. Algorithm is same as book's code */
+
+/* Data Structures we could have used:
+ * 
+ *              Insert (into sorted structure)     getRank()
+ * ------------------------------------------------------------------------------------------
+ * Array:       O(n) cuz of shifting               O(log n) using binary search
+ * Linked List: O(n).                              O(n) since we can't do binary search on linked list
+ * HashMap:     O(1).                              O(n) since HashMap doesn't help us find rank in any way (it's not sorted)
+ * BST:         O(log n).                          O(log n) (assuming it's balanced)
+ * 
+ * Note: Insert for array and linked list are O(n) since we insert into the position necessary to keep the data structure sorted
+ */
 public class ElevenPoint8 {
 	
-	private static RankNode root = null;	//it's weird that we have this here, but it's fine.
-    
-	static void insert(int v){		// which is the "track" function they wanted
+	private static RankNode root = null;
+	
+	/* Called each time a number is generated */
+	public static void track(int x){
 		if (root == null)
-			root = new RankNode(v);
+			root = new RankNode(x);
 		else
-			insert(v, root);
+			insert(x, root);
 	}
 	
-    static void insert(int v, RankNode node) {
-        if (v > node.data) {
-            if (node.right == null)
-                node.right = new RankNode(v);
-            else
-                insert(v, node.right);
-        }
-        else {
-            ++node.leftSize;
-            if (node.left == null)
-                node.left = new RankNode(v);
-            else
-                insert(v, node.left);
-        }
-    }
-    
-    static int getRank(int x) {				// which is the "getRankOfNumber" function they wanted
-        return getRank(x, root);
-    }
-    
-    static int getRank(int v, RankNode node) {
-        if (node == null) 
-        	return -1;
-        if (v == node.data) {
-            return node.leftSize;
-        }
-        else if (v > node.data) {
-            int rightRank = getRank(v, node.right);
-            if (rightRank == -1)						//remembering this is tricky.
-            	return -1;
-            else
-            	return node.leftSize + 1 + rightRank;
-        }
-        else 
-        	return getRank(v, node.left);
-    }
+	private static void insert(int x, RankNode node){
+		if (x <= node.data){
+			node.leftSize++;
+			if (node.left == null)
+				node.left = new RankNode(x);
+			else
+				insert(x, node.left);
+		}
+		else{
+			if (node.right == null)
+				node.right = new RankNode(x);
+			else
+				insert(x, node.right);
+		}
+	}
+	
+	/* Returns number of values less than or equal to x (not including x itself) */
+	public static int getRankOfNumber(int x){
+		if (root == null)
+			return 0;
+		return getRankOfNumber(x, root);
+	}
+	
+	private static int getRankOfNumber(int x, RankNode node){
+		if (node == null)
+			return 0;
+		else if (x == node.data){
+			return node.leftSize;
+		}
+		else if (x > node.data){
+			return 1 + node.leftSize + getRankOfNumber(x, node.right);
+		}
+		else{
+			return getRankOfNumber(x, node.left);
+		}
+	}
 }
-
-/* My Notes:
- * Array:       Insert is O(n) cuz of shifting, getRank is O(log n) with a binary search of number
- * Linked List: Insert is O(n).                 getRank is O(n). (Notice WE CAN'T USE BINARY SEARCH ON A LINKED LIST. I was dumb and thought we could)
- * HashMap:     Insert is O(1).                 getRank is O(n) since the HashMap doesn't help us in any way. We still gotta look through all the #s
- * BST:         Insert is O(log n).             getRank is O(log n). THIS IS ONLY IF IT IS BALANCED. (My code doesn't balance it in any way)
- * 
- * (btw, for array and linked list, we would be inserting them into the proper place each time for it to always be sorted)
- */

@@ -1,44 +1,40 @@
 package chapter11;
 
-/* Binary Search... with a twist */
 public class ElevenPoint5 {
-	public static int search(String [] array, String str){
-		return search(array, str, 0, array.length - 1);
+
+	public static Integer find(String[] sortedArray, String str){
+		if (sortedArray == null || str == "")
+			return null;
+		return find(sortedArray, str, 0, sortedArray.length - 1);
 	}
 	
-	// technically we have to account for a user searching for the empty string ""
-	public static int search(String [] array, String str, int start, int end){
+	private static Integer find(String[] sortedArray, String str, int start, int end){
 		if (start > end)
-			return -1;
+			return null;
 		
-		int mid = (start + end) / 2;
+		int originalMidIndex = (start + end) / 2;
+		int midIndex         = originalMidIndex;
+		String midValue = sortedArray[midIndex];
 		
-		/* Linear search left and right to find closest non-empty string.  This idea is from book. Originally, I had only searched RIGHT
-		 * for closest non-empty string
-		 */
-		if (array[mid].equals("")){
-			int left = mid - 1;
-			int right = mid + 1;
-			while (true){
-				if (left < start && right > end)
-					return -1;
-				else if (left >= start && !array[left].isEmpty()){
-					mid = left;
-					break;
-				}
-				else if (right <= end && !array[right].isEmpty()){
-					mid = right;
-					break;
-				}
-				left--;
-				right++;
-			}
+		/* Find nonempty String */
+		while (midIndex > start && midValue.isEmpty()){ // linear search left for any non-empty String
+			midIndex--;
+			midValue = sortedArray[midIndex];
 		}
-		if (array[mid].equals(str))	//originally I (incorrectly) had this line too early, before moving "mid" to proper spot.
-			return mid;
-		else if (array[mid].compareTo(str) < 0)
-			return search(array, str, mid + 1, end);
+		while (midIndex < end && midValue.isEmpty()){ // linear search right for any non-empty String
+			midIndex++;
+			midValue = sortedArray[midIndex];
+		}
+		if (midValue == "")
+			return null;
+		
+		/* Now can apply standard binary search 
+		 * - To ensure O(log n) time, we have to do the Math.max/Math.min trick I do below (which book forgot to do) */
+		if (midValue.equals(str)) // make sure not to use " == " here
+			return midIndex;
+		else if (midValue.compareTo(str) < 0)
+			return find(sortedArray, str, Math.max(midIndex, originalMidIndex) + 1, end);
 		else
-			return search(array, str, start, mid - 1);
+			return find(sortedArray, str, start, Math.min(midIndex, originalMidIndex) - 1);
 	}
 }

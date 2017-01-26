@@ -1,16 +1,12 @@
 package chapter11;
 
 public class RankNode {
-	/* Standard "TreeNode" data */
 	int data;
-	RankNode left;
-	RankNode right;
+	RankNode left  = null;
+	RankNode right = null;
+	int leftSize   = 0;    // each RankNode will keep track of the number of RankNodes in its left subtree
 	
-	/* Each node will keep track of the number of RankNodes in its left subtree (so that we don't have to do in-order traversal each time
-	 * to figure it out */
-	int leftSize = 0;
-	
-	public RankNode(int d){
-		data = d;
+	public RankNode(int data){
+		this.data = data;
 	}
 }

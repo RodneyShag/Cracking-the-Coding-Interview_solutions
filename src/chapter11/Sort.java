@@ -1,19 +1,27 @@
 package chapter11;
 
+/* Sort                 Runtime      Space      Notes
+ * ---------------------------------------------------------
+ * 1) Bubble Sort       O(n^2)       O(1)       Best case is O(n) runtime if list is already almost sorted
+ * 2) Selection Sort    O(n^2)       O(1)
+ * 3) Insertion Sort    O(n^2)       O(1)
+ * 4) Merge Sort        O(n log n)   Depends
+ * 5) Quick Sort        O(n^2)       O(log n)   Average Case Runtime: O(n log n)
+ */
 public class Sort {
 	/***************/
-	/* Bubble Sort */		// code from Wikipedia. Compared to website code, this code is longer but more efficient.
+	/* Bubble Sort */		// code from Wikipedia
 	/***************/
 	public static void bubbleSort(int [] array){
 		if (array == null)
 			return;
 		
 		boolean swapped = true;
-		int endOffset = 0;		//this complicates but slightly optimizes our code. Can remove it completely and code will still work.
+		int endOffset = 0;	// optimizes code.
 		while(swapped){
 			swapped = false;
 			for (int i = 1; i < array.length - endOffset; i++){
-				if (array[i-1] > array[i]){				//comparing to the previous "i-1" element makes it easier to avoid off-end-of-array errors
+				if (array[i-1] > array[i]){
 					swap(array, i-1, i);
 					swapped = true;
 				}
@@ -29,7 +37,7 @@ public class Sort {
 	}
     
 	/******************/
-	/* Selection Sort */	//code from Wikipedia
+	/* Selection Sort */	// code from Wikipedia
 	/******************/
 	public static void selectionSort(int [] array){
 		if (array == null)
@@ -46,7 +54,7 @@ public class Sort {
 	}
 	
 	/******************/
-	/* Insertion Sort */	//Code from Wikipedia (which is same as book's website). Code not in book though.
+	/* Insertion Sort */	// code from Wikipedia
 	/******************/
 	public static void insertionSort(int [] array){
 		if (array == null)
@@ -55,8 +63,8 @@ public class Sort {
 		for (int i = 1; i < array.length; i++){
 			int j = i;
 			int value = array[i];
-			while (j > 0 && array[j-1] > value){
-				array[j] = array[j-1];				//notice we copy values (instead of swapping) in this sort.
+			while (j > 0 && array[j-1] > value){  // find where to insert "value"
+				array[j] = array[j-1];		      // shift the elements (1 by 1) to make room for inserting
 				j--;
 			}
 			array[j] = value;
@@ -64,7 +72,7 @@ public class Sort {
 	}
 	
 	/**************/
-	/* Merge Sort */		//code from book
+	/* Merge Sort */		// code from book
 	/**************/
 	public static void mergeSort(int [] array){
 		if (array == null)
@@ -73,7 +81,7 @@ public class Sort {
 		mergeSort(array, helper, 0, array.length - 1);
 	}
 	
-	public static void mergeSort(int [] array, int [] helper, int start, int end){
+	private static void mergeSort(int [] array, int [] helper, int start, int end){
 		if (start < end){
 			int mid = (start + end) / 2;
 			mergeSort(array, helper, start, mid);
@@ -84,11 +92,12 @@ public class Sort {
 	
 	private static void merge(int [] array, int [] helper, int start, int mid, int end){
 		/* Create elements */
-		for (int i = start; i <= end; i++){			//notice i goes from "start" to "end", not "0" to "array.length"!! Tricky.
+		for (int i = start; i <= end; i++){			// notice "i" goes from "start" to "end", not "0" to "array.length"
 			helper[i] = array[i];
 		}
 
 		/* Go through 2 parts of array at same time and keep copying the smaller element */
+		/* Loop through helper[] left and right halves and continuously copy smaller element to array[] */
 		int curr = start;
 		int left = start;
 		int right = mid + 1;
@@ -106,7 +115,7 @@ public class Sort {
 	}
 
 	/**************/
-	/* Quick Sort */
+	/* Quick Sort */	// code from Wikipedia, CS 125
 	/**************/
 	public static void quickSort(int [] array){
 		if (array == null)
@@ -122,15 +131,19 @@ public class Sort {
 		}
 	}
 	
-	/* Wikipedia, CS 125 version - I like this version (instead of books version, which is easy to make off-by-1 errors) */
+	/* Partitions array into 2 parts. 
+	 * 		1) Left side has values smaller than pivotValue
+	 * 		2) Right side has values larger than pivotValue
+	 * Returns pivotIndex
+	 */
 	private static int partition(int [] array, int start, int end){
-		int pivotIndex = (start + end) / 2;
+		int pivotIndex = (start + end) / 2; // there are many ways to choose a pivot
 		int pivotValue = array[pivotIndex];
 		
-		swap(array, pivotIndex, end);	//put pivot at end for now.
+		swap(array, pivotIndex, end);	// put pivot at end for now.
 		
 		/* Linear search, comparing all elements to pivotValue and swapping as necessary */
-		int indexToReturn = start;	//Notice we set it to "start", not to "0". I made this mistake FOUR times
+		int indexToReturn = start;	// Notice we set it to "start", not to "0". I made this mistake FOUR times.
 		for (int i = start; i < end; i++){
 			if (array[i] < pivotValue){
 				swap(array, i, indexToReturn);
@@ -138,7 +151,7 @@ public class Sort {
 			}
 		}
 		
-		swap(array, indexToReturn, end);	//put pivot where it belongs
+		swap(array, indexToReturn, end);	// puts pivot where it belongs
 		return indexToReturn;
 	}
 }
