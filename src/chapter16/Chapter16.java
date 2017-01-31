@@ -13,8 +13,6 @@ public class Chapter16 {
 		// 16.6: Read book's short answer
 	}
 	
-	
-	
 	public static void test_sixteenPoint3(){
 		int numPhilosophers = 3;
 		

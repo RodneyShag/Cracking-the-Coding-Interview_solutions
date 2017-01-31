@@ -1,6 +1,6 @@
 package chapter09;
 
-public class NinePoint3 {
+public class NinePoint03 {
 	/* Part 1 - Use standard Binary Search: O(log n) time on sorted array. Only works if no duplicate numbers */
 	public static Integer magicFast(int [] sortedArray){
 		if (sortedArray == null)

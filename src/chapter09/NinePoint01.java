@@ -8,7 +8,7 @@ package chapter09;
  * 2) Iterative using array   O(n)      O(n)             
  * 3) Iterative, no array     O(n)      O(1)     
  */
-public class NinePoint1 {
+public class NinePoint01 {
 	private final static int staircaseSize = 100;
 	private static int [] cache = new int[staircaseSize];
 

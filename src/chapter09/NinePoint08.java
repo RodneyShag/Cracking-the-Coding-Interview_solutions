@@ -1,7 +1,7 @@
 package chapter09;
 
 /* Explaining the 1st 1/2 page of the book's explanation during an interview would be helpful */
-public class NinePoint8 {
+public class NinePoint08 {
 	
 	/* Wrapper */
 	public static int makeChange(int n){

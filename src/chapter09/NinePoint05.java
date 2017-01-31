@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * - I originally had the book's recursive solution coded (which is also popular online) but I like my iterative version better. Same concept though.   
  * - Runtime: O(n!) since n! permutations. Cannot do better than this.
  */
-public class NinePoint5 {	
+public class NinePoint05 {	
 	public static ArrayList<String> getPermutations(String original){
 		if (original == null || original.length() == 0)
 			return null;

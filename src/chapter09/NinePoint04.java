@@ -2,7 +2,7 @@ package chapter09;
 
 import java.util.ArrayList;
 
-public class NinePoint4 {
+public class NinePoint04 {
 	
 	/* Iterative solution */
 	public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set){

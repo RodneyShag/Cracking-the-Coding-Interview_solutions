@@ -2,7 +2,7 @@ package chapter09;
 
 import java.util.ArrayList;
 
-public class NinePoint6 {
+public class NinePoint06 {
 
 	public static ArrayList<String> generateParentheses(int count){
 		char [] str = new char[count *2];

@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Follow-up: (In a maze with walls) Discover 1 solution path
  * Follow-up: (In a maze with walls) Discover all solution paths
  */
-public class NinePoint2 {
+public class NinePoint02 {
 
 	/* Solution 1 -  (x+y)!     <-- Math solution (from book) : (x+y) moves total, choose x of them to go right
 	 *              --------

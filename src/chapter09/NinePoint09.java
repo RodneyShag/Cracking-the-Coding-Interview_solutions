@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 2) Represent all solutions as ArrayList<Integer[]>.
  * - we don't cache previous results since we are looking for ALL possible solutions (Like Problem 9.2 part 3 "find all paths" question)
  */
-public class NinePoint9 {
+public class NinePoint09 {
 	static private final int GRID_SIZE = 8;
 	
 	/* Wrapper */

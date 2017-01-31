@@ -5,7 +5,7 @@ package chapter11;
  * 1) Bubble Sort       O(n^2)       O(1)       Best case is O(n) runtime if list is already almost sorted
  * 2) Selection Sort    O(n^2)       O(1)
  * 3) Insertion Sort    O(n^2)       O(1)
- * 4) Merge Sort        O(n log n)   Depends
+ * 4) Merge Sort        O(n log n)   O(n)
  * 5) Quick Sort        O(n^2)       O(log n)   Average Case Runtime: O(n log n)
  */
 public class Sort {

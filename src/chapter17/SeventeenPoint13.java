@@ -1,54 +1,54 @@
 package chapter17;
 
+/* Convert Binary Search Tree (implemented as BiNode) into doubly linked list
+ * 
+ * Solutions                 Preference
+ * ------------------------------------------
+ * 1) In-order Traversal     Favorite
+ * 2) Recursive              Worth Mentioning
+ */
 public class SeventeenPoint13 {
-	/* Solution 0 - From Website. The best solution */
-	static BiNode head;
-	static BiNode tail;
-	    
-    static void inorderTraverse(BiNode root) {
+	/* Solution 1 (From website solutions) */
+	
+	public static BiNode head = null;
+	public static BiNode tail = null;
+	
+    public static void inorderTraverse(BiNode root) {
         if (root == null) 
         	return;
-        inorderTraverse(root.node1);
+        inorderTraverse(root.left);
         buildList(root);
-        inorderTraverse(root.node2);
+        inorderTraverse(root.right);
     }
     
     static void buildList(BiNode n) {
         if (head == null || tail == null) {
             head = tail = n;
-            n.node1 = n.node2 = null;
+            n.left = n.right = null;
         }
         else {
-            tail.node2 = n;
-            n.node1 = tail;
+            tail.right = n;
+            n.left = tail;
             tail = n;
         }
     }
     
-	/* Solution 1 - Recursive Solution. Using our own created NodePair data structure */
+	/* Solution 2 - Recursive Solution. Uses our own created NodePair data structure */
 	public static NodePair convert(BiNode root){
 		if (root == null)
 			return null;
 		
-		NodePair left = convert(root.node1);
-		NodePair right = convert(root.node2);
+		NodePair left = convert(root.left);
+		NodePair right = convert(root.right);
 		join(left == null ? null : left.tail, root);
 		join(root, right == null ? null : right.head);
 		return new NodePair(left == null ? root : left.head, right == null ? root : right.tail);
 	}
 	
-	/* Putting this as a function is a good idea */
-	private static void join(BiNode left, BiNode right){
-		if (left != null)
-			left.node2 = right;
-		if (right != null)
-			right.node1 = left;
+	private static void join(BiNode node1, BiNode node2){
+		if (node1 != null)
+			node1.right = node2;
+		if (node2 != null)
+			node2.left = node1;
 	}
-	
-	/* Solution 2 - Bad solution - Always return head of list, and use it to find tail. Not efficient */
-	
-	/* Solution 3 - Bad solution (cuz overly complicated) - Always return head of list, but create circular linked lists so head and tail
-	 * are connected and searching for tail becomes O(1) time. */
-	
-	
 }

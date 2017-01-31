@@ -1,7 +1,7 @@
 package chapter09;
 
 /* Same as book's code */
-public class NinePoint7 {
+public class NinePoint07 {
 
 	public static boolean paintFill(Color [][] screen, int x, int y, Color newColor){
 		if (screen == null || newColor == null || screen[y][x] == newColor)
