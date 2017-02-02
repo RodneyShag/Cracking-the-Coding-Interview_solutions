@@ -8,7 +8,7 @@ package chapter11;
  * 4) Merge Sort        O(n log n)   O(n)
  * 5) Quick Sort        O(n^2)       O(log n)   Average Case Runtime: O(n log n)
  */
-public class Sort {
+public class Sorts {
 	/***************/
 	/* Bubble Sort */		// code from Wikipedia
 	/***************/
@@ -136,7 +136,7 @@ public class Sort {
 	 * 		2) Right side has values larger than pivotValue
 	 * Returns pivotIndex
 	 */
-	private static int partition(int [] array, int start, int end){
+	public static int partition(int [] array, int start, int end){
 		int pivotIndex = (start + end) / 2; // there are many ways to choose a pivot
 		int pivotValue = array[pivotIndex];
 		

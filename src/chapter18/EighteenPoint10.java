@@ -1,66 +1,84 @@
 package chapter18;
-import java.util.HashMap;
-import java.util.HashSet;		//Yay this exists
-import java.util.LinkedList;
 
-/* Code is from website, which is different than book */
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /* Tricks:
- * - Clever Trick: BFS solves this problem. Maybe DFS would have worked also
- * - Uses HashMap<String, String> backtrackMap
+ * - Use BFS
+ * - Use HashMap<String, String> backtrackMap to save solution
+ *
+ * Runtime: O(mn) where "n" is length of String and "m" is # of like-sized words in dictionary (since
+ *          loop will dequeue at most "m" words, each of which take "n" time to process.
  */
 public class EighteenPoint10 {
+	
+	private static HashSet<String> dict = new HashSet<>();
+	
+	public static void setUpDict(){
+		dict.add("DAMP");
+		dict.add("LAMP");
+		dict.add("LIMP");
+		dict.add("LIME");
+		dict.add("LIKE");
+	}
+	
+	/* Uses BFS */
 	public static LinkedList<String> convert(String start, String end){
-		if (start == null || end == null)
+		if (start == null || end == null || start.length() != end.length())
 			return null;
-		LinkedList<String> queue = new LinkedList<String>();
-		HashSet<String> visited = new HashSet<String>();
-		HashMap<String, String> backtrackMap = new HashMap<String, String>();
+		
+		start = start.toUpperCase();
+		end = end.toUpperCase();
+		
+		Queue<String> queue                  = new LinkedList<>();
+		HashSet<String> visited              = new HashSet<>();
+		HashMap<String, String> backtrackMap = new HashMap<>();
 		
 		queue.add(start);
 		visited.add(start);
 		
-		while(!queue.isEmpty()){
-			String word = queue.remove();
-			for (String newWord : transform(word)){
-				if (!visited.contains(newWord)){
-					visited.add(newWord);
-					queue.add(newWord);
-					backtrackMap.put(newWord, word);
-					if (newWord == end){
-						/* Create result from backtrackMap */
-						LinkedList<String> ret = new LinkedList<String>();
-						String n = newWord;
-						ret.add(n);
-						while(backtrackMap.containsKey(n)){
-							n = backtrackMap.get(n);
-							ret.add(0, n);
-						}
-						return ret;
-					}
+		while (! queue.isEmpty()){
+			String currWord = queue.remove();
+			if (currWord.equals(end))
+				return buildSolution(backtrackMap, currWord);
+			
+			for (String neighbor : getNeighbors(currWord)){
+				if ( ! visited.contains(neighbor)){
+					visited.add(neighbor);
+					backtrackMap.put(neighbor, currWord);
+					queue.add(neighbor);
 				}
 			}
 		}
 		return null;
 	}
 	
-	public static HashSet<String> transform(String s){		// can think of this as generating all of strings "neighbors" that we can explore
-		HashSet<String> validWords = new HashSet<String>();
-		for (int i = 0; i < s.length(); i++){
-			StringBuilder sb = new StringBuilder(s);
-			for (char ch = 'A'; ch <= 'Z'; ch++){
-				if (sb.charAt(i) != ch){
-					sb.setCharAt(i, ch);
-					if (containsDictWord(sb.toString()))
-                        validWords.add(sb.toString());
+	/* Generates all possible neighbors of given String */
+	private static HashSet<String> getNeighbors(String currString){
+		HashSet<String> validWords = new HashSet<>();
+		for (int i = 0; i < currString.length(); i++){
+			char currChar = currString.charAt(i);
+			for (char changedChar = 'A'; changedChar <= 'Z'; changedChar++){
+				if (changedChar != currChar){
+					StringBuffer neighbor = new StringBuffer(currString);
+					neighbor.setCharAt(i, changedChar);
+					if (dict.contains(neighbor.toString()))
+						validWords.add(neighbor.toString());
 				}
 			}
 		}
 		return validWords;
 	}
-		
-	 private static boolean containsDictWord(String s) {
-	        HashSet<String> dict = new HashSet<String>();
-	        dict.add("DAMP");dict.add("LAMP");dict.add("LIMP");dict.add("LIME");dict.add("LIKE");
-	        return dict.contains(s);
-	    }
+	
+	private static LinkedList<String> buildSolution(HashMap<String, String> backtrackMap, String currWord){
+		LinkedList<String> solution = new LinkedList<>();
+		solution.add(currWord);
+		while (backtrackMap.containsKey(currWord)){
+			currWord = backtrackMap.get(currWord);
+			solution.add(0, currWord);
+		}
+		return solution;
+	}
 }

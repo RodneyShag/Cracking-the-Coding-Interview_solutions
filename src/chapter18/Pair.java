@@ -2,9 +2,10 @@ package chapter18;
 
 public class Pair {
 	public Integer num;
-	public boolean listA;
-	public Pair(Integer n, boolean l){
+	public boolean fromListA;
+	
+	public Pair(Integer n, boolean bool){
 		num = n;
-		listA = l;
+		fromListA = bool;
 	}
 }

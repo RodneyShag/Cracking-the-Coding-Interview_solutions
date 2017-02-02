@@ -25,19 +25,19 @@ public class Chapter11 {
 
 		System.out.println(Arrays.toString(arrayBubble) + " - Original Array");
 		
-		Sort.bubbleSort(arrayBubble);
+		Sorts.bubbleSort(arrayBubble);
 		System.out.println(Arrays.toString(arrayBubble) + " - BubbleSort");
 		
-		Sort.selectionSort(arraySelection);
+		Sorts.selectionSort(arraySelection);
 		System.out.println(Arrays.toString(arraySelection) + " - SelectionSort");
 		
-		Sort.bubbleSort(arrayInsertion);
+		Sorts.bubbleSort(arrayInsertion);
 		System.out.println(Arrays.toString(arrayInsertion) + " - arrayInsertion");
 		
-		Sort.mergeSort(arrayMerge);
+		Sorts.mergeSort(arrayMerge);
 		System.out.println(Arrays.toString(arrayMerge) + " - MergeSort");
 		
-		Sort.quickSort(arrayQuick);
+		Sorts.quickSort(arrayQuick);
 		System.out.println(Arrays.toString(arrayQuick) + " - QuickSort");
 	}
 	

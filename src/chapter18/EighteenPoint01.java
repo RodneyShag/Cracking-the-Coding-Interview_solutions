@@ -1,7 +1,28 @@
 package chapter18;
 
-public class EighteenPoint1 {
-	/* Rodney CS 233 Solution:
+/* Add 2 numbers without using "+" or any other arithmetic operators
+ * 
+ * Solutions                        Preference
+ * -------------------------------------------------
+ * 1) Separating Carry Trick        Favorite
+ * 2) CS 233 Bit-by-bit solution    Worth mentioning
+ */
+public class EighteenPoint01 {
+	
+	/* Solution 1
+	 * 
+	 * Book Solution - Split up "sum" and "carry" */
+	public static int addBook(int a, int b){
+		if (b == 0) 
+			return a;
+		int sum = a ^ b;
+		int carry = (a & b) << 1;
+		return addBook(sum, carry);
+	}
+	
+	/* Solution 2
+	 * 
+	 * Rodney CS 233 Solution (Just a good technique to know):
 	 * c a b (digit) (carry)
 	 * 0 0 0    0       0
 	 * 0 0 1    1       0
@@ -12,7 +33,7 @@ public class EighteenPoint1 {
 	 * 1 1 0    0       1
 	 * 1 1 1    1       1
 	 */
-	public static int add(int a, int b){ //	ACTUALLY DON'T EVEN NEED "ANDED" "XORED" "ORED". Could have just done getBit like getBit(a, i);
+	public static int add(int a, int b){
 		int anded = a & b;
 		int xored = a ^ b;
 		int ored  = a | b;
@@ -39,15 +60,5 @@ public class EighteenPoint1 {
 	
 	private static boolean getBit(int num, int bit){
 		return (num & (1 << bit)) != 0;
-	}
-	
-
-	
-	/* Book Solution - CLEVER TRICK: Split up "sum" and "carry" (sum is "xor", carry is "and" */
-	public static int addBook(int a, int b){
-		if (b == 0) return a;
-		int sum = a ^ b;	//add without carrying
-		int carry = (a & b) << 1;	//carry but don't add
-		return addBook(sum, carry);
 	}
 }

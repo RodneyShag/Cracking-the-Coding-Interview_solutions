@@ -29,6 +29,10 @@ public class GraphFunctions {
 		}
 	}
 	
+	/* Don't forget:
+	 * 1) Use a Queue
+	 * 2) .visit() a node before we add it to queue
+	 */
 	public static void BFS(GraphNode node, int data){
 		if (node == null)
 			return;

@@ -1,48 +1,114 @@
 package chapter18;
-/* Code is from website. It is O(n^4)
- * Book also has "preprocessed" O(n^3) algorithm that made sense.
- * - I practiced coding both and did well. Memorizing the concept is the most important part. 
+
+/* Find maximum subsquare with black borders
+ * 
+ * Solutions        Runtime     Preference
+ * ----------------------------------------------------------------------
+ * 1) Brute Force   O(n^4)      Do this solution first
+ * 2) Pre-process   O(n^3)      If time permits, optimize to this solution
  */
 public class EighteenPoint11 {
-	//  Suppose black is 1, white is 0.
 	
-	  static Result findLargestSubsquare(int[][] matrix) {
-	      for (int len = matrix.length; len >= 2; --len) {
-	          Result res = findSubsquare(matrix, len);
-	          if (res != null) 
-	        	  return res;
-	      }
-	      return null;
-	  }
+	public static Subsquare findLargestSubsquare(int[][] matrix) {         // outer loop adds O(n) multiplier to runtime
+		for (int dimension = matrix.length; dimension >= 1; dimension--){
+			Subsquare subsquare = findSubsquare(matrix, dimension);
+			if (subsquare != null)
+				return subsquare;
+		}
+		return null;
+	}
+	
+	private static Subsquare findSubsquare(int[][] matrix, int length) {   // the 2 for loops add O(n^2) multiplier to runtime
+		int wiggleRoom = matrix.length - length + 1;
 	  
-	  /* This function is VERY IMPORTANT */
-	  static Result findSubsquare(int[][] matrix, int length) {
-	      int cnt = matrix.length - length + 1;
-	      for (int i = 0; i < cnt; ++i) {
-	          for (int j = 0; j < cnt; ++j) {
-	              if (isValid(matrix, i, j, length)) {
-	                  return new Result(i, j, length);
-	              }
-	          }
-	      }
-	      return null;
-	  }
+		for (int startRow = 0; startRow < wiggleRoom; startRow++) {
+			for (int startCol = 0; startCol < wiggleRoom; startCol++) {
+				if (isValidSquare(matrix, startRow, startCol, length))
+					return new Subsquare(startRow, startCol, length);
+			}
+		}
+		return null;
+	}
+	
+	// in int[][] matrix, 1 is BLACK, 0 is WHITE
+	private static boolean isValidSquare(int[][] matrix, int row, int col, int length) { // runs in O(n) time (since 1 for loop)
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		  
+		if (row < 0 || row + length > rows || col < 0 || col + length > cols)
+			return false;
+		  
+		for (int i = 0; i < length; i++){
+			if (matrix[row + i][col] == 0)              // check left column
+				return false;
+			if (matrix[row + i][col + length - 1] == 0) // check right column
+				return false;
+		}
+		for (int i = 1; i < length - 1; i++){
+			if (matrix[row][col + i] == 0)              // check top row
+				return false;
+			if (matrix[row + length - 1][col + i] == 0) // check bottom row
+				return false;
+		}
+		return true;
+	}
+	
+	/******************/
+	/*** Solution 2 ***/
+	/******************/
+	
+	public static Cell[][] preprocessMatrix(int[][] matrix) {
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		
+		Cell[][] preprocessed = new Cell[matrix.length][matrix.length];
+		for (int row = rows - 1; row >= 0; row--) {
+			for (int col = cols - 1; col >= 0; col--) {
+				preprocessed[row][col] = new Cell(0,0);
+				if (matrix[row][col] == 1) {
+					preprocessed[row][col].blacksRight = 1 + (col + 1 < cols ? preprocessed[row][col + 1].blacksRight : 0);
+					preprocessed[row][col].blacksDown  = 1 + (row + 1 < rows ? preprocessed[row + 1][col].blacksDown  : 0);
+				}
+			}
+		}
+		return preprocessed;
+	}
+	
+	public static Subsquare findLargestSubsquare2(int[][] matrix) {         // runs in O(n) time (since 1 for loop)
+		Cell [][] processed = preprocessMatrix(matrix);
+		for (int dimension = processed.length; dimension >= 1; dimension--){
+			Subsquare subsquare = findSubsquare2(processed, dimension);
+			if (subsquare != null)
+				return subsquare;
+		}
+		return null;
+	}
+	
+	private static Subsquare findSubsquare2(Cell [][] processed, int length) {   // runs in O(n^2) time (since 2 for loops)
+		int wiggleRoom = processed.length - length + 1;
 	  
-	  /* This function I would be able to code on my own...no problem (but my code would be slightly different) */
-	  static boolean isValid(int[][] m, int r, int c, int l) {
-	      for (int n = 0; n < l; n++) {
-	          //check top and bottom rows
-	          if (m[r][c+n] == 0 || m[r+l-1][c+n] == 0)
-	              return false;
-	          //check left and right columns
-	          if (m[r+n][c] == 0 || m[r+n][c+l-1] == 0)
-	              return false;
-	      }
-	      return true;
-	  }
-	  
-	  static class Result {
-	      int col; int row; int length;
-	      public Result(int r, int c, int l) {row=r;col=c;length=l;}
-	  }
+		for (int startRow = 0; startRow < wiggleRoom; startRow++) {
+			for (int startCol = 0; startCol < wiggleRoom; startCol++) {
+				if (isValidSquare2(processed, startRow, startCol, length))
+					return new Subsquare(startRow, startCol, length);
+			}
+		}
+		return null;
+	}
+	
+	private static boolean isValidSquare2(Cell[][] cellMatrix, int row, int col, int length) { // runs in O(1) time
+		Cell topLeft     = cellMatrix[row][col];
+		Cell topRight    = cellMatrix[row][col + length - 1];
+		Cell bottomLeft  = cellMatrix[row + length - 1][col];
+		Cell bottomRight = cellMatrix[row + length - 1][col + length - 1];
+		if (topLeft.blacksDown < length || topLeft.blacksRight < length)
+			return false;
+		if (topRight.blacksDown < length || topRight.blacksRight < 1)
+			return false;
+		if (bottomLeft.blacksDown < 1 || bottomLeft.blacksRight < length)
+			return false;
+		if (bottomRight.blacksDown < 1 || bottomRight.blacksRight < 1)
+			return false;
+		return true;
+	}
 }

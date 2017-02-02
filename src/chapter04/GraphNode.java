@@ -6,8 +6,8 @@ import java.util.HashSet;
  * The edges themselves are saved in the GraphNodes as opposed to in their own structure.
  */
 public class GraphNode {
-	int data;
-	boolean visited;                      // crucial for BFS, DFS
+	public int data;
+	public boolean visited;                      // crucial for BFS, DFS
 	private HashSet<GraphNode> neighbors;
 	
 	/* Constructor */
