@@ -11,8 +11,8 @@ import java.util.PriorityQueue;
  *			maxheap.size()-1 == minheap.size() always holds.
  */
 public class EighteenPoint09 {	//code from website
-	private static PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(50, Collections.reverseOrder());	// maxHeap contains all SMALL elements
-	private static PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(50);								// minHeap contains all LARGE elements
+	private static PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(Collections.reverseOrder());	// maxHeap contains all SMALL elements
+	private static PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();						    // minHeap contains all LARGE elements
 	  
 	public static void addNum(int n) {
 		if (maxHeap.isEmpty())

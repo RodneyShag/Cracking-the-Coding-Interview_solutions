@@ -25,15 +25,19 @@ public class MyQueue<T> {
 	}
 	
 	public T peek(){
-		shiftStacks();
+		if (size() == 0)
+			return null;
+		if (stack2.isEmpty())
+			shiftStacks();
 		return stack2.peek();
 	}
 	
-	/* Great helper function */
 	private void shiftStacks(){
-		while (!stack1.isEmpty()){
-			T temp = stack1.pop();
-			stack2.push(temp);
+		if (stack2.isEmpty()){ // shifting items while stack2 has elements in it would mess up our queue's ordering
+			while (!stack1.isEmpty()){
+				T temp = stack1.pop();
+				stack2.push(temp);
+			}
 		}
 	}
 }
