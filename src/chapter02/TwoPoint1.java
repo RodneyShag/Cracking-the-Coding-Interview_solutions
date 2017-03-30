@@ -4,46 +4,43 @@ import java.util.HashSet;
 
 /* Removes duplicates from unsorted list
  * 
- * Solutions         Runtime       Preference
- * -----------------------------------------------------
- * 1) Use HashMap    O(n)          Favorite
- * 2) Brute-Force    O(n^2)        Naive (but O(1) space)
+ * Solutions         Runtime    Space   Preference
+ * -----------------------------------------------
+ * 1) HashMap        O(n)       O(n)    Favorite
+ * 2) Brute-Force    O(n^2)     O(1)    Naive (but O(1) space)
  */
 public class TwoPoint1 {
-	/* Solution Version 1 - Ideal HashMap Solution.*/
-	/* Walk the list linearly with TWO pointers (even though I probably could have done it with 1). Use HashMap as storage*/
-	/* O(n) time, O(n) space */
-	static void removeDuplicates(Node head){
+	/* Solution 1 */
+	static void removeDuplicates(Node head) {
+		if (head == null) {
+			return;
+		}
 		HashSet<Integer> map = new HashSet<>();
-		Node curr = head;
-		Node prev = null;
-		
-		while(curr != null){
-			if(map.contains(curr.data))
-				prev.next = curr.next;
-			else{
-				map.add(curr.data);
-				prev = curr;
+		map.add(head.data);
+		Node n = head;
+		while (n.next != null) {
+			if (map.contains(n.next.data)) {
+				n.next = n.next.next;
+			} else {
+				map.add(n.next.data);
+				n = n.next;
 			}
-			curr = curr.next;
 		}
 		return;
 	}
 	
-	/* Solution Version 2 - if O(1) space constraint */
-	/* Use 1 pointer to walk list, and another pointer to check all remaining nodes each time */
-	/* O(n^2) time, O(1) space */
-	static void removeDuplicates2(Node head){
-		Node curr = head;
-		Node runner = null;	//we could have used 2 runners (curr and prev) instead of doing "runner.next" and "runner.next.next".
-							
-		while(curr != null){
+	/* Solution 2 - Use 1 pointer to walk list, and another pointer to check all remaining nodes each time */
+	static void removeDuplicates2(Node head) {
+		Node curr   = head;
+		Node runner = null;
+		while (curr != null) {
 			runner = curr;
-			while(runner.next != null){
-				if (curr.data == runner.next.data)
+			while (runner.next != null) {
+				if (curr.data == runner.next.data) {
 					runner.next = runner.next.next;
-				else									//this "else" is important. prevents null pointer exception, and logically makes sense.
+				} else {
 					runner = runner.next;
+				}
 			}
 			curr = curr.next;
 		}

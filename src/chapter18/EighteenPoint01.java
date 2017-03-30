@@ -12,9 +12,10 @@ public class EighteenPoint01 {
 	/* Solution 1
 	 * 
 	 * Book Solution - Split up "sum" and "carry" */
-	public static int addBook(int a, int b){
-		if (b == 0) 
+	public static int addBook(int a, int b) {
+		if (b == 0) {
 			return a;
+		}
 		int sum = a ^ b;
 		int carry = (a & b) << 1;
 		return addBook(sum, carry);
@@ -33,32 +34,33 @@ public class EighteenPoint01 {
 	 * 1 1 0    0       1
 	 * 1 1 1    1       1
 	 */
-	public static int add(int a, int b){
+	public static int add(int a, int b) {
 		int anded = a & b;
 		int xored = a ^ b;
 		int ored  = a | b;
 		
 		int result = 0;
 		boolean carry = false;
-		for (int i = 0; i < 32; i++){
+		for (int i = 0; i < 32; i++) {
 			/* Calculate Digit */
-			if((!carry && getBit(xored, i)) || (carry && !getBit(xored, i))) 
+			if ((!carry && getBit(xored, i)) || (carry && !getBit(xored, i))) {
 				result = setBit(result, i);
+			}
 			/* Calculate Carry */
-			if ((!carry && getBit(anded, i)) || (carry && getBit(ored, i)))
+			if ((!carry && getBit(anded, i)) || (carry && getBit(ored, i))) {
 				carry = true;
-			else
+			} else {
 				carry = false;
+			}
 		}
-		
 		return result;
 	}
 	
-	private static int setBit(int num, int bit){
+	private static int setBit(int num, int bit) {
 		return num | (1 << bit);
 	}
 	
-	private static boolean getBit(int num, int bit){
+	private static boolean getBit(int num, int bit) {
 		return (num & (1 << bit)) != 0;
 	}
 }

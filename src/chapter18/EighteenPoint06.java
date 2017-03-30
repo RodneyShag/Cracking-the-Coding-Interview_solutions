@@ -26,42 +26,46 @@ public class EighteenPoint06 {
 	
 	/* Solution 3 */
 	
-	public static void findNthSmallestNums(int [] array, int n){
-		if (array == null || n < 0 || n >= array.length)
+	public static void findNthSmallestNums(int [] array, int n) {
+		if (array == null || n < 0 || n >= array.length) {
 			return;
+		}
 		
 		int nthSmallestValue = quickselect(array, 0, array.length - 1, n);
 		
 		/* Do O(n) Go through entire array and print all elements smaller than nthSmallestValue (i.e. prints n smallest elements) */
-		for (int i = 0; i < array.length; i++){
-			if (array[i] < nthSmallestValue)
-			  System.out.print(array[i] + " ");
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] < nthSmallestValue) {
+				System.out.print(array[i] + " ");
+			}
 		}
 	}
 	
-	/* Quickselect - Finds "nth" smallest element in an array. Returns its value. (Code from Wikipedia)
-	 * 
-	 * Notes:
-	 *  - also "partially sorts the data" - Wikipedia
-	 *  - O(n) average run-time is since we recurse only on 1 side (n + n/2 + n/4 + ...) = n (1 + 1/2 + 1/4 + ...) = O(n).
-	 *    Notice our formula above is a geometric series with "r = 1/2", which would converge to 1/(1-r) for infinite geometric series
+    /* Quickselect 
+     *  - Finds "nth" smallest element in an array. Returns its value (Code from Wikipedia)
+	 *  - Also partially sorts the data. If the value of the nth smallest element is x, all values to the
+     *    left of it are smaller than x, and all values to the right of it are greater than x
+	 *  - O(n) average run-time is since we recurse only on 1 side (n + n/2 + n/4 + ...) = n (1 + 1/2 + 1/4 + ...) = O(n)
+	 *    Our formula above is a geometric series with "r = 1/2", which would converge to 1/(1-r) for infinite geometric series
 	 *  - O(n^2) worst-case run-time is if we consistently pick a bad pivot
 	 */
-	private static Integer quickselect(int [] array, int start, int end, int n){
-		if (n < 0 || n >= array.length || start < 0 || start >= array.length || end < 0 || end >= array.length)
+    private static Integer quickselect(int [] array, int start, int end, int n) {
+		if (n < 0 || n >= array.length || start < 0 || start >= array.length || end < 0 || end >= array.length) {
 			return null;
-		
-		if (start == end)			// a 1-element array is our base case
+        }
+        
+        if (start == end) { // a 1-element array is our base case
 			return array[start];
-		
+        }
 		int pivotIndex = Sorts.partition(array, start, end);
 		
 		/* Recurse on only 1 side, until found */
-		if (n == pivotIndex)
-			return array[pivotIndex];
-		else if(n < pivotIndex)
+		if (n == pivotIndex) {
+			return array[n];
+        } else if (n < pivotIndex) {
 			return quickselect(array, start, pivotIndex - 1, n);
-		else
+        } else {
 			return quickselect(array, pivotIndex + 1, end, n);
+        }
 	}
 }

@@ -14,19 +14,21 @@ public class SeventeenPoint07 {
 	public static String[] tens   = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 	public static String[] bigs   = {"", "Thousand", "Million", "Billion"};
 		
-	public static String numToString(int num){
-		if (num < 0)
+	public static String numToString(int num) {
+		if (num < 0) {
 			return "Negative " + numToString(-1 * num);
-		else if (num == 0)
+		} else if (num == 0) {
 			return "Zero";
+		}
 		
 		int bigsIndex = 0;
 		StringBuffer sb = new StringBuffer();
 
 		/* We create the string from right to left, inserting in the front. This makes code clean and scalability easier */
-		while(num > 0){
-			if (num % 1000 != 0)
+		while(num > 0) {
+			if (num % 1000 != 0) {
 				sb.insert(0, numToString100(num % 1000) + bigs[bigsIndex] + " ");
+			}
 			num /= 1000;
 			bigsIndex++;
 		}
@@ -34,17 +36,18 @@ public class SeventeenPoint07 {
 	}
 	
 	public static String numToString100(int num) {
-		if (num < 0)
+		if (num < 0) {
 			return "Negative " + numToString(-1 * num);
-		else if (num == 0)
+		} else if (num == 0) {
 			return "Zero";
-		else if (num > 999)
+		} else if (num > 999) {
 			return null;
+		}
 		
 		StringBuffer sb = new StringBuffer();
 		
 		/* Hundreds */
-		if (num >= 100){
+		if (num >= 100) {
 			int digit = num / 100;
 			sb.append(digits[digit] + " Hundred ");
 			num = num % 100; // now we have a 2-digit number
@@ -54,16 +57,17 @@ public class SeventeenPoint07 {
 		int tensDigit   = num / 10;
 		int singleDigit = num % 10;
 		
-		if (num >= 10 && num <= 19){
+		if (num >= 10 && num <= 19) {
 			sb.append(teens[singleDigit] + " ");
 			return sb.toString();
-		}
-		else if (num >= 20)
+		} else if (num >= 20) {
 			sb.append(tens[tensDigit] + " ");
+		}
 		
 		/* Single Digit */
-		if (singleDigit != 0)
+		if (singleDigit != 0) {
 			sb.append(digits[singleDigit] + " ");
+		}
 		
 		return sb.toString();
 	}

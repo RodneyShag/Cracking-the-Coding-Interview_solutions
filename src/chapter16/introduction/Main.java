@@ -1,7 +1,7 @@
 package chapter16.introduction;
 
 public class Main {
-	public static void main (String [] args){
+	public static void main (String [] args) {
 		/* Only run 1 of these at a time */
 		//test_RunnableThreadExample();
 		//test_ThreadExample();
@@ -33,7 +33,7 @@ public class Main {
 			try {
 				Thread.sleep(250);
 			} catch (InterruptedException exc) {
-			exc.printStackTrace();
+				exc.printStackTrace();
 			}
 		}
 	}

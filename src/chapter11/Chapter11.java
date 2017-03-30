@@ -3,19 +3,19 @@ package chapter11;
 import java.util.Arrays;
 
 public class Chapter11 {
-	public static void main(String [] args){
+	public static void main(String [] args) {
 		test_Sorts();
 		test_ElevenPoint1();
 		test_ElevenPoint2();
 		test_ElevenPoint3();
-		// 11.4: No code. Solution: See book
+		// 11.4: No code. Solution: External Sort. See book
 		test_ElevenPoint5();
 		test_ElevenPoint6();
 		// 11.7: Skip it. Same as 9.10's box stacking problem
 		test_ElevenPoint8();
 	}
 	
-	public static void test_Sorts(){
+	public static void test_Sorts() {
 		System.out.println("*** Test Sorts");
 		int [] arrayBubble    = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
 		int [] arraySelection = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
@@ -30,9 +30,9 @@ public class Chapter11 {
 		
 		Sorts.selectionSort(arraySelection);
 		System.out.println(Arrays.toString(arraySelection) + " - SelectionSort");
-		
-		Sorts.bubbleSort(arrayInsertion);
-		System.out.println(Arrays.toString(arrayInsertion) + " - arrayInsertion");
+
+		Sorts.insertionSort(arrayInsertion);
+		System.out.println(Arrays.toString(arrayInsertion) + " - InsertionSort");
 		
 		Sorts.mergeSort(arrayMerge);
 		System.out.println(Arrays.toString(arrayMerge) + " - MergeSort");
@@ -41,7 +41,7 @@ public class Chapter11 {
 		System.out.println(Arrays.toString(arrayQuick) + " - QuickSort");
 	}
 	
-	public static void test_ElevenPoint1(){
+	public static void test_ElevenPoint1() {
 		System.out.println("\n\n*** Test 11.1: merging arrays");
 		int [] array1 = {3, 6, 8, 9, 0, 0, 0, 0};
 		int [] array2 = {1, 2, 4, 7};
@@ -49,7 +49,7 @@ public class Chapter11 {
 		System.out.println("Merged: " + Arrays.toString(array1));
 	}
 	
-	public static void test_ElevenPoint2(){
+	public static void test_ElevenPoint2() {
 		System.out.println("\n\n*** Test 11.2: group anagrams together");
 		String [] array  = {"hello", "hi", "ih", "obb", "bob", "helol", "olleh", "god", "loleh", "lolhe", "asd", "nwr", "gsegae", "fesf"};
 		String [] array2 = {"hello", "hi", "ih", "obb", "bob", "helol", "olleh", "god", "loleh", "lolhe", "asd", "nwr", "gsegae", "fesf"};
@@ -58,16 +58,16 @@ public class Chapter11 {
 		System.out.println("Solution 2: " + Arrays.toString(array2));
 	}
 	
-	public static void test_ElevenPoint3(){
+	public static void test_ElevenPoint3() {
 		int [] rotatedArray = {15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14};
 		System.out.println("\n\n*** Test 11.3: Index of value in rotated array");
-		for (int i = 0; i < rotatedArray.length; i++){
+		for (int i = 0; i < rotatedArray.length; i++) {
 			System.out.print(rotatedArray[i] + " ");
 		}
 		System.out.println("\n5 is at index: " + ElevenPoint3.search(rotatedArray, 5));
 	}
 	
-	public static void test_ElevenPoint5(){
+	public static void test_ElevenPoint5() {
 		System.out.println("\n\n*** Test 11.5: Find index of string");
 		String [] strings = {"at", "", "", "", "ball", "", "", "car", "", "", "dad", "", ""};
 		System.out.println(Arrays.toString(strings));
@@ -78,7 +78,7 @@ public class Chapter11 {
 		System.out.println("\"food\" is at index: " + ElevenPoint5.find(strings, "food"));
 	}
 	
-	public static void test_ElevenPoint6(){
+	public static void test_ElevenPoint6() {
 		System.out.println("\n\n*** Test 11.6: Find element in MxN matrix, with rows and columns sorted");
 		int [][] array2d = { {1,  6,  8,  9},
 							 {3,  8,  9, 11},
@@ -88,7 +88,7 @@ public class Chapter11 {
 		System.out.println("64 exists: " + ElevenPoint6.findElement(array2d, 64));
 	}
 	
-	public static void test_ElevenPoint8(){
+	public static void test_ElevenPoint8() {
 		System.out.println("\n\n*** Test 11.7: Rank of numbers");
 		int [] array = {5,1,4,4,5,9,7,13,3};
 		trackNums(array);
@@ -98,8 +98,8 @@ public class Chapter11 {
 		System.out.println("Rank of 4 = " + ElevenPoint8.getRankOfNumber(4));
 	}
 	
-	private static void trackNums(int [] array){
-		for (int n : array){
+	private static void trackNums(int [] array) {
+		for (int n : array) {
 			ElevenPoint8.track(n);
 		}
 	}

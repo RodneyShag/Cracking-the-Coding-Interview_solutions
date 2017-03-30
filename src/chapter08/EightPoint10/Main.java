@@ -1,7 +1,7 @@
 package chapter08.EightPoint10;
 
 public class Main {
-	public static void main (String [] args){
+	public static void main (String [] args) {
 		Hash<Integer, String> map = new Hash<>();
 		map.put(2, "Bob");
 		System.out.print(map);

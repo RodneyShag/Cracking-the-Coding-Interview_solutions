@@ -13,28 +13,25 @@ import java.util.HashMap;
  * 2) Searches their HashMap at three spots: flooredSlope, flooredSlope - epsilon, and flooredSlope + epsilon
  */
 public class SevenPoint6 {
-	public static Line findBestLine(Point [] points){
+	public static Line findBestLine(Point [] points) {
 		int numPoints = points.length;
 		HashMap<Line, Integer> map = new HashMap<Line, Integer>();
 		
 		/* Put lines into HashMap */
-		for (int i = 0; i < numPoints - 1; i++){
-			for (int j = i + 1; j < numPoints; j++){
+		for (int i = 0; i < numPoints - 1; i++) {
+			for (int j = i + 1; j < numPoints; j++) {
 				Line line = new Line(points[i], points[j]);
 				System.out.println(line); // for error checking
-				if (map.containsKey(line))
-					map.put(line, map.get(line) + 1); // this is the correct way to update a value. It will overwrite it.				
-				else
-					map.put(line, 1);
+				map.merge(line, 1, Integer::sum);
 			}
 		}
 		
 		/* Count which line is most popular */
 		int max = 0;
 		Line bestLine = null;
-		for (Line line : map.keySet()){
-			int value = map.get(line);   // get value from key
-			if (value >= max){           // found a better match
+		for (Line line : map.keySet()) {
+			int value = map.get(line);
+			if (value >= max) {
 				max = map.get(line);
 				bestLine = line;
 			}

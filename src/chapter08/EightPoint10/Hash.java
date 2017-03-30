@@ -17,78 +17,75 @@ public class Hash<K, V> {
 	private int primeArraySize;                      // size of our "boolean[] prime" array
 	
 	/* Constructor */
-	public Hash(){
+	public Hash() {
 		MAX_SIZE = 3; // small to test resizing
-		items = new ArrayList<LinkedList<Cell<K,V>>>(MAX_SIZE);
-		for (int i = 0; i < MAX_SIZE; i++){
-			items.add(new LinkedList<Cell<K,V>>()); // Crucial. We don't magically get LinkedLists even though we created an ArrayList of a certain size
+		items = new ArrayList<>(MAX_SIZE);
+		for (int i = 0; i < MAX_SIZE; i++) {
+			items.add(new LinkedList<>()); // Crucial. We don't magically get LinkedLists even though we created an ArrayList of a certain size
 		}
 		numItems = 0;
 		primeArraySize = 100;
 		primes = Prime.generatePrimes(primeArraySize);
 	}
 	
-	public Hash(int size){
+	public Hash(int size) {
 		this();
 		MAX_SIZE = size;
 	}
 	
 	/* Bad hash function: may not distribute keys uniformly */
-	public int hashCodeOfKey(K key){
+	public int hashCodeOfKey(K key) {
 		return key.toString().length() % MAX_SIZE;
 	}
 	
-	public void put(K key, V value){
+	public void put(K key, V value) {
 		/* Find the LinkedList that we should put the Cell into */
 		int hashKey = hashCodeOfKey(key);
 		LinkedList<Cell<K,V>> list = items.get(hashKey);
 		
-		/* If no such LinkedList exists, create one and add it to our ArrayList */
-		if (list == null){
-			list = new LinkedList<Cell<K,V>>();
-			items.add(hashKey, list);
-		}
-		
-		for (Cell<K,V> cell : list){
-			if (cell.equivalent(key)){
-				cell.setValue(value);	// overwrites the old value.
+		for (Cell<K,V> cell : list) {
+			if (cell.equivalent(key)) {
+				cell.setValue(value); // overwrites the old value.
 				return;
 			}
 		}
 		numItems++;
-		if (calculateLoadFactor() > 0.7)
+		if (calculateLoadFactor() > 0.7) {
 			increaseSize();
+		}
 		list.add(new Cell<K,V>(key, value)); // create a new Cell and add it to our LinkedList
 	}
 	
-	public V get(K key){
+	public V get(K key) {
 		/* Find the LinkedList that may contain the value */
 		int code = hashCodeOfKey(key);
 		LinkedList<Cell<K,V>> list = items.get(code);
 
-		if (list == null)
+		if (list == null) {
 			return null;
-		
-		for (Cell<K,V> cell : list){
-			if (cell.equivalent(key))
+		}
+		for (Cell<K,V> cell : list) {
+			if (cell.equivalent(key)) {
 				return cell.getValue();
+			}
 		}
 
 		return null; // failure.
 	}
 	
 	/* Used to resize array when it gets too full */
-	public double calculateLoadFactor(){
+	public double calculateLoadFactor() {
 		return (double) numItems / MAX_SIZE;
 	}
 	
-	public void increaseSize(){
+	public void increaseSize() {
 		int nextPrime = getNextPrime();
-		if (nextPrime == -1) // error
+		if (nextPrime == -1) { // error
 			return;
+		}
 		Hash<K,V> hashNew = new Hash<K,V>(nextPrime);
-		for (LinkedList<Cell<K,V>> list : items){
-			for (Cell<K,V> cell : list){
+		for (LinkedList<Cell<K,V>> list : items) {
+			for (Cell<K,V> cell : list) {
 				hashNew.put(cell.getKey(), cell.getValue());
 			}
 		}
@@ -96,19 +93,19 @@ public class Hash<K, V> {
 		items = hashNew.items;
 	}
 	
-	public int getNextPrime(){
+	public int getNextPrime() {
 		return Prime.getNextPrime(primes, 2 * MAX_SIZE);
 	}
 	
-	public int getMaxSize(){
+	public int getMaxSize() {
 		return MAX_SIZE;
 	}
 	
 	@Override
-	public String toString(){
+	public String toString() {
 		StringBuffer result = new StringBuffer();
-		for (LinkedList<Cell<K,V>> list : items){
-			for (Cell<K,V> cell : list){
+		for (LinkedList<Cell<K,V>> list : items) {
+			for (Cell<K,V> cell : list) {
 				result.append("key = " + cell.getKey() + "   value = " + cell.getValue() + "\n");
 			}
 		}

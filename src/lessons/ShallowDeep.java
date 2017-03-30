@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *   your ArrayList contains references to the original objects.
  */
 public class ShallowDeep {
-	public static void main (String [] args){
+	public static void main (String [] args) {
 		/***********/
 		/* Integer */
 		/***********/
@@ -69,12 +69,12 @@ public class ShallowDeep {
 		printArrays2(array5, array6);		
 	}
 	
-	private static void printArrays(ArrayList<Integer> array1, ArrayList<Integer> array2){
+	private static void printArrays(ArrayList<Integer> array1, ArrayList<Integer> array2) {
 		System.out.println("(1st) array = " + array1);
 		System.out.println("(2nd) array = " + array2 + "\n");
 	}
 	
-	private static void printArrays2(ArrayList<IntWrapper> array1, ArrayList<IntWrapper> array2){
+	private static void printArrays2(ArrayList<IntWrapper> array1, ArrayList<IntWrapper> array2) {
 		System.out.println("(1st) array = " + array1);
 		System.out.println("(2nd) array = " + array2 + "\n");
 	}

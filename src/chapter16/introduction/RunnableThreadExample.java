@@ -11,8 +11,7 @@ public class RunnableThreadExample implements Runnable {
 				Thread.sleep(500);
 				count++;
 			}
-		}
-		catch (InterruptedException exc) {
+		} catch (InterruptedException exc) {
 			System.out.println("RunnableThread interrupted.");
 		}
 		System.out.println("RunnableThread terminating.");

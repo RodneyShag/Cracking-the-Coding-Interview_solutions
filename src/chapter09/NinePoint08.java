@@ -1,17 +1,28 @@
 package chapter09;
 
-/* Explaining the 1st 1/2 page of the book's explanation during an interview would be helpful */
+import java.util.HashMap;
+
+/* Explaining the 1st 1/2 page of the book's explanation during an interview would be helpful 
+ * 
+ * This is a dynamic programming question. I solved this recursively using a cache.
+ * Alternatively we could maybe solve it iteratively using dynamic programming.
+ */
 public class NinePoint08 {
 	
 	/* Wrapper */
-	public static int makeChange(int n){
-		return makeChange(n, 25);
+	public static long makeChange(int n) {
+		HashMap<String, Long> cache = new HashMap<>();
+		return makeChange(n, 25, cache);
 	}
 	
 	/* Recursive helper function */
-	private static int makeChange(int n, int denom){
+	private static long makeChange(int n, int denom, HashMap<String, Long> cache) {
+		String key = n + "," + denom;
+		if (cache.containsKey(key)) {
+			return cache.get(key);
+		}
 		int nextDenom = 0;
-		switch (denom){
+		switch (denom) {
 			case 25:
 				nextDenom = 10;
 				break;
@@ -22,16 +33,18 @@ public class NinePoint08 {
 				nextDenom = 1;
 				break;
 			case 1:
+				cache.put(key, 1L);
 				return 1;
 			default:
 				return 0; // something wen't wrong if we get here.
 		}
 		
-		/* This part is the main algorithm */
-		int ways = 0;
-		for (int i = 0; i <= n; i += denom){		// notice it's "i <= n"
-			ways += makeChange(n - i, nextDenom);
+		/* The main algorithm */
+		long ways = 0;
+		for (int i = 0; i <= n; i += denom) { // notice it's: i <= n
+			ways += makeChange(n - i, nextDenom, cache);
 		}
+		cache.put(key, ways);
 		return ways;
 	}
 }

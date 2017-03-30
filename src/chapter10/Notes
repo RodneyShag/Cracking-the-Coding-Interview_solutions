@@ -8,8 +8,7 @@ Introduction
 	
 	"Find words in millions of documents"
 		- preprocess the data with a HashMap<String, ArrayList<Document>>
-		- Somehow divide the HashMap across machines. Can do it alphabetically by keywords. Book doesn't say precisely
-		  how/where we would save the documents in this case though (since multiple keys map to same documents.
+		- Somehow divide the HashMap across machines. Can do it alphabetically by keywords.
 
 10.1 - Providing stock information for clients
 
@@ -33,7 +32,7 @@ Introduction
 
 10.5 - Web Crawler: avoiding infinite loops
 
-	 - Simple Answer: Use HashMap to mark pages as visited.
+	 - Simple Answer: Use HashMap/HashSet to mark pages as visited.
 	 - To solve problem where some URLs are different but content is same/similar:
 	 		- Create a "signature" for each page so we can assess degree of similarity.
 	 		  Then, If a page has a high degree of similarity to other pages, deprioritize crawling its children.
@@ -54,6 +53,7 @@ Introduction
 
 10.7 - Design caching mechanism for Web Server
 
+	- We basically design an LRU cache
 	- Main idea: Use linked list to keep track of popular pages. Use a HashMap<String, Node> (in parallel w/ the LinkedList) 
 	             for fast access to LinkedList nodes (key = the url string, value = node in LinkedList) 
 	- "A linked list would allow easy purging of old data, by moving "fresh" items to the front. We could implement it to remove the 

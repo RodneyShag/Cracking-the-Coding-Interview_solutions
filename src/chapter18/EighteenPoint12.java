@@ -65,8 +65,9 @@ public class EighteenPoint12 {
 
 	/* For each element at (x,y), we store the sum of all values from (0,0) to (x,y) */
     public static int[][] preprocess(int[][] matrix) {
-    	if (matrix == null)
+    	if (matrix == null) {
     		return null;
+    	}
     	int rows = matrix.length;
     	int cols = matrix[0].length;
     	
@@ -104,15 +105,12 @@ public class EighteenPoint12 {
 		int rows = matrix.length;
 		int cols = matrix[0].length;
 		int maxSum = 0;
-		for (int rowStart = 0; rowStart < rows; rowStart++){
+		for (int rowStart = 0; rowStart < rows; rowStart++) {
 			int [] partialSum = new int[cols];			
 			for (int rowEnd = rowStart; rowEnd < rows; rowEnd++) {
-
-				/* Update partialSum */
 				for (int col = 0; col < cols; col++) {
 					partialSum[col] += matrix[rowEnd][col];
 				}
-				
 				int sum = maxSubArray(partialSum);
 				maxSum = Math.max(sum, maxSum);
 			}
@@ -126,8 +124,9 @@ public class EighteenPoint12 {
 		for (int i = 0; i < array.length; i++) {
 			runningSum += array[i];
 			maxSum = Math.max(maxSum, runningSum);
-			if (runningSum < 0)
+			if (runningSum < 0) {
 				runningSum = 0;
+			}
 		}
 		return maxSum;
 	}

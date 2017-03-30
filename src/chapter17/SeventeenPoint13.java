@@ -14,19 +14,18 @@ public class SeventeenPoint13 {
 	public static BiNode tail = null;
 	
     public static void inorderTraverse(BiNode root) {
-        if (root == null) 
-        	return;
-        inorderTraverse(root.left);
-        buildList(root);
-        inorderTraverse(root.right);
+        if (root != null) {
+	        inorderTraverse(root.left);
+	        buildList(root);
+	        inorderTraverse(root.right);
+        }
     }
     
-    static void buildList(BiNode n) {
+    private static void buildList(BiNode n) {
         if (head == null || tail == null) {
             head = tail = n;
             n.left = n.right = null;
-        }
-        else {
+        } else {
             tail.right = n;
             n.left = tail;
             tail = n;
@@ -34,21 +33,44 @@ public class SeventeenPoint13 {
     }
     
 	/* Solution 2 - Recursive Solution. Uses our own created NodePair data structure */
-	public static NodePair convert(BiNode root){
-		if (root == null)
+	public static NodePair convert(BiNode root) {
+		if (root == null) {
 			return null;
-		
-		NodePair left = convert(root.left);
+		}
+		NodePair left  = convert(root.left);
 		NodePair right = convert(root.right);
 		join(left == null ? null : left.tail, root);
 		join(root, right == null ? null : right.head);
 		return new NodePair(left == null ? root : left.head, right == null ? root : right.tail);
 	}
 	
-	private static void join(BiNode node1, BiNode node2){
-		if (node1 != null)
+	private static void join(BiNode node1, BiNode node2) {
+		if (node1 != null) {
 			node1.right = node2;
-		if (node2 != null)
+		}
+		if (node2 != null) {
 			node2.left = node1;
+		}
+	}
+}
+
+class BiNode {
+	public BiNode left, right;
+	public int data;
+	
+	public BiNode(int d) {
+		left  = null;
+		right = null;
+		data  = d;
+	}
+}
+
+class NodePair {
+	BiNode head;
+	BiNode tail;
+	
+	public NodePair(BiNode h, BiNode t) {
+		head = h;
+		tail = t;
 	}
 }

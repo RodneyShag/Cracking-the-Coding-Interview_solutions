@@ -2,6 +2,7 @@ package chapter05;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.BitSet;
 
 /* Find missing number from 0 to n
  * 
@@ -14,44 +15,58 @@ public class FivePoint7 {
 	/* Solution 1 (from 1st 3 paragraphs in book)
 	 * Mention the n * (n+1)/2 solution in an interview, even though it's O(n log n) time.*/
 	
-	/* Solution 2: Read book's explanation, but ignore its recursive code. See my code below instead.
-	 * - I coded the book's recursive explanation iteratively.
-	 * - Uses "BitInteger" class (from book) which I found online
+	/* Solution 2: Read book's explanation, but ignore its recursive code.
 	 * - Runtime: n + n/2 + n/4 + n/8 ... = n * (1 + 1/2 + 1/4 + 1/8 ...) = 2n = O(n)
 	 */
-	public static int findMissing(ArrayList<BitInteger> array){
+	
+	private static final int MAX_BITS = 3; // we will test code with numbers 0-7
+	
+	public static int findMissing(ArrayList<BitSet> array) {
 		int zeroBits = 0;
 		int oneBits  = 0;
-		BitInteger missingNum = new BitInteger();
-		for (int i = 0; i < BitInteger.INTEGER_SIZE; i++){	//I manually set this to 3 in BitInteger code.
+		BitSet missingNum = new BitSet(MAX_BITS);
+		for (int i = 0; i < MAX_BITS; i++) {
 			/* Count number of 1's and 0's in digit i */
-			for (BitInteger num: array){
-				if (num.fetch(i) == 1)
+			for (BitSet num: array) {
+				if (num.get(i)) {
 					oneBits++;
-				else
+				} else {
 					zeroBits++;
-			}
-			
-			Iterator<BitInteger> iterator = array.iterator(); // we use an Iterator since it's the safe way to remove elements from a Collection while looping through it.
-			if (zeroBits > oneBits){
-				missingNum.set(i, 1);
-				
-				/* Remove Non-similar Numbers. (Book explains why this works). */
-				while (iterator.hasNext()) {
-				    if (iterator.next().fetch(i) == 0)	//Tricky: I think the .next() automatically makes the iterator point to the next thing
-				    	iterator.remove();
 				}
 			}
-			else{
-				missingNum.set(i, 0);
+			
+			/* We need an iterator since it's the safe way to remove elements from a Collection while looping through it */
+			Iterator<BitSet> iterator = array.iterator();
+			
+			if (zeroBits > oneBits) { // then missing bit in number must be 1
+				missingNum.set(i);
+				/* Remove Non-similar Numbers (Book explains why this works) */
 				while (iterator.hasNext()) {
-				    if (iterator.next().fetch(i) == 1)	
+				    if (!iterator.next().get(i)) {
 				    	iterator.remove();
+				    }
+				}
+			} else {
+				missingNum.clear(i);
+				while (iterator.hasNext()) {
+				    if (iterator.next().get(i)) {
+				    	iterator.remove();
+				    }
 				}
 			}
 			zeroBits = 0;
-			oneBits = 0;
+			oneBits  = 0;
 		}
-		return missingNum.toInt();
+		return bitSetToInt(missingNum);
+	}
+	
+	private static int bitSetToInt(BitSet bitset) {
+		int bitInteger = 0;
+		for (int i = 0 ; i < bitset.length(); i++) {
+			if (bitset.get(i)) {
+				bitInteger |= (1 << i);
+			}
+		}
+		return bitInteger;
 	}
 }

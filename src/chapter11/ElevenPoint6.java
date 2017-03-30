@@ -10,23 +10,26 @@ package chapter11;
 public class ElevenPoint6 {
 	
 	/* Solution 1 - On every step, eliminate a row or a column.
-	 * - Must start in top right (as we did) or bottom left
+	 * - Start in top right corner
 	 * - Always either move down (eliminating current row), or move left (eliminating current col)
+	 * - Alternate solution: start in bottom left and move to top right
 	 */
-	public static boolean findElement(int [][] matrix, int elem){
-		int numRows = matrix.length;
+	public static boolean findElement(int [][] matrix, int elem) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        /* Start at top right corner */
+        int row = 0;
+        int col = cols - 1;
 		
-		/* Start off at top right */
-		int row = 0; 
-		int col = matrix[0].length - 1;
-		
-		while(row < numRows && col >= 0){
-			if (matrix[row][col] == elem)
+		while (row < rows && col >= 0) {
+			if (matrix[row][col] == elem) {
 				return true;
-			else if (matrix[row][col] > elem)
+			} else if (matrix[row][col] > elem) {
 				col--;
-			else
+			} else {
 				row++;
+			}
 		}
 		return false;
 	}

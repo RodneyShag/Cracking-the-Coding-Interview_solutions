@@ -10,7 +10,7 @@ package chapter17;
  * 1) Count # of factors of 5's in each term of the factorial (1...n)             Worth Mentioning
  * 2) Count multiples of 5 (btwn 1 and n), then multiples of 25, then 125...      Favorite
  */
-public class SeventeenPoint03{
+public class SeventeenPoint03 {
 	/* Solution 2
 	 * 
 	 * Special numbers:
@@ -19,11 +19,12 @@ public class SeventeenPoint03{
 	 * 125 = 5 x 5 x 5       Our code will properly add 3 to count for this
 	 * 625 = 5 x 5 x 5 x 5   Our code will properly add 4 to count for this
 	 */
-	public static int numTrailingZeros(int n){
-		if (n < 1)
+	public static int numTrailingZeros(int n) {
+		if (n < 1) {
 			return 0;
+		}
 		int count = 0;
-		for (int i = 5; i <= n; i *= 5){	// i is 5, 25, 125, 625 ...
+		for (int i = 5; i <= n; i *= 5) { // i is 5, 25, 125, 625 ...
 			count += n/i; // to count how many multiples of "i" are in range 1...n, we just do n/i
 		}
 		return count;

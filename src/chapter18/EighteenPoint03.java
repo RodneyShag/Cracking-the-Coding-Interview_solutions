@@ -15,18 +15,19 @@ package chapter18;
 	(Book's iterative solution of the above recursive explanation is below)
 */
 public class EighteenPoint03 {
-	public int[] generate(int [] array, int m){
+	public int[] generate(int [] array, int m) {
 		/* Copy first "m" elements into new array */
 		int [] solution = new int[m];
-		for (int i = 0; i < m; i++){
+		for (int i = 0; i < m; i++) {
 			solution[i] = array[i];
 		}
 		
 		/* 1 by 1, decide if array[i] (where i >= m) should be in solution[] */
-		for (int i = m; i < array.length; i++){
+		for (int i = m; i < array.length; i++) {
 			int rand = (int) (Math.random() * (i+1)); // random number between 0 and i inclusive
-			if (rand < m)							  // There's "rand / m" percent chance that the new element will be put into array
+			if (rand < m) {							  // There's "rand / m" percent chance that the new element will be put into array
 				solution[rand] = array[i];
+			}
 		}
 		return solution;
 	}

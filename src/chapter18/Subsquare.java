@@ -1,8 +1,8 @@
 package chapter18;
 
 public class Subsquare {
-	 int col;
 	 int row;
+	 int col;
 	 int length;
      
 	 public Subsquare(int r, int c, int l) {
@@ -12,7 +12,7 @@ public class Subsquare {
 	 }
 	 
 	 @Override
-	 public String toString(){
+	 public String toString() {
 		 return "row = " + row + "  col = " + col + "  length = " + length;
 	 }
 }

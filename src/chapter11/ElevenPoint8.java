@@ -16,46 +16,47 @@ public class ElevenPoint8 {
 	private static RankNode root = null;
 	
 	/* Called each time a number is generated */
-	public static void track(int x){
-		if (root == null)
+	public static void track(int x) {
+		if (root == null) {
 			root = new RankNode(x);
-		else
+		} else {
 			insert(x, root);
+		}
 	}
 	
-	private static void insert(int x, RankNode node){
-		if (x <= node.data){
+	private static void insert(int x, RankNode node) {
+		if (x <= node.data) {
 			node.leftSize++;
-			if (node.left == null)
+			if (node.left == null) {
 				node.left = new RankNode(x);
-			else
+			} else {
 				insert(x, node.left);
-		}
-		else{
-			if (node.right == null)
+			}
+		} else {
+			if (node.right == null) {
 				node.right = new RankNode(x);
-			else
+			} else {
 				insert(x, node.right);
+			}
 		}
 	}
 	
 	/* Returns number of values less than or equal to x (not including x itself) */
-	public static int getRankOfNumber(int x){
-		if (root == null)
+	public static int getRankOfNumber(int x) {
+		if (root == null) {
 			return 0;
+		}
 		return getRankOfNumber(x, root);
 	}
 	
-	private static int getRankOfNumber(int x, RankNode node){
-		if (node == null)
+	private static int getRankOfNumber(int x, RankNode node) {
+		if (node == null) {
 			return 0;
-		else if (x == node.data){
+		} else if (x == node.data) {
 			return node.leftSize;
-		}
-		else if (x > node.data){
+		} else if (x > node.data) {
 			return 1 + node.leftSize + getRankOfNumber(x, node.right);
-		}
-		else{
+		} else {
 			return getRankOfNumber(x, node.left);
 		}
 	}

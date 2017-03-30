@@ -5,7 +5,7 @@ public class Point {
 	public int x;
 	public int y;
 	
-	Point(int x, int y){
+	Point(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -16,23 +16,23 @@ public class Point {
 	
 	/* Here for 9.2 to work with hashing Points */
 	@Override
-	public boolean equals(Object other){	//must take an "Object" as a parameter, not a "Point", so that it overrides the .equals method
-		if (other == this)
+	public boolean equals(Object other) { // must take an "Object" as a parameter, not a "Point", so that it overrides the .equals method
+		if (other == this) {
 			return true;
-		if (other == null || !(other instanceof Point))
+		} else if (other == null || !(other instanceof Point)) {
 			return false;
-
+		}
 		Point otherPoint = (Point) other;
 		return this.x == otherPoint.x && this.y == otherPoint.y;
 	}
 	
 	@Override
-	public int hashCode(){
+	public int hashCode() {
 		return 13*x + 7*y;
 	}
 	
 	@Override
-	public String toString(){
+	public String toString() {
 		return "(" + x + "," + y + ")";
 	}
 }

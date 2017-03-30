@@ -7,15 +7,15 @@ import java.util.BitSet;
  * - Using BitSet instead of HashMap since we have limited memory.
  */
 public class TenPoint4 {
-	public static void checkDuplicates(int [] array){
+	public static void checkDuplicates(int [] array) {
 		BitSet bitset = new BitSet(32000);
-		for (int i = 0; i < array.length; i++){
+		for (int i = 0; i < array.length; i++) {
 			int num = array[i];
-			//book had an extra statement (num0 = ...) here that I don't think is necessary
-			if (bitset.get(num))
+			if (bitset.get(num)) {
 				System.out.print(num + " ");
-			else
+			} else {
 				bitset.set(num);
+			}
 		}
 	}
 }

@@ -12,21 +12,22 @@ import java.util.ArrayList;
  */
 public class EighteenPoint05 {
 	/* Solution 1 - Linear search, keeping track of the last position of the words */
-	public static Integer shortest(String[] words, String word1, String word2){
-		if (words == null || word1 == null || word2 == null)
+	public static Integer shortest(String[] words, String word1, String word2) {
+		if (words == null || word1 == null || word2 == null) {
 			return null;
-		
+		}
 		int min = Integer.MAX_VALUE;
 		int lastPosWord1 = -1;
 		int lastPosWord2 = -1;
 		
-		for (int i = 0; i < words.length; i++){
-			if (words[i].equals(word1))
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].equals(word1)) {
 				lastPosWord1 = i;
-			else if (words[i].equals(word2))
+			} else if (words[i].equals(word2)) {
 				lastPosWord2 = i;
+			}
 			
-			if (lastPosWord1 != -1 && lastPosWord2 != -1){
+			if (lastPosWord1 != -1 && lastPosWord2 != -1) {
                 int currDistance = Math.abs(lastPosWord1 - lastPosWord2);
                 min = Math.min(min, currDistance);
 			}
@@ -41,12 +42,12 @@ public class EighteenPoint05 {
 	 * - Use Solution 1's method to then find minimum distance on our preprocessed data.
 	 */
 	
-	private static HashMap<String, ArrayList<Integer>> map = new HashMap<String, ArrayList<Integer>>();
+	private static HashMap<String, ArrayList<Integer>> map = new HashMap<>();
 	
-	public static void preProcess(String [] words){
-		for (int i = 0; i < words.length; i++){
+	public static void preProcess(String [] words) {
+		for (int i = 0; i < words.length; i++) {
 			String currWord = words[i];
-			if(!map.containsKey(currWord)){
+			if (!map.containsKey(currWord)) {
 				map.put(currWord, new ArrayList<Integer>());
 			}
 			ArrayList<Integer> positions = map.get(currWord);
@@ -54,14 +55,15 @@ public class EighteenPoint05 {
 		}
 	}
 	
-	public static Integer shortest2(String word1, String word2){
+	public static Integer shortest2(String word1, String word2) {
 		return findDistance(map.get(word1), map.get(word2));
 	}
 	
 	/* Merges lists, then uses same algo from Solution 1 to find minimum distance */
-	private static Integer findDistance(ArrayList<Integer> listA, ArrayList<Integer> listB){
-		if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0)
-			return null; 
+	private static Integer findDistance(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+		if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
+			return null;
+		}
 		
 		ArrayList<Pair> merged = merge(listA, listB);
 		
@@ -69,14 +71,15 @@ public class EighteenPoint05 {
 		int lastPosWord1 = -1;
 		int lastPosWord2 = -1;
 		
-		for (int i = 0; i < merged.size(); i++){
+		for (int i = 0; i < merged.size(); i++) {
 			Pair pair = merged.get(i);
-			if (pair.fromListA)
+			if (pair.fromListA) {
 				lastPosWord1 = pair.num;
-			else
+			} else {
 				lastPosWord2 = pair.num;
+			}
 			
-			if (lastPosWord1 != -1 && lastPosWord2 != -1){
+			if (lastPosWord1 != -1 && lastPosWord2 != -1) {
 				int currDistance = Math.abs(lastPosWord1 - lastPosWord2);
 				min = Math.min(min, currDistance);
 			}
@@ -84,23 +87,23 @@ public class EighteenPoint05 {
 		return min;
 	}
 	
-	private static ArrayList<Pair> merge(ArrayList<Integer> listA, ArrayList<Integer> listB){
-		if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0)
+	private static ArrayList<Pair> merge(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+		if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
 			return null; // function assumes both lists are non-empty (to make error-checking easier to write)
+		}
 		
-		ArrayList<Pair> merged = new ArrayList<Pair>();
+		ArrayList<Pair> merged = new ArrayList<>();
 		int aIndex = 0;
 		int bIndex = 0;
 		int aValue;
 		int bValue;
-		while (aIndex < listA.size() && bIndex < listB.size()){
+		while (aIndex < listA.size() && bIndex < listB.size()) {
 			aValue = listA.get(aIndex);
 			bValue = listB.get(bIndex);
-			if (aValue < bValue){
+			if (aValue < bValue) {
 				merged.add(new Pair(aValue, true));
 				aIndex++;
-			}
-			else{
+			} else {
 				merged.add(new Pair(bValue, false));
 				bIndex++;
 			}
@@ -108,7 +111,7 @@ public class EighteenPoint05 {
 		
 		/* Only one of these will execute */
 		
-		while (aIndex < listA.size()){
+		while (aIndex < listA.size()) {
 			aValue = listA.get(aIndex);
 			merged.add(new Pair(aValue, true));
 			aIndex++;

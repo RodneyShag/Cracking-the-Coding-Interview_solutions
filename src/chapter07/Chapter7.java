@@ -1,31 +1,32 @@
 package chapter07;
 
 public class Chapter7 {
-	public static void main(String [] args){
+	public static void main(String [] args) {
 		test_Prime();
 		// 7.1: no code required
 		// 7.2: no code required
 		test_SevenPoint3();
 		test_SevenPoint4();
-		// 7.5: Skip (no new concepts in this problem. Only trick: line goes through center of 2 squares
+		// 7.5: Skip: no new concepts in this problem. Only trick is that the line goes through center of 2 squares.
 		test_SevenPoint6();
 		test_SevenPoint7();
 	}
 	
-	public static void test_Prime(){
+	public static void test_Prime() {
 		System.out.println("*** Test Primes");
 		System.out.println("Is 11 prime? " + Prime.isPrime(11));
 		System.out.println("Is 12 prime? " + Prime.isPrime(12));
 		System.out.println("Is 13 prime? " + Prime.isPrime(13));
 		boolean [] primes = Prime.generatePrimes(50);
 		System.out.print("Primes from 1-50: ");
-		for (int i = 0; i < primes.length; i++){
-			if (primes[i])
+		for (int i = 0; i < primes.length; i++) {
+			if (primes[i]) {
 				System.out.print(i + " ");
+			}
 		}
 	}
 
-	public static void test_SevenPoint3(){
+	public static void test_SevenPoint3() {
 		System.out.println("\n\n*** Test 7.3: Intersecting Lines");
 		Line line1 = new Line(new Point(2,0), new Point(2,3));
 		Line line2 = new Line(new Point(2,5), new Point(2,7));
@@ -48,7 +49,7 @@ public class Chapter7 {
 		System.out.println("Lines intersect? (should be false): " + LineFunctions.sameLine(line3, line4));
 	}
 
-	public static void test_SevenPoint4(){
+	public static void test_SevenPoint4() {
 		System.out.println("\n*** Test 7.4: Subtraction, Multiplication, Division");
 		int result = SevenPoint4.subtract(4, 7);
 		System.out.println(" 4 -  7 = " + result + "\n");
@@ -61,7 +62,7 @@ public class Chapter7 {
 		System.out.println(" 2 * -3 = " + result);
 		result = SevenPoint4.multiply(-2, -3);
 		System.out.println("-2 * -3 = " + result + "\n");
-		try{
+		try {
 			result = SevenPoint4.divide(7, 2);
 			System.out.println(" 7 /  2 = " + result);
 			result = SevenPoint4.divide(-7, 2);
@@ -70,13 +71,12 @@ public class Chapter7 {
 			System.out.println(" 7 / -2 = " + result);
 			result = SevenPoint4.divide(-7, -2);
 			System.out.println("-7 / -2 = " + result);
-		}
-		catch(Exception e){
+		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	public static void test_SevenPoint6(){
+	public static void test_SevenPoint6() {
 		System.out.println("\n*** Test 7.6: Find line passing through most provided points");
 		Point [] points = new Point[4];
 		points[0] = new Point(1, 3);
@@ -88,9 +88,9 @@ public class Chapter7 {
 		System.out.println("bestLine = " + bestLine);
 	}
 
-	public static void test_SevenPoint7(){
+	public static void test_SevenPoint7() {
 		System.out.println("\n*** Test 7.7: find kth magic number");
-		for (int i = 1; i <= 6; i++){
+		for (int i = 1; i <= 6; i++) {
 			System.out.println(i + ": magic number = " + SevenPoint7.getKthMagicNumber(i));
 		}
 	}

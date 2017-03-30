@@ -16,7 +16,7 @@ public class EighteenPoint10 {
 	
 	private static HashSet<String> dict = new HashSet<>();
 	
-	public static void setUpDict(){
+	public static void setUpDict() {
 		dict.add("DAMP");
 		dict.add("LAMP");
 		dict.add("LIMP");
@@ -25,12 +25,13 @@ public class EighteenPoint10 {
 	}
 	
 	/* Uses BFS */
-	public static LinkedList<String> convert(String start, String end){
-		if (start == null || end == null || start.length() != end.length())
+	public static LinkedList<String> convert(String start, String end) {
+		if (start == null || end == null || start.length() != end.length()) {
 			return null;
+		}
 		
 		start = start.toUpperCase();
-		end = end.toUpperCase();
+		end   = end.toUpperCase();
 		
 		Queue<String> queue                  = new LinkedList<>();
 		HashSet<String> visited              = new HashSet<>();
@@ -39,13 +40,14 @@ public class EighteenPoint10 {
 		queue.add(start);
 		visited.add(start);
 		
-		while (! queue.isEmpty()){
+		while (! queue.isEmpty()) {
 			String currWord = queue.remove();
-			if (currWord.equals(end))
+			if (currWord.equals(end)) {
 				return buildSolution(backtrackMap, currWord);
+			}
 			
-			for (String neighbor : getNeighbors(currWord)){
-				if ( ! visited.contains(neighbor)){
+			for (String neighbor : getNeighbors(currWord)) {
+				if ( ! visited.contains(neighbor)) {
 					visited.add(neighbor);
 					backtrackMap.put(neighbor, currWord);
 					queue.add(neighbor);
@@ -56,26 +58,27 @@ public class EighteenPoint10 {
 	}
 	
 	/* Generates all possible neighbors of given String */
-	private static HashSet<String> getNeighbors(String currString){
+	private static HashSet<String> getNeighbors(String currString) {
 		HashSet<String> validWords = new HashSet<>();
-		for (int i = 0; i < currString.length(); i++){
+		for (int i = 0; i < currString.length(); i++) {
 			char currChar = currString.charAt(i);
-			for (char changedChar = 'A'; changedChar <= 'Z'; changedChar++){
-				if (changedChar != currChar){
+			for (char changedChar = 'A'; changedChar <= 'Z'; changedChar++) {
+				if (changedChar != currChar) {
 					StringBuffer neighbor = new StringBuffer(currString);
 					neighbor.setCharAt(i, changedChar);
-					if (dict.contains(neighbor.toString()))
+					if (dict.contains(neighbor.toString())) {
 						validWords.add(neighbor.toString());
+					}
 				}
 			}
 		}
 		return validWords;
 	}
 	
-	private static LinkedList<String> buildSolution(HashMap<String, String> backtrackMap, String currWord){
+	private static LinkedList<String> buildSolution(HashMap<String, String> backtrackMap, String currWord) {
 		LinkedList<String> solution = new LinkedList<>();
 		solution.add(currWord);
-		while (backtrackMap.containsKey(currWord)){
+		while (backtrackMap.containsKey(currWord)) {
 			currWord = backtrackMap.get(currWord);
 			solution.add(0, currWord);
 		}

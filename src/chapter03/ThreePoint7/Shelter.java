@@ -9,21 +9,25 @@ public class Shelter {
 
 	public void enqueue(Animal animal) {
 		animal.barcode = barcode++;
-		if (animal instanceof Cat)
+		if (animal instanceof Cat) {
 			cats.add((Cat) animal);
-		else if (animal instanceof Dog)
+		} else if (animal instanceof Dog) {
 			dogs.add((Dog) animal);
+		}
 	}
 
 	public Animal dequeueAny() {
-		if (dogs.isEmpty())
+		if (dogs.isEmpty()) {
 			return cats.remove();
-		if (cats.isEmpty())
+		}
+		if (cats.isEmpty()) {
 			return dogs.remove();
-		if (dogs.peek().isOlderThan(cats.peek()))
+		}
+		if (dogs.peek().isOlderThan(cats.peek())) {
 			return dogs.remove();
-		else
+		} else {
 			return cats.remove();
+		}
 	}
 	
 	public Cat dequeueCat() {
@@ -34,17 +38,17 @@ public class Shelter {
 		return dogs.remove();				
 	}
 	
-	public int numAnimals(){
+	public int numAnimals() {
 		return dogs.size() + cats.size();
 	}
 	
 	/* Prints all animals in shelter */
-	public void printShelter(){
+	public void printShelter() {
 		System.out.print("\nShelter: ");
-		for (Cat cat : cats){
+		for (Cat cat : cats) {
 			System.out.print(cat + " ");
 		}
-		for (Dog dog : dogs){
+		for (Dog dog : dogs) {
 			System.out.print(dog + " ");
 		}
 		System.out.println();

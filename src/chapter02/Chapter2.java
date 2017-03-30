@@ -1,7 +1,7 @@
 package chapter02;
 
 public class Chapter2 {
-	public static void main (String [] args){
+	public static void main (String [] args) {
 		test_Introduction();
 		test_TwoPoint1();
 		test_TwoPoint2();
@@ -12,7 +12,7 @@ public class Chapter2 {
 		test_TwoPoint7();
 	}
 	
-	public static void test_Introduction(){
+	public static void test_Introduction() {
 		System.out.println("\n**********************************************");
 		System.out.println("Introduction: Test linked list and deleteNode()\n");
 		Node head = new Node(new int[]{9,7,8});
@@ -29,7 +29,7 @@ public class Chapter2 {
 		ListFunctions.printList(head);
 	}
 	
-	public static void test_TwoPoint1(){
+	public static void test_TwoPoint1() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.1: Remove Duplicates");
 		
@@ -46,7 +46,7 @@ public class Chapter2 {
 		ListFunctions.printList(head);
 	}
 	
-	public static void test_TwoPoint2(){
+	public static void test_TwoPoint2() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.2: Kth Last");
 		Node head = new Node(new int[]{1,2,3,4});
@@ -55,28 +55,19 @@ public class Chapter2 {
 		System.out.println("\nSolution 1");
 		int k = 2;
 		Node m = TwoPoint2.kthToLast_1(head, k);
-		if (m != null)
+		if (m != null) {
 			System.out.println("Element " + k + " from end = " + m.data);
-
-		System.out.println("\nSolution 2A");
-		k = 2;
-		TwoPoint2.kthToLast_2A(head, k); // this prints solution to screen
+		}
 		
-		System.out.println("\nSolution 2C");
+		System.out.println("\nSolution 2");
 		k = 2;
-		IntWrapper intWrapped = new IntWrapper();
-		m = TwoPoint2.kthToLast_2C(head, k, intWrapped);
-		if (m != null)
+		m = TwoPoint2.kthToLast_2(head, k);
+		if (m != null) {
 			System.out.println("Element " + k + " from end = " + m.data);
-		
-		System.out.println("\nSolution 3");
-		k = 2;
-		m = TwoPoint2.kthToLast_3(head, k);
-		if (m != null)
-			System.out.println("Element " + k + " from end = " + m.data);	
+		}
 	}
 
-	public static void test_TwoPoint3(){
+	public static void test_TwoPoint3() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.3: Test Delete Mid\n");
 		Node head = new Node(new int[]{6,7,8,9});
@@ -91,7 +82,7 @@ public class Chapter2 {
 		ListFunctions.printList(head);
 	}
 	
-	public static void test_TwoPoint4(){
+	public static void test_TwoPoint4() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.4: Test Partition");
 
@@ -112,7 +103,7 @@ public class Chapter2 {
 		ListFunctions.printList(head);
 	}
 	
-	public static void test_TwoPoint5(){
+	public static void test_TwoPoint5() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.5: Add Lists");
 		
@@ -142,7 +133,7 @@ public class Chapter2 {
 		
 		ListFunctions.printList(num1);
 		ListFunctions.printList(num2);
-		Node twoPoint5_Forward = TwoPoint5.addForwardOrder(num1, num2);
+		Node twoPoint5_Forward = TwoPoint5.AddForwardOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Forward);
 		System.out.println();
 		
@@ -151,11 +142,11 @@ public class Chapter2 {
 		
 		ListFunctions.printList(num1);
 		ListFunctions.printList(num2);
-		twoPoint5_Forward = TwoPoint5.addForwardOrder(num1, num2);
+		twoPoint5_Forward = TwoPoint5.AddForwardOrder(num1, num2);
 		ListFunctions.printList(twoPoint5_Forward);
 	}
 	
-	public static void test_TwoPoint6(){
+	public static void test_TwoPoint6() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.6: Circular Linked List\n");
 		Node a1 = new Node(1);
@@ -171,7 +162,7 @@ public class Chapter2 {
 		System.out.println("Loop Beginning (Value) = " + loopBeginning.data);
 	}
 	
-	public static void test_TwoPoint7(){
+	public static void test_TwoPoint7() {
 		System.out.println("\n**********************************************");
 		System.out.println("Question 2.7: Palindrome\n");
 		
@@ -181,7 +172,7 @@ public class Chapter2 {
 		System.out.print("Original List: ");
 		ListFunctions.printList(head);
 		System.out.print("Reverse List:  ");
-		head = ListFunctions.reverseListRecursive(head);
+		head = ListFunctions.reverseListIterative(head);
 		ListFunctions.printList(head);
 		System.out.print("Reverse Again: ");
 		head = ListFunctions.reverseListIterative(head);

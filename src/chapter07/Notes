@@ -1,0 +1,11 @@
+P(A and B) = P(B|A) P(A)		
+P(A or B)  = P(A) + P(B) - P(A and B)		
+
+Independence       --> P(A and B) = P(A) P(B)		
+Mutually Exclusive --> P(A and B) = 0, so P(A or B) = P(A) + P(B)		
+
+Two events cannot be both independent and mutually exclusive (provided both have 
+probabilities greater than 0). Why? Because mutual exclusivity means that if one 
+happens then the other cannot. Independence, however, says that one event happening 
+means absolutely nothing about the other event. Thus, as long as two events have 
+non-zero probabilities, they will never be both mutually exclusive and independent.			

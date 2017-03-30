@@ -1,12 +1,11 @@
 package chapter03.ThreePoint7;
 
 /* Skills Utilized:
- * 1) Inheritance: using "extends". Abstract method in "Animal".
+ * 1) Inheritance: using "extends". Abstract class "Animal" with abstract method.
  * 2) Polymorphism: Typecasting (Dog) (Cat), instanceof
- * 3) As a timestamp, use an int "barcode" (in Shelter class)
  */
 public class ThreePoint7 {
-	public static void main(String [] args){
+	public static void main(String [] args) {
 		/* Create shelter */
 		Shelter shelter = new Shelter();
 		shelter.enqueue(new Cat("Suzy"));

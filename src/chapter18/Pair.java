@@ -4,7 +4,7 @@ public class Pair {
 	public Integer num;
 	public boolean fromListA;
 	
-	public Pair(Integer n, boolean bool){
+	public Pair(Integer n, boolean bool) {
 		num = n;
 		fromListA = bool;
 	}

@@ -11,24 +11,25 @@ import java.util.LinkedList;
  * 5) Making a DEEP COPY whenever we add Nodes to the list.
  */
 public class FourPoint4 {
-	public static ArrayList<LinkedList<TreeNode>> createLinkedLists(TreeNode root){
-		ArrayList<LinkedList<TreeNode>> lists = new ArrayList<LinkedList<TreeNode>>();
+	public static ArrayList<LinkedList<TreeNode>> createLinkedLists(TreeNode root) {
+		ArrayList<LinkedList<TreeNode>> lists = new ArrayList<>();
 		createLinkedListsHelper(lists, root, 0);
 		return lists;
 	}
 	
-	/* Recursive Solution (loosely based off DFS) */
-	public static void createLinkedListsHelper(ArrayList<LinkedList<TreeNode>> lists, TreeNode node, int currLevel){	
-		if (node == null)
+	public static void createLinkedListsHelper(ArrayList<LinkedList<TreeNode>> lists, TreeNode node, int currLevel) {	
+		if (node == null) {
 			return;
+		}
 		
 		/* Tricky. May need a new list for a new level */
-		if (lists.size() == currLevel)				// levels are visited in order, so this should work.
+		if (lists.size() == currLevel) { // levels are visited in order, so this should work.
 			lists.add(new LinkedList<TreeNode>());
+		}
 		
 		/* Add this Node */
-		LinkedList<TreeNode> list = lists.get(currLevel);//get the appropriate list to add the node to.
-		list.add(new TreeNode(node.data));			     // DEEP COPY - don't forget!
+		LinkedList<TreeNode> list = lists.get(currLevel); // get the appropriate list to add the node to.
+		list.add(new TreeNode(node.data));			      // DEEP COPY - don't forget!
 		
 		/* Recursively add this nodes subtrees */
 		createLinkedListsHelper(lists, node.left,  currLevel + 1);

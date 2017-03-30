@@ -4,12 +4,12 @@ package lessons;
 public class IntWrapper {
 	int value;
 	
-	public IntWrapper(int v){
+	public IntWrapper(int v) {
 		value = v;
 	}
 	
 	@Override
-	public String toString(){
+	public String toString() {
 		return String.valueOf(value);
 	}
 }

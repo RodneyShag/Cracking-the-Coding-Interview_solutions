@@ -12,7 +12,7 @@ public class TreeFunctions {
 	 *      /     / \
 	 *     0     2   4
 	 */
-	public static TreeNode createTree(){
+	public static TreeNode createTree() {
 		TreeNode root = new TreeNode(5);
 		root.addLeftChild(1);
 		root.left.addLeftChild(0);
@@ -29,7 +29,7 @@ public class TreeFunctions {
 	 *      /     / \
 	 *     0     6   9
 	 */
-	public static TreeNode createBST(){
+	public static TreeNode createBST() {
 		TreeNode root = new TreeNode(5);
 		root.addLeftChild(1);
 		root.left.addLeftChild(0);
@@ -39,24 +39,24 @@ public class TreeFunctions {
 		return root;
 	}
 	
-	public static void printPreOrder(TreeNode node){
-		if (node != null){
+	public static void printPreOrder(TreeNode node) {
+		if (node != null) {
 			System.out.print(node); // our toString() method will be invoked here
 			printPreOrder(node.left);
 			printPreOrder(node.right);
 		}
 	}
 	
-	public static void printInOrder(TreeNode node){
-		if (node != null){
+	public static void printInOrder(TreeNode node) {
+		if (node != null) {
 			printInOrder(node.left);
 			System.out.print(node); // our toString() method will be invoked here
 			printInOrder(node.right);
 		}
 	}
 	
-	public static void printPostOrder(TreeNode node){
-		if (node != null){
+	public static void printPostOrder(TreeNode node) {
+		if (node != null) {
 			printPostOrder(node.left);
 			printPostOrder(node.right);
 			System.out.print(node); // our toString() method will be invoked here
@@ -64,16 +64,18 @@ public class TreeFunctions {
 	}
 	
 	/* Prints tree level 0, 1, ... n */
-	public static void printLevelOrder(TreeNode root){
-		Queue<TreeNode> queue = new LinkedList<>(); // Queue is an interface, so we use LinkedList
+	public static void printLevelOrder(TreeNode root) {
+		Queue<TreeNode> queue = new LinkedList<>(); // Queue is an interface, so we use a LinkedList
 		queue.add(root);
-		while (! queue.isEmpty()){
-			TreeNode curr = queue.remove();
-			System.out.print(curr + " ");
-			if (curr.left != null)
-				queue.add(curr.left);
-			if (curr.right != null)
-				queue.add(curr.right);
+		while ( ! queue.isEmpty()) {
+			TreeNode n = queue.remove();
+			System.out.print(n + " ");
+			if (n.left != null) {
+				queue.add(n.left);
+			}
+			if (n.right != null) {
+				queue.add(n.right);
+			}
 		}
 	}
 }

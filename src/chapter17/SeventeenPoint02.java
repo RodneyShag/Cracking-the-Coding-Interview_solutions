@@ -7,21 +7,26 @@ package chapter17;
 public class SeventeenPoint02 {
 	boolean [] winnerMap;
 	
-	public static int convertBoardToInt(char[][] board){
+	public static int convertBoardToInt(char[][] board) {
 		int sum = 0;
 		int factor = 1;
 		int dimension = board.length; // assumes square board
-		for (int row = 0; row < board.length; row++) {
-			for (int col = 0; col < board.length; col++) {
+		for (int row = 0; row < dimension; row++) {
+			for (int col = 0; col < dimension; col++) {
 				char ch = board[row][col];
 				int value = 0;
 				switch (ch) {
-					case ' ': value = 0 * factor;
-							  break;
-					case 'o': value = 1 * factor;
-							  break;
-					case 'x': value = 2 * factor;
-					          break;
+					case ' ':
+						value = 0 * factor;
+						break;
+					case 'o':
+						value = 1 * factor;
+						break;
+					case 'x':
+						value = 2 * factor;
+					    break;
+					default: // should not occur
+						break;
 				}
 				sum += value;
 				factor *= dimension;

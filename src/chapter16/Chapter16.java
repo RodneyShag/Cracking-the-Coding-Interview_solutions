@@ -1,7 +1,6 @@
 package chapter16;
 
 public class Chapter16 {
-
 	public static void main(String[] args) {
 		/* Only run 1 of these at a time */
 		//test_sixteenPoint3();
@@ -13,7 +12,7 @@ public class Chapter16 {
 		// 16.6: Read book's short answer
 	}
 	
-	public static void test_sixteenPoint3(){
+	public static void test_sixteenPoint3() {
 		int numPhilosophers = 3;
 		
 		Chopstick[] chopsticks = new Chopstick[numPhilosophers + 1];
@@ -23,7 +22,7 @@ public class Chapter16 {
 		
 		Philosopher[] philosophers = new Philosopher[numPhilosophers];
 		for (int i = 0; i < numPhilosophers; i++) {
-			Chopstick left = chopsticks[leftOf(i)];
+			Chopstick left  = chopsticks[leftOf(i)];
 			Chopstick right = chopsticks[rightOf(i, numPhilosophers)];
 			philosophers[i] = new Philosopher(i, left, right);
 		}
@@ -51,9 +50,5 @@ public class Chapter16 {
 		thread3.start();
 		thread2.start();
 		thread1.start();
-	}
-	
-	public static void test_sixteenPoint6(){
-		
 	}
 }
