@@ -1,6 +1,6 @@
 package chapter02;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 /* Check if Linked List is a palindrome
  * 
@@ -14,9 +14,9 @@ public class TwoPoint7 {
 	public static boolean palindrome_2(Node head) {
 		Node slow = head;
 		Node fast = head;
-		Stack<Integer> stack = new Stack<>();
+		ArrayDeque<Integer> deque = new ArrayDeque<>(); // use deque as a stack
 		while (fast != null && fast.next != null) {
-			stack.push(slow.data);
+			deque.push(slow.data);
 			slow = slow.next;
 			fast = fast.next.next;
 		}
@@ -25,7 +25,7 @@ public class TwoPoint7 {
 			slow = slow.next;
 		}
 		while (slow != null) {
-			if (stack.pop() != slow.data) {
+			if (deque.pop() != slow.data) {
 				return false;
 			}
 			slow = slow.next;

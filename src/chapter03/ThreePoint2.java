@@ -3,6 +3,7 @@ package chapter03;
 import java.util.Stack;
 
 public class ThreePoint2 {
+	/* Can alternatively use ArrayDeque (it's faster) */
 	Stack<Integer> stack    = new Stack<>();
 	Stack<Integer> minStack = new Stack<>(); // keeps track of minimums
 	

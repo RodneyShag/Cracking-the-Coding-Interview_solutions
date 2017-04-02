@@ -4,8 +4,8 @@ import java.util.Stack;
 
 /* This is problem 3.5 */
 public class MyQueue<T> { // class is parameterized!
-	private Stack<T> stack1 = new Stack<T>();
-	private Stack<T> stack2 = new Stack<T>();
+	private Stack<T> stack1 = new Stack<>();
+	private Stack<T> stack2 = new Stack<>();
 	
 	public int size() {
 		return stack1.size() + stack2.size();

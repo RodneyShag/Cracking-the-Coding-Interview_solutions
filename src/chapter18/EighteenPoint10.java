@@ -2,8 +2,9 @@ package chapter18;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 
 /* Tricks:
  * - Use BFS
@@ -25,7 +26,7 @@ public class EighteenPoint10 {
 	}
 	
 	/* Uses BFS */
-	public static LinkedList<String> convert(String start, String end) {
+	public static ArrayList<String> convert(String start, String end) {
 		if (start == null || end == null || start.length() != end.length()) {
 			return null;
 		}
@@ -33,15 +34,15 @@ public class EighteenPoint10 {
 		start = start.toUpperCase();
 		end   = end.toUpperCase();
 		
-		Queue<String> queue                  = new LinkedList<>();
+		ArrayDeque<String> deque             = new ArrayDeque<>(); // use deque as a queue
 		HashSet<String> visited              = new HashSet<>();
 		HashMap<String, String> backtrackMap = new HashMap<>();
 		
-		queue.add(start);
+		deque.add(start);
 		visited.add(start);
 		
-		while (! queue.isEmpty()) {
-			String currWord = queue.remove();
+		while (! deque.isEmpty()) {
+			String currWord = deque.remove();
 			if (currWord.equals(end)) {
 				return buildSolution(backtrackMap, currWord);
 			}
@@ -50,7 +51,7 @@ public class EighteenPoint10 {
 				if ( ! visited.contains(neighbor)) {
 					visited.add(neighbor);
 					backtrackMap.put(neighbor, currWord);
-					queue.add(neighbor);
+					deque.add(neighbor);
 				}
 			}
 		}
@@ -75,8 +76,8 @@ public class EighteenPoint10 {
 		return validWords;
 	}
 	
-	private static LinkedList<String> buildSolution(HashMap<String, String> backtrackMap, String currWord) {
-		LinkedList<String> solution = new LinkedList<>();
+	private static ArrayList<String> buildSolution(HashMap<String, String> backtrackMap, String currWord) {
+		ArrayList<String> solution = new ArrayList<>();
 		solution.add(currWord);
 		while (backtrackMap.containsKey(currWord)) {
 			currWord = backtrackMap.get(currWord);

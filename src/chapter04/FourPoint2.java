@@ -1,7 +1,6 @@
 package chapter04;
 
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 
 public class FourPoint2 {
 	/* We do BFS from start node to see if we arrive at end node */
@@ -10,19 +9,19 @@ public class FourPoint2 {
 			return true;
 		}
 		
-		Queue<GraphNode> queue = new LinkedList<>();
+		ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
 		start.visit();
-		queue.add(start);
+		deque.add(start);
 		
-		while ( ! queue.isEmpty()) {
-			GraphNode curr = queue.remove();
+		while (!deque.isEmpty()) {
+			GraphNode curr = deque.remove();
 			if (curr == end) {
 				return true;
 			}
 			for (GraphNode neighbor : curr.getNeighbors()) {
 				if ( ! neighbor.visited) {
 					neighbor.visit();
-					queue.add(neighbor);
+					deque.add(neighbor);
 				}
 			}
 		}

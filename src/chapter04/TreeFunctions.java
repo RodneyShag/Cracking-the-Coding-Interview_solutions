@@ -1,7 +1,6 @@
 package chapter04;
 
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 
 /* I thought it'd be useful to make this class */
 public class TreeFunctions {
@@ -65,16 +64,16 @@ public class TreeFunctions {
 	
 	/* Prints tree level 0, 1, ... n */
 	public static void printLevelOrder(TreeNode root) {
-		Queue<TreeNode> queue = new LinkedList<>(); // Queue is an interface, so we use a LinkedList
-		queue.add(root);
-		while ( ! queue.isEmpty()) {
-			TreeNode n = queue.remove();
+		ArrayDeque<TreeNode> deque = new ArrayDeque<>(); // use deque as a queue
+		deque.add(root);
+		while (!deque.isEmpty()) {
+			TreeNode n = deque.remove();
 			System.out.print(n + " ");
 			if (n.left != null) {
-				queue.add(n.left);
+				deque.add(n.left);
 			}
 			if (n.right != null) {
-				queue.add(n.right);
+				deque.add(n.right);
 			}
 		}
 	}

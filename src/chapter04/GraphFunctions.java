@@ -1,7 +1,6 @@
 package chapter04;
 
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 
 public class GraphFunctions {
 	
@@ -10,7 +9,7 @@ public class GraphFunctions {
 		node2.addNeighbor(node1);
 	}
 	
-	/* I do this recursively. Can alternatively do it like BFS (below) but using a Stack instead of a Queue. */
+	/* I do this recursively. Can alternatively do it like BFS (below) by using a Stack instead of a Queue. */
 	public static void DFS(GraphNode node, int data) {
 		if (node == null) {
 			return;
@@ -40,12 +39,12 @@ public class GraphFunctions {
 			return;
 		}
 		
-		Queue<GraphNode> queue = new LinkedList<>();
+		ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
 		node.visit();
-		queue.add(node);
+		deque.add(node);
 		
-		while ( ! queue.isEmpty()) {
-			GraphNode curr = queue.remove();
+		while (!deque.isEmpty()) {
+			GraphNode curr = deque.remove();
 
 			if (curr.data == data) {
 				System.out.println("BFS found the GraphNode with desired data: " + curr.data);
@@ -55,7 +54,7 @@ public class GraphFunctions {
 			for (GraphNode neighbor : curr.getNeighbors()) {
 				if ( ! neighbor.visited) {
 					neighbor.visit();   // make sure to visit node BEFORE we put it on queue instead of when we take it off (to avoid duplicates on queue)
-					queue.add(neighbor);
+					deque.add(neighbor);
 				}
 			}
 		}

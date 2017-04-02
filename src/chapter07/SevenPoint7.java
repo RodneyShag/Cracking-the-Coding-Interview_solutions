@@ -1,7 +1,6 @@
 package chapter07;
 
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 
 /* Finds kth magic number
  * 
@@ -25,13 +24,15 @@ public class SevenPoint7 {
 		if (k < 0) {
 			return -1;
 		}
-		Queue<Integer> q3 = new LinkedList<Integer>();
-		Queue<Integer> q5 = new LinkedList<Integer>();
-		Queue<Integer> q7 = new LinkedList<Integer>();
-
+		
+		ArrayDeque<Integer> q3 = new ArrayDeque<>(); // use deque as a queue
+		ArrayDeque<Integer> q5 = new ArrayDeque<>(); // use deque as a queue
+		ArrayDeque<Integer> q7 = new ArrayDeque<>(); // use deque as a queue
+		
 		q3.add(3);
 		q5.add(5);
 		q7.add(7);
+		
 		int val = 0;
 		for (int i = 1; i <= k; i++) {
 			int v3 = q3.peek();

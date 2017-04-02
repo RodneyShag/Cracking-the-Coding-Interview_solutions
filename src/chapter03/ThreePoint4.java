@@ -1,6 +1,6 @@
 package chapter03;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 public class ThreePoint4 {
 	public static void moveDisks(int n, Tower origin, Tower destination, Tower buffer) {
@@ -21,12 +21,12 @@ public class ThreePoint4 {
 
 /* It's just a stack, including 1) Error Checking 2) tower number */
 class Tower {
-	private Stack<Integer> disks;
+	private ArrayDeque<Integer> disks; // use deque as a stack
 	public int towerNum;
 	
 	/* Constructor */
 	public Tower(int towerNum) {
-		disks = new Stack<>();
+		disks = new ArrayDeque<>();
 		this.towerNum = towerNum;
 	}
 	

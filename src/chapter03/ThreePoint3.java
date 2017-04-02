@@ -1,7 +1,7 @@
 package chapter03;
 
 import java.util.ArrayList;
-import java.util.Stack;
+import java.util.Stack; // can alternatively use ArrayDeque (it's faster)
 
 public class ThreePoint3 {
 	private ArrayList<Stack<Integer>> stacks = new ArrayList<Stack<Integer>>();

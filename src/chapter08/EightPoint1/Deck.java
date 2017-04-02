@@ -1,12 +1,14 @@
 package chapter08.EightPoint1;
 
-import java.util.Queue;
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 
 public class Deck <T extends Card> {
-	private Queue<T> deck;	// IMPORTANT: can't use a fixed size array[] since we are using generics.
+	
+	private ArrayDeque<T> deck;	// can't use a fixed size array[] since we are using generics.
+	
 	public Deck() {
-		deck = new LinkedList<T>();
+		deck = new ArrayDeque<T>();
 		initializeCards();
 	}
 	

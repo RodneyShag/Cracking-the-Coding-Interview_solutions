@@ -1,7 +1,7 @@
 package chapter18;
 
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Chapter18 {
 	public static void main (String [] args) {
@@ -101,7 +101,7 @@ public class Chapter18 {
 	public static void test_EighteenPoint10() {
 		System.out.println("\n\n*** Test 18.10: Transform 1 word into another (changing 1 letter at a time)");
 		EighteenPoint10.setUpDict();
-		LinkedList<String> solution = EighteenPoint10.convert("Damp", "Like");
+		ArrayList<String> solution = EighteenPoint10.convert("Damp", "Like");
 		System.out.println(solution);
 	}
 	
