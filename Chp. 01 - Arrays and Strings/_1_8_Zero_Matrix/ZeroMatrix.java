@@ -17,10 +17,7 @@ public class ZeroMatrix {
 			}
 		}
 
-		/*
-		 * Re-loop through 2-d matrix and set whichever entries are necessary to
-		 * 0
-		 */
+		/* Re-loop through 2-d matrix and set whichever entries are necessary to 0 */
 		for (int row = 0; row < M; row++) {
 			for (int col = 0; col < N; col++) {
 				if (rows[row] == true || cols[col] == true) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="_Introduction"/>
+	<classpathentry kind="src" path="Introduction"/>
 	<classpathentry kind="src" path="Chp. 01 - Arrays and Strings"/>
 	<classpathentry kind="src" path="Chp. 02 - Linked Lists"/>
 	<classpathentry kind="src" path="Chp. 03 - Stacks and Queues"/>
