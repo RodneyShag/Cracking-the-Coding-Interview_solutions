@@ -1,0 +1,5 @@
+7.2 - Call Center
+
+	1) Create as many classes as possible to show OOP Principles: 
+	   abstract Employee class (with Respondent, Manager, Director as subclasses), Call, and CallCenter as classes.
+	2) Use 3 Queues. 1 for each Call "rank"

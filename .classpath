@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="_Introduction"/>
+	<classpathentry kind="src" path="Chp. 01 - Arrays and Strings"/>
+	<classpathentry kind="src" path="Chp. 02 - Linked Lists"/>
+	<classpathentry kind="src" path="Chp. 03 - Stacks and Queues"/>
+	<classpathentry kind="src" path="Chp. 04 - Trees and Graphs"/>
+	<classpathentry kind="src" path="Chp. 05 - Bit Manipulation"/>
+	<classpathentry kind="src" path="Chp. 06 - Math and Logic Puzzles"/>
+	<classpathentry kind="src" path="Chp. 07 - Object-Oriented Design"/>
+	<classpathentry kind="src" path="Chp. 08 - Recursion and Dynamic Programming"/>
+	<classpathentry kind="src" path="Chp. 09 - System Design and Scalability"/>
+	<classpathentry kind="src" path="Chp. 10 - Sorting and Searching"/>
+	<classpathentry kind="src" path="Chp. 11 - Testing"/>
+	<classpathentry kind="src" path="Chp. 13 - Java"/>
+	<classpathentry kind="src" path="Chp. 15 - Threads and Locks"/>
+	<classpathentry kind="src" path="Chp. 16 - More Problems (Moderate)"/>
+	<classpathentry kind="src" path="Chp. 17 - More Problems (Hard)"/>
+	<classpathentry kind="src" path="Common"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,21 @@
+This question fundamentally boils down to creating Equivalence Classes. 
+Disjoint sets are 1 way to do this but are overly complicated here.
+
+Solution 1:
+
+- Have each of the "n" name points to a set with 1 element. So we have "n" sets.
+- For every pair of elements that's equivalent, merge the 2 sets
+- Doing this in code is tricky. We have 2 options (I prefer option #2)
+	1) Somehow use a Multi-key HashMap where multiple keys map to same value
+	2) Basically use a standard HashMap as a multi-key hashmap. We would use
+	   HashMap<String, ArrayList<String>>, and it's okay that 2 keys point
+	   to the same ArrayList. Make sure it's the SAME ArrayList though and
+	   not a copy of it.
+- Runtime would be O(n log n) since it's kind of like the tree for mergesort
+
+
+Solution 2 (preferred):
+
+- Represent this as a Graph. Names are Nodes. Pairs of names are Edges.
+- Generating the desired output is simply doing a BFS/DFS on each connected
+  component, while summing the values at each node.

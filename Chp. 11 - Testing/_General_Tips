@@ -1,0 +1,35 @@
+Main thing to remember is to ask WHO/WHAT/WHEN/WHERE/WHY/HOW
+
+********************
+*** General Tips ***
+********************
+
+- PRIORITIZE test cases (security or payment systems would be high priority)
+- Test in Organized Manner.
+	- For Camera, categorize as:
+		- Take Photos
+		- Image Management
+		- Settings
+
+
+****************************************************
+*** Testing real-world object (like a paperclip) ***
+****************************************************
+
+Test:
+	- who, what, when, where, why, how
+	- Bounds of use, Stress/Failure Conditions (max papers can hold without bending damage, temperatures it should work at)
+
+
+**************************
+*** Testing a function ***
+**************************
+
+Test:
+	- Normal Input
+	- Extremes
+	- Null & Illegal Input
+	- Strange Input (Like a sorted array or reverse-order array)
+- Make sure no side effects: If a function takes an array as an argument, and that array is not supposed to be altered,
+  then that can be tested
+- use assertEquals(__, ___), assertTrue(__), assertFalse(__), assertNull(__), assertNotNull(__), assertNotEquals(__,__)

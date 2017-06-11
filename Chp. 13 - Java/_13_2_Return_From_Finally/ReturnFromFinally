@@ -1,0 +1,3 @@
+Yes. 
+
+The "finally" block (still) gets executed when the "try" block exits.

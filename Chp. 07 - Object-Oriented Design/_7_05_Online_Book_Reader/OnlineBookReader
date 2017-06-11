@@ -1,0 +1,5 @@
+7.5 - Online Book Reader
+
+	1) The OnlineReaderSystem class can have classes: Library, User Manager, Display
+	2) Books: Hashed by ID: HashMap<Integer, Book> to hash ID to actual book. Can also hash the ID to the # of copies we have.
+	3) Users: Hashed by ID: HashMap<Integer, User> usersByID. Have "add" and "remove" functions for the private HashMap.

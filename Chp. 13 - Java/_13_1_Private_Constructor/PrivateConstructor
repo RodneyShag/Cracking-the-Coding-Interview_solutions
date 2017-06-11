@@ -1,0 +1,5 @@
+If a class, A, has a private constructor, this prevents other classes from inheriting from A.
+
+Exceptions: 
+	- If A has an inner class, that class has access to A's private constructor, so it can inherit from A
+	- If A is an inner class of another class, Q, then Q's other inner classes can inherit from A

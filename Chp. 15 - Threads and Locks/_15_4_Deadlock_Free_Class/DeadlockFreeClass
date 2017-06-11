@@ -1,0 +1,3 @@
+Implement a directed graph and use DFS/BFS to detect a cycle. 
+
+A deadlock can occur if and only if we find a cycle.

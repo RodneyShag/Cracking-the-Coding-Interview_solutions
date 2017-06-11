@@ -1,0 +1,5 @@
+7.4 - Parking Lot
+
+	1) Make abstract class Vehicle. Have Motorcycle, Car, Bus be subclasses of Vehicle. Also create ParkingSpot, ParkingLot classes.
+	2) ParkingLot has data: levels[], availableSpots, 
+                   methods: parkVehicle(Vehicle v), removeVehicle(Vehicle v), availbleSpots()

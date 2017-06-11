@@ -1,0 +1,9 @@
+7.11 - File System
+	 
+	- Have abstract class "Entry", where "File" and "Directory" are subclasses. Entry will have useful fields like:
+			- long      created, lastUpdated, lastAccessed
+			- String    name
+			- Directory parent
+	- and methods like
+			- getFullPath();
+	- have "Directory" have an ArrayList<Entry> (alternatively have ArrayList<Directory> and ArrayList<File>)
