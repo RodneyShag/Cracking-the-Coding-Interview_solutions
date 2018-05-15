@@ -3,7 +3,9 @@ package _16_25_LRU_Cache;
 import java.util.LinkedList;
 import java.util.HashMap;
 
-// Rodney: I have to redo this problem to decrease runtime from O(n) to O(1).
+// Rodney: I have to redo this problem to decrease runtime from O(n) to O(1) (like I did in an interview - code is saved)
+
+// To read: http://www.geeksforgeeks.org/implement-lru-cache/
 
 class LRUCache {
 	private final int maxSize = 7;
@@ -24,7 +26,7 @@ class LRUCache {
         if (item == null) {
             return null;
         }
-        items.remove(item); // this may be O(n) instead of O(1) which we wanted.
+        items.remove(item); // this may be O(n) instead of the O(1) that we wanted.
         items.addFirst(item);
         return item;
     }

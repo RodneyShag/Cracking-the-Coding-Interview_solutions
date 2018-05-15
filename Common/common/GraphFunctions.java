@@ -22,7 +22,7 @@ public class GraphFunctions {
 		
 		for (GraphNode neighbor : node.getNeighbors()) {
 			if (!neighbor.visited) {
-				node.visit(); // crucial step
+				neighbor.visit(); // crucial step
 				DFS(neighbor, data);
 			}
 		}

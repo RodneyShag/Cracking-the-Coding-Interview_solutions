@@ -17,7 +17,7 @@ public class Tester {
 	}
 	
 	private static void test_RobotsInAGridHelper(int rows, int cols) {
-		System.out.format("Number of Paths in %dx%d maze = %d%n" , rows, cols, RobotsInAGrid.numPaths(rows, cols));
+		System.out.format("Number of Paths in %dx%d maze = %d%n" , rows, cols, RobotInAGrid.numPaths(rows, cols));
 	}
 	
 	private static void test_FindOnePath() {
@@ -25,7 +25,7 @@ public class Tester {
 		boolean[][] maze = createMaze(3, 3);
 		
 		/* Find and print solution */
-		ArrayList<Point> path = RobotsInAGrid.findPath(maze, 2, 2);
+		ArrayList<Point> path = RobotInAGrid.findPath(maze, 2, 2);
 		System.out.print("\nOld Path: " + path);
 		
 		/* Add walls to block the original solution path, to see if it will find a different solution */
@@ -33,14 +33,14 @@ public class Tester {
 		maze[2][1] = false;
 		
 		/* Find and print solution */
-		path = RobotsInAGrid.findPath(maze, 2, 2);
+		path = RobotInAGrid.findPath(maze, 2, 2);
 		System.out.print("\nNew Path: " + path);
 	}
 	
 	private static void test_FindAllPaths() {
 		System.out.println("\n\n\n*** Test Follow-up: Find All Paths\n");
 		boolean[][] maze = createMaze(3, 3);
-		ArrayList<ArrayList<Point>> solutionPaths = RobotsInAGrid.allPaths(maze, 2, 2);
+		ArrayList<ArrayList<Point>> solutionPaths = RobotInAGrid.allPaths(maze, 2, 2);
 		printAllPaths(solutionPaths);
 	}
 	

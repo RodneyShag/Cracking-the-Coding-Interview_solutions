@@ -11,12 +11,10 @@ import common.TreeNode;
 
 public class CheckSubtree {
 	/* Solution 1
-	 * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same is true for inorder traversals,
-	 *   then T2 is substring of T1
-	 * - Book further says to insert dummy "0" for nulls. This is necessary to distinguish the 2 trees in book with duplicate values.
-	 * - However, I believe that if we do this "dummy 0" trick, then just checking preorder traversals should suffice
-	 *   instead of having to also check inorder traversals.
-	 * - Bad space complexity: We make copies of both trees to create the 2 strings
+	 * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same 
+	 *   is true for inorder traversals, then T2 is substring of T1
+	 * - During implementation, we can  insert dummy "0" for nulls. This is necessary 
+	 *   to distinguish the 2 trees in book with duplicate values.
 	 */
 
 	/**************/
@@ -42,9 +40,9 @@ public class CheckSubtree {
 	}
 
 	public static boolean matchTree(TreeNode p, TreeNode q) {
-		if (q == null) {
+		if (p == null && q == null) {
 			return true;		
-		} else if (p == null) {
+		} else if (p == null || q == null) {
 			return false;
 		}
 		if (p.data != q.data) {
