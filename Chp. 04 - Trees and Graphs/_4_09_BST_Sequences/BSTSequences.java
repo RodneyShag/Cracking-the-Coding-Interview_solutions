@@ -14,7 +14,7 @@ public class BSTSequences {
 		}
 		
 		ArrayDeque<Integer> prefix = new ArrayDeque<>();
-		prefix.addLast(node.data);
+		prefix.add(node.data);
 		
 		/* Recursive Cases */
 		ArrayList<ArrayDeque<Integer>> leftSeq  = allSequences(node.left);

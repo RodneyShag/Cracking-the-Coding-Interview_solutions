@@ -55,7 +55,7 @@ public class BinaryToString {
 			} else {
 				binary.append(0);
 			}
-			frac /= 2;
+			frac /= 2; // hopefully no floating-point estimation errors accumulate here
 		}
 		
 		return binary.toString();

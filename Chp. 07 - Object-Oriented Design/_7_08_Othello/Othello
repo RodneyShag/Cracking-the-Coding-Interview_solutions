@@ -2,4 +2,4 @@
 	 
 	Classes: Board, Player, Piece. I could have a separate "Game" class like the book, but a Game is basically just a Board.
 
-	Fully functional Othello game: https://github.com/rshaghoulian/Othello
+	Fully functional Othello game: https://github.com/RodneyShag/Othello

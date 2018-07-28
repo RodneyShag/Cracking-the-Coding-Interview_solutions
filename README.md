@@ -23,7 +23,7 @@ This will enable you to easily test and edit the code.
 
 ![][instructions_3]
 
-4. In the URI field, copy/paste the following link: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions.git
+4. In the URI field, copy/paste the following link: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions.git
 
 ![][instructions_4]
 
@@ -33,8 +33,8 @@ This will enable you to easily test and edit the code.
 
 All the code should now be visibile in the **Package Explorer** on the left of the screen.
 
-[instructions_1]: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_1.png
-[instructions_2]: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_2.png
-[instructions_3]: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_3.png
-[instructions_4]: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_4.png
-[instructions_5]: https://github.com/rshaghoulian/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_5.png
+[instructions_1]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_1.png
+[instructions_2]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_2.png
+[instructions_3]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_3.png
+[instructions_4]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_4.png
+[instructions_5]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_5.png

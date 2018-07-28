@@ -15,9 +15,7 @@ public class GroupAnagrams {
 		/* Group words by Anagram (by putting into HaahMap) */
 		for (String str : array) {
 			String key = sortChars(str);
-			if (!map.containsKey(key)) {
-				map.put(key, new ArrayList<String>());
-			}
+			map.putIfAbsent(key, new ArrayList<String>());
 			ArrayList<String> anagrams = map.get(key);
 			anagrams.add(str);
 		}
