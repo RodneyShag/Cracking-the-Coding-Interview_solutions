@@ -10,7 +10,8 @@ Solutions are coded using Java 8.
 
 This will enable you to easily test and edit the code.
 
-0. Download [Eclipse](http://www.eclipse.org/downloads/eclipse-packages/), or a similar IDE.
+1. [Download Java](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Download Eclipse](http://www.eclipse.org/downloads/eclipse-packages/), or a similar IDE.
 1. Open Eclipse. In the **Menu Bar** in the top-left of the screen, click **File -> Import**. An **Import** dialog box will open.
 
 ![][instructions_1]
@@ -27,7 +28,7 @@ This will enable you to easily test and edit the code.
 
 ![][instructions_4]
 
-5. Keep clicking **Next** until you reach the final dialog box. Click **Finish**. The dialog box will close. 
+5. Keep clicking **Next** until you reach the final dialog box. Click **Finish**. The dialog box will close.
 
 ![][instructions_5]
 

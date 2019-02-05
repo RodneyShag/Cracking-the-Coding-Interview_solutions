@@ -64,9 +64,9 @@ public class TreeFunctions {
 	/* Prints tree level 0, 1, ... n */
 	public static void printLevelOrder(TreeNode root) {
 		ArrayDeque<TreeNode> deque = new ArrayDeque<>(); // use deque as a queue
-		deque.addLast(root);
+		deque.add(root);
 		while (!deque.isEmpty()) {
-			TreeNode n = deque.remove();
+			TreeNode n = deque.removeFirst();
 			System.out.print(n + " ");
 			if (n.left != null) {
 				deque.addLast(n.left);
