@@ -9,23 +9,23 @@ package _1_2_Check_Permutations;
 // Space Complexity: O(1)
 
 public class CheckPermutations {
-	public static boolean isPermutation(String s1, String s2) {
-		if (s1.length() != s2.length()) {
-			return false;
-		}
-		int[] letters = new int[256]; // we assume it's an ASCII string. Should
-										// ask interviewer if String is ASCII or
-										// Unicode
-		for (int i = 0; i < s1.length(); i++) {
-			char ch = s1.charAt(i);
-			letters[ch]++;
-		}
-		for (int i = 0; i < s2.length(); i++) {
-			char ch = s2.charAt(i);
-			if (--letters[ch] < 0) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public static boolean isPermutation(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        int[] letters = new int[256]; // we assume it's an ASCII string. Should
+                                      // ask interviewer if String is ASCII or
+                                      // Unicode
+        for (int i = 0; i < s1.length(); i++) {
+            char ch = s1.charAt(i);
+            letters[ch]++;
+        }
+        for (int i = 0; i < s2.length(); i++) {
+            char ch = s2.charAt(i);
+            if (--letters[ch] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
