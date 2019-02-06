@@ -5,13 +5,13 @@ import java.util.HashSet;
 // Should ask interviewer if String is ASCII or Unicode (We assume ASCII)
 
 public class IsUnique {
-    private static final int NUM_CHARS = 256; // number of ASCII characters
+    private static final int NUM_ASCII_CHARS = 256; // number of ASCII characters
 
     public static boolean uniqueCharacters(String str) {
-        if (str.length() > NUM_CHARS) {
+        if (str.length() > NUM_ASCII_CHARS) {
             return false;
         }
-        HashSet<Character> mySet = new HashSet<>(NUM_CHARS);
+        HashSet<Character> mySet = new HashSet<>(NUM_ASCII_CHARS);
         for (int i = 0; i < str.length(); i++) {
             if (mySet.contains(str.charAt(i))) {
                 return false;

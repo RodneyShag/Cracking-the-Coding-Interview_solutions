@@ -25,7 +25,8 @@ public class OneAway {
         return true;
     }
 
-    // Function assumes s1.length() == s2.length() + 1, that is, s1 is longer than s2 by 1 character
+    // Function assumes s1.length() == s2.length() + 1,
+    // meaning s1 is longer than s2 by 1 character
     private static Boolean oneEditInsert(String s1, String s2) {
         if (s1.length() != s2.length() + 1) {
             return null;
@@ -48,3 +49,6 @@ public class OneAway {
         return true;
     }
 }
+
+//  Time Complexity: O(n+m)
+// Space Complexity: O(1)

@@ -9,3 +9,5 @@ public class StringRotation {
         return doubledString.contains(s2);
     }
 }
+
+// Time/Space Complexities are same as .contains() function

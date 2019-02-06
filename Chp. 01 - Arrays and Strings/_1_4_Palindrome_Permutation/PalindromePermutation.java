@@ -3,9 +3,12 @@ package _1_4_Palindrome_Permutation;
 import java.util.HashMap;
 
 public class PalindromePermutation {
+    
+    private static final int NUM_LOWERCASE_LETTERS = 26;
+    
     public static boolean palPerm(String str) {
         str = str.toLowerCase().replaceAll("\\s", "");
-        HashMap<Character, Integer> map = new HashMap<>(26);
+        HashMap<Character, Integer> map = new HashMap<>(NUM_LOWERCASE_LETTERS);
         for (int i = 0; i < str.length(); i++) {
             Character ch = str.charAt(i);
             if (Character.isLetter(ch)) {
@@ -27,3 +30,6 @@ public class PalindromePermutation {
         return true;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

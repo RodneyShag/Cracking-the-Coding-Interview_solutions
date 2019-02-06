@@ -1,8 +1,5 @@
 package _1_7_Rotate_Matrix;
 
-//  Time Complexity: O(n^2). Impossible to do better since must touch all n^2 elements.
-// Space Complexity: O(1)
-
 public class RotateMatrix {
     /* Rotates square image[][] 90 degrees clockwise */
     public static void rotate90clockwise(int[][] image) {
@@ -47,3 +44,7 @@ public class RotateMatrix {
         image[r2][c2] = temp;
     }
 }
+
+//  Time Complexity: O(n^2). Impossible to do better since must touch all n^2 elements.
+// Space Complexity: O(1)
+// Time/Space complexities are the same for both the 90-degree rotation and 180-degree rotation.
