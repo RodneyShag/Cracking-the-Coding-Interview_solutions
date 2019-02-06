@@ -12,29 +12,29 @@ import common.Node;
 // Space Complexity: O(1)
 
 public class Intersection {
-	public static Integer findMergeNode(Node headA, Node headB) {
-		Node currA = headA;
-		Node currB = headB;
+    public static Integer findMergeNode(Node headA, Node headB) {
+        Node currA = headA;
+        Node currB = headB;
 
-		int jumps = 0;
-		while (currA != currB) {
-			if (currA.next == null) {
-				currA = headB;
-				jumps++;
-			} else {
-				currA = currA.next;
-			}
+        int jumps = 0;
+        while (currA != currB) {
+            if (currA.next == null) {
+                currA = headB;
+                jumps++;
+            } else {
+                currA = currA.next;
+            }
 
-			if (currB.next == null) {
-				currB = headA;
-				jumps++;
-			} else {
-				currB = currB.next;
-			}
-			if (jumps > 2) {
-				return null; // they don't intersect
-			}
-		}
-		return currA.data;
-	}
+            if (currB.next == null) {
+                currB = headA;
+                jumps++;
+            } else {
+                currB = currB.next;
+            }
+            if (jumps > 2) {
+                return null; // they don't intersect
+            }
+        }
+        return currA.data;
+    }
 }

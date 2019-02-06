@@ -11,34 +11,34 @@ import common.Node;
 // When they meet, "slow" is "n - k" steps into the loop, so "slow" will be at beginning of loop in "k" single steps.
 
 public class LoopDetection {
-	public static Node findBeginning(Node head) {
-		Node slow = head; // moves at normal speed
-		Node fast = head; // moves at double speed
+    public static Node findBeginning(Node head) {
+        Node slow = head; // moves at normal speed
+        Node fast = head; // moves at double speed
 
-		while (fast != null && fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-			if (slow == fast) { // they collided
-				break;
-			}
-		}
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) { // they collided
+                break;
+            }
+        }
 
-		/*
-		 * Error Check - Detects if no loop was found. Don't forget this step!
-		 */
-		if (fast == null || fast.next == null) {
-			return null;
-		}
+        /*
+         * Error Check - Detects if no loop was found. Don't forget this step!
+         */
+        if (fast == null || fast.next == null) {
+            return null;
+        }
 
-		/*
-		 * Put "slow2" at head of list. Move "slow" and "slow2" 1 step at a
-		 * time. They collide at head of cycle
-		 */
-		Node slow2 = head;
-		while (slow2 != slow) {
-			slow = slow.next;
-			slow2 = slow2.next;
-		}
-		return slow;
-	}
+        /*
+         * Put "slow2" at head of list. Move "slow" and "slow2" 1 step at a
+         * time. They collide at head of cycle
+         */
+        Node slow2 = head;
+        while (slow2 != slow) {
+            slow = slow.next;
+            slow2 = slow2.next;
+        }
+        return slow;
+    }
 }
