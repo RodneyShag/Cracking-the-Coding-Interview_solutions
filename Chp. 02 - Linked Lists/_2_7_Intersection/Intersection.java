@@ -8,9 +8,6 @@ import common.Node;
 // will collide at the merge point after 1 or 2 passes. If they don't, 
 // then there is no merge point.
 
-//  Time Complexity: O(n)
-// Space Complexity: O(1)
-
 public class Intersection {
     public static Integer findMergeNode(Node headA, Node headB) {
         Node currA = headA;
@@ -38,3 +35,6 @@ public class Intersection {
         return currA.data;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

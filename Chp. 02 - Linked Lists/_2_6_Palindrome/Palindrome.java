@@ -28,6 +28,17 @@ public class Palindrome {
         }
         return true;
     }
-
-    // Alternate solution: Deep copy list. Reverse it. Compare it to original.
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n)
+
+
+// Alternate solution
+//
+// 1. Deep copy list.
+// 2. Reverse it.
+// 3. Compare it to original.
+// 
+//  Time Complexity: O(n)
+// Space Complexity: O(n)
