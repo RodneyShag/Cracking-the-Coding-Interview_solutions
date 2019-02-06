@@ -8,10 +8,10 @@ import java.util.HashMap;
 // To read: http://www.geeksforgeeks.org/implement-lru-cache/
 
 class LRUCache {
-	private final int maxSize = 7;
-	private LinkedList<Item> items = new LinkedList<>();
-	private HashMap<String, Item> map = new HashMap<>();
-	
+    private final int maxSize = 7;
+    private LinkedList<Item> items = new LinkedList<>();
+    private HashMap<String, Item> map = new HashMap<>();
+
     void add(Item item) {
         if (items.size() == maxSize) {
             map.remove(items.peekLast());
@@ -30,8 +30,8 @@ class LRUCache {
         items.addFirst(item);
         return item;
     }
-	
-	public LinkedList<Item> getItems() {
-		return items;
-	}
+
+    public LinkedList<Item> getItems() {
+        return items;
+    }
 }

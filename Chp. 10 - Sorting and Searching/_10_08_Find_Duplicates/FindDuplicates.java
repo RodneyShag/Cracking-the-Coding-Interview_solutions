@@ -6,15 +6,15 @@ import java.util.BitSet;
 // - Using BitSet instead of HashMap since we have limited memory.
 
 public class FindDuplicates {
-	public static void checkDuplicates(int[] array) {
-		BitSet bitset = new BitSet(32000);
-		for (int i = 0; i < array.length; i++) {
-			int num = array[i];
-			if (bitset.get(num)) {
-				System.out.print(num + " ");
-			} else {
-				bitset.set(num);
-			}
-		}
-	}
+    public static void checkDuplicates(int[] array) {
+        BitSet bitset = new BitSet(32000);
+        for (int i = 0; i < array.length; i++) {
+            int num = array[i];
+            if (bitset.get(num)) {
+                System.out.print(num + " ");
+            } else {
+                bitset.set(num);
+            }
+        }
+    }
 }

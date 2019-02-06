@@ -1,17 +1,17 @@
 7.7 - Chat Server
-	 
-	Class: Conversation (with subclasses GroupChat and PrivateChat). User. AddRequest.
-	----------------------------------- important lesson of when to use ArrayList vs. HashMap
-	For fast lookup, book used:
-		private HashMap<Integer, User> usersByld;
-	 	private HashMap<String, User> usersByAccountName;
-	 	private HashMap<Integer, User> onlineUsers;
-	 
-	Uses: HashMap<Integer, PrivateChat> privateChats, 
-	      HashMap<Integer, AddRequest> receivedAddRequests
-	      HashMap<Integer, User> contacts
-	      ...I think using ArrayList instead of HashMap for these may have its own pros/cons. Maybe like this:
-	      ArrayList<PrivateChat> privateChats
-	      ArrayList<AddRequest> receivedAddRequests
-	      ArrayList<User> contacts
-	"Tough problems to solve": Security, out-of-sync data / conflicting information.   
+
+Class: Conversation (with subclasses GroupChat and PrivateChat). User. AddRequest.
+----------------------------------- important lesson of when to use ArrayList vs. HashMap
+    For fast lookup, book used:
+        private HashMap<Integer, User> usersByld;
+        private HashMap<String, User> usersByAccountName;
+        private HashMap<Integer, User> onlineUsers;
+
+    Uses: HashMap<Integer, PrivateChat> privateChats, 
+          HashMap<Integer, AddRequest> receivedAddRequests
+          HashMap<Integer, User> contacts
+          ...I think using ArrayList instead of HashMap for these may have its own pros/cons. Maybe like this:
+          ArrayList<PrivateChat> privateChats
+          ArrayList<AddRequest> receivedAddRequests
+          ArrayList<User> contacts
+    "Tough problems to solve": Security, out-of-sync data / conflicting information.   

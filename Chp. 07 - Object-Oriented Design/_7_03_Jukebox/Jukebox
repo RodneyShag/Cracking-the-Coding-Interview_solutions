@@ -1,4 +1,4 @@
 7.3 - Jukebox
 
-	1) Possible Classes: CD, Song, Playlist, Queue, User, Artist, PlayerControls, Display
-	2) Actions: Queue CD, Queue Song, Queue Artist, Play next song, Remove Song.
+    1) Possible Classes: CD, Song, Playlist, Queue, User, Artist, PlayerControls, Display
+    2) Actions: Queue CD, Queue Song, Queue Artist, Play next song, Remove Song.

@@ -10,40 +10,40 @@ import java.util.HashMap;
 // 3) A word must be built of OTHER words. "isOriginalWord" flag helps us do this
 
 public class LongestWord {
-	public static String longestWord(String[] words) {
-		Arrays.sort(words, new LengthComparator()); // we want to search longest
-													// words first
-		HashMap<String, Boolean> map = makeMap(words);
+    public static String longestWord(String[] words) {
+        Arrays.sort(words, new LengthComparator()); // we want to search longest
+                                                    // words first
+        HashMap<String, Boolean> map = makeMap(words);
 
-		for (String word : words) {
-			if (canBuildWord(word, true, map)) {
-				return word;
-			}
-		}
-		return null;
-	}
+        for (String word : words) {
+            if (canBuildWord(word, true, map)) {
+                return word;
+            }
+        }
+        return null;
+    }
 
-	private static HashMap<String, Boolean> makeMap(String[] words) {
-		HashMap<String, Boolean> map = new HashMap<>();
-		for (String word : words) {
-			map.put(word, true);
-		}
-		return map;
-	}
+    private static HashMap<String, Boolean> makeMap(String[] words) {
+        HashMap<String, Boolean> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, true);
+        }
+        return map;
+    }
 
-	private static boolean canBuildWord(String word, boolean isOriginalWord, HashMap<String, Boolean> cache) {
-		if (!isOriginalWord && cache.containsKey(word)) {
-			return cache.get(word);
-		}
-		for (int i = 1; i < word.length(); i++) {
-			String left = word.substring(0, i);
-			String right = word.substring(i);
-			if (canBuildWord(left, false, cache) && canBuildWord(right, false, cache)) {
-				cache.put(word, true);
-				return true;
-			}
-		}
-		cache.put(word, false);
-		return false;
-	}
+    private static boolean canBuildWord(String word, boolean isOriginalWord, HashMap<String, Boolean> cache) {
+        if (!isOriginalWord && cache.containsKey(word)) {
+            return cache.get(word);
+        }
+        for (int i = 1; i < word.length(); i++) {
+            String left = word.substring(0, i);
+            String right = word.substring(i);
+            if (canBuildWord(left, false, cache) && canBuildWord(right, false, cache)) {
+                cache.put(word, true);
+                return true;
+            }
+        }
+        cache.put(word, false);
+        return false;
+    }
 }

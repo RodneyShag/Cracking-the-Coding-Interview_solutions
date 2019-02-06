@@ -9,13 +9,13 @@ import java.util.PriorityQueue;
 //   2) maxHeap.size() - 1 = minHeap.size()
 
 public class ContinuousMedian {
-	private static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // maxHeap contains all SMALL elements
-	private static PriorityQueue<Integer> minHeap = new PriorityQueue<>();						     // minHeap contains all LARGE elements
-	  
-	public static void addNum(int n) {
-		if (maxHeap.isEmpty()) {
+    private static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // maxHeap contains all SMALL elements
+    private static PriorityQueue<Integer> minHeap = new PriorityQueue<>();						     // minHeap contains all LARGE elements
+
+    public static void addNum(int n) {
+        if (maxHeap.isEmpty()) {
             maxHeap.add(n);
-		} else if (maxHeap.size() == minHeap.size()) {
+        } else if (maxHeap.size() == minHeap.size()) {
             if (n < minHeap.peek()) {
                 maxHeap.add(n);
             } else {
@@ -23,23 +23,23 @@ public class ContinuousMedian {
                 maxHeap.add(minHeap.remove());
             }
         } else if (maxHeap.size() > minHeap.size()) {
-	        if (n > maxHeap.peek()) {
-	        	minHeap.add(n);
-	        } else {
-	            maxHeap.add(n);
-	        	minHeap.add(maxHeap.remove());
-	        }
-	    }
-		// maxHeap will never be smaller size than minHeap
-	}
-	    
-	public static double getMedian() {
-		if (maxHeap.isEmpty()) {
-			return 0;
+            if (n > maxHeap.peek()) {
+                minHeap.add(n);
+            } else {
+                maxHeap.add(n);
+                minHeap.add(maxHeap.remove());
+            }
+        }
+        // maxHeap will never be smaller size than minHeap
+    }
+
+    public static double getMedian() {
+        if (maxHeap.isEmpty()) {
+            return 0;
         } else if (maxHeap.size() == minHeap.size()) {
-        	return (maxHeap.peek() + minHeap.peek()) / 2.0;
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
         } else {
-        	return maxHeap.peek();
+            return maxHeap.peek();
         }
     }
 }

@@ -1,6 +1,6 @@
 9.3 - Web Crawler
 
-	- Simple Answer: Use HashMap/HashSet to mark pages as visited.
-	- To solve problem where some URLs are different but content is same/similar:
-		- Create a "signature" for each page so we can assess degree of similarity.
-	 	  Then, If a page has a high degree of similarity to other pages, deprioritize crawling its children.
+    - Simple Answer: Use HashMap/HashSet to mark pages as visited.
+    - To solve problem where some URLs are different but content is same/similar:
+        - Create a "signature" for each page so we can assess degree of similarity.
+          Then, If a page has a high degree of similarity to other pages, deprioritize crawling its children.

@@ -1,10 +1,10 @@
 9.2 - Social Network
 
-	 - Use BFS to find (shortest) path between 2 people.
-	 - To Handle the Millions of Users (which won't fit on one machine)
-	 		- Server Should have:
-	 			- HashMap<Integer, Machine> machines (which maps machine's ID to the actual machine)
-	 			- HashMap<lnteger, Integer> personToMachineMap (which maps person's ID to machine's ID)
-	 		- Machine should have:
-	 			- HashMap<Integer, Person> persons (which maps person's ID to Person)
-	 - Optimization: Reduce Machine Jumps - Look up 5 things at once instead of 1 by 1 (see book for details)
+     - Use BFS to find (shortest) path between 2 people.
+     - To Handle the Millions of Users (which won't fit on one machine)
+             - Server Should have:
+                 - HashMap<Integer, Machine> machines (which maps machine's ID to the actual machine)
+                 - HashMap<lnteger, Integer> personToMachineMap (which maps person's ID to machine's ID)
+             - Machine should have:
+                 - HashMap<Integer, Person> persons (which maps person's ID to Person)
+     - Optimization: Reduce Machine Jumps - Look up 5 things at once instead of 1 by 1 (see book for details)

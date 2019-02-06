@@ -3,14 +3,14 @@ package _16_20_T9__Trie_Solution;
 class Trie {
     TrieNode root = new TrieNode();
 
-    Trie(){} // default constructor
-    
+    Trie() {} // default constructor
+
     Trie(String[] words) {
-    	for (String word : words) {
-			add(word);
-		}
+        for (String word : words) {
+            add(word);
+        }
     }
-    
+
     public void add(String str) {
         TrieNode curr = root;
         for (int i = 0; i < str.length(); i++) {

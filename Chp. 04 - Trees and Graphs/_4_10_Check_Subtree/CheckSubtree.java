@@ -10,46 +10,47 @@ import common.TreeNode;
 // 2) Recursive search     See analysis at bottom    Favorite
 
 public class CheckSubtree {
-	/* Solution 1
-	 * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same 
-	 *   is true for inorder traversals, then T2 is substring of T1
-	 * - During implementation, we can  insert dummy "0" for nulls. This is necessary 
-	 *   to distinguish the 2 trees in book with duplicate values.
-	 */
+    /* Solution 1
+     * - Book says if T1's preorder traversal is substring of T2's preorder traversal, and same 
+     *   is true for inorder traversals, then T2 is substring of T1
+     * - During implementation, we can  insert dummy "0" for nulls. This is necessary 
+     *   to distinguish the 2 trees in book with duplicate values.
+     */
 
-	/**************/
-	/* Solution 2 */
-	/**************/
-	public static boolean containsTree(TreeNode t1, TreeNode t2) {
-		if (t2 == null) { // the empty tree is always a subtree. We do this check here to avoid doing it every time in subTree
-			return true;
-		}
-		return subTree(t1, t2);
-	}
-	
-	public static boolean subTree(TreeNode t1, TreeNode t2) {
-		if (t1 == null) {
-			return false;
-		}
-		
-		if (matchTree(t1, t2)) {
-			return true;
-		}
+    /**************/
+    /* Solution 2 */
+    /**************/
+    public static boolean containsTree(TreeNode t1, TreeNode t2) {
+        if (t2 == null) { // the empty tree is always a subtree. We do this check here to avoid doing it
+                          // every time in subTree
+            return true;
+        }
+        return subTree(t1, t2);
+    }
 
-		return subTree(t1.left, t2) || subTree(t1.right, t2);
-	}
+    public static boolean subTree(TreeNode t1, TreeNode t2) {
+        if (t1 == null) {
+            return false;
+        }
 
-	public static boolean matchTree(TreeNode p, TreeNode q) {
-		if (p == null && q == null) {
-			return true;		
-		} else if (p == null || q == null) {
-			return false;
-		}
-		if (p.data != q.data) {
-			return false;
-		}
-		return matchTree(p.left, q.left) && matchTree(p.right, q.right);
-	}
+        if (matchTree(t1, t2)) {
+            return true;
+        }
+
+        return subTree(t1.left, t2) || subTree(t1.right, t2);
+    }
+
+    public static boolean matchTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        } else if (p == null || q == null) {
+            return false;
+        }
+        if (p.data != q.data) {
+            return false;
+        }
+        return matchTree(p.left, q.left) && matchTree(p.right, q.right);
+    }
 }
 
 // Runtimes: 

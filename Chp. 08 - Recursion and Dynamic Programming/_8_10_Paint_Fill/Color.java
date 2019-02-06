@@ -1,5 +1,5 @@
 package _8_10_Paint_Fill;
 
 public enum Color {
-	BLACK, WHITE, RED, YELLOW, GREEN
+    BLACK, WHITE, RED, YELLOW, GREEN
 }

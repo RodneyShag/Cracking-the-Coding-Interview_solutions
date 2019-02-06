@@ -7,27 +7,27 @@ import common.GraphNode;
 // Improvement: Do bi-directional BFS to improve runtime
 
 public class RouteBetweenNodes {
-	public static boolean routeExists(GraphNode start, GraphNode end) {
-		if (start == end) {
-			return true;
-		}
-		
-		ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
-		start.visit();
-		deque.add(start);
-		
-		while (!deque.isEmpty()) {
-			GraphNode curr = deque.remove();
-			if (curr == end) {
-				return true;
-			}
-			for (GraphNode neighbor : curr.getNeighbors()) {
-				if (!neighbor.visited) {
-					neighbor.visit();
-					deque.add(neighbor);
-				}
-			}
-		}
-		return false;
-	}
+    public static boolean routeExists(GraphNode start, GraphNode end) {
+        if (start == end) {
+            return true;
+        }
+
+        ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
+        start.visit();
+        deque.add(start);
+
+        while (!deque.isEmpty()) {
+            GraphNode curr = deque.remove();
+            if (curr == end) {
+                return true;
+            }
+            for (GraphNode neighbor : curr.getNeighbors()) {
+                if (!neighbor.visited) {
+                    neighbor.visit();
+                    deque.add(neighbor);
+                }
+            }
+        }
+        return false;
+    }
 }

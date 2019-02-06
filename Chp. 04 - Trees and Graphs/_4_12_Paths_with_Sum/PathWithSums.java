@@ -13,37 +13,37 @@ import common.TreeNode;
 // Space complexity: O(log n) since that's the max size of a path, and also the max amount of recursive calls on stack.
 
 public class PathWithSums {
-	public static void findSum(TreeNode node, int value) {
-		findSum(node, value, new ArrayList<TreeNode>());
-	}
-	
-	/* Recursive function */
-	private static void findSum(TreeNode node, int value, ArrayList<TreeNode> path) {
-		if (node == null) {
-			return;
-		}
-		path.add(node);
-		checkSums(path, value);
-		findSum(node.left,  value, path);
-		findSum(node.right, value, path);
-		path.remove(node); // We have 1 "remove" for each 1 "add"
-	}
-	
-	/* We sum paths in REVERSE order to see if they equal 'value' */
-	private static void checkSums(ArrayList<TreeNode> path, int value) {
-		int sum = 0;
-		for (int i = path.size() - 1; i >= 0; i--) { // We must loop backwards
-			sum += path.get(i).data;
-			if (sum == value) {
-				printPath(path, i, path.size() - 1);
-			}
-		}
-	}
-	
-	private static void printPath(ArrayList<TreeNode> path, int start, int end) {
-		System.out.println();
-		for (int i = start; i <= end; i++) {
-			System.out.print(path.get(i).data + " ");
-		}
-	}
+    public static void findSum(TreeNode node, int value) {
+        findSum(node, value, new ArrayList<TreeNode>());
+    }
+
+    /* Recursive function */
+    private static void findSum(TreeNode node, int value, ArrayList<TreeNode> path) {
+        if (node == null) {
+            return;
+        }
+        path.add(node);
+        checkSums(path, value);
+        findSum(node.left, value, path);
+        findSum(node.right, value, path);
+        path.remove(node); // We have 1 "remove" for each 1 "add"
+    }
+
+    /* We sum paths in REVERSE order to see if they equal 'value' */
+    private static void checkSums(ArrayList<TreeNode> path, int value) {
+        int sum = 0;
+        for (int i = path.size() - 1; i >= 0; i--) { // We must loop backwards
+            sum += path.get(i).data;
+            if (sum == value) {
+                printPath(path, i, path.size() - 1);
+            }
+        }
+    }
+
+    private static void printPath(ArrayList<TreeNode> path, int start, int end) {
+        System.out.println();
+        for (int i = start; i <= end; i++) {
+            System.out.print(path.get(i).data + " ");
+        }
+    }
 }
