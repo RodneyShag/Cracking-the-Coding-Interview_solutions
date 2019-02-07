@@ -3,8 +3,6 @@ package _16_21_Sum_Swap;
 import java.util.Arrays;
 import java.util.HashSet;
 
-// Time complexity: O(a + b) where a, b are size of arrays
-
 public class SumSwap {
     public static void toSwap(int[] arrayA, int[] arrayB) {
         int sum1 = Arrays.stream(arrayA).reduce(0, Integer::sum);
@@ -33,3 +31,5 @@ public class SumSwap {
         return set;
     }
 }
+
+// Time complexity: O(a + b) where a, b are size of arrays

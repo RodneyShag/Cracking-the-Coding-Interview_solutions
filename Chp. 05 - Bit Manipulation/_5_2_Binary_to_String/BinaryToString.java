@@ -12,6 +12,7 @@ package _5_2_Binary_to_String;
 public class BinaryToString {
     /* Solution 1 - Uses the "multiply by 2" method I learned in CS 357: A well-known algo to turn decimal fractions into binary fractions */
     public static String printBinary(double num) {
+        final int MAX_CHARACTERS = 32;
         if (num >= 1 || num <= 0) {
             return "ERROR";
         }
@@ -27,7 +28,7 @@ public class BinaryToString {
             } else {
                 binary.append(0);
             }
-            if (binary.length() > 32) {
+            if (binary.length() > MAX_CHARACTERS) {
                 return "ERROR";
             }
         }

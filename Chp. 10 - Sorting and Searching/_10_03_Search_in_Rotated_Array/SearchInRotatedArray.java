@@ -7,15 +7,13 @@ package _10_03_Search_in_Rotated_Array;
 //         
 // - Array can only have 1 inflection point, therefore it is either to the left or right of midIndex. That means 1/2 of the array
 //   is ordered normally (in increasing order) and the other half has the inflection point.
-//
-// - Runtime: O(log n) average case, but O(n) worst case if there are many duplicates.
 
 public class SearchInRotatedArray {
     public static Integer search(int[] rotatedArray, int x) {
         return search(rotatedArray, x, 0, rotatedArray.length - 1);
     }
 
-    public static Integer search(int[] rotatedArray, int x, int start, int end) {
+    private static Integer search(int[] rotatedArray, int x, int start, int end) {
         if (start > end) {
             return null;
         }
@@ -52,3 +50,5 @@ public class SearchInRotatedArray {
         }
     }
 }
+
+// Time Complexity: O(log n) average case, but O(n) worst case if there are many duplicates.

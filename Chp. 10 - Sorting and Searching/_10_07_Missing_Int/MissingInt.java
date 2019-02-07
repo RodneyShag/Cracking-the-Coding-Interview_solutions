@@ -6,11 +6,8 @@ public class MissingInt {
 
     /* Can't test this function since needs 1 GB of memory */
     public static void findNumber(int[] input) {
-        MyBitSet bitset = new MyBitSet(ONE_GB); // My implementation of BitSet
-                                                // has constructor that takes a
-                                                // long (java.util.BitSet
-                                                // doesn't)
-
+        // My implementation of BitSet has constructor that takes a long (java.util.BitSet doesn't)
+        MyBitSet bitset = new MyBitSet(ONE_GB);
         /* Initialize bitfield to represent numbers we already have */
         for (int num : input) {
             bitset.set(num);
@@ -37,8 +34,7 @@ public class MissingInt {
         int partitionSize = (int) Math.pow(2, 18);
         int numBlocks = (int) Math.pow(2, 12);
         MyBitSet bitset = new MyBitSet(partitionSize); // this takes up 2^18 bits
-        int[] blocks = new int[numBlocks]; // this takes up 2^12 * (2^5 bits in
-                                           // int) = 2^17 bits
+        int[] blocks = new int[numBlocks]; // this takes up 2^12 * (2^5 bits in int) = 2^17 bits
 
         /* Set up each block to have the count of numbers in that range */
         for (int num : input) {

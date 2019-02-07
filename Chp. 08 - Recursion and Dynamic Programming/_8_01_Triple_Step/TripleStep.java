@@ -19,7 +19,7 @@ public class TripleStep {
         return numPathsRecursive_helper(steps);
     }
 
-    public static int numPathsRecursive_helper(int steps) {
+    private static int numPathsRecursive_helper(int steps) {
         if (steps < 0) {
             return 0;
         }
@@ -47,6 +47,6 @@ public class TripleStep {
 
     /*
      * Solution 3: Can be done in O(1) space by saving just the last 3 elements of
-     * array, like in Fibonacci problem
+     * array, like in Fibonacci solution
      */
 }

@@ -2,10 +2,11 @@ package _8_12_Eight_Queens;
 
 import java.util.ArrayList;
 
-// Tricks:
-// 1) Represent a solution ChessBoard as an Integer[] with 8 elements (since there is a queen on each row)
-// 2) Represent all solutions as ArrayList<Integer[]>.
-// - we don't cache previous results since we are looking for ALL possible solutions (Like Problem 9.2 part 3 "find all paths")
+// Tricks
+//
+// 1. Represent a solution ChessBoard as an Integer[] with 8 elements (since there is a queen on each row)
+// 2. Represent all solutions as ArrayList<Integer[]>.
+// 3. We don't cache previous results since we are looking for ALL possible solutions (Like Problem 9.2 part 3 "find all paths")
 
 public class EightQueens {
     static private final int GRID_SIZE = 8;

@@ -8,8 +8,6 @@ package _16_18_Pattern_Matching;
 //      - for each maxLengthA, calculate maxLengthB
 //      - use a helper function: checkMatch(String value, String pattern, int aLength, int bLength)
 
-// Time Complexity: O(n^2)
-
 public class PatternMatching {
 
     public static boolean matches(String value, String pattern) {
@@ -85,3 +83,5 @@ public class PatternMatching {
         return true;
     }
 }
+
+// Time Complexity: O(n^2)

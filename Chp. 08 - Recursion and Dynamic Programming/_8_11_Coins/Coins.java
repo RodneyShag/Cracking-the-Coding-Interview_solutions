@@ -8,13 +8,11 @@ import java.util.HashMap;
 
 public class Coins {
 
-    /* Wrapper */
     public static long makeChange(int n) {
         HashMap<String, Long> cache = new HashMap<>();
         return makeChange(n, 25, cache);
     }
 
-    /* Recursive helper function */
     private static long makeChange(int n, int denom, HashMap<String, Long> cache) {
         String key = n + "," + denom;
         if (cache.containsKey(key)) {

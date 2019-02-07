@@ -44,3 +44,6 @@ public class BinarySearch {
         }
     }
 }
+
+//  Time Complexity: O(log n)
+// Space Complexity: O(1) for Iterative solution, O(log n) for Recursive solution

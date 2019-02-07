@@ -15,7 +15,7 @@ public class Line {
     private static final double epsilon = 0.0001;
     public final Double slope;          // I use Double instead of double to be able to set it to null.
     public final Double y_intercept;
-    public final boolean infiniteSlope;	// Important
+    public final boolean infiniteSlope; // Important
     public final double  x_intercept;   // We want to know x_intercept in case line has infinite slope
 
     /* Constructor */

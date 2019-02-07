@@ -1,7 +1,7 @@
 package _10_04_Sorted_Search_No_Size;
 
 public class Listy {
-    int[] array;
+    private int[] array;
 
     public Listy(int[] arr) {
         array = arr;

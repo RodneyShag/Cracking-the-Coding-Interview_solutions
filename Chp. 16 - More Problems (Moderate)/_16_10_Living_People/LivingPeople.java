@@ -11,8 +11,7 @@ public class LivingPeople {
         int[] deltas = new int[max - min + 2];
         for (Person person : people) {
             deltas[person.birth - min]++;
-            deltas[person.death + 1 - min]--; // We consider him/her alive on
-                                              // death year
+            deltas[person.death + 1 - min]--; // We consider him/her alive on death year
         }
         return deltas;
     }

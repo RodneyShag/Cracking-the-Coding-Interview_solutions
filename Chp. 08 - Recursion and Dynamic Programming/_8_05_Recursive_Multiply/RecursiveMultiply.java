@@ -11,7 +11,7 @@ public class RecursiveMultiply {
         }
     }
 
-    public static int multiplyHelper(int smaller, int bigger) {
+    private static int multiplyHelper(int smaller, int bigger) {
         if (smaller == 1) {
             return bigger;
         }

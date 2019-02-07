@@ -8,8 +8,6 @@ import java.util.ArrayList;
 //      key   = Number (well, only numbers that give valid words will be included)
 //      value = List of Valid Words
 
-// Time Complexity: O(1) lookup (after preprocessing)
-
 public class T9 {
     private static HashMap<Character, Character> letterToDigit = new HashMap<>();
 
@@ -44,3 +42,5 @@ public class T9 {
         return sb.toString();
     }
 }
+
+// Time Complexity: O(1) lookup (after preprocessing)

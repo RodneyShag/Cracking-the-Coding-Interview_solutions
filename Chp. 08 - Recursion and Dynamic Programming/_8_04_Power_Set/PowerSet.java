@@ -3,7 +3,6 @@ package _8_04_Power_Set;
 import java.util.ArrayList;
 
 public class PowerSet {
-    // Time Complexity: O(2^n). Impossible to do better
     public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set) {
         ArrayList<ArrayList<Integer>> powerSet = new ArrayList<>();
         int max = (int) Math.pow(2, set.size());
@@ -27,3 +26,5 @@ public class PowerSet {
         return subset;
     }
 }
+
+// Time Complexity: O(2^n). Impossible to do better

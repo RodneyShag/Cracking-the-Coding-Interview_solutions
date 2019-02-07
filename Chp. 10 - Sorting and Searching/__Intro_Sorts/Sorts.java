@@ -135,8 +135,8 @@ public class Sorts {
     }
 
     /* Partitions array into 2 parts. 
-     * 		1) Left side has values smaller than pivotValue
-     * 		2) Right side has values larger than pivotValue
+     *   1) Left side has values smaller than pivotValue
+     *   2) Right side has values larger than pivotValue
      * Returns pivotIndex
      */
     public static Integer partition(int[] array, int start, int end) {

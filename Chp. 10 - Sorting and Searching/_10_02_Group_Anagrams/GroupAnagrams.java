@@ -29,7 +29,7 @@ public class GroupAnagrams {
         }
     }
 
-    public static String sortChars(String str) {
+    private static String sortChars(String str) {
         char[] content = str.toCharArray(); // Strings are immutable, which is why we convert to char[] first
         Arrays.sort(content);
         return new String(content);

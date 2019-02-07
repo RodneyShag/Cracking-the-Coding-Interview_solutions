@@ -1,7 +1,5 @@
 package _10_04_Sorted_Search_No_Size;
 
-// Time Complexity: O(log n)
-
 public class SortedSearchNoSize {
     public static int search(Listy list, int value) {
         int index = 1;
@@ -26,3 +24,6 @@ public class SortedSearchNoSize {
         return -1;
     }
 }
+
+// Time Complexity: O(log n)
+

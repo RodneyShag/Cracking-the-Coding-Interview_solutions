@@ -2,12 +2,12 @@ package _10_10_Rank_from_Stream;
 
 // Data Structures we could have used:
 //
-//              Insert (into sorted structure)     getRank()
+// Data Structure   Insert (into sorted structure)    getRank()
 // ------------------------------------------------------------------------------------------
-// Array:       O(n) cuz of shifting               O(log n) using binary search
-// Linked List: O(n).                              O(n) since we can't do binary search on linked list
-// HashMap:     O(1).                              O(n) since HashMap doesn't help us find rank in any way (it's not sorted)
-// BST:         O(log n).                          O(log n) (assuming it's balanced)
+// Array            O(n) due to shifting              O(log n) using binary search
+// Linked List      O(n)                              O(n) since we can't do binary search on linked list
+// HashMap          O(1)                              O(n) since HashMap doesn't help us find rank in any way (it's not sorted)
+// BST              O(log n)                          O(log n) (assuming it's balanced)
 //
 // Note: Insert for array and linked list are O(n) since we insert into the position necessary to keep the data structure sorted
 

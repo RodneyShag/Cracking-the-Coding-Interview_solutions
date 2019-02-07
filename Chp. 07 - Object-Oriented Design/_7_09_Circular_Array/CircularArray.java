@@ -32,9 +32,9 @@ public class CircularArray<T> {
     public void rotate(int shiftRight) {
         head = (head + shiftRight) % items.length;
     }
-
-    // Part 2: Skip because
-    //   1) I doubt we will have to do something this specific in an interview
-    //   2) Spending time using and getting comfortable with iterators with .hasNext() and .next()
-    //         may be more useful than implementing them myself
 }
+
+// Part 2: Skip because
+//   1) I doubt we will have to do something this specific in an interview
+//   2) Spending time using and getting comfortable with iterators with .hasNext() and .next()
+//         may be more useful than implementing them myself

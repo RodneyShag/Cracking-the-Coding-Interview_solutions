@@ -6,7 +6,7 @@ public class MagicIndex {
         return magicFast(sortedArray, 0, sortedArray.length - 1);
     }
 
-    public static Integer magicFast(int[] sortedArray, int start, int end) {
+    private static Integer magicFast(int[] sortedArray, int start, int end) {
         if (start > end) {
             return null;
         }
@@ -26,7 +26,7 @@ public class MagicIndex {
         return magicFast2(sortedArray, 0, sortedArray.length - 1);
     }
 
-    public static Integer magicFast2(int[] sortedArray, int start, int end) {
+    private static Integer magicFast2(int[] sortedArray, int start, int end) {
         if (start > end || start < 0 || end >= sortedArray.length) {
             return null;
         }

@@ -3,8 +3,9 @@ package introduction;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/* Prints pairs where a^3 + b^3 = c^3 + d^3 */
+
 public class ABCD {
-    /* Prints pairs where a^3 + b^3 = c^3 + d^3 */
     public static void printPairs() {
         /* Put Pairs in HashMap */
         HashMap<Integer, ArrayList<Pair>> map = new HashMap<>();

@@ -8,16 +8,16 @@ public class Box {
 
     /* Constructor */
     Box(int w, int h, int d) {
-        width = w;
+        width  = w;
         height = h;
-        depth = d;
+        depth  = d;
     }
 
     /* Constructor */
     Box(Box other) {
-        width = other.width;
+        width  = other.width;
         height = other.height;
-        depth = other.depth;
+        depth  = other.depth;
     }
 
     /* A box can be placed on 1) an empty platform (that's what the "other == null" is for), or 2) a bigger box (in every dimension) */

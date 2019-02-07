@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import __Intro_Prime.Prime;
 
-// Tricks:
+// Hints:
 // - Create Cell<K,V> generic class
 // - Represent everything as ArrayList of LinkedLists of Cells
 

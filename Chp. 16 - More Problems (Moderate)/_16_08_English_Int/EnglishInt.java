@@ -9,10 +9,10 @@ package _16_08_English_Int;
 
 public class EnglishInt {
 
-    public static String[] digits = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
-    public static String[] teens  = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-    public static String[] tens   = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
-    public static String[] bigs   = {"", "Thousand", "Million", "Billion"};
+    private static String[] digits = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+    private static String[] teens  = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    private static String[] tens   = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+    private static String[] bigs   = {"", "Thousand", "Million", "Billion"};
 
     public static String numToString(int num) {
         if (num < 0) {
@@ -72,3 +72,5 @@ public class EnglishInt {
         return sb.toString();
     }
 }
+
+// Time Complexity: O(1)

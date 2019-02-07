@@ -10,7 +10,7 @@ public class TowersOfHanoi {
     }
 
     /* We teach it how to move 1 disk. Therefore it can recursively move n disks */
-    public static void moveTop(Tower origin, Tower destination) {
+    private static void moveTop(Tower origin, Tower destination) {
         Integer disk = origin.pop();
         destination.push(disk);
         System.out.println("Move disk " + disk + " from Tower " + origin.towerNum + " to Tower " + destination.towerNum);

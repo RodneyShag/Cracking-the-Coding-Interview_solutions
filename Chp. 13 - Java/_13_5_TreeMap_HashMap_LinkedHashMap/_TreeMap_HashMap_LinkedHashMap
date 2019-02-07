@@ -12,3 +12,5 @@ LinkedHashMap
 
     O(1) add and remove
     Iterating over it will return elements in the same order they were inserted
+
+StackOverflow Answer: https://stackoverflow.com/a/17708526

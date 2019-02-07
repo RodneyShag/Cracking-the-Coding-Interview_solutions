@@ -9,7 +9,7 @@ import java.util.HashMap;
 // 
 // Tips:
 // - Have "Box" class with ".canBeAbove(Box other)" function.
-// - Use HashMap<Box, ArrayDeque<Box>> to cache found solutions. (Need to override .equals() and hashCode()).
+// - Use HashMap<Box, ArrayDeque<Box>> to cache found solutions. Need to override .equals() and hashCode().
 // - Having "Box bottom" as a parameter is crucial but hard to think of.
 // - Deep copy (which is what I did) or cloning (which is what book did) is needed to avoid insidious bugs.
 

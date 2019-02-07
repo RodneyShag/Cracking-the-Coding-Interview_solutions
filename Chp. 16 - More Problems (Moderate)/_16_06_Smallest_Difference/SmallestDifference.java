@@ -2,8 +2,6 @@ package _16_06_Smallest_Difference;
 
 import java.util.Arrays;
 
-// Time Complexity: O(a log a + b log b) where a, b are lengths of the 2 arrays
-
 // Kind of like a "closest 2 sum" problem.
 
 public class SmallestDifference {
@@ -28,3 +26,5 @@ public class SmallestDifference {
         return minDifference;
     }
 }
+
+// Time Complexity: O(a log a + b log b) where a, b are lengths of the 2 arrays
