@@ -29,7 +29,7 @@ public class GraphFunctions {
     }
 
     // Don't forget:
-    //   1) Use a Queue
+    //   1) Use a Queue (or ArrayDeque as a Queue)
     //   2) .visit() a node before we add it to deque (to avoid duplicates on deque)
     public static void BFS(GraphNode node, int data) {
         if (node == null) {

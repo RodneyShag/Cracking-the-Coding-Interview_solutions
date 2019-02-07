@@ -5,8 +5,7 @@ import java.util.ArrayList;
 class Node {
     public char data;
     public Visited status;
-    public ArrayList<Node> neighbors; // could alternatively use a HashSet (if I
-                                      // give nodes unique IDs)
+    public ArrayList<Node> neighbors; // could alternatively use a HashSet (if I give nodes unique IDs)
 
     /* Constructor */
     public Node(char data) {

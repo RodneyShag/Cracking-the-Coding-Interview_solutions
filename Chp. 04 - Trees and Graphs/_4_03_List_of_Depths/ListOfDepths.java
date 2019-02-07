@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import common.TreeNode;
 
-// Tricky Skills:
-// 1) Knowing I should return an "ArrayList<LinkedList<Node>>". 
-// 2) Knowing that, to alter the "ArrayList<LinkedList<Node>>", I should be passing it as a parameter so it can be altered.
-// 3) Know to also pass the "level" down the tree.
-// 4) Remembering to create new LinkedLists in our ArrayList when necessary.
-// 5) Making a DEEP COPY whenever we add Nodes to the list.
-
 public class ListOfDepths {
     public static ArrayList<LinkedList<TreeNode>> createLists(TreeNode root) {
         ArrayList<LinkedList<TreeNode>> lists = new ArrayList<>();
@@ -18,7 +11,7 @@ public class ListOfDepths {
         return lists;
     }
 
-    public static void createListsHelper(TreeNode node, ArrayList<LinkedList<TreeNode>> lists, int currLevel) {
+    private static void createListsHelper(TreeNode node, ArrayList<LinkedList<TreeNode>> lists, int currLevel) {
         if (node == null) {
             return;
         }
@@ -37,3 +30,10 @@ public class ListOfDepths {
         createListsHelper(node.right, lists, currLevel + 1);
     }
 }
+
+// Tricky Implementation Details:
+//  1) Knowing to return an "ArrayList<LinkedList<Node>>".
+//  2) Knowing that, to alter the "ArrayList<LinkedList<Node>>", we should pass it as a parameter so it can be altered.
+//  3) Know to also pass the "level" down the tree.
+//  4) Remembering to create new LinkedLists in our ArrayList when necessary.
+//  5) Making a DEEP COPY whenever we add Nodes to the list.

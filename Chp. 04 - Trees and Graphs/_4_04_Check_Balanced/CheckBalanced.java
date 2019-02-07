@@ -4,9 +4,6 @@ import common.TreeNode;
 
 // Algorithm: If subtree at Node is imbalanced, return -1. Otherwise, return height of subtree.
 
-//  Time Complexity: O(n)
-// Space Complexity: O(h)
-
 public class CheckBalanced {
     public static boolean isBalanced(TreeNode root) {
         return (isBalancedHelper(root) == -1) ? false : true;
@@ -34,3 +31,6 @@ public class CheckBalanced {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n)

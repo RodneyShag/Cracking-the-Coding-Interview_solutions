@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GraphNode {
     public int data;
     public boolean visited; // needed for BFS, DFS
-    private ArrayList<GraphNode> neighbors; // could alternatively use a HashSet (and give nodes unique IDs)
+    private ArrayList<GraphNode> neighbors; // can alternatively use a HashSet (and give nodes unique IDs)
 
     /* Constructor */
     public GraphNode(int data) {

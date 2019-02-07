@@ -4,7 +4,6 @@ import java.util.ArrayDeque;
 import common.GraphNode;
 
 // Algorithm: run BFS from start node and see if we arrive at end node
-// Improvement: Do bi-directional BFS to improve runtime
 
 public class RouteBetweenNodes {
     public static boolean routeExists(GraphNode start, GraphNode end) {
@@ -31,3 +30,5 @@ public class RouteBetweenNodes {
         return false;
     }
 }
+
+// Improvement: Do bi-directional BFS to improve runtime

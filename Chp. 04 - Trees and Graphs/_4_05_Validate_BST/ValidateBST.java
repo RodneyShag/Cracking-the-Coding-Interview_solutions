@@ -2,9 +2,6 @@ package _4_05_Validate_BST;
 
 import common.TreeNode;
 
-//  Time Complexity: O(n)     - since we visit every node
-// Space Complexity: O(log n) - that's the depth of the recursion
-
 public class ValidateBST {
     public static boolean isBST(TreeNode root) {
         return isBST_Helper(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
@@ -20,3 +17,6 @@ public class ValidateBST {
         return isBST_Helper(node.left, min, node.data) && isBST_Helper(node.right, node.data, max);
     }
 }
+
+//  Time Complexity: O(n)     - since we visit every node
+// Space Complexity: O(log n) - that's the depth of the recursion

@@ -3,14 +3,9 @@ package _4_12_Paths_with_Sum;
 import java.util.ArrayList;
 import common.TreeNode;
 
-// Big Trick: Instead of checking if a node starts a path that sums to "value", we check if it ENDS a path
-//            summing to "value".
+// The Big Trick
 //
-// Time/Space complexities: Assuming BALANCED binary tree
-// Time complexity: O(n log(n)) since we touch all "n" nodes, and findSum is O(log n)) in AVERAGE case.
-//                  findSum worst case is O((log n)^2) since it may call print every single time,
-//                  making overall time complexity worst case O(n log(n)^2)
-// Space complexity: O(log n) since that's the max size of a path, and also the max amount of recursive calls on stack.
+// Instead of checking if a node starts a path that sums to "value", we check if it ENDS a path summing to "value".
 
 public class PathWithSums {
     public static void findSum(TreeNode node, int value) {
@@ -47,3 +42,9 @@ public class PathWithSums {
         }
     }
 }
+
+// Time/Space complexities: Assuming BALANCED binary tree
+// Time complexity: O(n log(n)) since we touch all "n" nodes, and findSum is O(log n)) in AVERAGE case.
+//                  findSum worst case is O((log n)^2) since it may call print every single time,
+//                  making overall time complexity worst case O(n (log n)^2)
+// Space complexity: O(log n) since that's the max size of a path, and also the max amount of recursive calls on stack.

@@ -1,6 +1,6 @@
 package common;
 
-// Represents a binary Tree. If we wanted an n-ary tree,
+// This represents a binary Tree. If we wanted an n-ary tree,
 // we would use an array of TreeNodes as children
 
 public class TreeNode {

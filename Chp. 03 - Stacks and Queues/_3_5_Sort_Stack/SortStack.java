@@ -2,9 +2,6 @@ package _3_5_Sort_Stack;
 
 import java.util.Stack;
 
-//  Time Complexity: O(n^2)
-// Space Complexity: O(n)
-
 public class SortStack {
     public static Stack<Integer> sort(Stack<Integer> stack) {
         Stack<Integer> helperStack = new Stack<>(); // can alternatively use ArrayDeque (it's faster)
@@ -18,3 +15,6 @@ public class SortStack {
         return helperStack;
     }
 }
+
+//  Time Complexity: O(n^2)
+// Space Complexity: O(n)

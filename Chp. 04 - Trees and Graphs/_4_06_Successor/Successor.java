@@ -2,7 +2,7 @@ package _4_06_Successor;
 
 import common.TreeNode;
 
-// Read book's logic, but ignore its code. My code is much cleaner.
+// Read book's logic, but ignore its code. The code below is much cleaner.
 // - Notice there are 2 distinct cases: "leftMostChild" (easy to code), "properParent" (a little tricky)
 
 public class Successor {

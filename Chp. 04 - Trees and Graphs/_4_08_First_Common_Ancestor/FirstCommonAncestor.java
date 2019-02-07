@@ -24,7 +24,7 @@ public class FirstCommonAncestor {
             return root;
         }
 
-        TreeNode left = commonAnc(root.left, p, q);
+        TreeNode left  = commonAnc(root.left, p, q);
         TreeNode right = commonAnc(root.right, p, q);
 
         if (left == null) {
