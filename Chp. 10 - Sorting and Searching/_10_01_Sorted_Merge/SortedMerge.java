@@ -2,6 +2,7 @@ package _10_01_Sorted_Merge;
 
 // Same concept as "merge" from MergeSort.
 // Additional Trick: copy to end of array since that's where our empty buffer is.
+
 public class SortedMerge {
     public static void merge(int[] a, int[] b, int lastA, int lastB) { // lastA is index of last element in array. Same with lastB
         int curr = lastA + lastB + 1;

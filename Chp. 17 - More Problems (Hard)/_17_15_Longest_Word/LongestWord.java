@@ -5,14 +5,13 @@ import java.util.HashMap;
 
 // Find longest word in an array that can be comprised of 2+ other words in the array
 // 
-// 1) Sort Array in order by string length
-// 2) Save original String[] in a HashMap<String, Boolean> to save words for fast lookup. Also use this to cache results
-// 3) A word must be built of OTHER words. "isOriginalWord" flag helps us do this
+// 1. Sort Array in order by string length.
+// 2. Save original String[] in a HashMap<String, Boolean> to save words for fast lookup. Also use this to cache results.
+// 3. A word must be built of OTHER words. "isOriginalWord" flag helps us do this.
 
 public class LongestWord {
     public static String longestWord(String[] words) {
-        Arrays.sort(words, new LengthComparator()); // we want to search longest
-                                                    // words first
+        Arrays.sort(words, new LengthComparator()); // we want to search longest words first
         HashMap<String, Boolean> map = makeMap(words);
 
         for (String word : words) {

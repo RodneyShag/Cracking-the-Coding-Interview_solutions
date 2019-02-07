@@ -1,7 +1,7 @@
 Let's label the 2 missing numbers as "a" and "b".
 
 Formula 1: Sum of 1 to n is (n)(n+1)/2
-Formula 2: Sum of squares of 1 to n is 1^2 + 2^2 + .... n^2.
+Formula 2: Sum of squares of 1 to n is 1^2 + 2^2 + .... n^2
 
 We can calculate "ActualValue" by using the 2 formulas above, giving us:
 

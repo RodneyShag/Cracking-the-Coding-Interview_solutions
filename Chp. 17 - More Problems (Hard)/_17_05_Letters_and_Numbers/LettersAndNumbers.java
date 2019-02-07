@@ -4,11 +4,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 // Algorithm:
-//  - Count the "running" differences (between letters and numbers) at each spot in array. Save in int[]
-//  - If 2 indices in our int[] have the same difference, that means there's an equal subarray between them
-//  - To find the max subarray, we find the largest distance between 2 indices with equal differences
-
-// Time Complexity: O(n)
+//  1. Count the "running" differences (between letters and numbers) at each spot in array. Save in int[]
+//  2. If 2 indices in our int[] have the same difference, that means there's an equal subarray between them
+//  3. To find the max subarray, we find the largest distance between 2 indices with equal differences
 
 public class LettersAndNumbers {
     public static char[] maxSubarray(char[] array) {
@@ -51,3 +49,5 @@ public class LettersAndNumbers {
         return maxPair;
     }
 }
+
+// Time Complexity: O(n)

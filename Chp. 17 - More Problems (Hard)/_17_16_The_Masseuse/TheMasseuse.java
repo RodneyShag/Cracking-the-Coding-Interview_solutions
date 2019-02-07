@@ -8,7 +8,7 @@ package _17_16_The_Masseuse;
 
 public class TheMasseuse {
     /*********************************************/
-    /* Recursive solution: O(n) time, O(n) space */
+    /* Recursive solution: O(n) time, O(n) space */ // Cache solution
     /*********************************************/
 
     public static int maxMinutes1(int[] massages) {

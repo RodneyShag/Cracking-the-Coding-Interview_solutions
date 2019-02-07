@@ -12,7 +12,7 @@ package _17_14_Smallest_K;
 public class SmallestK {
     // Solution 1 
     // 
-    // Max Heap (Using PriorityQueue in Java, which has O(log m) for add() remove())
+    // Max Heap (Using PriorityQueue in Java, which has O(log m) for add() and remove())
     // 
     // Algorithm:
     // 	  1) O(m) to build a MAX heap of first 1 million elements (using algo from CS 225), largest element at the top.
@@ -28,12 +28,12 @@ public class SmallestK {
     }
 
     // Quickselect 
-    //  - Finds "nth" smallest element in an array. Returns its value (Code from Wikipedia)
+    //  - Finds "nth" smallest element in an array. Returns its value (Code from Wikipedia).
     //  - Also partially sorts the data. If the value of the nth smallest element is x, all values to the
-    //    left of it are smaller than x, and all values to the right of it are greater than x
-    //  - O(n) average run-time is since we recurse only on 1 side (n + n/2 + n/4 + ...) = n (1 + 1/2 + 1/4 + ...) = O(n)
-    //    Our formula above is a geometric series with "r = 1/2", which would converge to 1/(1-r) for infinite geometric series
-    //  - O(n^2) worst-case run-time is if "partition()" consistently picks a bad pivot
+    //    left of it are smaller than x, and all values to the right of it are greater than x.
+    //  - O(n) average run-time is since we recurse only on 1 side (n + n/2 + n/4 + ...) = n (1 + 1/2 + 1/4 + ...) = O(n).
+    //    Our formula above is a geometric series with "r = 1/2", which would converge to 1/(1-r) for infinite geometric series.
+    //  - O(n^2) worst-case run-time is if "partition()" consistently picks a bad pivot.
     private static Integer quickselect(int[] array, int n) {
         int start = 0;
         int end   = array.length - 1;
@@ -50,7 +50,7 @@ public class SmallestK {
         return null;
     }
 
-    // Partitions array into 2 parts. 
+    // Partition array into 2 parts. 
     //     1) Left side has values smaller than pivotValue
     //     2) Right side has values larger than pivotValue
     // Returns pivotIndex

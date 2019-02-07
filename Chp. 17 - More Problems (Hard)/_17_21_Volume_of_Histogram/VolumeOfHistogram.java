@@ -1,8 +1,5 @@
 package _17_21_Volume_of_Histogram;
 
-//  Time Complexity: O(n)
-// Space Complexity: O(n)
-
 // Main idea: For each index, the tallest wall anywhere to the left, and to the right, determine
 //            the amount of water the index will hold. We can calculate this iteratively.
 
@@ -25,3 +22,7 @@ public class VolumeOfHistogram {
         return sum;
     }
 }
+
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n)

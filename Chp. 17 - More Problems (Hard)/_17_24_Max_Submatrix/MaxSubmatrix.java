@@ -2,7 +2,7 @@ package _17_24_Max_Submatrix;
 
 // Find maximum subsquare with black borders
 // 
-// Solutions              Runtime                          Preference
+// Solution               Runtime                          Preference
 // ------------------------------------------------------------------------
 // 1) Brute Force         O(n^6)                           Worth mentioning
 // 2) Pre-process         O(n^4)                           Worth mentioning
@@ -31,7 +31,7 @@ public class MaxSubmatrix {
         return maxArea;
     }
 
-    public static int getSum(int[][] grid, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(n^2) time
+    private static int getSum(int[][] grid, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(n^2) time
         int sum = 0;
         for (int row = rowStart; row <= rowEnd; row++) {
             for (int col = colStart; col <= colEnd; col++) {
@@ -64,7 +64,7 @@ public class MaxSubmatrix {
     }
 
     /* For each element at (x,y), we store the sum of all values from (0,0) to (x,y) */
-    public static int[][] preprocess(int[][] grid) {
+    private static int[][] preprocess(int[][] grid) {
         if (grid == null) {
             return null;
         }
@@ -90,7 +90,7 @@ public class MaxSubmatrix {
         return processed;
     }
     
-    public static int getSum2(int[][] processed, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(1) since matrix was preprocessed
+    private static int getSum2(int[][] processed, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(1) since matrix was preprocessed
         return processed[rowEnd][colEnd] - 
                processed[rowStart][colEnd] - 
                processed[rowEnd][colStart] + 
@@ -118,7 +118,7 @@ public class MaxSubmatrix {
         return maxSum;
     }
 
-    public static int maxSubArray(int[] array) {
+    private static int maxSubArray(int[] array) {
         int maxSum = 0;
         int sum = 0;
         for (int i = 0; i < array.length; i++) {

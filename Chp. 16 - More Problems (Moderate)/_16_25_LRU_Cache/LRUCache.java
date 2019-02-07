@@ -3,7 +3,7 @@ package _16_25_LRU_Cache;
 import java.util.LinkedList;
 import java.util.HashMap;
 
-// Rodney: I have to redo this problem to decrease runtime from O(n) to O(1) (like I did in an interview - code is saved)
+// I have to redo this problem to decrease runtime from O(n) to O(1) (like I did in an interview - code is saved)
 
 // To read: http://www.geeksforgeeks.org/implement-lru-cache/
 

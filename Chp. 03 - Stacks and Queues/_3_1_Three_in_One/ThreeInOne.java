@@ -55,12 +55,8 @@ public class ThreeInOne {
         }
     }
 
-    // If we want variable stack sizes, these 3 things (from book's complicated
-    // code) are relevant
-    // 1) If, for example, stack 1 gets too big, they shift stack 2 over (by
-    // copying over elements 1 by 1 starting from the end of the stack)
-    // 2) The array is allowed to wrap around on itself (so will need to use %
-    // operator)
-    // 3) They made a new class called "StackData" to keep track of a bunch of
-    // information about each stack instead of just "head"
+    // If we want variable stack sizes, these 3 things (from book's complicated code) are relevant
+    // 1) If, for example, stack 1 gets too big, they shift stack 2 over (by copying over elements 1 by 1 starting from the end of the stack)
+    // 2) The array is allowed to wrap around on itself (so will need to use % operator)
+    // 3) They made a new class called "StackData" to keep track of a bunch of information about each stack instead of just "head"
 }

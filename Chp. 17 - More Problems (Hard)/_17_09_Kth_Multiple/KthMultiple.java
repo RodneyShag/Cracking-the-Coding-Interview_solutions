@@ -2,9 +2,6 @@ package _17_09_Kth_Multiple;
 
 import java.util.ArrayDeque;
 
-//  Time Complexity: O(n)
-// Space Complexity: O(n)
-
 public class KthMultiple {
     public static int getKthMagicNumber(int k) { // assuming "k" counts from 1...
         if (k < 1) {
@@ -42,3 +39,6 @@ public class KthMultiple {
         return val;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n)

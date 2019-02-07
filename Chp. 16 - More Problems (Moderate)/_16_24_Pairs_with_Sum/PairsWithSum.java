@@ -3,7 +3,7 @@ package _16_24_Pairs_with_Sum;
 import java.util.HashMap;
 import java.util.HashSet;
 
-// Good question to ask. Given {1,5,1,5}, what does our interview want our output be?
+// Good question to ask. Given { 1, 5, 1, 5 }, what do you want our output be?
 // 1) {1,5}
 // 2) {1,5}, {5,1}
 // 3) {1,5}, {1,5}, {5,1}, {5,1}

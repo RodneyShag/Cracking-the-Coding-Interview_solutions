@@ -3,9 +3,6 @@ package _2_5_Sum_Lists;
 import common.Node;
 import common.ListFunctions;
 
-//  Time Complexity: O(n + m)
-// Space Complexity: O(n + m)
-
 public class SumLists {
     /* Reverse Order: Iterative solution */
     public static Node addReverseOrder(Node n, Node m) {
@@ -88,3 +85,8 @@ public class SumLists {
         return new Pair(head, carry);
     }
 }
+
+// Time/Space Complexity for both solutions
+//
+//  Time Complexity: O(n + m)
+// Space Complexity: O(n + m)

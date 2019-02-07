@@ -25,7 +25,7 @@ public class MajorityElement {
     }
 
     private static boolean isMajorityValid(int[] array, int majority) {
-        long count = Arrays.stream(array).filter(a -> (a == majority)).count(); // here for practice
+        long count = Arrays.stream(array).filter(a -> (a == majority)).count();
         return count * 2 > array.length;
     }
 }

@@ -5,9 +5,6 @@ package _17_23_Max_Black_Square;
 // 2) Have "Cell" and "Subsquare" classes
 // 3) Search largest squares first
 
-//  Time Complexity: O(n^3)
-// Space Complexity: O(n^2)
-
 public class MaxBlackSquare {
     public static Subsquare findLargestSubsquare(int[][] grid) { // O(n) * runtime of findSubSquare()
         Cell[][] processed = preprocessGrid(grid);
@@ -67,3 +64,6 @@ public class MaxBlackSquare {
         return true;
     }
 }
+
+//  Time Complexity: O(n^3)
+// Space Complexity: O(n^2)

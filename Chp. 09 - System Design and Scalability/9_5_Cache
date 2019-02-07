@@ -1,14 +1,14 @@
 9.5 - Cache
 
-    - We basically design an LRU cache
-    - Main idea: Use linked list to keep track of popular pages. Use a HashMap<String, Node> (in parallel w/ the LinkedList) 
-                 for fast access to LinkedList nodes (key = the url string, value = node in LinkedList) 
-    - "A linked list would allow easy purging of old data, by moving "fresh" items to the front. We could implement it to remove the 
-       last element of the linked list when the list exceeds a certain size."
-    - Options for storing the cache
-        0) Each machine has it's own cache of just it's searches (lame)
-        1) Each machine has it's own cache of ALL machine's searches 
-              - Pro: Efficient Lookup
-              - Con: takes up a ton of memory. Updating cache means updating it on every machine)
-        2) Cache is shared across machines (by hashing keys, which are queries)
-        3) Rodney method: Each machine has most popular searches cached. Less popular searches are shared among machines
+- We basically design an LRU cache
+- Main idea: Use linked list to keep track of popular pages. Use a HashMap<String, Node> (in parallel w/ the LinkedList) 
+             for fast access to LinkedList nodes (key = the url string, value = node in LinkedList) 
+- "A linked list would allow easy purging of old data, by moving "fresh" items to the front. We could implement it to remove the 
+   last element of the linked list when the list exceeds a certain size."
+- Options for storing the cache
+    0) Each machine has it's own cache of just it's searches (lame)
+    1) Each machine has it's own cache of ALL machine's searches 
+          - Pro: Efficient Lookup
+          - Con: takes up a ton of memory. Updating cache means updating it on every machine)
+    2) Cache is shared across machines (by hashing keys, which are queries)
+    3) Rodney method: Each machine has most popular searches cached. Less popular searches are shared among machines

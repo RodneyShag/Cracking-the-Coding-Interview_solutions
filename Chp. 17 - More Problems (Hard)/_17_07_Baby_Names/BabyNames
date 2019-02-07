@@ -17,5 +17,5 @@ Solution 1:
 Solution 2 (preferred):
 
 - Represent this as a Graph. Names are Nodes. Pairs of names are Edges.
-- Generating the desired output is simply doing a BFS/DFS on each connected
+- Generating the desired output is simply doing a BFS or DFS on each connected
   component, while summing the values at each node.

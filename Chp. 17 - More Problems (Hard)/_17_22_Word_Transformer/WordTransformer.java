@@ -9,9 +9,6 @@ import java.util.ArrayDeque;
 // - Use BFS
 // - Have a getNeighbors(String str) function
 // - Use HashMap<String, String> backtrackMap to save solution
-//
-// Runtime: O(mn) where "n" is length of String and "m" is # words of size "n" in dictionary (since loop
-//           will dequeue at most "m" words, each of which take "n" time to process (to get its neighbors)
 
 public class WordTransformer {
 
@@ -85,3 +82,6 @@ public class WordTransformer {
         return solution;
     }
 }
+
+// Time Complexity: O(mn) where "n" is length of String and "m" is # words of size "n" in dictionary (since loop
+//                  will dequeue at most "m" words, each of which take "n" time to process (to get its neighbors)

@@ -3,10 +3,7 @@ package _2_2_Return_Kth_to_Last;
 import common.Node;
 import common.ListFunctions;
 
-// Algorithm: Just calculate the size of SLL, then walk "size - k" elements into list
-
-//  Time Complexity: O(n)
-// Space Complexity: O(1)
+// Algorithm: Just calculate the size of the SLL, then walk "size - k" elements into list
 
 public class ReturnKthToLast {
     public static Node kthLast(Node n, int k) {
@@ -20,3 +17,6 @@ public class ReturnKthToLast {
         return n;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

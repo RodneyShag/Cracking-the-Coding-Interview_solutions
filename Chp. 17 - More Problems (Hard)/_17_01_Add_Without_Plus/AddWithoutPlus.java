@@ -35,7 +35,7 @@ public class AddWithoutPlus {
     public static int add_version2(int a, int b) {
         int anded = a & b;
         int xored = a ^ b;
-        int ored = a | b;
+        int  ored = a | b;
 
         int result = 0;
         boolean carry = false;

@@ -24,7 +24,7 @@ public class BitFunctions {
         return num & mask;
     }
 
-    /* Used in FivePoint3 and FivePoint5 */
+    /* Used in Question 5.5 */
     public static int numOnes(int num) {
         int count = 0;
         for (int i = 0; i < Integer.SIZE; i++) {

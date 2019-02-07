@@ -1,8 +1,5 @@
 package _5_3_Flip_Bit_to_Win;
 
-//  Time Complexity: O(b) where b is number of bits in int
-// Space Complexity: O(1)
-
 public class FlipBitToWin {
     public static int flipBit(int n) {
         int numBits = Integer.BYTES * 8;
@@ -34,7 +31,10 @@ public class FlipBitToWin {
         return maxLength;
     }
 
-    public static boolean getBit(int num, int bit) {
+    private static boolean getBit(int num, int bit) {
         return (num & (1 << bit)) != 0;
     }
 }
+
+//  Time Complexity: O(b) where b is number of bits in int.
+// Space Complexity: O(1)
