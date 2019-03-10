@@ -15,15 +15,16 @@ public class PalindromePermutation {
                 map.merge(ch, 1, Integer::sum);
             }
         }
-
-        // Even length strings: can not have any characters an odd # of times
-        // Odd length strings: can have at most 1 character an odd # of times
-        int exceptions = (str.length() % 2 == 0) ? 0 : 1;
+        
+        //  Odd length strings: Can have at most 1 character an odd # of times
+        // Even length strings: Can have either 0,2,4,6... number of odd characters.
+        //                      Anything above 1 means not a palindrome.
+        int oddCount = 0;
         for (Integer value : map.values()) {
             if (value % 2 != 0) {
-                exceptions--;
+                oddCount++;
             }
-            if (exceptions < 0) {
+            if (oddCount > 1) {
                 return false;
             }
         }

@@ -29,4 +29,7 @@ public class IsUnique {
 
 // Follow-up Question: What if we're not allowed to use additional data structures?
 //
-// Answer: Can do brute-force O(n^2) runtime O(1) space solution by comparing all pairs
+// Answer: Can do brute-force solution by comparing all pairs
+// Time Complexity: O(n^2), but since strings above NUM_ASCII_CHARS=256 immediately
+//                  return false, time complexity becomes O(1)
+// Space Complexity: O(1)
