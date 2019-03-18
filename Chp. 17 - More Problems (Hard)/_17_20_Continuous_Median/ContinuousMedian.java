@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 
 public class ContinuousMedian {
     private static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // maxHeap contains all SMALL elements
-    private static PriorityQueue<Integer> minHeap = new PriorityQueue<>();						     // minHeap contains all LARGE elements
+    private static PriorityQueue<Integer> minHeap = new PriorityQueue<>();                           // minHeap contains all LARGE elements
 
     public static void addNum(int n) {
         if (maxHeap.isEmpty()) {

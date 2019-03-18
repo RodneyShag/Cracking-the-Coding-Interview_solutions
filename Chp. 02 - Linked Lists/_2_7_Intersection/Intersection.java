@@ -10,6 +10,9 @@ import common.Node;
 
 public class Intersection {
     public static Integer findMergeNode(Node headA, Node headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
         Node currA = headA;
         Node currB = headB;
 
