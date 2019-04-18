@@ -6,7 +6,7 @@ public class Queue {
     private Node head = null;
     private Node tail = null;
 
-    public void enqueue(int data) {
+    public void add(int data) {
         Node n = new Node(data);
         if (head == null) {
             head = n;
@@ -17,7 +17,7 @@ public class Queue {
         }
     }
 
-    public Node dequeue() {
+    public Node remove() {
         if (head == null) {
             return null;
         }
