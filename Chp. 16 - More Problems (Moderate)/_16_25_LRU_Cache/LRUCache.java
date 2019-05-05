@@ -1,37 +1,57 @@
 package _16_25_LRU_Cache;
 
-import java.util.LinkedList;
+import java.util.Map;
 import java.util.HashMap;
 
-// I have to redo this problem to decrease runtime from O(n) to O(1) (like I did in an interview - code is saved)
+// - Excellent explanation in Cracking the Coding Interview, 6th Edition solutions
 
-// To read: http://www.geeksforgeeks.org/implement-lru-cache/
+// FAQ
+//
+// Question: Why have our Node contain both key and value?
+// Answer: Because when we remove from end of Linked List, the Node's key is used
+//         to find the Node in the HashMap (to remove the node there as well)
 
 class LRUCache {
-    private final int maxSize = 7;
-    private LinkedList<Item> items = new LinkedList<>();
-    private HashMap<String, Item> map = new HashMap<>();
-
-    void add(Item item) {
-        if (items.size() == maxSize) {
-            map.remove(items.peekLast());
-            items.removeLast();
-        }
-        items.addFirst(item);
-        map.put(item.name, item);
+    private int maxSize;
+    private Map<Integer, Node> map; // gives us constant access to Nodes
+    private DoublyLinkedList dll;   // used to keep track of "freshness" of Nodes
+    
+    public LRUCache(int maxSize) {
+        this.maxSize = maxSize;
+        map = new HashMap<>();
+        dll = new DoublyLinkedList();
     }
 
-    public Item access(String str) {
-        Item item = map.get(str);
-        if (item == null) {
-            return null;
+    public void add(Integer key, Node value) {
+        if (map.containsKey(key)) {
+            get(key);
+        } else {
+            if (map.size() == maxSize) {
+            	Node n = dll.tail;
+                dll.removeLast();
+                map.remove(n.key);
+            }
+            map.put(key, value);
+            dll.addFirst(value);
         }
-        items.remove(item); // this may be O(n) instead of the O(1) that we wanted.
-        items.addFirst(item);
-        return item;
     }
 
-    public LinkedList<Item> getItems() {
-        return items;
+    public Node get(Integer key) {
+    	Node n = map.get(key);
+
+    	// Update Freshness
+    	if (n.prev != null) {
+            n.prev.next = n.next;
+        }
+        if (n.next != null) {
+            n.next.prev = n.prev;
+        }
+        dll.addFirst(n);
+
+        return n;
+    }
+
+    public DoublyLinkedList getItems() {
+        return dll;
     }
 }

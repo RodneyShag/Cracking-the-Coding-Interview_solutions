@@ -5,16 +5,20 @@ public class Tester {
         System.out.println("*** Test 16.25: LRU Cache\n");
 
         /* Create LRU Cache */
-        LRUCache cache = new LRUCache();
+        LRUCache cache = new LRUCache(7);
         for (int i = 20; i >= 1; i--) {
-            Item item = new Item("Item " + i);
-            cache.add(item);
+            Node node = new Node(i, "Node " + i + " value");
+            cache.add(i, node);
         }
 
         /* Access Item 4, and print cache items */
-        cache.access("Item 4"); // should move it to head of cache
-        for (Item item : cache.getItems()) {
-            System.out.println(item);
+        cache.get(4); // should move it to head of cache
+        DoublyLinkedList items = cache.getItems();
+        Node head = items.head;
+        Node n = head;
+        while (n != null) {
+        	System.out.println(n);
+        	n = n.next;
         }
     }
 }
