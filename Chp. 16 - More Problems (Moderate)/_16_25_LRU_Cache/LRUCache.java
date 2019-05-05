@@ -3,7 +3,7 @@ package _16_25_LRU_Cache;
 import java.util.Map;
 import java.util.HashMap;
 
-// - Excellent explanation in Cracking the Coding Interview, 6th Edition solutions
+// Excellent explanation in Cracking the Coding Interview, 6th Edition solutions
 
 // FAQ
 //

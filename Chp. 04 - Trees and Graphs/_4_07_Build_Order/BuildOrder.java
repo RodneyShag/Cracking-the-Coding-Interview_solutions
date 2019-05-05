@@ -1,15 +1,28 @@
 package _4_07_Build_Order;
 
-import java.util.List;
 import java.util.ArrayDeque;
 
 // From Jeff Erickson's Algorithms.pdf, Section 19.5 Topological Sort
 
 public class BuildOrder {
-    public static ArrayDeque<Node> topologicalSort(List<Node> nodes) throws Exception {
-        /* Create new "source" Node which has a directed edge to each node in our original graph */
-        Node source = new Node('s');
-        for (Node node : nodes) {
+
+    // Converts our inconveniently formatted input into a graph
+    public static ArrayDeque<Node> topologicalSort(String[] projects, String[][] dependencies) throws Exception {
+        Graph graph = new Graph();
+        for (String project : projects) {
+            graph.addNode(project);
+        }
+        for (String[] dependency : dependencies) {
+            String source = dependency[0];
+            String destination = dependency[1];
+            graph.addDirectedEdge(source, destination);
+        }
+        return topologicalSort(graph);
+    }
+
+    private static ArrayDeque<Node> topologicalSort(Graph graph) throws Exception {
+        Node source = new Node("Source");
+        for (Node node : graph.nodes) {
             source.addDirectedNeighbor(node);
         }
 
@@ -25,7 +38,7 @@ public class BuildOrder {
             if (neighbor.status == Visited.NEW) {
                 topoSortDFS(neighbor, result);
             } else if (neighbor.status == Visited.ACTIVE) {
-                throw new Exception("Not a DAG");
+                throw new Exception("Not a DAG. Graph has a cycle.");
             }
         }
         n.status = Visited.DONE;
