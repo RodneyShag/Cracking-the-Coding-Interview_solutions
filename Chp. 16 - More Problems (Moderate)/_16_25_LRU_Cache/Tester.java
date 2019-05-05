@@ -15,8 +15,8 @@ public class Tester {
         cache.getValue(4); // should move it to head of cache
         Node n = cache.getItems().getHead();
         while (n != null) {
-        	System.out.println(n);
-        	n = n.next;
+            System.out.println(n);
+            n = n.next;
         }
     }
 }

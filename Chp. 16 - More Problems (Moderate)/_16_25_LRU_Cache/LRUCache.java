@@ -23,29 +23,29 @@ public class LRUCache {
     }
 
     public void add(int key, String value) {
-    	remove(key); // If key already exists, we will overwrite it.
-    	if (map.size() == maxSize) {
-    		remove(dll.getTail().key);
+        remove(key); // If key already exists, we will overwrite it.
+        if (map.size() == maxSize) {
+            remove(dll.getTail().key);
         }
-    	Node n = new Node(key, value);
+        Node n = new Node(key, value);
         dll.addFirst(n);
         map.put(key, n);
     }
 
     public void remove(int key) {
-    	Node n = map.get(key);
+        Node n = map.get(key);
         dll.remove(n);
         map.remove(key);
     }
 
     public String getValue(int key) {
-    	Node n = map.get(key);
-    	if (n == null) {
-    		return null;
-    	}
-    	if (n != dll.getHead()) {
-    	    dll.updateFreshness(n);
-    	}
+        Node n = map.get(key);
+        if (n == null) {
+            return null;
+        }
+        if (n != dll.getHead()) {
+            dll.updateFreshness(n);
+        }
         return n.value;
     }
 

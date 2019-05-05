@@ -7,7 +7,7 @@ public class Node {
     Node prev;
 
     public Node(int k, String v) {
-    	key = k;
+        key = k;
         value = v;
         next = null;
         prev = null;
