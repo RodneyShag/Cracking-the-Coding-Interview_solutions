@@ -1,40 +1,22 @@
 package _16_25_LRU_Cache;
 
 public class DoublyLinkedList {
-    Node head = null;
-    Node tail = null;
+    private Node head = null;
+    private Node tail = null;
 
-    void addFirst(Node n) {
+    public void addFirst(Node n) {
         if (head == null) {
             head = n;
             tail = n;
         } else {
+        	n.prev = null;
             n.next = head;
             head.prev = n;
             head = n;
         }
     }
-    
-    void removeLast() {
-    	removeNode(tail);
-//        if (tail == null) {
-//            return null;
-//        } 
-//        if (head == tail) { // only 1 Node in List
-//            Node n = tail;
-//            head = null;
-//            tail = null;
-//            return n;
-//        } else {
-//            Node n = tail;
-//            tail = n.prev;
-//            tail.next = null;
-//            n.prev = null;
-//            return n;
-//        }
-    }
-    
-    void removeNode(Node n) {
+
+    public void remove(Node n) { // Assumes "Node n" is in this list
     	if (n == null) {
     		return;
     	}
@@ -50,5 +32,18 @@ public class DoublyLinkedList {
     	if (n == tail) {
     		tail = n.prev;
     	}
+    }
+    
+    public void updateFreshness(Node n) { // Assumes "Node n" is in this list
+    	remove(n);
+        addFirst(n);
+    }
+
+    public Node getHead() {
+    	return head;
+    }
+
+    public Node getTail() {
+    	return tail;
     }
 }

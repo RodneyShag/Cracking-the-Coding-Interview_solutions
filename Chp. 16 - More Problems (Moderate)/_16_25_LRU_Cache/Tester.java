@@ -7,15 +7,13 @@ public class Tester {
         /* Create LRU Cache */
         LRUCache cache = new LRUCache(7);
         for (int i = 20; i >= 1; i--) {
-            Node node = new Node(i, "Node " + i + " value");
-            cache.add(i, node);
+            cache.add(i, "Node " + i + " value");
         }
 
         /* Access Item 4, and print cache items */
-        cache.get(4); // should move it to head of cache
-        DoublyLinkedList items = cache.getItems();
-        Node head = items.head;
-        Node n = head;
+        cache.remove(1);
+        cache.getValue(4); // should move it to head of cache
+        Node n = cache.getItems().getHead();
         while (n != null) {
         	System.out.println(n);
         	n = n.next;

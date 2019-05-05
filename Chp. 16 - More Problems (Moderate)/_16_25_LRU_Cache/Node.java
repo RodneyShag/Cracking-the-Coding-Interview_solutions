@@ -1,7 +1,7 @@
 package _16_25_LRU_Cache;
 
 public class Node {
-	int key;
+    int key;
     String value;
     Node next;
     Node prev;
@@ -12,7 +12,7 @@ public class Node {
         next = null;
         prev = null;
     }
-    
+
     @Override
     public String toString() {
         return value;
