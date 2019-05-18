@@ -14,7 +14,7 @@ public class Tester {
         };
 
         try {
-            System.out.println(BuildOrder.topologicalSort(projects, dependencies));
+            System.out.println(BuildOrder.topoSort(projects, dependencies));
         } catch (Exception exc) {
             System.out.println(exc.getMessage());
         }

@@ -5,9 +5,8 @@ import java.util.ArrayDeque;
 // From Jeff Erickson's Algorithms.pdf, Section 19.5 Topological Sort
 
 public class BuildOrder {
-
     // Converts our inconveniently formatted input into a graph
-    public static ArrayDeque<Node> topologicalSort(String[] projects, String[][] dependencies) throws Exception {
+    public static ArrayDeque<Node> topoSort(String[] projects, String[][] dependencies) throws Exception {
         Graph graph = new Graph();
         for (String project : projects) {
             graph.addNode(project);
@@ -17,10 +16,10 @@ public class BuildOrder {
             String destination = dependency[1];
             graph.addDirectedEdge(source, destination);
         }
-        return topologicalSort(graph);
+        return topoSort(graph);
     }
 
-    private static ArrayDeque<Node> topologicalSort(Graph graph) throws Exception {
+    private static ArrayDeque<Node> topoSort(Graph graph) throws Exception {
         Node source = new Node("Source");
         for (Node node : graph.nodes) {
             source.addDirectedNeighbor(node);
