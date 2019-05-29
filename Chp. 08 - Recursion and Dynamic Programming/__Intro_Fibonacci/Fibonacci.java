@@ -12,35 +12,55 @@ package __Intro_Fibonacci;
 
 public class Fibonacci {
 
-    /* Solution 1 */
-    private final static int cacheSize = 100;
-    public static int[] cache = new int[cacheSize];
-
+    // Solution 1
     public static int fibRecursive(int n) {
-        if (n < 0) {
-            return -1;
-        }
-        cache[0] = 1; // We are defining 0th Fibonacci number as 1
-        cache[1] = 1;
-        return fibRecursiveHelper(n);
+        int[] cache = new int[n + 1];
+        return fibRecursive(n, cache);
     }
 
-    public static int fibRecursiveHelper(int n) {
+    private static int fibRecursive(int n, int[] cache) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        }
         if (cache[n] > 0) {
             return cache[n];
         }
-        cache[n] = fibRecursiveHelper(n - 1) + fibRecursiveHelper(n - 2);
+        cache[n] = fibRecursive(n - 1, cache)
+                 + fibRecursive(n - 2, cache);
+
         return cache[n];
     }
 
-    /* Solution 2 - omitted (but very similar to Solution 3) */
+    // Solution 2
+    public static int fibIterative(int n) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        }
+        int[] cache = new int[n + 1];
+        cache[0] = 0;
+        cache[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            cache[i] = cache[i - 2] + cache[i - 1];
+        }
+        return cache[n];
+    }
 
-    /* Solution 3 */
-    public static int fibIterative(int n) { // assumes 1st and 2nd Fibonacci numbers are defined as value 1.
+    // Solution 3
+    public static int fibIterativeNoArray(int n) {
+        if (n == 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        }
         int prev = 0;
         int curr = 1;
+        int next = 0;
         for (int i = 2; i <= n; i++) {
-            int next = prev + curr;
+            next = prev + curr;
             prev = curr;
             curr = next;
         }
