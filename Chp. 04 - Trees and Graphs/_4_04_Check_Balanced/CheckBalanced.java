@@ -6,7 +6,7 @@ import common.TreeNode;
 
 public class CheckBalanced {
     public static boolean isBalanced(TreeNode root) {
-        return (isBalancedHelper(root) == -1) ? false : true;
+        return isBalancedHelper(root) != -1;
     }
 
     /* Returns -1 if unbalanced, otherwise returns height of tree from given node */
@@ -28,9 +28,10 @@ public class CheckBalanced {
         if (Math.abs(leftHeight - rightHeight) > 1) {
             return -1; // imbalance between the 2 subtrees
         }
+
         return 1 + Math.max(leftHeight, rightHeight);
     }
 }
 
 //  Time Complexity: O(n)
-// Space Complexity: O(n)
+// Space Complexity: O(log n) if balanced tree. O(n) otherwise.

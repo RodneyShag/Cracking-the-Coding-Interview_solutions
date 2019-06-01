@@ -4,6 +4,9 @@ import common.TreeNode;
 
 public class MinimalTree {
     public static TreeNode createBST(int[] sortedArray) {
+        if (sortedArray == null) {
+            return null;
+        }
         return createBST(sortedArray, 0, sortedArray.length - 1);
     }
 
@@ -18,3 +21,6 @@ public class MinimalTree {
         return root;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n) since we're creating a Binary Search Tree
