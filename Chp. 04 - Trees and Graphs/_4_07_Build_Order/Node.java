@@ -2,10 +2,10 @@ package _4_07_Build_Order;
 
 import java.util.ArrayList;
 
-class Node { // public variables for convenience
-    public String data;
-    public Visited status;
-    public ArrayList<Node> neighbors; // could alternatively use a HashSet (if I give nodes unique IDs)
+class Node {
+    String data;
+    Visited status;
+    ArrayList<Node> neighbors; // could alternatively use a HashSet (if I give nodes unique IDs)
 
     public Node(String data) {
         this.data = data;

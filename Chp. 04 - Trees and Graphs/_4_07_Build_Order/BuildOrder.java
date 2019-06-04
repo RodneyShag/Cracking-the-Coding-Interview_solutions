@@ -37,10 +37,13 @@ public class BuildOrder {
             if (neighbor.status == Visited.NEW) {
                 topoSortDFS(neighbor, result);
             } else if (neighbor.status == Visited.ACTIVE) {
-                throw new Exception("Not a DAG. Graph has a cycle.");
+                throw new Exception("Not a Directed Acyclic Graph (DAG). Graph has a cycle.");
             }
         }
         n.status = Visited.DONE;
         result.addFirst(n);
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(n) due to recursion

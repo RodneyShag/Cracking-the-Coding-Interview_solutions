@@ -2,9 +2,9 @@ package _4_07_Build_Order;
 
 import java.util.*;
 
-public class Graph { // public variables for convenience
-    public List<Node> nodes = new ArrayList<>();
-    public Map<String, Node> map = new HashMap<>();
+public class Graph {
+    List<Node> nodes = new ArrayList<>();
+    Map<String, Node> map = new HashMap<>();
 
     public void addDirectedEdge(String s1, String s2) {
         Node source = map.get(s1);
