@@ -16,7 +16,7 @@ public class SortedMatrixSearch {
         int rows = grid.length;
         int cols = grid[0].length;
 
-        /* Start at top right corner */
+        // Start at top right corner
         int row = 0;
         int col = cols - 1;
 

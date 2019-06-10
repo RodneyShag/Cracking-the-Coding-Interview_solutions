@@ -5,13 +5,13 @@ public class Tester {
         System.out.println("*** Test 3.4: Queue via Stacks\n");
         System.out.println("elements we will be inserting: 1, 2, 3, 4, 5\n");
         QueueViaStacks<Integer> myQueue = new QueueViaStacks<>();
-        myQueue.enqueue(1);
-        myQueue.enqueue(2);
-        myQueue.enqueue(3);
-        myQueue.enqueue(4);
-        System.out.println("1st dequeued = " + myQueue.dequeue());
-        myQueue.enqueue(5);
-        System.out.println("2nd dequeued = " + myQueue.dequeue());
-        System.out.println("3rd dequeued = " + myQueue.dequeue());
+        myQueue.add(1);
+        myQueue.add(2);
+        myQueue.add(3);
+        myQueue.add(4);
+        System.out.println("1st dequeued = " + myQueue.remove());
+        myQueue.add(5);
+        System.out.println("2nd dequeued = " + myQueue.remove());
+        System.out.println("3rd dequeued = " + myQueue.remove());
     }
 }

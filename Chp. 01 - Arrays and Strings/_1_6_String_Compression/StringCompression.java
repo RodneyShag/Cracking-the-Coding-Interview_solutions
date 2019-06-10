@@ -19,7 +19,7 @@ public class StringCompression {
             }
         }
 
-        /* Accounts for last character */
+        // Accounts for last character
         sb.append(str.charAt(str.length() - 1));
         sb.append(String.valueOf(numSame));
 

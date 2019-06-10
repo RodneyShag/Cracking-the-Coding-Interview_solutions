@@ -22,7 +22,7 @@ public class WordTransformer {
         dict.add("LIKE");
     }
 
-    /* Uses BFS */
+    // Uses BFS
     public static ArrayDeque<String> convert(String start, String end) {
         if (start == null || end == null || start.length() != end.length()) {
             return null;
@@ -54,7 +54,7 @@ public class WordTransformer {
         return null;
     }
 
-    /* Generates all possible neighbors of given String */
+    // Generates all possible neighbors of given String
     private static HashSet<String> getNeighbors(String str) { // O(n) runtime where "n" is length of String
         HashSet<String> validWords = new HashSet<>();
         for (int i = 0; i < str.length(); i++) {

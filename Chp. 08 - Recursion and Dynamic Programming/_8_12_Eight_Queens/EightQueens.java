@@ -1,56 +1,55 @@
 package _8_12_Eight_Queens;
 
-import java.util.ArrayList;
-
-// Tricks
-//
-// 1. Represent a solution ChessBoard as an Integer[] with 8 elements (since there is a queen on each row)
-// 2. Represent all solutions as ArrayList<Integer[]>.
-// 3. We don't cache previous results since we are looking for ALL possible solutions (Like Problem 9.2 part 3 "find all paths")
+import java.util.*;
 
 public class EightQueens {
-    static private final int GRID_SIZE = 8;
+    public static List<List<String>> solveNQueens(int n) {
+        char[][] board = new char[n][n];
+        for (char[] row : board) {
+            Arrays.fill(row, '.');
+        }
+        Set<Integer> cols = new HashSet<>(); // columns   |
+        Set<Integer> d1 = new HashSet<>();   // diagonals \
+        Set<Integer> d2 = new HashSet<>();   // diagonals /
 
-    public static ArrayList<Integer[]> placeQueens() {
-        Integer[] board = new Integer[GRID_SIZE]; // Index is Queen's row. Value is Queen's column.
-        ArrayList<Integer[]> solutions = new ArrayList<>();
-        placeQueens(0, board, solutions);
+        List<List<String>> solutions = new ArrayList<>();
+        placeQueens(board, n, solutions, 0, cols, d1, d2);
         return solutions;
     }
 
-    private static void placeQueens(int row, Integer[] board, ArrayList<Integer[]> solutions) {
-        if (row == GRID_SIZE) {
-            /* Here, .clone() creates another Integer[] with its own deep copied Integers. If instead of Integer[] we had an array of objects, 
-            .clone() would still create another array of objects, but the objects would not be deep copied (they would be references to the
-            original objects). This is because Integer, although an object, works differently than other objects that contain data. 
-            See my written lesson in "Lessons" package called ShallowDeep.java for more info */
-            solutions.add((Integer[]) board.clone()); // no compiler warnings even if we omit typecast
-        } else {
-            for (int col = 0; col < GRID_SIZE; col++) {
-                if (isValid(board, row, col)) {
-                    board[row] = col;
-                    placeQueens(row + 1, board, solutions);
-                }
+    private static void placeQueens(char[][] board, int n, List<List<String>> solutions, int row,
+                             Set<Integer> cols, Set<Integer> d1, Set<Integer> d2) {
+        if (row == n) {
+            solutions.add(makeSolutionBoard(board));
+            return;
+        }
+        for (int col = 0; col < n; col++) {
+            int diag1 = col - row;
+            int diag2 = col + row;
+            if (cols.contains(col) || d1.contains(diag1) || d2.contains(diag2)) {
+                continue;
             }
+            // put queen on board
+            board[row][col] = 'Q';
+            cols.add(col);
+            d1.add(diag1);
+            d2.add(diag2);
+
+            placeQueens(board, n, solutions, row + 1, cols, d1, d2);
+
+            // remove queen from board
+            cols.remove(col);
+            d1.remove(diag1);
+            d2.remove(diag2);
+            board[row][col] = '.';
         }
     }
 
-    private static boolean isValid(Integer[] board, int rowNew, int colNew) {
-        for (int rowOld = 0; rowOld < rowNew; rowOld++) {
-            Integer colOld = board[rowOld];
-
-            /* Check same column */
-            if (colOld == colNew) {
-                return false;
-            }
-
-            /* Check same diagonal */
-            int rowDistance = rowNew - rowOld; // always positive
-            int colDistance = Math.abs(colNew - colOld);
-            if (colDistance == rowDistance) {
-                return false;
-            }
+    private static List<String> makeSolutionBoard(char[][] board) {
+        List<String> solution = new ArrayList<>();
+        for (char[] row : board) {
+            solution.add(new String(row));
         }
-        return true;
+        return solution;
     }
 }

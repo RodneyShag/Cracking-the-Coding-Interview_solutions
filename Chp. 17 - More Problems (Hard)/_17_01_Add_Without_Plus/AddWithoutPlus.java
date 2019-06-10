@@ -11,6 +11,10 @@ public class AddWithoutPlus {
     // Solution 1
     //
     // Book Solution - Split up "sum" and "carry"
+    
+    // We can represent addition by using the AND operator (`&`) and XOR (`^`) operator.
+    // AND will give us the 'carry', and XOR will give us the 'sum'. The 'carry' and 'sum' together will give us our result.
+
     public static int add(int a, int b) {
         if (b == 0) {
             return a;
@@ -19,6 +23,36 @@ public class AddWithoutPlus {
         int carry = (a & b) << 1;
         return add(sum, carry);
     }
+
+    // Example
+    //
+    //  a = 001
+    //  b = 011
+    //
+    //         a ^ b = 010  // 'sum'
+    //  (a & b) << 1 = 010  // 'carry'
+    //
+    //
+    //  Now we add the 'sum' (shown as 'a') and 'carry' (shown as 'b')
+    //
+    //  a = 010
+    //  b = 010
+    //
+    //         a ^ b = 000  // 'sum'
+    //  (a & b) << 1 = 100  // 'carry'
+    //
+    //
+    //  Again, we add 'sum' and 'carry'
+    //
+    //         a ^ b = 100  // 'sum'
+    //  (a & b) << 1 = 000  // 'carry'
+    //
+    //  Now that we no longer have a carry, our algorithm finishes, and we return 'sum' of 100
+
+    //  Time Complexity: O(1)
+    // Space Complexity: O(1)
+
+
 
     // Solution 2
     //
@@ -40,11 +74,11 @@ public class AddWithoutPlus {
         int result = 0;
         boolean carry = false;
         for (int i = 0; i < 32; i++) {
-            /* Calculate Digit */
+            // Calculate Digit
             if ((!carry && getBit(xored, i)) || (carry && !getBit(xored, i))) {
                 result = setBit(result, i);
             }
-            /* Calculate Carry */
+            // Calculate Carry
             if ((!carry && getBit(anded, i)) || (carry && getBit(ored, i))) {
                 carry = true;
             } else {

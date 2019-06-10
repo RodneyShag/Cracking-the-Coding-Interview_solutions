@@ -4,24 +4,12 @@ import java.util.ArrayList;
 
 public class Tester {
     public static void main(String[] args) {
-        test_RobotsInAGrid();
         test_FindOnePath();
         test_FindAllPaths();
     }
 
-    private static void test_RobotsInAGrid() {
-        System.out.println("*** Test 8.2: Robots in a Grid\n");
-        test_RobotsInAGridHelper(1, 1);
-        test_RobotsInAGridHelper(2, 2);
-        test_RobotsInAGridHelper(3, 3);
-    }
-
-    private static void test_RobotsInAGridHelper(int rows, int cols) {
-        System.out.format("Number of Paths in %dx%d maze = %d%n", rows, cols, RobotInAGrid.numPaths(rows, cols));
-    }
-
     private static void test_FindOnePath() {
-        System.out.println("\n\n*** Test Follow-up: Find 1 Path");
+        System.out.println("*** Test 8.2: Robots in a Grid\n");
         boolean[][] maze = createMaze(3, 3);
 
         /* Find and print solution */
