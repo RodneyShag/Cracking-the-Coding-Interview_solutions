@@ -1,49 +1,43 @@
 package _16_25_LRU_Cache;
 
 public class DoublyLinkedList {
-    private Node head = null;
-    private Node tail = null;
+    private Node head = new Node(0, "dummy");
+    private Node tail = new Node(0, "dummy");
 
-    public void addFirst(Node n) {
-        if (head == null) {
-            head = n;
-            tail = n;
-        } else {
-            n.prev = null;
-            n.next = head;
-            head.prev = n;
-            head = n;
-        }
+    public DoublyLinkedList() {
+        head.next = tail;
+        tail.prev = head;
     }
 
-    public void remove(Node n) { // Assumes "Node n" is in this list
+    public void addFirst(Node n) {
         if (n == null) {
             return;
         }
-        if (n.prev != null) {
-            n.prev.next = n.next;
-        }
-        if (n.next != null) {
-            n.next.prev = n.prev;
-        }
-        if (n == head) {
-            head = n.next;
-        }
-        if (n == tail) {
-            tail = n.prev;
-        }
-    }
-    
-    public void updateFreshness(Node n) { // Assumes "Node n" is in this list
-        remove(n);
-        addFirst(n);
+        n.prev = head;
+        n.next = head.next;
+        head.next.prev = n;
+        head.next = n;
     }
 
-    public Node getHead() {
-        return head;
+    public void remove(Node n) { // Assumes 'n' is in this list
+        if (n == null || n.prev == null || n.next == null) {
+            return;
+        }
+        n.prev.next = n.next;
+        n.next.prev = n.prev;
     }
 
-    public Node getTail() {
-        return tail;
+    public Node getFirst() {
+        if (head.next == tail) {
+            return null; // list has 0 Nodes
+        }
+        return head.next;
+    }
+
+    public Node getLast() {
+        if (head.next == tail) {
+            return null; // list has 0 Nodes
+        }
+        return tail.prev;
     }
 }

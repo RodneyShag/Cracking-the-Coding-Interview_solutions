@@ -17,15 +17,15 @@ public class LRUCache {
     private DoublyLinkedList dll;   // used to keep track of "freshness" of Nodes
     
     public LRUCache(int maxSize) {
-        this.maxSize = maxSize;
+        this.maxSize = (maxSize < 1) ? 1 : maxSize;
         map = new HashMap<>();
         dll = new DoublyLinkedList();
     }
 
-    public void add(int key, String value) {
+    public void put(int key, String value) {
         remove(key); // If key already exists, we will overwrite it.
-        if (map.size() == maxSize) {
-            remove(dll.getTail().key);
+        if (map.size() >= maxSize) {
+            remove(dll.getLast().key);
         }
         Node n = new Node(key, value);
         dll.addFirst(n);
@@ -38,15 +38,20 @@ public class LRUCache {
         map.remove(key);
     }
 
-    public String getValue(int key) {
+    public String get(int key) {
         Node n = map.get(key);
         if (n == null) {
             return null;
         }
-        if (n != dll.getHead()) {
-            dll.updateFreshness(n);
+        if (n != dll.getFirst()) {
+            updateFreshness(n);
         }
         return n.value;
+    }
+
+    private void updateFreshness(Node n) { // Assumes 'n' is in this list
+        dll.remove(n);
+        dll.addFirst(n);
     }
 
     public DoublyLinkedList getItems() { // added for testing

@@ -1,6 +1,6 @@
 package _16_25_LRU_Cache;
 
-public class Node {
+public class Node { // public variables for simplicity
     int key;
     String value;
     Node next;
