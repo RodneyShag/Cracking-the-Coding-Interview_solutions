@@ -1,11 +1,11 @@
 package _8_04_Power_Set;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
         System.out.println("*** Test 8.4: Power Set\n");
-        ArrayList<Integer> set = new ArrayList<>();
+        List<Integer> set = new ArrayList<>();
         set.add(3);
         test(set);
         set.add(4);
@@ -14,8 +14,8 @@ public class Tester {
         test(set);
     }
 
-    private static void test(ArrayList<Integer> set) {
-        ArrayList<ArrayList<Integer>> subsets = PowerSet.getSubsets(set);
+    private static void test(List<Integer> set) {
+        List<List<Integer>> subsets = PowerSet.getSubsets(set);
         System.out.println("Original set: " + set);
         System.out.println("Subsets: " + subsets + "\n");
     }

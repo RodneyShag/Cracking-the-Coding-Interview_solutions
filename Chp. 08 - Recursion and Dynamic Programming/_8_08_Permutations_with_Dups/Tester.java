@@ -1,6 +1,6 @@
 package _8_08_Permutations_with_Dups;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Tester {
     }
 
     private static void test(String str) {
-        ArrayList<String> permutations = PermutationsWithDups.getPermutations(str);
+        List<String> permutations = PermutationsWithDups.getPermutations(str);
         System.out.println("Original string: " + str);
         System.out.println("Permutations: " + permutations + "\n");
     }

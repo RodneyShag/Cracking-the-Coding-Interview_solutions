@@ -13,6 +13,9 @@ public class SortedMatrixSearch {
     // - Always either move down (eliminating current row), or move left (eliminating current col)
     // - Alternate solution: start in bottom left and move to top right
     public static boolean findElement(int[][] grid, int elem) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
+            return false;
+        }
         int rows = grid.length;
         int cols = grid[0].length;
 

@@ -39,14 +39,11 @@ public class ListFunctions {
 
     /* Returns size of linked list */
     public static int calculateSize(Node head) {
-        if (head == null) {
-            return 0;
-        }
-        int size = 1;
         Node n = head;
-        while (n.next != null) {
-            n = n.next;
+        int size = 0;
+        while (n != null) {
             size++;
+            n = n.next;
         }
         return size;
     }

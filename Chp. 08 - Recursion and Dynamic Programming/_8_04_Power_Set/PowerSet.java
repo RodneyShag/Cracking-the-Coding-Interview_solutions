@@ -1,20 +1,20 @@
 package _8_04_Power_Set;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PowerSet {
-    public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set) {
-        ArrayList<ArrayList<Integer>> powerSet = new ArrayList<>();
+    public static List<List<Integer>> getSubsets(List<Integer> set) {
+        List<List<Integer>> powerSet = new ArrayList<>();
         int max = (int) Math.pow(2, set.size());
         for (int i = 0; i < max; i++) { // this is the main trick
-            ArrayList<Integer> subset = createSubset(set, i);
+            List<Integer> subset = createSubset(set, i);
             powerSet.add(subset);
         }
         return powerSet;
     }
 
-    private static ArrayList<Integer> createSubset(ArrayList<Integer> set, int num) {
-        ArrayList<Integer> subset = new ArrayList<>();
+    private static List<Integer> createSubset(List<Integer> set, int num) {
+        List<Integer> subset = new ArrayList<>();
         int indexInSet = 0;
         while (num != 0) {
             if ((num & 1) == 1) {
