@@ -4,7 +4,7 @@ public class Tester {
     public static void main(String[] args) {
         System.out.println("*** Test 4.11: RandomNode\n");
         BST bst = new BST();
-        int[]array = { 1, 0, 6, 2, 3, 9, 4, 5, 8, 7 };
+        int[] array = { 1, 0, 6, 2, 3, 9, 4, 5, 8, 7 };
         for (int num : array) {
             bst.insert(num);
         }

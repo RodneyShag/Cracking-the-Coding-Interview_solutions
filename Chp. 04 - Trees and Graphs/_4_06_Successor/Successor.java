@@ -25,7 +25,7 @@ public class Successor {
         return result;
     }
 
-    /* Finds the parent (well, ancestor) that has treeNode in its left subtree. Returns null if such parent doesn't exist */
+    // Finds the parent (well, ancestor) that has treeNode in its left subtree. Returns null if such parent doesn't exist
     private static TreeNode properParent(TreeNode node) {
         if (node == null) {
             return null;
@@ -39,3 +39,6 @@ public class Successor {
         return parent;
     }
 }
+
+// Finding Successor of a Node is useful when deleting a node in a binary *search* tree,
+// since that's a node we can put in place of the deleted node
