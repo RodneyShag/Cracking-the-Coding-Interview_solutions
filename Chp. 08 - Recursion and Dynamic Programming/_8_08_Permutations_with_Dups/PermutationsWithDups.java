@@ -1,39 +1,29 @@
 package _8_08_Permutations_with_Dups;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class PermutationsWithDups {
-    public static ArrayList<String> getPermutations(String str) {
-        HashMap<Character, Integer> map = buildFrequencyTable(str);
-        ArrayList<String> result = new ArrayList<>();
-        getPermutations(new StringBuffer(), str.length(), map, result);
-        return result;
-    }
-
-    private static HashMap<Character, Integer> buildFrequencyTable(String str) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < str.length(); i++) {
-            Character ch = str.charAt(i);
-            map.merge(ch, 1, Integer::sum);
+    public static List<List<Integer>> permute(int[] array) {
+        if (array == null || array.length == 0) {
+            return new ArrayList<>();
         }
-        return map;
+        Set<List<Integer>> solutions = new HashSet<>();
+        permute(array, 0, new boolean[array.length], solutions, new ArrayList<>());
+        return new ArrayList<>(solutions);
     }
 
-    private static void getPermutations(StringBuffer prefix, int remaining, HashMap<Character, Integer> map, ArrayList<String> result) {
-        if (remaining == 0) {
-            result.add(prefix.toString());
+    private static void permute(int[] array, int index, boolean[] used, Set<List<Integer>> solutions, List<Integer> list) {
+        if (index == array.length) {
+            solutions.add(new ArrayList<>(list));
             return;
         }
-
-        for (Character ch : map.keySet()) {
-            int count = map.get(ch);
-            if (count > 0) {
-                map.put(ch, count - 1);
-                prefix.append(ch);
-                getPermutations(prefix, remaining - 1, map, result);
-                prefix.deleteCharAt(prefix.length() - 1);
-                map.put(ch, count);
+        for (int i = 0; i < array.length; i++) {
+            if (used[i] == false) {
+                list.add(array[i]);
+                used[i] = true;
+                permute(array, index + 1, used, solutions, list);
+                used[i] = false;
+                list.remove(list.size() - 1);
             }
         }
     }

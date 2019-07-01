@@ -1,6 +1,6 @@
 package _8_09_Parens;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Tester {
 
     private static void test(int n) {
         System.out.println("n = " + n);
-        ArrayList<String> list = Parens.generateParentheses(n);
+        List<String> list = Parens.generateParentheses(n);
         for (String str : list) {
             System.out.println(str);
         }

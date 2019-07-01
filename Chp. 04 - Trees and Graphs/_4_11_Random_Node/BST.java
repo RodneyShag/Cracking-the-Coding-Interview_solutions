@@ -35,6 +35,7 @@ class BST {
         }
     }
 
+    // doing O(log n) traversal for practice. Alternatively, save a HashMap<Integer, Node> for O(1) time.
     public Node find(int value) {
         Node curr = root;
         while (curr != null) {
@@ -52,12 +53,19 @@ class BST {
     public Node getRandomNode() {
         return collection.getRandom();
     }
-    
-    // delete() not coded
-    //
-    // - To delete, can find "inorder successor" from node to delete, and put that in deleted node's spot
-    // - For "Inorder Successor" code, see Cracking the Coding Interview question 4.6
-    // - For Deletion, see 1-3 at: https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/
 }
 
-// Time Complexity: O(1) for getRandomNode()
+// delete() not coded
+//
+// - To delete, can find "inorder successor" from node to delete, and put that in deleted node's spot
+// - For "Inorder Successor" code, see Cracking the Coding Interview question 4.6
+// - For Deletion, see 1-3 at: https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/
+
+
+// Time Complexity
+//
+// - O(log n) for insert()
+// - O(log n) for find() if traversing tree. O(1) if using HashMap<Integer, Node> instead of traversal.
+// - O(1) for getRandomNode()
+
+// Space Complexity: O(1) for each Node

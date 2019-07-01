@@ -3,27 +3,28 @@ package _8_04_Power_Set;
 import java.util.*;
 
 public class PowerSet {
-    public static List<List<Integer>> getSubsets(List<Integer> set) {
-        List<List<Integer>> powerSet = new ArrayList<>();
-        int max = (int) Math.pow(2, set.size());
-        for (int i = 0; i < max; i++) { // this is the main trick
-            List<Integer> subset = createSubset(set, i);
-            powerSet.add(subset);
+    public static List<List<Integer>> getSubsets(int[] array) {
+        if (array == null || array.length == 0) {
+            return new ArrayList<>();
         }
-        return powerSet;
+        List<List<Integer>> solutions = new ArrayList<>();
+        makeSubsets(array, 0, solutions, new ArrayList<>());
+        return solutions;
     }
 
-    private static List<Integer> createSubset(List<Integer> set, int num) {
-        List<Integer> subset = new ArrayList<>();
-        int indexInSet = 0;
-        while (num != 0) {
-            if ((num & 1) == 1) {
-                subset.add(set.get(indexInSet));
-            }
-            indexInSet++;
-            num = num >> 1;
+    private static void makeSubsets(int[] array, int i, List<List<Integer>> solutions, List<Integer> list) {
+        if (i == array.length) {
+            solutions.add(new ArrayList<>(list));
+            return;
         }
-        return subset;
+
+        // don't use array[i]
+        makeSubsets(array, i + 1, solutions, list);
+
+        // use array[i]
+        list.add(array[i]);
+        makeSubsets(array, i + 1, solutions, list);
+        list.remove(list.size() - 1);
     }
 }
 
