@@ -5,7 +5,9 @@ public class Tester {
         System.out.println("*** Test 16.18: Pattern Matching");
         test("catcatgocatgo", "aabab");
         test("catcatgocatgo", "bab");
-
+        test("foodfoodfood", "a");
+        test("foodfoodfood", "aa");
+        test("foodfoodfood", "aaa");
     }
 
     private static void test(String value, String pattern) {

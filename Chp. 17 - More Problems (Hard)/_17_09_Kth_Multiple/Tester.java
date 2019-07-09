@@ -4,7 +4,7 @@ public class Tester {
     public static void main(String[] args) {
         System.out.println("*** Test 17.9: Kth Multiple\n");
         System.out.print("Magic numbers:");
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= 10; i++) {
             System.out.print(" " + KthMultiple.getKthMagicNumber(i));
         }
     }
