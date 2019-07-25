@@ -6,9 +6,11 @@ public class Tester {
         for (int i = 0; i < 23; i++) {
             test(i);
         }
+        test(0);
         test(1000);
-        test(2998);
+        test(-2998);
         test(253513);
+        test(1000010);
         test(10090034);
     }
 
