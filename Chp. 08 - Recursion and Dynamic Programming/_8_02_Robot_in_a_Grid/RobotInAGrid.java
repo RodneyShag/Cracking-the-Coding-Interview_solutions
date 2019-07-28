@@ -1,7 +1,6 @@
 package _8_02_Robot_in_a_Grid;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class RobotInAGrid {
 
@@ -80,38 +79,36 @@ public class RobotInAGrid {
     /* Follow-up (from website): Find ALL Paths */
     /********************************************/
     // similar to 8-Queens Problem.
-    // I search from end to start (makes code simpler to write)
     // no point in caching results since we have to try all paths
-    public static ArrayList<ArrayList<Point>> allPaths(boolean[][] maze, int row, int col) {
+    public static List<List<Point>> allPaths(boolean[][] maze, int row, int col) {
         if (maze == null || row >= maze.length || col >= maze[0].length) {
             return null;
         }
-        ArrayList<Point> path = new ArrayList<Point>();
-        ArrayList<ArrayList<Point>> solutionPaths = new ArrayList<ArrayList<Point>>();
-        getAllPaths(maze, row, col, path, solutionPaths);
+        List<List<Point>> solutionPaths = new ArrayList<>();
+        getAllPaths(maze, 0, 0, solutionPaths, new ArrayList<>());
         return solutionPaths;
     }
 
-    public static void getAllPaths(boolean[][] maze, int row, int col, ArrayList<Point> path, ArrayList<ArrayList<Point>> solutionPaths) {
+    public static void getAllPaths(boolean[][] maze, int row, int col, List<List<Point>> solutionPaths, List<Point> path) {
         if (!isFree(maze, row, col)) {
             return;
         }
         Point p = new Point(col, row);
         path.add(p);
-        if (row == 0 && col == 0) {
+        if (row == maze.length - 1 && col == maze[0].length - 1) {
             // Shallow copy would give us the correct solution too but each ArrayList<Point> in solutionPaths would
             // contain Points that are references to other Points in a different ArrayList<Point> in solutionsPaths
             deepCopyPathIntoSolutions(path, solutionPaths);
             // we do not add a "return" here so that the code will eventually get to "path.remove(p)"
         }
-        getAllPaths(maze, row, col - 1, path, solutionPaths);
-        getAllPaths(maze, row - 1, col, path, solutionPaths);
+        getAllPaths(maze, row, col + 1, solutionPaths, path);
+        getAllPaths(maze, row + 1, col, solutionPaths, path);
         path.remove(p); // notice there is exactly 1 .remove() since we had exactly 1 .add()
     }
 
-    private static void deepCopyPathIntoSolutions(ArrayList<Point> path, ArrayList<ArrayList<Point>> solutionPaths) {
-        ArrayList<Point> solutionPath = new ArrayList<>();
-        for (int i = path.size() - 1; i >= 0; i--) { // I reverse the order of the path here since we stored it backwards
+    private static void deepCopyPathIntoSolutions(List<Point> path, List<List<Point>> solutionPaths) {
+        List<Point> solutionPath = new ArrayList<>();
+        for (int i = 0; i < path.size(); i++) {
             Point point = path.get(i);
             solutionPath.add(new Point(point.x, point.y));
         }

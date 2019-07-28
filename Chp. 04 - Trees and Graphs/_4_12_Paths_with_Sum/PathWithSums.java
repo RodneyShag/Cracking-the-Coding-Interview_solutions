@@ -1,50 +1,35 @@
 package _4_12_Paths_with_Sum;
 
-import java.util.ArrayList;
 import common.TreeNode;
+import java.util.*;
 
-// The Big Trick
-//
-// Instead of checking if a node starts a path that sums to "value", we check if it ENDS a path summing to "value".
 
 public class PathWithSums {
-    public static void findSum(TreeNode node, int value) {
-        findSum(node, value, new ArrayList<TreeNode>());
+    public static int findSum(TreeNode node, int targetSum) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        return findSum(node, targetSum, 0, map);
     }
 
-    /* Recursive function */
-    private static void findSum(TreeNode node, int value, ArrayList<TreeNode> path) {
+    private static int findSum(TreeNode node, int targetSum, int runningSum, Map<Integer, Integer> map) {
         if (node == null) {
-            return;
+            return 0;
         }
-        path.add(node);
-        checkSums(path, value);
-        findSum(node.left, value, path);
-        findSum(node.right, value, path);
-        path.remove(node); // We have 1 "remove" for each 1 "add"
-    }
 
-    /* We sum paths in REVERSE order to see if they equal 'value' */
-    private static void checkSums(ArrayList<TreeNode> path, int value) {
-        int sum = 0;
-        for (int i = path.size() - 1; i >= 0; i--) { // We must loop backwards
-            sum += path.get(i).data;
-            if (sum == value) {
-                printPath(path, i, path.size() - 1);
-            }
-        }
-    }
+        runningSum += node.data;
+        int totalPaths = map.getOrDefault(runningSum - targetSum, 0);
 
-    private static void printPath(ArrayList<TreeNode> path, int start, int end) {
-        System.out.println();
-        for (int i = start; i <= end; i++) {
-            System.out.print(path.get(i).data + " ");
+        map.merge(runningSum, 1, Integer::sum);
+        totalPaths += findSum(node.left, targetSum, runningSum, map);
+        totalPaths += findSum(node.right, targetSum, runningSum, map);
+        map.merge(runningSum, -1, Integer::sum);
+        if (map.get(runningSum) == 0) { // Remove when 0 to reduce space usage
+            map.remove(runningSum);
         }
+
+        return totalPaths;
     }
 }
 
-// Time/Space complexities: Assuming BALANCED binary tree
-// Time complexity: O(n log(n)) since we touch all "n" nodes, and findSum is O(log n)) in AVERAGE case.
-//                  findSum worst case is O((log n)^2) since it may call print every single time,
-//                  making overall time complexity worst case O(n (log n)^2)
-// Space complexity: O(log n) since that's the max size of a path, and also the max amount of recursive calls on stack.
+// Time Complexity: O(n)
+// Space Complexity: O(log n) on balanced tree. O(n) otherwise.

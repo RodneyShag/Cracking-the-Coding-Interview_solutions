@@ -1,6 +1,6 @@
 package _8_02_Robot_in_a_Grid;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class Tester {
     private static void test_FindAllPaths() {
         System.out.println("\n\n\n*** Test Follow-up: Find All Paths\n");
         boolean[][] maze = createMaze(3, 3);
-        ArrayList<ArrayList<Point>> solutionPaths = RobotInAGrid.allPaths(maze, 2, 2);
+        List<List<Point>> solutionPaths = RobotInAGrid.allPaths(maze, 2, 2);
         printAllPaths(solutionPaths);
     }
 
@@ -42,9 +42,9 @@ public class Tester {
         return maze;
     }
 
-    private static void printAllPaths(ArrayList<ArrayList<Point>> solutionPaths) {
+    private static void printAllPaths(List<List<Point>> solutionPaths) {
         if (solutionPaths != null) {
-            for (ArrayList<Point> path : solutionPaths) {
+            for (List<Point> path : solutionPaths) {
                 System.out.println(path);
             }
         }

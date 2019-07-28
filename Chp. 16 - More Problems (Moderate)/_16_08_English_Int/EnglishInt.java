@@ -23,7 +23,7 @@ public class EnglishInt {
         int bigsIndex = 0;
         StringBuffer sb = new StringBuffer();
 
-        // We create the string from right to left, inserting in the front. This makes code clean and scalability easier
+        // Create the string from right to left, inserting in the front.
         while (num > 0) {
             if (num % 1000 != 0) {
                 sb.insert(0, numToString100(num % 1000) + bigs[bigsIndex] + " ");
