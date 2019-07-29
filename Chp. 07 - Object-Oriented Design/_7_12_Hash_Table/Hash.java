@@ -1,112 +1,87 @@
 package _7_12_Hash_Table;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import __Intro_Prime.Prime;
+import java.util.*;
 
 // Hints:
 // - Create Cell<K,V> generic class
 // - Represent everything as ArrayList of LinkedLists of Cells
 
 public class Hash<K, V> {
-    private int MAX_SIZE;                            // Initial MAX_SIZE of our ArrayList
-    private ArrayList<LinkedList<Cell<K,V>>> items;  // Our main data structure to hold Cells
-    private int numItems;                            // number of items saved in our data structure
-    private boolean [] primes;                       // will hold prime numbers as "true"
-    private int primeArraySize;                      // size of our "boolean[] prime" array
+    int numBuckets = 3; // small to test resizing. public for testing.
+    private ArrayList<LinkedList<Cell<K, V>>> lists = new ArrayList<>(numBuckets);
+    private final double LOAD_FACTOR = 0.7;
+    private int numItems = 0;
 
-    /* Constructor */
     public Hash() {
-        MAX_SIZE = 3; // small to test resizing
-        items = new ArrayList<>(MAX_SIZE);
-        for (int i = 0; i < MAX_SIZE; i++) {
-            items.add(new LinkedList<>()); // Crucial. We don't magically get LinkedLists even though we created an ArrayList of a certain size
+        initializeLists(lists);
+    }
+
+    private void initializeLists(ArrayList<LinkedList<Cell<K, V>>> lists) {
+        for (int i = 0; i < numBuckets; i++) {
+            lists.add(new LinkedList<>());
         }
-        numItems = 0;
-        primeArraySize = 100;
-        primes = Prime.generatePrimes(primeArraySize);
     }
 
-    public Hash(int size) {
-        this();
-        MAX_SIZE = size;
-    }
-
-    /* Bad hash function: may not distribute keys uniformly */
     public int hashCodeOfKey(K key) {
-        return key.toString().length() % MAX_SIZE; // should the % be done here or elsewhere?
+        return key.hashCode() % numBuckets;
     }
 
     public void put(K key, V value) {
-        /* Find the LinkedList that we should put the Cell into */
-        int hashKey = hashCodeOfKey(key);
-        LinkedList<Cell<K, V>> list = items.get(hashKey);
+        // Find the LinkedList that we should put the Cell into.
+        int hashCode = hashCodeOfKey(key);
+        LinkedList<Cell<K, V>> list = lists.get(hashCode);
 
+        // See if we should overwrite an old Cell.
         for (Cell<K, V> cell : list) {
-            if (cell.equivalent(key)) {
-                cell.setValue(value); // overwrites the old value.
+            if (cell.key == key) {
+                cell.value = value; // overwrites the old value.
                 return;
             }
         }
+        
+        // Create new Cell and add it to our LinkedList.
+        list.add(new Cell<K, V>(key, value));
         numItems++;
-        if (calculateLoadFactor() > 0.7) {
-            increaseSize();
+
+        // Rehash if our load factor is too high.
+        double loadFactor = (double) numItems / numBuckets;
+        if (loadFactor > LOAD_FACTOR) {
+            rehash();
         }
-        list.add(new Cell<K, V>(key, value)); // create a new Cell and add it to our LinkedList
     }
 
     public V get(K key) {
-        /* Find the LinkedList that may contain the value */
-        int code = hashCodeOfKey(key);
-        LinkedList<Cell<K, V>> list = items.get(code);
+        // Find the LinkedList that may contain the value.
+        int hashCode = hashCodeOfKey(key);
+        LinkedList<Cell<K, V>> list = lists.get(hashCode);
 
-        if (list == null) {
-            return null;
-        }
         for (Cell<K, V> cell : list) {
-            if (cell.equivalent(key)) {
-                return cell.getValue();
+            if (cell.key == key) {
+                return cell.value;
             }
         }
-
-        return null; // failure
+        return null; // key doesn't exist.
     }
 
-    /* Used to resize array when it gets too full */
-    public double calculateLoadFactor() {
-        return (double) numItems / MAX_SIZE;
-    }
-
-    public void increaseSize() {
-        int nextPrime = getNextPrime();
-        if (nextPrime == -1) { // error
-            return;
-        }
-        Hash<K, V> hashNew = new Hash<K, V>(nextPrime);
-        for (LinkedList<Cell<K, V>> list : items) {
+    private void rehash() {
+        ArrayList<LinkedList<Cell<K, V>>> temp = lists;
+        numBuckets *= 2;
+        lists = new ArrayList<>(numBuckets);
+        initializeLists(lists);
+        numItems = 0;
+        for (LinkedList<Cell<K, V>> list : temp) {
             for (Cell<K, V> cell : list) {
-                hashNew.put(cell.getKey(), cell.getValue());
+                put(cell.key, cell.value);
             }
         }
-        MAX_SIZE = nextPrime;
-        items = hashNew.items;
-    }
-
-    public int getNextPrime() {
-        return Prime.getNextPrime(primes, 2 * MAX_SIZE);
-    }
-
-    public int getMaxSize() {
-        return MAX_SIZE;
     }
 
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
-        for (LinkedList<Cell<K, V>> list : items) {
+        for (LinkedList<Cell<K, V>> list : lists) {
             for (Cell<K, V> cell : list) {
-                result.append("key = " + cell.getKey() + "   value = " + cell.getValue() + "\n");
+                result.append("key = " + cell.key + "   value = " + cell.value + "\n");
             }
         }
         return result.toString();
