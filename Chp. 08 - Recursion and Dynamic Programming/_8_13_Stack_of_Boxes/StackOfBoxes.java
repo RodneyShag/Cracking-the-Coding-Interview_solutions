@@ -1,70 +1,59 @@
 package _8_13_Stack_of_Boxes;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
+import java.util.*;
 
-// Famous box stacking problem 
-// 
-// (Solution based off book's 2nd solution)
-// 
-// Tips:
-// - Have "Box" class with ".canBeAbove(Box other)" function.
-// - Use HashMap<Box, ArrayDeque<Box>> to cache found solutions. Need to override .equals() and hashCode().
-// - Having "Box bottom" as a parameter is crucial but hard to think of.
-// - Deep copy (which is what I did) or cloning (which is what book did) is needed to avoid insidious bugs.
+// Algorithm
+//
+// 1. Create Box class with `.canBeAbove(Box other)` function.
+// 2. Sort Boxes in descending height order. 
+//     - This problem uses `<` instead of `<=` for Box heights. If we have 2 Boxes of equal height,
+//       and [width, height, depth] of [4,4,4] and [7,4,7], it doesn't matter which Box comes first
+//       after sorting, since both `Box`es can't be in the final solution. Box 1 cannot be on top of Box 2,
+//       and Box 2 cannot be on top of Box 1. 
+// 3. For each Box, you have 2 choices:
+//    1. Use the Box
+//    2. Don't use the Box.
+// 4. Recursively try both options. Return the larger height returned from these 2 options.
+// 5. Use a Map<Integer, Integer> cache to save solutions to sub-problems
+//    1. "key" is the index `i` in the list of boxes
+//    2. "value" is the max height possible from that Box to the end of our list of Boxes
 
 public class StackOfBoxes {
-    public static ArrayDeque<Box> buildTallestStack(ArrayDeque<Box> boxes) {
-        return buildTallestStack(boxes, null, new HashMap<Box, ArrayDeque<Box>>());
-    }
-
-    public static ArrayDeque<Box> buildTallestStack(ArrayDeque<Box> boxes, Box bottom, HashMap<Box, ArrayDeque<Box>> cache) {
-        if (cache.containsKey(bottom)) { // checks to see if we already computed the solution
-            /* CRUCIAL to do a deep copy. The result we return is going to be altered, and we don't want the key of an entry
-               already placed in the HashMap to be altered. Without deep copy, we get incorrect solutions when testing */
-            return deepCopy(cache.get(bottom)); 
-        }
-
-        int currHeight = 0;
-        int bestHeight = 0;
-        ArrayDeque<Box> currStack = new ArrayDeque<>();
-        ArrayDeque<Box> bestStack = new ArrayDeque<>();
-
-        for (Box box : boxes) {
-            if (box.canPlaceAbove(bottom)) {
-                currStack = buildTallestStack(boxes, box, cache);
-                currHeight = stackHeight(currStack);
-                if (currHeight > bestHeight) {
-                    bestHeight = currHeight;
-                    bestStack = currStack;
-                }
-            }
-        }
-
-        if (bottom != null) {
-            bestStack.addFirst(bottom);
-            cache.put(bottom, bestStack);
-        }
-
-        return bestStack;
-    }
-
-    private static int stackHeight(ArrayDeque<Box> boxes) {
-        if (boxes == null) {
+    public static int findMaxHeight(List<Box> boxes) {
+        if (boxes == null || boxes.size() == 0) {
             return 0;
         }
-        int height = 0;
-        for (Box box : boxes) {
-            height += box.height;
-        }
-        return height;
+        Collections.sort(boxes, (box1, box2) -> box2.height - box1.height); // sort in descending height order
+        return findMaxHeight(boxes, 0, null, new HashMap<>(boxes.size()));
     }
-
-    private static ArrayDeque<Box> deepCopy(ArrayDeque<Box> boxes) {
-        ArrayDeque<Box> result = new ArrayDeque<>();
-        for (Box box : boxes) {
-            result.add(new Box(box));
+    
+    private static int findMaxHeight(List<Box> boxes, int i, Box bottom, Map<Integer, Integer> cache) { 
+        if (i >= boxes.size()) {
+            return 0;
+        } else if (cache.containsKey(i)) {
+            return cache.get(i);
         }
-        return result;
+        
+        // height with this Box
+        Box newBottom = boxes.get(i);
+        int heightWith = 0;
+        if (newBottom.canBeAbove(bottom)) {
+            heightWith = newBottom.height + findMaxHeight(boxes, i + 1, newBottom, cache);
+        }
+        
+        // height without this Box
+        int heightWithout = findMaxHeight(boxes, i + 1, bottom, cache);
+        
+        int max = Math.max(heightWith, heightWithout);
+        cache.put(i, max);
+        return max;
     }
 }
+
+//  Time Complexity: Without caching, the recursive part is O(2^n) since there are `n` boxes,
+//                   and 2 options for each box (use or don't use). With caching, the recursive part is just O(n).
+//                   The total time complexity is therefore O(n log n) due to sorting.
+// Space Complexity: O(n) due to recursion.
+
+// - A Dynamic Programming Iterative solution (using an array instead of a HashMap)
+//   is also possible. It will have the same Time/Space complexity as the above solution.
