@@ -1,10 +1,10 @@
 package _16_11_Diving_Board;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class DivingBoard {
-    public static ArrayList<Integer> allLengths(int k, int shorter, int longer) {
-        ArrayList<Integer> lengths = new ArrayList<>();
+    public static List<Integer> allLengths(int k, int shorter, int longer) {
+        List<Integer> lengths = new ArrayList<>();
         for (int numShorter = 0; numShorter <= k; numShorter++) {
             int numLonger = k - numShorter;
             int length = numShorter * shorter + numLonger * longer;

@@ -1,7 +1,6 @@
 package _17_11_Word_Distance;
 
-import java.util.HashMap;
-import java.util.ArrayList;
+import java.util.*;
 
 // Find shortest distance between 2 words in a file
 // 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 // 2) Preprocess with HashMap   Favorite
 
 public class WordDistance {
-    /* Solution 1 - Linear search, keeping track of the last position of the words */
+    // Solution 1 - Linear search, keeping track of the last position of the words
     public static Integer shortest(String[] words, String word1, String word2) {
         if (words == null || word1 == null || word2 == null) {
             return null;
@@ -41,7 +40,7 @@ public class WordDistance {
     // - Merge 2 sorted ArrayLists together (using algo from mergeSort) and "flag" which list each entry is from (using "Pair" class).
     // - Use Solution 1's method to then find minimum distance on our preprocessed data.
 
-    private static HashMap<String, ArrayList<Integer>> map = new HashMap<>();
+    private static Map<String, List<Integer>> map = new HashMap<>();
 
     public static void preProcess(String[] words) {
         for (int i = 0; i < words.length; i++) {
@@ -49,7 +48,7 @@ public class WordDistance {
             if (!map.containsKey(currWord)) {
                 map.put(currWord, new ArrayList<Integer>());
             }
-            ArrayList<Integer> positions = map.get(currWord);
+            List<Integer> positions = map.get(currWord);
             positions.add(i);
         }
     }
@@ -58,13 +57,13 @@ public class WordDistance {
         return findDistance(map.get(word1), map.get(word2));
     }
 
-    /* Merges lists, then uses same algo from Solution 1 to find minimum distance */
-    private static Integer findDistance(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+    // Merges lists, then uses same algo from Solution 1 to find minimum distance
+    private static Integer findDistance(List<Integer> listA, List<Integer> listB) {
         if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
             return null;
         }
 
-        ArrayList<Pair> merged = merge(listA, listB);
+        List<Pair> merged = merge(listA, listB);
 
         int min = Integer.MAX_VALUE;
         int lastPosWord1 = -1;
@@ -86,12 +85,12 @@ public class WordDistance {
         return min;
     }
 
-    private static ArrayList<Pair> merge(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+    private static List<Pair> merge(List<Integer> listA, List<Integer> listB) {
         if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
             return null; // function assumes both lists are non-empty (to make error-checking easier to write)
         }
 
-        ArrayList<Pair> merged = new ArrayList<>();
+        List<Pair> merged = new ArrayList<>();
         int aIndex = 0;
         int bIndex = 0;
         int aValue;

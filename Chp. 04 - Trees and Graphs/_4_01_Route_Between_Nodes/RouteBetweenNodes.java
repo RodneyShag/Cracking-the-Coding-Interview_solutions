@@ -1,6 +1,6 @@
 package _4_01_Route_Between_Nodes;
 
-import java.util.ArrayDeque;
+import java.util.*;
 import common.GraphNode;
 
 // Algorithm: run BFS from start node and see if we arrive at end node
@@ -11,7 +11,7 @@ public class RouteBetweenNodes {
             return true;
         }
 
-        ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
+        Deque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
         start.visit();
         deque.add(start);
 

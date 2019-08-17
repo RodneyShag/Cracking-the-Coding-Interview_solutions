@@ -1,7 +1,6 @@
 package _4_09_BST_Sequences;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.*;
 
 import common.TreeNode;
 
@@ -11,8 +10,8 @@ public class Tester {
         TreeNode root = new TreeNode(2);
         root.left = new TreeNode(1);
         root.right = new TreeNode(3);
-        ArrayList<ArrayDeque<Integer>> results = BSTSequences.allSequences(root);
-        for (ArrayDeque<Integer> result : results) {
+        List<Deque<Integer>> results = BSTSequences.allSequences(root);
+        for (Deque<Integer> result : results) {
             System.out.println(result);
         }
     }

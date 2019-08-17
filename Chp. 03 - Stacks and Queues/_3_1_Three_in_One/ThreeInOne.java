@@ -1,6 +1,6 @@
 package _3_1_Three_in_One;
 
-// Use "int[] heads = {-1,-1,-1}" and simply implement arrayOffset(int stackNum) , push/pop/peek
+// Use "int[] heads = {-1,-1,-1}" and simply implement arrayOffset(int stackNum), push/pop/peek
 
 public class ThreeInOne {
     private final int numStacks = 3;
@@ -22,7 +22,7 @@ public class ThreeInOne {
 
     public int pop(int stackNum) throws Exception {
         if (heads[stackNum] == -1) {
-            throw new Exception("No elements to pop");
+            throw new Exception("No element to pop");
         }
         int offset = arrayOffset(stackNum) + heads[stackNum];
         heads[stackNum]--;
@@ -31,7 +31,7 @@ public class ThreeInOne {
 
     public int peek(int stackNum) throws Exception {
         if (heads[stackNum] == -1) {
-            throw new Exception("No elements to pop");
+            throw new Exception("No element to pop");
         }
         int offset = arrayOffset(stackNum) + heads[stackNum];
         return array[offset];
@@ -45,7 +45,7 @@ public class ThreeInOne {
         return stackSize * stackNum;
     }
 
-    /* Added for testing */
+    // Added for testing
     public void print() {
         for (int stackNum = 0; stackNum <= 2; stackNum++) {
             System.out.print("\nStack #" + stackNum + ": ");
@@ -60,3 +60,6 @@ public class ThreeInOne {
     // 2) The array is allowed to wrap around on itself (so will need to use % operator)
     // 3) They made a new class called "StackData" to keep track of a bunch of information about each stack instead of just "head"
 }
+
+//  Time Complexity: O(1) for push(), pop(), peek(), isEmpty(), arrayOffset()
+// Space Complexity: O(1) for push(), pop(), peek(), isEmpty(), arrayOffset(). O(n) permanent storage needed for "array"

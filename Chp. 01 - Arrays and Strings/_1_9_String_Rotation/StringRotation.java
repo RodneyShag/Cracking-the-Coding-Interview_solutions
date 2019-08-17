@@ -11,3 +11,7 @@ public class StringRotation {
 }
 
 // Time/Space Complexities are same as .contains() function
+// If .contains() is implemented using the "KMP algorithm" then we will have:
+//
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

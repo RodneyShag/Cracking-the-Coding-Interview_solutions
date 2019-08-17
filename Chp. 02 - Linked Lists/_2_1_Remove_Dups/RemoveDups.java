@@ -1,11 +1,11 @@
 package _2_1_Remove_Dups;
 
-import java.util.HashSet;
+import java.util.*;
 import common.Node;
 
 public class RemoveDups {
     static void removeDuplicates(Node head) {
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         set.add(head.data);
         Node n = head;
         while (n.next != null) {

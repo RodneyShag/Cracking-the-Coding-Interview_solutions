@@ -10,13 +10,13 @@ import common.Node;
 // 2) Create 2 SLLs from SLL. Connect them.        O(n)      Use if swapping data not allowed
 
 public class Partition {
-    /* Solution 1 */
+    // Solution 1
     public static Node partition(Node head, int x) {
         Node curr = head;
         Node p = head;
         while (curr != null) {
             if (curr.data < x) {
-                /* Swap DATA values */
+                // Swap DATA values
                 int temp = p.data;
                 p.data = curr.data;
                 curr.data = temp;
@@ -28,7 +28,7 @@ public class Partition {
         return head;
     }
 
-    /* Solution 2 */
+    // Solution 2
     public static Node partition2(Node n, int x) {
         Node head1 = null;
         Node head2 = null;

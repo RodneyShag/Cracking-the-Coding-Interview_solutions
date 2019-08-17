@@ -9,9 +9,9 @@ public class MaxBlackSquare {
     public static Subsquare findLargestSubsquare(int[][] grid) { // O(n) * runtime of findSubSquare()
         Cell[][] processed = preprocessGrid(grid);
         for (int dimension = processed.length; dimension >= 1; dimension--) {
-            Subsquare subsquare = findSubsquare(processed, dimension);
-            if (subsquare != null) {
-                return subsquare;
+            Subsquare ss = findSubsquare(processed, dimension);
+            if (ss != null) {
+                return ss;
             }
         }
         return null;
@@ -21,13 +21,13 @@ public class MaxBlackSquare {
         int rows = grid.length;
         int cols = grid[0].length;
 
-        Cell[][] preprocessed = new Cell[grid.length][grid.length];
-        for (int row = rows - 1; row >= 0; row--) {
-            for (int col = cols - 1; col >= 0; col--) {
-                preprocessed[row][col] = new Cell(0, 0);
-                if (grid[row][col] == 1) {
-                    preprocessed[row][col].blacksRight = 1 + ((col + 1 < cols) ? preprocessed[row][col + 1].blacksRight : 0);
-                    preprocessed[row][col].blacksDown  = 1 + ((row + 1 < rows) ? preprocessed[row + 1][col].blacksDown  : 0);
+        Cell[][] preprocessed = new Cell[rows][cols];
+        for (int r = rows - 1; r >= 0; r--) {
+            for (int c = cols - 1; c >= 0; c--) {
+                preprocessed[r][c] = new Cell(0, 0);
+                if (grid[r][c] == 1) {
+                    preprocessed[r][c].blacksRight = 1 + ((c + 1 < cols) ? preprocessed[r][c + 1].blacksRight : 0);
+                    preprocessed[r][c].blacksDown  = 1 + ((r + 1 < rows) ? preprocessed[r + 1][c].blacksDown  : 0);
                 }
             }
         }
@@ -37,21 +37,22 @@ public class MaxBlackSquare {
     private static Subsquare findSubsquare(Cell[][] cellMatrix, int length) { // O(n^2) (since 2 for loops)
         int wiggleRoom = cellMatrix.length - length;
 
-        for (int startRow = 0; startRow <= wiggleRoom; startRow++) {
-            for (int startCol = 0; startCol <= wiggleRoom; startCol++) {
-                if (isValidSquare(cellMatrix, startRow, startCol, length)) {
-                    return new Subsquare(startRow, startCol, length);
+        for (int r = 0; r <= wiggleRoom; r++) {
+            for (int c = 0; c <= wiggleRoom; c++) {
+                if (isValidSquare(cellMatrix, r, c, length)) {
+                    return new Subsquare(r, c, length);
                 }
             }
         }
         return null;
     }
 
-    private static boolean isValidSquare(Cell[][] cellMatrix, int row, int col, int length) { // O(1)
-        Cell topLeft     = cellMatrix[row][col];
-        Cell topRight    = cellMatrix[row][col + length - 1];
-        Cell bottomLeft  = cellMatrix[row + length - 1][col];
-        Cell bottomRight = cellMatrix[row + length - 1][col + length - 1];
+    // r, c represent top-left corner of square
+    private static boolean isValidSquare(Cell[][] cellMatrix, int r, int c, int length) { // O(1)
+        Cell topLeft     = cellMatrix[r][c];
+        Cell topRight    = cellMatrix[r][c + length - 1];
+        Cell bottomLeft  = cellMatrix[r + length - 1][c];
+        Cell bottomRight = cellMatrix[r + length - 1][c + length - 1];
         if (topLeft.blacksDown < length || topLeft.blacksRight < length) {
             return false;
         } else if (topRight.blacksDown < length || topRight.blacksRight < 1) {

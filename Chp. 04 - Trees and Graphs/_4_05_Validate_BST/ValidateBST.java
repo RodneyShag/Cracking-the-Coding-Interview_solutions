@@ -19,4 +19,4 @@ public class ValidateBST {
 }
 
 //  Time Complexity: O(n) since we visit every node
-// Space Complexity: O(n) if unbalanced tree, O(log n) if it's balanced. That's the depth of the recursion
+// Space Complexity: O(log n) if tree is balanced, O(n) otherwise, since that's the depth of the recursion

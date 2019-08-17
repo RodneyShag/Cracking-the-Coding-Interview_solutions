@@ -10,6 +10,7 @@ public class Tester {
         int[] arrayInsertion = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
         int[] arrayMerge     = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
         int[] arrayQuick     = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
+        int[] arrayHeap      = {3, 6, 1, 6, 25, 16, 62, -3, -6, 4, 16, 26, 0, 0, 25, 25, -3, -3, 6, 7, 0, 1, 29, 28};
 
         System.out.println(Arrays.toString(arrayBubble) + " - Original Array");
 
@@ -27,5 +28,8 @@ public class Tester {
 
         Sorts.quickSort(arrayQuick);
         System.out.println(Arrays.toString(arrayQuick) + " - QuickSort");
+
+        Sorts.heapSort(arrayHeap);
+        System.out.println(Arrays.toString(arrayHeap) + " - HeapSort");
     }
 }

@@ -1,6 +1,6 @@
 package _16_19_Pond_Sizes;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Tester {
     }
 
     private static void test(int[][] grid) {
-        ArrayList<Integer> pondSizes = PondSizes.findPonds(grid);
+        List<Integer> pondSizes = PondSizes.findPonds(grid);
         System.out.println(pondSizes);
     }
 }

@@ -34,3 +34,6 @@ public class Queue {
         return head;
     }
 }
+
+//  Time Complexity: O(1) for add(), remove(), peek().
+// Space Complexity: O(1) for add(), remove(), peek(). O(1) to store each Node permanently.

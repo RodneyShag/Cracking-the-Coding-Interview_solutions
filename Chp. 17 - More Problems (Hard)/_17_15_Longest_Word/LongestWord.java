@@ -1,7 +1,6 @@
 package _17_15_Longest_Word;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 // Find longest word in an array that can be comprised of 2+ other words in the array
 // 
@@ -11,8 +10,8 @@ import java.util.HashMap;
 
 public class LongestWord {
     public static String longestWord(String[] words) {
-        Arrays.sort(words, new LengthComparator()); // we want to search longest words first
-        HashMap<String, Boolean> map = makeMap(words);
+        Arrays.sort(words, (s1, s2) -> s2.length() - s1.length()); // sorting backwards to put longer words in front.
+        Map<String, Boolean> map = makeMap(words);
 
         for (String word : words) {
             if (canBuildWord(word, true, map)) {
@@ -22,15 +21,15 @@ public class LongestWord {
         return null;
     }
 
-    private static HashMap<String, Boolean> makeMap(String[] words) {
-        HashMap<String, Boolean> map = new HashMap<>();
+    private static Map<String, Boolean> makeMap(String[] words) {
+        Map<String, Boolean> map = new HashMap<>();
         for (String word : words) {
             map.put(word, true);
         }
         return map;
     }
 
-    private static boolean canBuildWord(String word, boolean isOriginalWord, HashMap<String, Boolean> cache) {
+    private static boolean canBuildWord(String word, boolean isOriginalWord, Map<String, Boolean> cache) {
         if (!isOriginalWord && cache.containsKey(word)) {
             return cache.get(word);
         }

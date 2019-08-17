@@ -31,11 +31,11 @@ public class MaxSubmatrix {
         return maxArea;
     }
 
-    private static int getSum(int[][] grid, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(n^2) time
+    public static int getSum(int[][] grid, int rowStart, int rowEnd, int colStart, int colEnd) { // runs in O(n^2) time
         int sum = 0;
-        for (int row = rowStart; row <= rowEnd; row++) {
-            for (int col = colStart; col <= colEnd; col++) {
-                sum += grid[row][col];
+        for (int r = rowStart; r <= rowEnd; r++) {
+            for (int c = colStart; c <= colEnd; c++) {
+                sum += grid[r][c];
             }
         }
         return sum;
@@ -73,17 +73,17 @@ public class MaxSubmatrix {
 
         int[][] processed = new int[rows][cols];
         processed[0][0] = grid[0][0];
-        for (int row = 1; row < rows; row++) {
-            processed[row][0] = processed[row - 1][0] + grid[row][0];
+        for (int r = 1; r < rows; r++) {
+            processed[r][0] = processed[r - 1][0] + grid[r][0];
         }
-        for (int col = 1; col < cols; col++) {
-            processed[0][col] = processed[0][col - 1] + grid[0][col];
+        for (int c = 1; c < cols; c++) {
+            processed[0][c] = processed[0][c - 1] + grid[0][c];
         }
         for (int row = 1; row < rows; row++) {
             for (int col = 1; col < cols; col++) {
-                processed[row][col] = processed[row - 1][col] + 
-                                      processed[row][col - 1] - 
-                                      processed[row - 1][col - 1] + 
+                processed[row][col] = processed[row - 1][col] +
+                                      processed[row][col - 1] -
+                                      processed[row - 1][col - 1] +
                                       grid[row][col];
             }
         }

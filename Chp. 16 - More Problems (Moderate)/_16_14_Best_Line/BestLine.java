@@ -17,9 +17,9 @@ import common.Line;
 public class BestLine {
     public static Line findBestLine(Point[] points) {
         int numPoints = points.length;
-        HashMap<Line, Integer> map = new HashMap<>();
 
-        /* Put lines into HashMap */
+        // For each pair of points, put 1 Line into a HashMap
+        HashMap<Line, Integer> map = new HashMap<>();
         for (int i = 0; i < numPoints - 1; i++) {
             for (int j = i + 1; j < numPoints; j++) {
                 Line line = new Line(points[i], points[j]);
@@ -28,13 +28,13 @@ public class BestLine {
             }
         }
 
-        /* Count which line is most popular */
+        // See which Line is most popular
         int max = 0;
         Line bestLine = null;
         for (Line line : map.keySet()) {
             int value = map.get(line);
             if (value >= max) {
-                max = map.get(line);
+                max = value;
                 bestLine = line;
             }
         }

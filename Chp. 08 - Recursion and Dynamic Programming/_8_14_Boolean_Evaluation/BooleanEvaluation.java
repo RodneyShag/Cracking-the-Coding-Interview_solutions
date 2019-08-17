@@ -21,7 +21,7 @@ public class BooleanEvaluation {
             return cache.get(key);
         }
 
-        /* Base Case */
+        // Base Case
         if (start == end) {
             if (exp.charAt(start) == '1' && result) {
                 return 1;
@@ -31,7 +31,7 @@ public class BooleanEvaluation {
             return 0; // takes care of other 2 possibilities
         }
 
-        /* Recursive Case */
+        // Recursive Case
         int numWays = 0;
         if (result) {
             for (int i = start + 1; i < end; i += 2) { // assumes string is always in form: num, char, num, char...

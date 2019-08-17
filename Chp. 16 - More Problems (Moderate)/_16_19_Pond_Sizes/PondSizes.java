@@ -1,11 +1,11 @@
 package _16_19_Pond_Sizes;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PondSizes {
 
-    public static ArrayList<Integer> findPonds(int[][] grid) {
-        ArrayList<Integer> pondSizes = new ArrayList<>();
+    public static List<Integer> findPonds(int[][] grid) {
+        List<Integer> pondSizes = new ArrayList<>();
         int rows = grid.length;
         int cols = grid[0].length;
         for (int row = 0; row < rows; row++) {

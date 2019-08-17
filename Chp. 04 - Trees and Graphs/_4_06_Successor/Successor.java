@@ -42,3 +42,6 @@ public class Successor {
 
 // Finding Successor of a Node is useful when deleting a node in a binary *search* tree,
 // since that's a node we can put in place of the deleted node
+
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

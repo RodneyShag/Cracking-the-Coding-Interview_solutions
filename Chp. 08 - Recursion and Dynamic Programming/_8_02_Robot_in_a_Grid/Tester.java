@@ -12,8 +12,8 @@ public class Tester {
         System.out.println("*** Test 8.2: Robots in a Grid\n");
         boolean[][] maze = createMaze(3, 3);
 
-        /* Find and print solution */
-        ArrayList<Point> path = RobotInAGrid.findPath(maze, 2, 2);
+        // Find and print solution
+        List<Point> path = RobotInAGrid.findPath(maze, 2, 2);
         System.out.print("\nOld Path: " + path);
 
         /* Add walls to block the original solution path, to see if it will find a different solution */

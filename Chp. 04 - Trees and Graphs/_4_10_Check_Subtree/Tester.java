@@ -11,6 +11,6 @@ public class Tester {
         TreeNode tree3 = new TreeNode(5);
         System.out.println("Contains tree? (should be false): " + CheckSubtree.containsTree(tree1, tree2));
         System.out.println("Contains tree? (should be false): " + CheckSubtree.containsTree(tree1, tree3));
-        System.out.println("Contains tree? (should be true): " + CheckSubtree.containsTree(tree1, tree1));
+        System.out.println("Contains tree? (should be true ): " + CheckSubtree.containsTree(tree1, tree1));
     }
 }

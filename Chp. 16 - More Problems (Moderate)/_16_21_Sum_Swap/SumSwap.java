@@ -1,7 +1,6 @@
 package _16_21_Sum_Swap;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class SumSwap {
     public static void toSwap(int[] arrayA, int[] arrayB) {
@@ -12,7 +11,7 @@ public class SumSwap {
             return;
         }
         int difference = (sum2 - sum1) / 2;
-        HashSet<Integer> set = buildSet(arrayB);
+        Set<Integer> set = buildSet(arrayB);
         for (int numA : arrayA) {
             int neededNumB = numA + difference;
             if (set.contains(neededNumB)) {
@@ -23,8 +22,8 @@ public class SumSwap {
         System.out.println("no solution");
     }
 
-    private static HashSet<Integer> buildSet(int[] array) {
-        HashSet<Integer> set = new HashSet<>();
+    private static Set<Integer> buildSet(int[] array) {
+        Set<Integer> set = new HashSet<>();
         for (int num : array) {
             set.add(num);
         }

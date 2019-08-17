@@ -1,6 +1,6 @@
 package _16_11_Diving_Board;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Tester {
         System.out.println("\n          k = " + k);
         System.out.println("shortLength = " + shortLength);
         System.out.println(" longLength = " + longLength);
-        ArrayList<Integer> lengths = DivingBoard.allLengths(k, shortLength, longLength);
+        List<Integer> lengths = DivingBoard.allLengths(k, shortLength, longLength);
         System.out.println("Possible lengths: " + lengths);
     }
 }

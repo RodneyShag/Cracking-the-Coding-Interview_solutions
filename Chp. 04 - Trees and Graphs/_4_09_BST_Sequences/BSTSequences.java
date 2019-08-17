@@ -1,28 +1,27 @@
 package _4_09_BST_Sequences;
 
-import java.util.ArrayList;
-import java.util.ArrayDeque;
+import java.util.*;
 import common.TreeNode;
 
 public class BSTSequences {
-    public static ArrayList<ArrayDeque<Integer>> allSequences(TreeNode node) {
-        ArrayList<ArrayDeque<Integer>> results = new ArrayList<>();
+    public static List<Deque<Integer>> allSequences(TreeNode node) {
+        List<Deque<Integer>> results = new ArrayList<>();
 
         if (node == null) {
             results.add(new ArrayDeque<Integer>()); // crucial. So the code labeled "weave lists" works properly
             return results;
         }
 
-        ArrayDeque<Integer> prefix = new ArrayDeque<>();
+        Deque<Integer> prefix = new ArrayDeque<>();
         prefix.add(node.data);
 
-        /* Recursive Cases */
-        ArrayList<ArrayDeque<Integer>> leftSeq  = allSequences(node.left);
-        ArrayList<ArrayDeque<Integer>> rightSeq = allSequences(node.right);
+        // Recursive Cases
+        List<Deque<Integer>> leftSeq  = allSequences(node.left);
+        List<Deque<Integer>> rightSeq = allSequences(node.right);
 
-        /* Weave lists */
-        for (ArrayDeque<Integer> left : leftSeq) {
-            for (ArrayDeque<Integer> right : rightSeq) {
+        // Weave lists
+        for (Deque<Integer> left : leftSeq) {
+            for (Deque<Integer> right : rightSeq) {
                 weaveLists(left, right, results, prefix);
             }
         }
@@ -30,29 +29,29 @@ public class BSTSequences {
         return results;
     }
 
-    private static void weaveLists(ArrayDeque<Integer> list1, ArrayDeque<Integer> list2,
-                      ArrayList<ArrayDeque<Integer>> results, ArrayDeque<Integer> prefix) {
-        /* Base Case */
+    private static void weaveLists(Deque<Integer> list1, Deque<Integer> list2,
+            List<Deque<Integer>> results, Deque<Integer> prefix) {
+        // Base Case
         if (list1.isEmpty() || list2.isEmpty()) {
-            ArrayDeque<Integer> result = new ArrayDeque<>(prefix);
-            result.addAll(list1);
-            result.addAll(list2);
-            results.add(result);
-            return;
+        Deque<Integer> result = new ArrayDeque<>(prefix);
+        result.addAll(list1);
+        result.addAll(list2);
+        results.add(result);
+        return;
         }
-
-        /* Use 1st entry in list1 */
+        
+        // Use 1st entry in list1
         Integer temp = list1.removeFirst();
         prefix.addLast(temp);
         weaveLists(list1, list2, results, prefix);
         prefix.removeLast();
         list1.addFirst(temp);
-
-        /* Use 1st entry in list2 */
+        
+        // Use 1st entry in list2
         temp = list2.removeFirst();
         prefix.addLast(temp);
         weaveLists(list1, list2, results, prefix);
         prefix.removeLast();
         list2.addFirst(temp);
-    }
+       }
 }

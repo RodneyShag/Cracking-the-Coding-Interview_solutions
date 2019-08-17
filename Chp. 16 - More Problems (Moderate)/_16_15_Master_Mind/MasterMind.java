@@ -1,6 +1,6 @@
 package _16_15_Master_Mind;
 
-import java.util.HashMap;
+import java.util.*;
 
 // Tricks:
 // - put all the non-hit characters into a HashMap<Character, Integer>
@@ -15,9 +15,9 @@ public class MasterMind {
         solution = solution.toLowerCase();
 
         Result result = new Result();
-        HashMap<Character, Integer> colorMap = new HashMap<>();
+        Map<Character, Integer> colorMap = new HashMap<>();
 
-        /* Count direct hits, while saving non-directHit colors in a HashMap, which will later help us count pseudohits */
+        // Count direct hits, while saving non-directHit colors in a HashMap, which will later help us count pseudohits
         for (int i = 0; i < solution.length(); i++) {
             char solChar = solution.charAt(i);
             char guessChar = guess.charAt(i);
@@ -28,7 +28,7 @@ public class MasterMind {
             }
         }
 
-        /* Count pseudohits in HashMap */
+        // Count pseudohits in HashMap
         for (int i = 0; i < guess.length(); i++) {
             char solChar   = solution.charAt(i);
             char guessChar = guess.charAt(i);

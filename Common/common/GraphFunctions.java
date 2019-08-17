@@ -1,6 +1,6 @@
 package common;
 
-import java.util.ArrayDeque;
+import java.util.*;
 
 public class GraphFunctions {
 
@@ -36,7 +36,7 @@ public class GraphFunctions {
             return;
         }
 
-        ArrayDeque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
+        Deque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
         node.visit();
         deque.add(node);
 

@@ -25,3 +25,6 @@ public class Stack {
         return top;
     }
 }
+
+//  Time Complexity: O(1) for push(), pop(), peek().
+// Space Complexity: O(1) for push(), pop(), peek(). O(1) to store each Node permanently.

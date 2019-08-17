@@ -5,8 +5,9 @@ package __Intro_Sorts;
 // 1) Bubble Sort       O(n^2)       O(1)       Best case is O(n) runtime if list is already almost sorted
 // 2) Selection Sort    O(n^2)       O(1)
 // 3) Insertion Sort	O(n^2)       O(1)
-// 4) Merge Sort        O(n log n)   O(n)
+// 4) Merge Sort        O(n log n)   O(n)       Stable sort: the order of equal elements is the same in the input and output.
 // 5) Quick Sort        O(n^2)       O(log n)   Average Case Runtime: O(n log n)
+// 6) Heap Sort         O(n log n)   O(1)
 
 public class Sorts {
     /***************/
@@ -99,7 +100,7 @@ public class Sorts {
             helper[i] = array[i];
         }
 
-        /* Loop through helper[] left and right halves and continuously copy smaller element to array[] */
+        // Loop through helper[] left and right halves and continuously copy smaller element to array[]
         int curr = start;
         int left = start;
         int right = mid + 1;
@@ -111,7 +112,7 @@ public class Sorts {
             }
         }
 
-        /* Copy remaining elements of left half. Right half elements are already in proper place (see book for explanation) */
+        // Copy remaining elements of left half. Right half elements are already in proper place (see book for explanation)
         while (left <= mid) {
             array[curr++] = helper[left++];
         }
@@ -159,5 +160,73 @@ public class Sorts {
 
         swap(array, indexToReturn, end); // puts pivot where it belongs
         return indexToReturn;
+    }
+   
+
+    /************/
+    /* HeapSort */ // code from Wikipedia
+    /************/
+    public static void heapSort(int[] A) {
+        if (A == null || A.length <= 1) {
+            return;
+        }
+        buildMaxHeap(A);
+        convertHeapToSortedList(A);
+    }
+
+    private static void buildMaxHeap(int[] A) {
+        int start = iParent(A.length - 1);
+        while (start >= 0) {
+            bubbleDown(A, start, A.length - 1);
+            start--;
+        }
+    }
+
+    private static void convertHeapToSortedList(int[] A) { // assumes input is a valid heap
+        int end = A.length - 1;
+        while (end > 0) {
+            swap(A, 0, end);
+            end--;
+            bubbleDown(A, 0, end);
+        }
+    }
+
+    private static void bubbleDown(int[] A, int start, int end) {
+        int curr = start;
+        while (hasChild(curr, end)) {
+            int maxChildIndex = maxChild(A, curr, end);
+            if (A[maxChildIndex] > A[curr]) {
+                swap(A, curr, maxChildIndex);
+                curr = maxChildIndex;
+            } else {
+                return;
+            }
+        }
+    }
+
+    private static int iLeftChild(int i) {
+        return 2*i + 1;
+    }
+
+    private static int iRightChild(int i) {
+        return 2*i + 2;
+    }
+
+    private static int iParent(int i) {
+        return (i - 1) / 2;
+    }
+
+    private static boolean hasChild(int curr, int end) {
+        return iLeftChild(curr) <= end;
+    }
+
+    private static int maxChild(int[] A, int i, int end) { // assumes left child exists
+        if (iRightChild(i) > end) {
+            return iLeftChild(i);
+        } else if (A[iLeftChild(i)] > A[iRightChild(i)]) {
+            return iLeftChild(i);
+        } else {
+            return iRightChild(i);
+        }
     }
 }

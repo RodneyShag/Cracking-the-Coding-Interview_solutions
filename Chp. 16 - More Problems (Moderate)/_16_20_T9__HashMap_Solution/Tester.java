@@ -1,7 +1,6 @@
 package _16_20_T9__HashMap_Solution;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Tester {
     private static String[] words = {"tree", "used", "ace", "bee", "bed", "tape", 
@@ -9,7 +8,7 @@ public class Tester {
 
     public static void main(String[] args) {
         System.out.println("*** Test 16.20: T9 - HashMap Solution\n");
-        HashMap<String, List<String>> map = T9.buildMap(words);
+        Map<String, List<String>> map = T9.buildMap(words);
         System.out.println("Matching words: ");
         for (String word : map.get("8733")) {
             System.out.println(word);

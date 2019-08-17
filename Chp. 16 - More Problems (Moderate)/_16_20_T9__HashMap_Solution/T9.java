@@ -1,15 +1,13 @@
 package _16_20_T9__HashMap_Solution;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 // Algorithm: Pre-process all words into a HashMap<String, List<String>> where 
 //      key   = Number (well, only numbers that give valid words will be included)
 //      value = List of Valid Words
 
 public class T9 {
-    private static HashMap<Character, Character> letterToDigit = new HashMap<>();
+    private static Map<Character, Character> letterToDigit = new HashMap<>();
 
     static { // static initializer block
         for (char ch = 'a'; ch <= 'c'; ch++) letterToDigit.put(ch, '2');
@@ -22,8 +20,8 @@ public class T9 {
         for (char ch = 'w'; ch <= 'z'; ch++) letterToDigit.put(ch, '9');
     }
 
-    public static HashMap<String, List<String>> buildMap(String[] words) {
-        HashMap<String, List<String>> map = new HashMap<>();
+    public static Map<String, List<String>> buildMap(String[] words) {
+        Map<String, List<String>> map = new HashMap<>();
         for (String word : words) {
             String number = getNumber(word);
             map.putIfAbsent(number, new ArrayList<>());
