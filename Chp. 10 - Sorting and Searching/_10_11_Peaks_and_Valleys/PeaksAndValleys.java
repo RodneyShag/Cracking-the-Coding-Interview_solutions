@@ -21,3 +21,6 @@ public class PeaksAndValleys {
         array[right] = temp;
     }
 }
+
+//  Time Complexity: O(n)
+// Space Complexity: O(1)

@@ -13,6 +13,7 @@ public class Tester {
     private static void test(int[] arrayA, int[] arrayB) {
         System.out.println(Arrays.toString(arrayA));
         System.out.println(Arrays.toString(arrayB));
-        ShortestSupersequence.shortest(arrayA, arrayB);
+        Range range = ShortestSupersequence.shortest(arrayA, arrayB);
+        System.out.println("Range: " + range);
     }
 }

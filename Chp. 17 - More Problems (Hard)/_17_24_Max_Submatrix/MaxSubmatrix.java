@@ -4,8 +4,8 @@ package _17_24_Max_Submatrix;
 // 
 // Solution               Runtime                          Preference
 // ------------------------------------------------------------------------
-// 1) Brute Force         O(n^6)                           Worth mentioning
-// 2) Pre-process         O(n^4)                           Worth mentioning
+// 1) Brute Force         O(R^3*C^3)                       Worth mentioning
+// 2) Pre-process         O(R^2*C^2)                       Worth mentioning
 // 3) maxSubarray trick   O(R^2*C) (R = rows, C = cols)    Favorite
 
 public class MaxSubmatrix {
@@ -63,11 +63,8 @@ public class MaxSubmatrix {
         return maxArea;
     }
 
-    /* For each element at (x,y), we store the sum of all values from (0,0) to (x,y) */
+    // For each element at (x,y), we store the sum of all values from (0,0) to (x,y)
     private static int[][] preprocess(int[][] grid) {
-        if (grid == null) {
-            return null;
-        }
         int rows = grid.length;
         int cols = grid[0].length;
 
@@ -118,15 +115,12 @@ public class MaxSubmatrix {
         return maxSum;
     }
 
-    private static int maxSubArray(int[] array) {
-        int maxSum = 0;
-        int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
-            maxSum = Math.max(maxSum, sum);
-            if (sum < 0) {
-                sum = 0;
-            }
+    private static int maxSubArray(int[] A) {
+        int maxEndingHere = A[0];
+        int maxSum = A[0];
+        for (int i = 1; i < A.length; i++) {
+            maxEndingHere = Math.max(maxEndingHere + A[i], A[i]);
+            maxSum = Math.max(maxSum, maxEndingHere);
         }
         return maxSum;
     }

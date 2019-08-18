@@ -17,7 +17,7 @@ public class MasterMind {
         Result result = new Result();
         Map<Character, Integer> colorMap = new HashMap<>();
 
-        // Count direct hits, while saving non-directHit colors in a HashMap, which will later help us count pseudohits
+        // Count direct hits. Save other colors in HashMap for later.
         for (int i = 0; i < solution.length(); i++) {
             char solChar = solution.charAt(i);
             char guessChar = guess.charAt(i);

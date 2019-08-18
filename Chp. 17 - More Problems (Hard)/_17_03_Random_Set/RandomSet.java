@@ -16,6 +16,9 @@ package _17_03_Random_Set;
 */
 public class RandomSet {
     public int[] generate(int[] array, int m) {
+        if (array == null || m > array.length) {
+            return null;
+        }
         /* Copy first "m" elements into new array */
         int[] solution = new int[m];
         for (int i = 0; i < m; i++) {

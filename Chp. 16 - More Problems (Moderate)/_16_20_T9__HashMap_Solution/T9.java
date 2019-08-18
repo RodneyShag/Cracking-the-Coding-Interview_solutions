@@ -7,9 +7,10 @@ import java.util.*;
 //      value = List of Valid Words
 
 public class T9 {
-    private static Map<Character, Character> letterToDigit = new HashMap<>();
+    private Map<Character, Character> letterToDigit;
 
-    static { // static initializer block
+    public T9() {
+        letterToDigit = new HashMap<>();
         for (char ch = 'a'; ch <= 'c'; ch++) letterToDigit.put(ch, '2');
         for (char ch = 'd'; ch <= 'f'; ch++) letterToDigit.put(ch, '3');
         for (char ch = 'g'; ch <= 'i'; ch++) letterToDigit.put(ch, '4');
@@ -20,7 +21,7 @@ public class T9 {
         for (char ch = 'w'; ch <= 'z'; ch++) letterToDigit.put(ch, '9');
     }
 
-    public static Map<String, List<String>> buildMap(String[] words) {
+    public Map<String, List<String>> buildMap(String[] words) {
         Map<String, List<String>> map = new HashMap<>();
         for (String word : words) {
             String number = getNumber(word);
@@ -31,7 +32,7 @@ public class T9 {
         return map;
     }
 
-    private static String getNumber(String str) {
+    private String getNumber(String str) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < str.length(); i++) {
             char ch = letterToDigit.get(str.charAt(i));

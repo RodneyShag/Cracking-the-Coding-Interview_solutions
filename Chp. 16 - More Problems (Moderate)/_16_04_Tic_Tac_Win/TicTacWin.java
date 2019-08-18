@@ -5,7 +5,7 @@ package _16_04_Tic_Tac_Win;
 //	2) Use an array of booleans to indicate which boards are winning boards.
 
 public class TicTacWin {
-    boolean[] winnerMap;
+    private boolean[] winnerMap;
 
     public static int convertBoardToInt(char[][] board) {
         int sum = 0;

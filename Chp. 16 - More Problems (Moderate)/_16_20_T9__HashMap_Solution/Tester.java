@@ -8,7 +8,8 @@ public class Tester {
 
     public static void main(String[] args) {
         System.out.println("*** Test 16.20: T9 - HashMap Solution\n");
-        Map<String, List<String>> map = T9.buildMap(words);
+        T9 t9 = new T9();
+        Map<String, List<String>> map = t9.buildMap(words);
         System.out.println("Matching words: ");
         for (String word : map.get("8733")) {
             System.out.println(word);

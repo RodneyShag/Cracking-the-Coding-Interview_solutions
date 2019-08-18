@@ -13,7 +13,7 @@ public class Tester {
     }
 
     private static void test(int[] array, int k) {
-        System.out.format("\n%2 d Smallest: ", k);
+        System.out.format("\n%2d Smallest: ", k);
         SmallestK.findNthSmallestNums(array, k);
     }
 }

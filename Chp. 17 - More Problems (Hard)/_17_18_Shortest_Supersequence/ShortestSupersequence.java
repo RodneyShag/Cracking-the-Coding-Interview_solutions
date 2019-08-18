@@ -15,16 +15,15 @@ import java.util.*;
 // Time Complexity: O(S + B log S)
 
 public class ShortestSupersequence {
-    public static void shortest(int[] arrayA, int[] arrayB) {
+    public static Range shortest(int[] arrayA, int[] arrayB) {
         Map<Integer, Deque<HeapNode>> map = makeLists(arrayA, arrayB);
-        Range range = getSmallestRange(map);
-        System.out.println("Range: " + range);
+        return getSmallestRange(map);
     }
 
     private static Map<Integer, Deque<HeapNode>> makeLists(int[] arrayA, int[] arrayB) {
         Map<Integer, Deque<HeapNode>> map = new HashMap<>();
         for (int num : arrayA) {
-            map.put(num, new ArrayDeque<>());
+            map.putIfAbsent(num, new ArrayDeque<>());
         }
         for (int i = 0; i < arrayB.length; i++) {
             if (map.containsKey(arrayB[i])) {
@@ -37,7 +36,7 @@ public class ShortestSupersequence {
     }
 
     private static Range getSmallestRange(Map<Integer, Deque<HeapNode>> map) {
-        Queue<HeapNode> minHeap = new PriorityQueue<>(new NodeComparator());
+        Queue<HeapNode> minHeap = new PriorityQueue<>((hn1, hn2) -> hn1.index - hn2.index);
 
         Range currRange = new Range(Integer.MAX_VALUE, Integer.MIN_VALUE);
 

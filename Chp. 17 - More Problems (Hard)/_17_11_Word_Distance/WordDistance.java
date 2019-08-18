@@ -45,9 +45,7 @@ public class WordDistance {
     public static void preProcess(String[] words) {
         for (int i = 0; i < words.length; i++) {
             String currWord = words[i];
-            if (!map.containsKey(currWord)) {
-                map.put(currWord, new ArrayList<Integer>());
-            }
+            map.putIfAbsent(currWord, new ArrayList<Integer>());
             List<Integer> positions = map.get(currWord);
             positions.add(i);
         }
@@ -87,7 +85,7 @@ public class WordDistance {
 
     private static List<Pair> merge(List<Integer> listA, List<Integer> listB) {
         if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
-            return null; // function assumes both lists are non-empty (to make error-checking easier to write)
+            return new ArrayList<>();
         }
 
         List<Pair> merged = new ArrayList<>();

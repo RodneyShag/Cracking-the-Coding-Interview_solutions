@@ -34,17 +34,17 @@ public class SmallestK {
     //  - O(n) average run-time is since we recurse only on 1 side (n + n/2 + n/4 + ...) = n (1 + 1/2 + 1/4 + ...) = O(n).
     //    Our formula above is a geometric series with "r = 1/2", which would converge to 1/(1-r) for infinite geometric series.
     //  - O(n^2) worst-case run-time is if "partition()" consistently picks a bad pivot.
-    private static Integer quickselect(int[] array, int n) {
-        int start = 0;
-        int end   = array.length - 1;
-        while (start <= end) {
-            int pivotIndex = partition(array, start, end);
+    private static Integer quickselect(int[] A, int n) {
+        int lo = 0;
+        int hi = A.length - 1;
+        while (lo <= hi) {
+            int pivotIndex = partition(A, lo, hi);
             if (pivotIndex == n) {
-                return array[n];
+                return A[n];
             } else if (pivotIndex < n) {
-                start = pivotIndex + 1;
+                lo = pivotIndex + 1;
             } else {
-                end = pivotIndex - 1;
+                hi = pivotIndex - 1;
             }
         }
         return null;
@@ -54,31 +54,31 @@ public class SmallestK {
     //     1) Left side has values smaller than pivotValue
     //     2) Right side has values larger than pivotValue
     // Returns pivotIndex
-    private static Integer partition(int[] array, int start, int end) {
-        if (start > end) {
+    private static Integer partition(int[] A, int lo, int hi) {
+        if (lo > hi) {
             return null;
         }
-        int pivotIndex = (start + end) / 2; // there are many ways to choose a pivot
-        int pivotValue = array[pivotIndex];
+        int pivotIndex = (lo + hi) / 2; // there are many ways to choose a pivot
+        int pivotValue = A[pivotIndex];
 
-        swap(array, pivotIndex, end); // puts pivot at end for now.
+        swap(A, pivotIndex, hi); // puts pivot at end for now.
 
-        /* Linear search, comparing all elements to pivotValue and swapping as necessary */
-        int indexToReturn = start;	// Notice we set it to "start", not to "0".
-        for (int i = start; i < end; i++) {
-            if (array[i] < pivotValue) {
-                swap(array, i, indexToReturn);
+        // Linear search, comparing all elements to pivotValue and swapping as necessary
+        int indexToReturn = lo; // Notice we set it to "lo", not to "0".
+        for (int i = lo; i < hi; i++) {
+            if (A[i] < pivotValue) {
+                swap(A, i, indexToReturn);
                 indexToReturn++;
             }
         }
 
-        swap(array, indexToReturn, end); // puts pivot where it belongs
+        swap(A, indexToReturn, hi); // puts pivot where it belongs
         return indexToReturn;
     }
 
-    private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    private static void swap(int[] A, int i, int j) {
+        int temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
     }
 }

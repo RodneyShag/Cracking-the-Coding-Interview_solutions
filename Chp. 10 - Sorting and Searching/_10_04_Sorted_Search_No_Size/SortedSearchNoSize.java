@@ -25,5 +25,5 @@ public class SortedSearchNoSize {
     }
 }
 
-// Time Complexity: O(log n)
-
+//  Time Complexity: O(log n)
+// Space Complexity: O(1)
