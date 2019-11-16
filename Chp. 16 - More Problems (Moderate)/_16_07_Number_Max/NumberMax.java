@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_07_Number_Max;
 
 /* Finds max of 2 numbers without using if-else, comparison operators */

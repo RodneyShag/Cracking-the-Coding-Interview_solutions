@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_09_Kth_Multiple;
 
 // Different than book's solution. Algorithm is Method 2 from: https://www.geeksforgeeks.org/ugly-numbers/

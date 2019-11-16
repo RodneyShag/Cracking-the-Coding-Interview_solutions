@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_06_Smallest_Difference;
 
 import java.util.Arrays;

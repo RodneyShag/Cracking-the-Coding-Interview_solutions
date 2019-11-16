@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_16_The_Masseuse;
 
 // There are 2 ways to view this problem:

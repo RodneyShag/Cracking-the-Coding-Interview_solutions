@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_10_Living_People;
 
 public class LivingPeople {

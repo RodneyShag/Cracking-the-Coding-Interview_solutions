@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _1_4_Palindrome_Permutation;
 
 import java.util.*;

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _3_6_Animal_Shelter;
 
 public class Dog extends Animal {

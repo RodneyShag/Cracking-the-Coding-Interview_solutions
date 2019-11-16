@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package __Intro_Binary_Search;
 
 public class BinarySearch {

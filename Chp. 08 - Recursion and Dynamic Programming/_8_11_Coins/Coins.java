@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_11_Coins;
 
 // Video explanation: https://www.youtube.com/watch?time_continue=350&v=jaNZ83Q3QGc

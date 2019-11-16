@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package __Intro_StringBuffer;
 
 public class Tester {

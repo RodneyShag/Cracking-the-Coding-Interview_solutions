@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_03_Random_Set;
 
 /*      (From book)

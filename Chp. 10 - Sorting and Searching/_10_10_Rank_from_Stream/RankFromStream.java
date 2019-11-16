@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _10_10_Rank_from_Stream;
 
 // Data Structures we could have used:

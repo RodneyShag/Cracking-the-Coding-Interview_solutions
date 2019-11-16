@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_24_Max_Submatrix;
 
 // Find maximum subsquare with black borders

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package __Intro_Queue;
 
 import common.Node;

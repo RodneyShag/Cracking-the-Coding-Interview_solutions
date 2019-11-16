@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_11_Diving_Board;
 
 import java.util.*;

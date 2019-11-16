@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_07_Number_Max;
 
 public class Tester {

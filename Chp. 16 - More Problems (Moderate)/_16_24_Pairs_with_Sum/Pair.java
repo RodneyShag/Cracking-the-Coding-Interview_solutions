@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_24_Pairs_with_Sum;
 
 class Pair { // always places smaller value in "a"

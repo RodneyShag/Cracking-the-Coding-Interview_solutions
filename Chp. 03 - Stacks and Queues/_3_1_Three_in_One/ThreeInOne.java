@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _3_1_Three_in_One;
 
 // Use "int[] heads = {-1,-1,-1}" and simply implement arrayOffset(int stackNum), push/pop/peek

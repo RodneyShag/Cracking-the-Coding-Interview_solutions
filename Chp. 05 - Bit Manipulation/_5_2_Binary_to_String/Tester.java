@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _5_2_Binary_to_String;
 
 public class Tester {

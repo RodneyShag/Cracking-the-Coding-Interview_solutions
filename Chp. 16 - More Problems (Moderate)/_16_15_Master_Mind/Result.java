@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_15_Master_Mind;
 
 public class Result {

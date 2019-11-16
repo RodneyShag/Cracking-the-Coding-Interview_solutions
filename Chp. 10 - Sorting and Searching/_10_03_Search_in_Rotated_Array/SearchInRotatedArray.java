@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _10_03_Search_in_Rotated_Array;
 
 // - Trick: Endpoints of array give us valuable information. We apply a modified binary search to this problem.

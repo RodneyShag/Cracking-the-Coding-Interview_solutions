@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package common;
 
 /* Implementation of SINGLY-linked list */

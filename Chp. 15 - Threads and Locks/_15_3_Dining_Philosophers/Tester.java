@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _15_3_Dining_Philosophers;
 
 public class Tester {

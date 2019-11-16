@@ -1,3 +1,5 @@
+github.com/RodneyShag
+
 If a class, A, has a private constructor, this prevents other classes from inheriting from A.
 
 Exceptions: 

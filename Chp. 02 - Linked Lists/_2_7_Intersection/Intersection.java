@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _2_7_Intersection;
 
 import common.Node;

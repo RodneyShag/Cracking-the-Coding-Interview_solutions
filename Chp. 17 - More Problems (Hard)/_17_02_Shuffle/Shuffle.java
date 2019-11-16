@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_02_Shuffle;
 
 public class Shuffle {

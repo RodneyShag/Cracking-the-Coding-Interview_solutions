@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_11_Coins;
 
 public class Tester {

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_11_Word_Distance;
 
 import java.util.*;

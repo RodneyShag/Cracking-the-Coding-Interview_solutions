@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _1_2_Check_Permutations;
 
 import java.util.HashMap;

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _4_02_Minimal_Tree;
 
 import common.TreeNode;

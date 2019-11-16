@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _1_1_Is_Unique;
 
 import java.util.HashSet;

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_12_BiNode;
 
 class NodePair {

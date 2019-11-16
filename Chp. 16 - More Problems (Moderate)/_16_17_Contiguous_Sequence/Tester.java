@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_17_Contiguous_Sequence;
 
 import java.util.Arrays;

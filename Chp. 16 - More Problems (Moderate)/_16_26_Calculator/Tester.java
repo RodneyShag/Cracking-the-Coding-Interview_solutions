@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_26_Calculator;
 
 public class Tester {

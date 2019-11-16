@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_15_Longest_Word;
 
 import java.util.Arrays;

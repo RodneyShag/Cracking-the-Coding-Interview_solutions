@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_03_Magic_Index;
 
 public class Tester {

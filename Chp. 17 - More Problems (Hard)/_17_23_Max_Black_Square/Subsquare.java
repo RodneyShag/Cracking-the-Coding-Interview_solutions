@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_23_Max_Black_Square;
 
 public class Subsquare {

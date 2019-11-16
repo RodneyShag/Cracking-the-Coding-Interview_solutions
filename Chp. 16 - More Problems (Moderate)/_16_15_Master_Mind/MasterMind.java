@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_15_Master_Mind;
 
 import java.util.*;

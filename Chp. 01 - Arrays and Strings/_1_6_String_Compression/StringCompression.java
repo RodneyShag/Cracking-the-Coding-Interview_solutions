@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _1_6_String_Compression;
 
 //  Time Complexity: O(n)

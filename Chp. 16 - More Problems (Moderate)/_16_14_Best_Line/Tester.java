@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_14_Best_Line;
 
 import common.Point;

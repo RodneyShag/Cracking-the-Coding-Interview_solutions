@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_05_Factorial_Zeros;
 
 // Number of trailing 0s in n!

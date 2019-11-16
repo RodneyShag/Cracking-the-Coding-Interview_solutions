@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package common;
 
 // Useful equations:

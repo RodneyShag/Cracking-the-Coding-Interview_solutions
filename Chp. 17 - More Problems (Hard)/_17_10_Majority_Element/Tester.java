@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_10_Majority_Element;
 
 import java.util.Arrays;

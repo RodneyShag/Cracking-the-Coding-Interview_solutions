@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _2_6_Palindrome;
 
 import common.Node;

@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _10_08_Find_Duplicates;
 
 public class Tester {

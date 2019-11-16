@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _10_11_Peaks_and_Valleys;
 
 // Algorithm: Look at groups of 3 and put the "valleys" in the right place.

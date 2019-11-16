@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_12_Eight_Queens;
 
 import java.util.*;

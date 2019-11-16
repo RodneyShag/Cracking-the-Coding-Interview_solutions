@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _16_23_Rand7_from_Rand5;
 
 public class Rand7FromRand5 {

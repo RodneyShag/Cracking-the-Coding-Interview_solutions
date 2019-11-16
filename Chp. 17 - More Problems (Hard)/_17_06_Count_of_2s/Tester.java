@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_06_Count_of_2s;
 
 public class Tester {

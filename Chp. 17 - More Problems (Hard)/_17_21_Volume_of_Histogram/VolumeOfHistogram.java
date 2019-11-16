@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _17_21_Volume_of_Histogram;
 
 // Main idea: For each index, 2 walls (the tallest wall anywhere to the left, and to the right), together

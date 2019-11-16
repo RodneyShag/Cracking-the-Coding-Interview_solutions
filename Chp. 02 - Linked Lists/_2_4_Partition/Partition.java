@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _2_4_Partition;
 
 import common.Node;

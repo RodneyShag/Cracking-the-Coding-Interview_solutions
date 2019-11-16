@@ -1,3 +1,5 @@
+github.com/RodneyShag
+
 P(A and B) = P(B|A) P(A)		
 P(A or B)  = P(A) + P(B) - P(A and B)		
 

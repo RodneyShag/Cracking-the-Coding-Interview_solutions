@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_04_Power_Set;
 
 import java.util.*;

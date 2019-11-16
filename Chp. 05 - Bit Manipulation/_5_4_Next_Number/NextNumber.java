@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _5_4_Next_Number;
 
 import common.BitFunctions;

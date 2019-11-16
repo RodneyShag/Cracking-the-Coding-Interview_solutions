@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _5_1_Insertion;
 
 import common.BitFunctions;

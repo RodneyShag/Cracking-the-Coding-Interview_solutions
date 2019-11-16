@@ -1,3 +1,5 @@
+// github.com/RodneyShag
+
 package _8_14_Boolean_Evaluation;
 
 public class Tester {
