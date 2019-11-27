@@ -12,7 +12,7 @@ public class GroupAnagrams {
     //   key:   the sorted version of the String.
     //   value: all the unsorted Strings that sort to the key.
     public static void groupAnagrams(String[] array) {
-        HashMap<String, List<String>> map = new HashMap<>();
+        HashMap<String, List<String>> map = new HashMap();
 
         // Group words by Anagram (by putting into HashMap)
         for (String str : array) {
@@ -45,7 +45,7 @@ public class GroupAnagrams {
     //   Our key will represent the number of letters in each string, where each letter has a separator in it.
     //     -  Example: `aabccc` becomes `2-1-3-...0-` (where the `...` is for the remaining 22 characters)
     public static void groupAnagrams2(String[] array) {
-        HashMap<String, List<String>> map = new HashMap<>();
+        HashMap<String, List<String>> map = new HashMap();
 
         // Group words by Anagram (by putting into HashMap)
         for (String str : array) {

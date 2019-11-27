@@ -7,7 +7,7 @@ import java.util.*;
 public class PondSizes {
 
     public static List<Integer> findPonds(int[][] grid) {
-        List<Integer> pondSizes = new ArrayList<>();
+        List<Integer> pondSizes = new ArrayList();
         int rows = grid.length;
         int cols = grid[0].length;
         for (int row = 0; row < rows; row++) {

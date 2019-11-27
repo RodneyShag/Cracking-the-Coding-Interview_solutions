@@ -7,14 +7,14 @@ import common.TreeNode;
 
 public class BSTSequences {
     public static List<Deque<Integer>> allSequences(TreeNode node) {
-        List<Deque<Integer>> results = new ArrayList<>();
+        List<Deque<Integer>> results = new ArrayList();
 
         if (node == null) {
             results.add(new ArrayDeque<Integer>()); // crucial. So the code labeled "weave lists" works properly
             return results;
         }
 
-        Deque<Integer> prefix = new ArrayDeque<>();
+        Deque<Integer> prefix = new ArrayDeque();
         prefix.add(node.data);
 
         // Recursive Cases

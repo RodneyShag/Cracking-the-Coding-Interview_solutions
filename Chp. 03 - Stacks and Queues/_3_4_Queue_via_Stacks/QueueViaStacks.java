@@ -13,8 +13,8 @@ package _3_4_Queue_via_Stacks;
 import java.util.Stack;
 
 public class QueueViaStacks<T> {
-    private Stack<T> stack1 = new Stack<>();
-    private Stack<T> stack2 = new Stack<>();
+    private Stack<T> stack1 = new Stack();
+    private Stack<T> stack2 = new Stack();
 
     public int size() {
         return stack1.size() + stack2.size();

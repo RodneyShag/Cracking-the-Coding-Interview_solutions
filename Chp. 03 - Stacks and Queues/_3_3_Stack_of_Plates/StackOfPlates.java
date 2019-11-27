@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Stack; // can alternatively use ArrayDeque (it's faster)
 
 public class StackOfPlates {
-    private ArrayList<Stack<Integer>> stacks = new ArrayList<>();
+    private ArrayList<Stack<Integer>> stacks = new ArrayList();
     private int capacity = 3;
 
     /* Implemented to work like a standard push */
@@ -15,7 +15,7 @@ public class StackOfPlates {
         if (lastStack != null && lastStack.size() < capacity) {
             lastStack.push(data);
         } else {
-            Stack<Integer> anotherStack = new Stack<>(); // crucial step. Stacks aren't magically created 4 u.
+            Stack<Integer> anotherStack = new Stack(); // crucial step. Stacks aren't magically created 4 u.
             anotherStack.push(data);
             stacks.add(anotherStack);
         }

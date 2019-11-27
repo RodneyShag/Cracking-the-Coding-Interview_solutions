@@ -42,7 +42,7 @@ public class WordDistance {
     // - Merge 2 sorted ArrayLists together (using algo from mergeSort) and "flag" which list each entry is from (using "Pair" class).
     // - Use Solution 1's method to then find minimum distance on our preprocessed data.
 
-    private static Map<String, List<Integer>> map = new HashMap<>();
+    private static Map<String, List<Integer>> map = new HashMap();
 
     public static void preProcess(String[] words) {
         for (int i = 0; i < words.length; i++) {
@@ -87,10 +87,10 @@ public class WordDistance {
 
     private static List<Pair> merge(List<Integer> listA, List<Integer> listB) {
         if (listA == null || listB == null || listA.size() == 0 || listB.size() == 0) {
-            return new ArrayList<>();
+            return new ArrayList();
         }
 
-        List<Pair> merged = new ArrayList<>();
+        List<Pair> merged = new ArrayList();
         int aIndex = 0;
         int bIndex = 0;
         int aValue;

@@ -14,7 +14,7 @@ import java.util.ArrayDeque;
 
 public class WordTransformer {
 
-    private static HashSet<String> dict = new HashSet<>();
+    private static HashSet<String> dict = new HashSet();
 
     public static void setUpDict() {
         dict.add("DAMP");
@@ -33,9 +33,9 @@ public class WordTransformer {
         start = start.toUpperCase();
         end   = end.toUpperCase();
 
-        ArrayDeque<String> deque             = new ArrayDeque<>(); // use deque as a queue
-        HashSet<String> visited              = new HashSet<>();
-        HashMap<String, String> backtrackMap = new HashMap<>();
+        ArrayDeque<String> deque             = new ArrayDeque(); // use deque as a queue
+        HashSet<String> visited              = new HashSet();
+        HashMap<String, String> backtrackMap = new HashMap();
 
         deque.add(start);
         visited.add(start);
@@ -58,7 +58,7 @@ public class WordTransformer {
 
     // Generates all possible neighbors of given String
     private static HashSet<String> getNeighbors(String str) { // O(n) runtime where "n" is length of String
-        HashSet<String> validWords = new HashSet<>();
+        HashSet<String> validWords = new HashSet();
         for (int i = 0; i < str.length(); i++) {
             char origChar = str.charAt(i);
             for (char currChar = 'A'; currChar <= 'Z'; currChar++) {
@@ -75,7 +75,7 @@ public class WordTransformer {
     }
 
     private static ArrayDeque<String> buildSolution(HashMap<String, String> backtrackMap, String currWord) {
-        ArrayDeque<String> solution = new ArrayDeque<>();
+        ArrayDeque<String> solution = new ArrayDeque();
         solution.add(currWord);
         while (backtrackMap.containsKey(currWord)) {
             currWord = backtrackMap.get(currWord);

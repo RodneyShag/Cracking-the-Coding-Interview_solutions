@@ -6,8 +6,8 @@ import java.util.Stack;
 
 public class StackMin {
     // Can alternatively use ArrayDeque (it's faster)
-    Stack<Integer> stack = new Stack<>();
-    Stack<Integer> minStack = new Stack<>(); // keeps track of minimums
+    Stack<Integer> stack = new Stack();
+    Stack<Integer> minStack = new Stack(); // keeps track of minimums
 
     // Always push onto stack. If it's a minimum, also push it onto minStack
     void push(int x) {

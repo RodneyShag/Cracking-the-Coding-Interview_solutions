@@ -6,13 +6,13 @@ import java.util.*;
 
 public class RandomizedCollection<T> {
     Random rand = new Random();
-    List<T> list = new ArrayList<>();
-    Map<T, Set<Integer>> valToIndices = new HashMap<>();
+    List<T> list = new ArrayList();
+    Map<T, Set<Integer>> valToIndices = new HashMap();
 
     public void add(T item) {
         // update Map
         if (!valToIndices.containsKey(item)) {
-            valToIndices.put(item, new HashSet<>());
+            valToIndices.put(item, new HashSet());
         }
         valToIndices.get(item).add(list.size());
 

@@ -8,7 +8,7 @@ import java.util.BitSet;
 public class Tester {
     public static void main(String[] args) {
         System.out.println("*** Test 17.4: Missing Number");
-        ArrayList<BitSet> array = new ArrayList<>();
+        ArrayList<BitSet> array = new ArrayList();
         // Testing note: I have to test this with all (except one) of the 3-digit binary numbers, since I set BitInteger.INTEGER_SIZE to 3
 
         for (int i = 0; i < 8; i++) {

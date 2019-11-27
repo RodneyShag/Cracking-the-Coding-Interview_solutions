@@ -7,10 +7,10 @@ import java.util.*;
 public class PowerSet {
     public static List<List<Integer>> getSubsets(int[] array) {
         if (array == null || array.length == 0) {
-            return new ArrayList<>();
+            return new ArrayList();
         }
-        List<List<Integer>> solutions = new ArrayList<>();
-        makeSubsets(array, 0, solutions, new ArrayList<>());
+        List<List<Integer>> solutions = new ArrayList();
+        makeSubsets(array, 0, solutions, new ArrayList());
         return solutions;
     }
 

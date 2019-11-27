@@ -12,7 +12,7 @@ class Node {
     public Node(String data) {
         this.data = data;
         status = Visited.NEW;
-        neighbors = new ArrayList<>();
+        neighbors = new ArrayList();
     }
 
     public void addDirectedNeighbor(Node neighbor) {

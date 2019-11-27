@@ -7,11 +7,11 @@ import common.TreeNode;
 
 public class ListOfDepths {
     public static List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> lists = new ArrayList<>();
+        List<List<Integer>> lists = new ArrayList();
         if (root == null) {
             return lists;
         }
-        ArrayDeque<TreeNode> deque = new ArrayDeque<>(); // use deque as a queue
+        ArrayDeque<TreeNode> deque = new ArrayDeque(); // use deque as a queue
         deque.add(root);
         while (!deque.isEmpty()) {
             int numNodesInLevel = deque.size();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Calculator {
     /* Assumes String only has 1-digit numbers */
     public static double evaluate(String str) {
-        ArrayList<String> tokens = new ArrayList<>();
+        ArrayList<String> tokens = new ArrayList();
 
         /* Do multiplications and divisions first */
         for (int i = 0; i < str.length(); i++) {

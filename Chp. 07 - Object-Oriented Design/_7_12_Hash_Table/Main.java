@@ -4,7 +4,7 @@ package _7_12_Hash_Table;
 
 public class Main {
     public static void main(String[] args) {
-        Hash<Integer, String> map = new Hash<>();
+        Hash<Integer, String> map = new Hash();
         map.put(2, "Bob");
         System.out.print(map);
         System.out.println("Hash numBuckets = " + map.numBuckets + "\n");

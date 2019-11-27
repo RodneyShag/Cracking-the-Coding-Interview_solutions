@@ -5,7 +5,7 @@ package _16_20_T9__Trie_Solution;
 import java.util.HashMap;
 
 class TrieNode {
-    private HashMap<Character, TrieNode> children = new HashMap<>();
+    private HashMap<Character, TrieNode> children = new HashMap();
     public int size;
 
     public void putChildIfAbsent(char ch) {

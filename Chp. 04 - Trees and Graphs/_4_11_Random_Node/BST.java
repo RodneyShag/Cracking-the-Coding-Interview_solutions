@@ -4,7 +4,7 @@ package _4_11_Random_Node;
 
 class BST {
     Node root = null;
-    RandomizedCollection<Node> collection = new RandomizedCollection<>();
+    RandomizedCollection<Node> collection = new RandomizedCollection();
 
     public void insert(int value) {
         Node item = new Node(value);

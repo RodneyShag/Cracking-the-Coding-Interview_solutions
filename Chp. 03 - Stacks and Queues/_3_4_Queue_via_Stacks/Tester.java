@@ -6,7 +6,7 @@ public class Tester {
     public static void main(String[] args) {
         System.out.println("*** Test 3.4: Queue via Stacks\n");
         System.out.println("elements we will be inserting: 1, 2, 3, 4, 5\n");
-        QueueViaStacks<Integer> myQueue = new QueueViaStacks<>();
+        QueueViaStacks<Integer> myQueue = new QueueViaStacks();
         myQueue.add(1);
         myQueue.add(2);
         myQueue.add(3);

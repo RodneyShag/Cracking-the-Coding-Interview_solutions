@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Parens {
     public static List<String> generateParentheses(int n) {
-        List<String> solutions = new ArrayList<>();
+        List<String> solutions = new ArrayList();
         addParenthesis(new char[n * 2], 0, n, n, solutions);
         return solutions;
     }

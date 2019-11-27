@@ -12,7 +12,7 @@ public class T9 {
     private Map<Character, Character> letterToDigit;
 
     public T9() {
-        letterToDigit = new HashMap<>();
+        letterToDigit = new HashMap();
         for (char ch = 'a'; ch <= 'c'; ch++) letterToDigit.put(ch, '2');
         for (char ch = 'd'; ch <= 'f'; ch++) letterToDigit.put(ch, '3');
         for (char ch = 'g'; ch <= 'i'; ch++) letterToDigit.put(ch, '4');
@@ -24,10 +24,10 @@ public class T9 {
     }
 
     public Map<String, List<String>> buildMap(String[] words) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> map = new HashMap();
         for (String word : words) {
             String number = getNumber(word);
-            map.putIfAbsent(number, new ArrayList<>());
+            map.putIfAbsent(number, new ArrayList());
             List<String> listOfWords = map.get(number);
             listOfWords.add(word);
         }

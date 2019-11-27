@@ -20,7 +20,7 @@ public class LRUCache {
     
     public LRUCache(int maxSize) {
         this.maxSize = (maxSize < 1) ? 1 : maxSize;
-        map = new HashMap<>();
+        map = new HashMap();
         dll = new DoublyLinkedList();
     }
 

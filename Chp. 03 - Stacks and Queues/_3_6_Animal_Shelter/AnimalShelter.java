@@ -6,8 +6,8 @@ import java.util.ArrayDeque;
 
 public class AnimalShelter {
     int barcode = 0;
-    ArrayDeque<Cat> cats = new ArrayDeque<>();
-    ArrayDeque<Dog> dogs = new ArrayDeque<>();
+    ArrayDeque<Cat> cats = new ArrayDeque();
+    ArrayDeque<Dog> dogs = new ArrayDeque();
 
     public void enqueue(Animal animal) {
         animal.barcode = barcode++;

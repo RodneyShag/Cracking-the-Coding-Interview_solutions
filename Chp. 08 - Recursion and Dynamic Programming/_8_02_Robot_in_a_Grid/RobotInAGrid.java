@@ -22,11 +22,11 @@ public class RobotInAGrid {
         }
 
         // Create path to save solution into 
-        List<Point> path = new ArrayList<>();
+        List<Point> path = new ArrayList();
         path.add(new Point(0, 0));
 
         // Create cache to save solutions to subproblems
-        Map<Point, Boolean> cache = new HashMap<>(); // requires overriding .equals() and .hashCode for Point, for HashMap to work properly
+        Map<Point, Boolean> cache = new HashMap(); // requires overriding .equals() and .hashCode for Point, for HashMap to work properly
         cache.put(new Point(0, 0), true); // base case
 
         // Recursively calculate answer
@@ -86,8 +86,8 @@ public class RobotInAGrid {
         if (maze == null || row >= maze.length || col >= maze[0].length) {
             return null;
         }
-        List<List<Point>> solutionPaths = new ArrayList<>();
-        getAllPaths(maze, 0, 0, solutionPaths, new ArrayList<>());
+        List<List<Point>> solutionPaths = new ArrayList();
+        getAllPaths(maze, 0, 0, solutionPaths, new ArrayList());
         return solutionPaths;
     }
 
@@ -109,7 +109,7 @@ public class RobotInAGrid {
     }
 
     private static void deepCopyPathIntoSolutions(List<Point> path, List<List<Point>> solutionPaths) {
-        List<Point> solutionPath = new ArrayList<>();
+        List<Point> solutionPath = new ArrayList();
         for (int i = 0; i < path.size(); i++) {
             Point point = path.get(i);
             solutionPath.add(new Point(point.x, point.y));

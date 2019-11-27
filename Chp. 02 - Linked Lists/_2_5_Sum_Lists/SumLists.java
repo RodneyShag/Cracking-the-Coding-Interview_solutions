@@ -40,8 +40,8 @@ public class SumLists {
             return n;
         }
 
-        Stack<Integer> stack1 = new Stack<>();
-        Stack<Integer> stack2 = new Stack<>();
+        Stack<Integer> stack1 = new Stack();
+        Stack<Integer> stack2 = new Stack();
 
         while (m != null) {
             stack1.push(m.data);

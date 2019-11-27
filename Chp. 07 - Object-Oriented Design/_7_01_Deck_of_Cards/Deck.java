@@ -23,7 +23,7 @@ public class Deck<T extends Card> {
     }
 
     public LinkedList<T> dealHand(int numCards) {
-        LinkedList<T> cards = new LinkedList<>();
+        LinkedList<T> cards = new LinkedList();
         for (int i = 0; i < numCards; i++) {
             cards.add(deck.remove());
         }

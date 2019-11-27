@@ -7,10 +7,10 @@ import java.util.*;
 public class PermutationsWithDups {
     public static List<List<Integer>> permute(int[] array) {
         if (array == null || array.length == 0) {
-            return new ArrayList<>();
+            return new ArrayList();
         }
-        Set<List<Integer>> solutions = new HashSet<>();
-        permute(array, 0, new boolean[array.length], solutions, new ArrayList<>());
+        Set<List<Integer>> solutions = new HashSet();
+        permute(array, 0, new boolean[array.length], solutions, new ArrayList());
         return new ArrayList<>(solutions);
     }
 

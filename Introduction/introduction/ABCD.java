@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class ABCD {
     public static void printPairs() {
         /* Put Pairs in HashMap */
-        HashMap<Integer, ArrayList<Pair>> map = new HashMap<>();
+        HashMap<Integer, ArrayList<Pair>> map = new HashMap();
         for (int i = 0; i < 100; i++) {
             for (int j = 0; j < 100; j++) {
                 int result = i*i*i + j*j*j;

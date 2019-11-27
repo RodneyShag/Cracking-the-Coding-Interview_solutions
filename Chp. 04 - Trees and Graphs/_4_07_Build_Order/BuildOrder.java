@@ -27,7 +27,7 @@ public class BuildOrder {
             source.addDirectedNeighbor(node);
         }
 
-        Deque<Node> result = new ArrayDeque<>();
+        Deque<Node> result = new ArrayDeque();
         topoSortDFS(source, result);
         result.removeFirst(); // removes the source node we created
         return result;

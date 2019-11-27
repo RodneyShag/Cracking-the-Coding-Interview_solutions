@@ -21,7 +21,7 @@ public class BestLine {
         int numPoints = points.length;
 
         // For each pair of points, put 1 Line into a HashMap
-        HashMap<Line, Integer> map = new HashMap<>();
+        HashMap<Line, Integer> map = new HashMap();
         for (int i = 0; i < numPoints - 1; i++) {
             for (int j = i + 1; j < numPoints; j++) {
                 Line line = new Line(points[i], points[j]);

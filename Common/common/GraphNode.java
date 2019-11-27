@@ -16,7 +16,7 @@ public class GraphNode {
     public GraphNode(int data) {
         this.data = data;
         visited = false;
-        neighbors = new ArrayList<>();
+        neighbors = new ArrayList();
     }
 
     public void visit() {

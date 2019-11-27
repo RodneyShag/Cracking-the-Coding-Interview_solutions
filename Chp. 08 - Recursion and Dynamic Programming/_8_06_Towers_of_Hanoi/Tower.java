@@ -10,7 +10,7 @@ class Tower {
     public int towerNum;
 
     public Tower(int towerNum) {
-        disks = new ArrayDeque<>();
+        disks = new ArrayDeque();
         this.towerNum = towerNum;
     }
 

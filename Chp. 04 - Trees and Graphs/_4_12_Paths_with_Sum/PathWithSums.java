@@ -8,7 +8,7 @@ import java.util.*;
 
 public class PathWithSums {
     public static int findSum(TreeNode node, int targetSum) {
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap();
         map.put(0, 1);
         return findSum(node, targetSum, 0, map);
     }

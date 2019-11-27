@@ -35,7 +35,7 @@ public class LettersAndNumbers {
 
         int startIndex = -1;
         int endIndex = -1;
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap();
         map.put(0, -1); // for testcases such as [a, 0], [a, 0, 0]
         int maxLength = 0;
         for (int i = 0; i < array.length; i++) {

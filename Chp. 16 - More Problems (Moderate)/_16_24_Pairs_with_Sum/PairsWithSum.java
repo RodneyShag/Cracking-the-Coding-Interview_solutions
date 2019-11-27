@@ -12,7 +12,7 @@ import java.util.HashSet;
 
 public class PairsWithSum {
     public static void twoSum_NoDuplicatesExist(int[] array, int sum) {
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set = new HashSet();
         for (int num : array) {
             if (set.contains(sum - num)) {
                 printPair(num, sum - num);
@@ -22,7 +22,7 @@ public class PairsWithSum {
     }
 
     public static void twoSum_PrintDuplicates(int[] array, int sum) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap();
         for (int i = 0; i < array.length; i++) {
             int num = array[i];
             if (map.containsKey(sum - num)) {
@@ -37,8 +37,8 @@ public class PairsWithSum {
 
     /* Assuming interviewer considers pair {1,5} same as {5,1}. We make them the same in Pair class */
     public static HashSet<Pair> twoSum_DontPrintDuplicates(int[] array, int sum) {
-        HashSet<Pair> pairs = new HashSet<>();
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Pair> pairs = new HashSet();
+        HashSet<Integer> set = new HashSet();
         for (int i = 0; i < array.length; i++) {
             int num = array[i];
             if (set.contains(sum - num)) {

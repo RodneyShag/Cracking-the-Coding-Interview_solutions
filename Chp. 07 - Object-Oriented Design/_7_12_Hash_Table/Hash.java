@@ -20,7 +20,7 @@ public class Hash<K, V> {
 
     private void initializeLists(ArrayList<LinkedList<Cell<K, V>>> lists) {
         for (int i = 0; i < numBuckets; i++) {
-            lists.add(new LinkedList<>());
+            lists.add(new LinkedList());
         }
     }
 

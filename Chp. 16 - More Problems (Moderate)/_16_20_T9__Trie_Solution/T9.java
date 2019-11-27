@@ -11,7 +11,7 @@ import java.util.List;
 //   For each "number" query, walk down corresponding paths of Trie to find matching words
 
 public class T9 {
-    private static HashMap<Character, List<Character>> digitToLetter = new HashMap<>();
+    private static HashMap<Character, List<Character>> digitToLetter = new HashMap();
 
     static {
         digitToLetter.put('2', Arrays.asList('a', 'b', 'c'));

@@ -5,8 +5,8 @@ package _4_07_Build_Order;
 import java.util.*;
 
 public class Graph {
-    List<Node> nodes = new ArrayList<>();
-    Map<String, Node> map = new HashMap<>();
+    List<Node> nodes = new ArrayList();
+    Map<String, Node> map = new HashMap();
 
     public void addDirectedEdge(String s1, String s2) {
         Node source = map.get(s1);

@@ -10,11 +10,11 @@ public class EightQueens {
         for (char[] row : board) {
             Arrays.fill(row, '.');
         }
-        Set<Integer> cols = new HashSet<>(); // columns   |
-        Set<Integer> d1 = new HashSet<>();   // diagonals \
-        Set<Integer> d2 = new HashSet<>();   // diagonals /
+        Set<Integer> cols = new HashSet(); // columns   |
+        Set<Integer> d1 = new HashSet();   // diagonals \
+        Set<Integer> d2 = new HashSet();   // diagonals /
 
-        List<List<String>> solutions = new ArrayList<>();
+        List<List<String>> solutions = new ArrayList();
         placeQueens(board, n, solutions, 0, cols, d1, d2);
         return solutions;
     }
@@ -48,7 +48,7 @@ public class EightQueens {
     }
 
     private static List<String> makeSolutionBoard(char[][] board) {
-        List<String> solution = new ArrayList<>();
+        List<String> solution = new ArrayList();
         for (char[] row : board) {
             solution.add(new String(row));
         }

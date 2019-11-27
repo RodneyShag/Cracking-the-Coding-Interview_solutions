@@ -38,7 +38,7 @@ public class GraphFunctions {
             return;
         }
 
-        Deque<GraphNode> deque = new ArrayDeque<>(); // use deque as a queue
+        Deque<GraphNode> deque = new ArrayDeque(); // use deque as a queue
         node.visit();
         deque.add(node);
 

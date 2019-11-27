@@ -24,7 +24,7 @@ public class LongestWord {
     }
 
     private static Map<String, Boolean> makeMap(String[] words) {
-        Map<String, Boolean> map = new HashMap<>();
+        Map<String, Boolean> map = new HashMap();
         for (String word : words) {
             map.put(word, true);
         }
