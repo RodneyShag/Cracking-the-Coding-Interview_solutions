@@ -38,7 +38,7 @@ public class ShortestSupersequence {
     }
 
     private static Range getSmallestRange(Map<Integer, Deque<HeapNode>> map) {
-        Queue<HeapNode> minHeap = new PriorityQueue<>((hn1, hn2) -> hn1.index - hn2.index);
+        Queue<HeapNode> minHeap = new PriorityQueue((hn1, hn2) -> hn1.index - hn2.index);
 
         Range currRange = new Range(Integer.MAX_VALUE, Integer.MIN_VALUE);
 

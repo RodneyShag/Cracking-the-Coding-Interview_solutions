@@ -13,7 +13,7 @@ import java.util.PriorityQueue;
 //   2) maxHeap.size() - 1 = minHeap.size()
 
 public class ContinuousMedian {
-    private static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+    private static PriorityQueue<Integer> maxHeap = new PriorityQueue(Collections.reverseOrder());
     private static PriorityQueue<Integer> minHeap = new PriorityQueue();
 
     public static void addNum(int n) {

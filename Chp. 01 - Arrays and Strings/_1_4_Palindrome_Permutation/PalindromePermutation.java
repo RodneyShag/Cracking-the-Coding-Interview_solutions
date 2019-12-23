@@ -10,7 +10,7 @@ public class PalindromePermutation {
     
     public static boolean palPerm(String str) {
         str = str.toLowerCase().replaceAll("\\s", "");
-        Map<Character, Integer> map = new HashMap<>(NUM_LOWERCASE_LETTERS);
+        Map<Character, Integer> map = new HashMap(NUM_LOWERCASE_LETTERS);
         for (int i = 0; i < str.length(); i++) {
             Character ch = str.charAt(i);
             if (Character.isLetter(ch)) {

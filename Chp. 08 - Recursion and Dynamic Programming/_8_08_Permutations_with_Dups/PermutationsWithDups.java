@@ -11,12 +11,12 @@ public class PermutationsWithDups {
         }
         Set<List<Integer>> solutions = new HashSet();
         permute(array, 0, new boolean[array.length], solutions, new ArrayList());
-        return new ArrayList<>(solutions);
+        return new ArrayList(solutions);
     }
 
     private static void permute(int[] array, int index, boolean[] used, Set<List<Integer>> solutions, List<Integer> list) {
         if (index == array.length) {
-            solutions.add(new ArrayList<>(list));
+            solutions.add(new ArrayList(list));
             return;
         }
         for (int i = 0; i < array.length; i++) {

@@ -35,7 +35,7 @@ public class BSTSequences {
             List<Deque<Integer>> results, Deque<Integer> prefix) {
         // Base Case
         if (list1.isEmpty() || list2.isEmpty()) {
-        Deque<Integer> result = new ArrayDeque<>(prefix);
+        Deque<Integer> result = new ArrayDeque(prefix);
         result.addAll(list1);
         result.addAll(list2);
         results.add(result);

@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Hash<K, V> {
     int numBuckets = 3; // small to test resizing. public for testing.
-    private ArrayList<LinkedList<Cell<K, V>>> lists = new ArrayList<>(numBuckets);
+    private ArrayList<LinkedList<Cell<K, V>>> lists = new ArrayList(numBuckets);
     private final double LOAD_FACTOR = 0.7;
     private int numItems = 0;
 
@@ -68,7 +68,7 @@ public class Hash<K, V> {
     private void rehash() {
         ArrayList<LinkedList<Cell<K, V>>> temp = lists;
         numBuckets *= 2;
-        lists = new ArrayList<>(numBuckets);
+        lists = new ArrayList(numBuckets);
         initializeLists(lists);
         numItems = 0;
         for (LinkedList<Cell<K, V>> list : temp) {
