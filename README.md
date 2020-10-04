@@ -40,3 +40,6 @@ All the code should now be visibile in the **Package Explorer** on the left of t
 [instructions_4]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_4.png
 [instructions_5]: https://github.com/RodneyShag/Cracking-the-Coding-Interview_solutions/blob/master/screenshots/instructions_5.png
 
+https://www.javatpoint.com/java-tutorial
+https://javarevisited.blogspot.com/2017/01/how-to-prepare-for-java-interviews.html
+https://www.edureka.co/blog/interview-questions/java-interview-questions/
